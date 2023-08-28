@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "giocatori": [
+    {
+      "nome": "marco",
+      "codicePartita": 2
+    },
+    {
+      "nome": "paolo",
+      "codicePartita": 4
+    }
+  ]
+}
