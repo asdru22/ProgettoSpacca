@@ -1,0 +1,17 @@
+{
+  "id": 55,
+  "giocatori": [
+    {
+      "nome": "Paolo",
+      "codicePartita": 55
+    },
+    {
+      "nome": "marco",
+      "codicePartita": 55
+    },
+    {
+      "nome": "Stefano",
+      "codicePartita": 55
+    }
+  ]
+}
