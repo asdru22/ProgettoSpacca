@@ -15,6 +15,10 @@ public class Partita {
     public int getId(){ return  id;}
     public Giocatore[] getGiocatori(){return giocatori;}
     public Giocatore getVincitore(){return vincitore;}
+
+    public void impostaIdGiocatori(){
+        for (Giocatore giocatore : this.getGiocatori()) giocatore.setCodicePartita(id);
+    }
     @Override
     public String toString(){
         if(vincitore == null) vincitore = new Giocatore("NESSUNO",-1);

@@ -14,6 +14,8 @@ public class Giocatore {
     public int getCodicePartita(){
         return codicePartita;
     }
+
+    public void setCodicePartita(int id) {this.codicePartita = id; }
     @Override
     public String toString(){
         return "{Nome: "+nome+", Codice Partita: "+codicePartita+"}";
