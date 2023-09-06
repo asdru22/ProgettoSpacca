@@ -80,8 +80,8 @@ public class Gestore {
         return g;
     }
     private void inizia(Giocatore[] g,String tipo){
-    if(Objects.equals(tipo, "Partita")) iniziaPartita(g);
-    else if(Objects.equals(tipo, "Torneo")) iniziaTorneo(g);
+        if(Objects.equals(tipo, "Partita")) iniziaPartita(g);
+        else if(Objects.equals(tipo, "Torneo")) iniziaTorneo(g);
     }
 
     private void iniziaPartita(Giocatore[] g){

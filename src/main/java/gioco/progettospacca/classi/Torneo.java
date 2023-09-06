@@ -26,7 +26,7 @@ public class Torneo {
         for(int i = 0 ; i<partecipanti;i++){
             coppia[0] = g.get(0);
             g.remove(0);
-            coppia[0] = g.get(0);
+            coppia[1] = g.get(0);
             g.remove(0);
             this.partite[i] = gestore.scriviPartita(coppia);
         }
