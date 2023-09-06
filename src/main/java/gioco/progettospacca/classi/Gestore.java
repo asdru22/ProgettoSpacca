@@ -11,18 +11,24 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
-public class Gestore {
 
-    public int scriviPartita(Giocatore[] giocatori){
+public class Gestore {
+    private Partita partita = null;
+    private Torneo torneo = null;
+    //Si occupa di tutte le robe riguardanti login, iniziare partite, leggere e scrivere da file
+    public Partita scriviPartita(Giocatore[] giocatori){
         Partita p = new Partita(randInt(1,100),giocatori);
         p.impostaIdGiocatori();
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try (FileWriter writer = new FileWriter("src/main/java/gioco/progettospacca/salvataggi/"+p.getId()+".json")) {
             writer.write(gson.toJson(p));
         } catch (IOException e) {
-            System.err.println("Errore di scrittura file");
+            System.err.println("Errore salvataggio file");
         }
-        return p.getId();
+        return p;
+    }
+    private static int randInt(int min,int max){
+        return min + (int)(Math.random() * ((max - min) + 1));
     }
     public String leggiFileJson(String nomeFile) {
         try {
@@ -35,15 +41,27 @@ public class Gestore {
             reader.close();
             return  jsonBuilder.toString();
         }   catch (IOException e) {
-            System.err.println("Errore di lettura file");
-            return "file not found error";
+            System.err.println("Errore di aprtura file");
+            return "errore";
         }
     }
-    public static int randInt(int min,int max){
-        return min + (int)(Math.random() * ((max - min) + 1));
-    }
-    public Giocatore[] aggiungiGiocatori(){
+
+    public Giocatore[] aggiungiGiocatori(String tipo){
         Scanner scanner = new Scanner(System.in);
+
+        Giocatore[] r = null;
+        if(!tipo.equals("PartitaCPU")) r = aggiungiGiocatori(scanner,tipo); // per partite tra giocatori e tornei
+        //if(tipo.equals("PartitaCPU")) aggiungiGiocatoreCPU(scanner);
+        return r;
+    }
+    private Giocatore[] aggiungiGiocatoreCPU(Scanner scanner){
+        System.out.print("Inserisci giocatore\n> ");
+        String giocatore = scanner.nextLine();
+        Giocatore[] r = new Giocatore[1];
+        r[0] = new Giocatore(giocatore, -1);
+        return r;
+    }
+    private Giocatore[] aggiungiGiocatori(Scanner scanner,String tipo){
         String giocatore;
         ArrayList<Giocatore> temp = new ArrayList<>();
         System.out.print("Inserisci giocatori (digitare \"exit\" per finire)\n> ");
@@ -58,7 +76,23 @@ public class Gestore {
         // converti arraylist in array
         Giocatore[] g = new Giocatore[temp.size()];
         g = temp.toArray(g);
+        inizia(g,tipo);
         return g;
+    }
+    private void inizia(Giocatore[] g,String tipo){
+    if(Objects.equals(tipo, "Partita")) iniziaPartita(g);
+    else if(Objects.equals(tipo, "Torneo")) iniziaTorneo(g);
+    }
+
+    private void iniziaPartita(Giocatore[] g){
+        // cose temporanee per testare
+        Partita p = scriviPartita(g);
+        // crea partita dato id
+        this.partita =leggiPartita(p.getId());
+    }
+    private void iniziaTorneo(Giocatore[] g){
+        this.torneo = new Torneo(g);
+        torneo.inizia();
     }
     public Partita leggiPartita(int id){
         Gson gson = new Gson();
