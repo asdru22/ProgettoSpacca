@@ -3,12 +3,20 @@ package gioco.progettospacca.classi;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.ArrayList;
-import gioco.progettospacca.classi.Gestore;
 public class Torneo {
     private Giocatore[] giocatori;
-    private Partita[] partite;
+    private ArrayList<Partita> partite;
     public Torneo(Giocatore[] giocatori){
         this.giocatori = giocatori;
+    }
+
+    public void prossimoRound(){
+        Giocatore[] temp = new Giocatore[partite.size()/2];
+        for(int i =0; i<partite.size();i++){
+            temp[i] = partite.get(i).getVincitore();
+        }
+        partite.clear();
+        inizia(temp,temp.length);
     }
     public void inizia(){
         int partecipanti = giocatori.length;
@@ -19,7 +27,6 @@ public class Torneo {
         }
     }
     private void inizia(Giocatore[] giocatori,int partecipanti){
-        this.partite = new Partita[partecipanti];
         Giocatore[] coppia = new Giocatore[2];
         Gestore gestore = new Gestore();
         ArrayList<Giocatore> g = mischia(giocatori);
@@ -28,7 +35,7 @@ public class Torneo {
             g.remove(0);
             coppia[1] = g.get(0);
             g.remove(0);
-            this.partite[i] = gestore.scriviPartita(coppia);
+            partite.add(gestore.scriviPartita(coppia));
         }
 
     }

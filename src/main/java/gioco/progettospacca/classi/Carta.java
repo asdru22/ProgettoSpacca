@@ -4,9 +4,9 @@ public class Carta {
     private String id;
     private Giocatore scartataDa;
 
-    public Carta(String id, Giocatore scartataDa){
+    public Carta(String id){
         this.id = id;
-        this.scartataDa = scartataDa;
+        this.scartataDa = null;
     }
     public String getId(){
         return id;
