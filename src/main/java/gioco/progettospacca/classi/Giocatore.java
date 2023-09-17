@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Giocatore {
     private String nome;
     private int codicePartita;
-    private ArrayList<Carta> mazzo = new ArrayList<>();
+    private Mazzo mazzo;
 
     public Giocatore(String nome,int codicePartita){
         this.nome = nome;
@@ -20,11 +20,11 @@ public class Giocatore {
         //
         // qua codice per mettere carta nella partita attuale
         //
-        mazzo.remove(carta);
+        mazzo.getMazzoArrayList().remove(carta);
     }
     public void pesca(Partita p){
-        mazzo.add(p.getCartaInCima());
-        p.getMazzo().remove(0);
+        mazzo.getMazzoArrayList().add(p.getMazzo().getCartaInCima());
+        p.getMazzo().getMazzoArrayList().remove(0);
     }
     @Override
     public String toString(){
