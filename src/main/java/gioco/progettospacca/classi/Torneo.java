@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 public class Torneo {
     private Giocatore[] giocatori;
-    private ArrayList<Partita> partite;
+    private ArrayList<Partita> partite = new ArrayList<>();
     public Torneo(Giocatore[] giocatori){
         this.giocatori = giocatori;
     }
