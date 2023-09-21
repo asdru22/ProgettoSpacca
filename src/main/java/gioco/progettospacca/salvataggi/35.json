@@ -1,0 +1,137 @@
+{
+  "id": 35,
+  "giocatori": [
+    {
+      "nome": "dw",
+      "codicePartita": 35
+    },
+    {
+      "nome": "dw",
+      "codicePartita": 35
+    }
+  ],
+  "mazzo": {
+    "mazzo": [
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      },
+      {
+        "id": "carta trappola"
+      }
+    ]
+  }
+}
