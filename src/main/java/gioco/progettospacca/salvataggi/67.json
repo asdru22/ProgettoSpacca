@@ -1,13 +1,13 @@
 {
-  "id": 35,
+  "id": 67,
   "giocatori": [
     {
-      "nome": "dw",
-      "codicePartita": 35
+      "nome": "paolo",
+      "codicePartita": 67
     },
     {
-      "nome": "dw",
-      "codicePartita": 588
+      "nome": "giacomo",
+      "codicePartita": 67
     }
   ],
   "mazzo": {
