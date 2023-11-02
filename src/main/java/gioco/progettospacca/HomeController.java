@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
-public class Controller {
+public class HomeController {
     @FXML
     Label scritta;
     public void clicca(ActionEvent actionEvent) {

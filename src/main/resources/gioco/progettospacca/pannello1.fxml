@@ -4,9 +4,10 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.HomeController">
    <children>
       <Button fx:id="bottone" layoutX="141.0" layoutY="104.0" mnemonicParsing="false" onAction="#clicca" prefHeight="128.0" prefWidth="284.0" text="Button" />
       <Label fx:id="scritta" layoutX="153.0" layoutY="284.0" prefHeight="17.0" prefWidth="294.0" />
+      <Label layoutX="86.0" layoutY="301.0" text="Ciao" />
    </children>
 </Pane>
