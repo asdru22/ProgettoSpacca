@@ -17,6 +17,7 @@ public class Main extends Application {
         stage.setTitle("Home");
         stage.setScene(new Scene(root));
         stage.show();
+        System.out.println("alle gatto");
     }
 
     public static void main(String[] args) {
