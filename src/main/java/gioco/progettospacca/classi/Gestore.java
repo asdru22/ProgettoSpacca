@@ -104,20 +104,19 @@ public class Gestore {
         return partita;
     }
     public void autenticazione(){
-        Gson gson = new Gson();
         // piglia a passwor da file admin
-        Amministratore amministratore = gson.fromJson(leggiFileJson("_admin.json"), Amministratore.class);
-        String password_admin = amministratore.getPassword();
+        String nome_admin = "maurizio";
+        String password_admin = "password";
         Scanner scanner = new Scanner(System.in);
         String password_tentativo;
 
         // input utent
-        System.out.print("Benvenuto, "+ amministratore.getNome()+". Inserisci la password per continuare: ");
+        System.out.print("Benvenuto, "+ nome_admin+". Inserisci la password per continuare: ");
         do {
             password_tentativo = scanner.nextLine();
             if(!Objects.equals(password_admin, password_tentativo)) System.out.print("Password Errata! Riprova: ");
 
         } while (!Objects.equals(password_admin, password_tentativo));
-        System.out.println("Benvenuto, "+amministratore.getNome());
+        System.out.println("Benvenuto, "+nome_admin);
     }
 }
