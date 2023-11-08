@@ -13,6 +13,7 @@ import java.util.Scanner;
 
 
 public class Gestore {
+    /*
     private Partita partita = null;
     private Torneo torneo = null;
     //Si occupa di tutte le robe riguardanti login, iniziare partite, leggere e scrivere da file
@@ -119,4 +120,6 @@ public class Gestore {
         } while (!Objects.equals(password_admin, password_tentativo));
         System.out.println("Benvenuto, "+nome_admin);
     }
+    */
+
 }
