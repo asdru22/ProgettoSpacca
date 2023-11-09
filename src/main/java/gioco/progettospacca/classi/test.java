@@ -15,6 +15,7 @@ public class test {
             gioc[0] = new Giocatore("paolo");
             Partita p = new Partita(1,gioc);
             p.salva();
-            System.out.println(p.carica());
+            System.out.println(Utili.getLeaderboard());
+
         }
 }

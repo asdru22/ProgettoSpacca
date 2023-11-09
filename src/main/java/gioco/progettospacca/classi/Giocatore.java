@@ -45,6 +45,6 @@ public class Giocatore {
     }
     @Override
     public String toString(){
-        return "{Nome: "+nome+", Codice Partita: "+codicePartita+"}";
+        return "> Nome: "+nome+", Codice Partita: "+codicePartita;
     }
 }

@@ -25,16 +25,17 @@ public class Partita{
     public void salva(){
         Utili.salva("partite",Integer.toString(id),this);
     }
-    public Giocatore carica(){
+    public Partita carica(){
         Gson gson = new Gson();
-        return gson.fromJson(Utili.leggiFileJson("partite",Integer.toString(id)), Giocatore.class);
+        return gson.fromJson(Utili.leggiFileJson("partite",Integer.toString(id)), Partita.class);
     }
     private void impostaIdGiocatori(){
         for (Giocatore giocatore : giocatori) giocatore.setCodicePartita(id);
     }
     @Override
     public String toString(){
-        return "{Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString()+"} ";
+        if (vincitore == null) vincitore = new Giocatore("nessuno");
+        return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
     }
 
 }
