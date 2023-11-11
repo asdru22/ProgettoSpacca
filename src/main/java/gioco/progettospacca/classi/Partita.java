@@ -22,10 +22,12 @@ public class Partita{
     public Mazzo getMazzo(){
         return mazzo;
     }
+    // classe->.json
     public void salva(){
         Utili.salva("partite",Integer.toString(id),this);
     }
-    public Partita carica(){
+    // .json->classe
+    public static Partita carica(int id){
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("partite",Integer.toString(id)), Partita.class);
     }

@@ -36,10 +36,12 @@ public class Giocatore {
         mazzo.getMazzo().add(p.getMazzo().getCartaInCima());
         p.getMazzo().getMazzo().remove(0);
     }
+    // classe->.json
     public void salva(){
         Utili.salva("giocatori",nome,this);
     }
-    public Giocatore carica(){
+    // .json->classe
+    public static Giocatore carica(String nome){
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("giocatori",nome), Giocatore.class);
     }
