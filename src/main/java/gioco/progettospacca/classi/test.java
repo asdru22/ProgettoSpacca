@@ -1,7 +1,7 @@
 package gioco.progettospacca.classi;
-import com.google.gson.Gson;
 
-import java.util.Scanner;
+
+import java.nio.file.FileSystems;
 
 public class test {
         public static void main(String[] args) {
@@ -14,8 +14,7 @@ public class test {
             Giocatore gioc[] = new Giocatore[1];
             gioc[0] = new Giocatore("paolo");
             Partita p = new Partita(gioc);
-            p.salva();
-            Utili.getLeaderboard();
+            System.out.println(Partita.carica(8926));
 
         }
 }

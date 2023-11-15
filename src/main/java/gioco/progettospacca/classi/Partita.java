@@ -1,9 +1,7 @@
 package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
-
 import java.util.Arrays;
-
 public class Partita{
     private int id;
     private Giocatore[] giocatori;
