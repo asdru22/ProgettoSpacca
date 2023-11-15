@@ -1,0 +1,174 @@
+{
+  "id": 6249,
+  "giocatori": [
+    {
+      "nome": "paolo",
+      "codicePartita": 6249,
+      "partiteVinte": 0
+    }
+  ],
+  "mazzo": {
+    "mazzo": [
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      },
+      {
+        "id": "carta trappola",
+        "seme": "Fuoco"
+      }
+    ]
+  }
+}

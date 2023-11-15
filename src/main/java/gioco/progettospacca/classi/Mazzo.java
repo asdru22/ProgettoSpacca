@@ -1,22 +1,36 @@
 package gioco.progettospacca.classi;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Mazzo {
     private ArrayList<Carta> mazzo;
 
-    public Mazzo(){
-        this.mazzo = creaMazzo();
+    public Mazzo(ArrayList<Carta> mazzo){
+        this.mazzo = mazzo;
     }
+    public Mazzo(){
+        this.mazzo = creaMazzoIniziale();
+    }
+    public void setMazzo(ArrayList<Carta> mazzo){this.mazzo = mazzo ;}
+
     public ArrayList<Carta> getMazzo(){
         return mazzo;
     }
-    private ArrayList<Carta> creaMazzo(){
+    public static ArrayList<Carta> creaMazzoIniziale(){
+        Seme semi[] = Seme.values();
         ArrayList<Carta> temp = new ArrayList<>();
-        for(int i = 0 ; i<40; i++){
-            temp.add(new Carta("carta trappola",Seme.Fuoco));
+
+        for(int i = 0 ; i<10; i++){
+            temp.add(new Carta(semi[0],i));
+            temp.add(new Carta(semi[1],i));
+            temp.add(new Carta(semi[2],i));
+            temp.add(new Carta(semi[3],i));
+            temp.add(new Carta(semi[4],i));
         }
+        Collections.shuffle(temp);
         return temp;
+
     }
     public Carta getCartaInCima(){
         return mazzo.get(0);

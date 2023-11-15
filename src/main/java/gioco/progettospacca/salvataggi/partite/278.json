@@ -1,0 +1,11 @@
+{
+  "id": 278,
+  "giocatori": [
+    {
+      "nome": "paolo",
+      "codicePartita": 278,
+      "partiteVinte": 0
+    }
+  ],
+  "mazzo": {}
+}
