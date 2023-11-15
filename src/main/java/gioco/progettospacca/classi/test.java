@@ -13,9 +13,9 @@ public class test {
              */
             Giocatore gioc[] = new Giocatore[1];
             gioc[0] = new Giocatore("paolo");
-            Partita p = new Partita(1,gioc);
+            Partita p = new Partita(gioc);
             p.salva();
-            System.out.println(Utili.getLeaderboard());
+            Utili.getLeaderboard();
 
         }
 }

@@ -14,7 +14,7 @@ public class Mazzo {
     private ArrayList<Carta> creaMazzo(){
         ArrayList<Carta> temp = new ArrayList<>();
         for(int i = 0 ; i<40; i++){
-            temp.add(new Carta("carta trappola"));
+            temp.add(new Carta("carta trappola",Seme.Fuoco));
         }
         return temp;
     }

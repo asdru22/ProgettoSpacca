@@ -9,6 +9,13 @@ public class Partita{
     private Giocatore[] giocatori;
     private Giocatore vincitore;
     private Mazzo mazzo;
+    public Partita(Giocatore[] giocatori){
+        this.id = Utili.intCasuale(1,10000);
+        this.giocatori = giocatori;
+        this.vincitore = null;
+        this.mazzo = new Mazzo();
+        this.impostaIdGiocatori();
+    }
     public Partita(int id,Giocatore[] giocatori){
         this.id = id;
         this.giocatori = giocatori;

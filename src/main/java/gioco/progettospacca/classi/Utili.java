@@ -21,7 +21,6 @@ public class Utili {
         }
     }
     public static String leggiFileJson(String tipo,String nome) {
-        System.out.println("src/main/java/gioco/progettospacca/salvataggi/"+tipo+"/"+nome+".json");
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gioco/progettospacca/salvataggi/"+tipo+"/"+nome+".json"));
             StringBuilder jsonBuilder = new StringBuilder();
@@ -65,5 +64,7 @@ public class Utili {
         }
         return r;
     }
-
+    public static int intCasuale(int min,int max){
+        return min + (int)(Math.random() * ((max - min) + 1));
+    }
 }
