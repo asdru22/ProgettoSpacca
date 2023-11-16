@@ -14,7 +14,7 @@ public class Mazzo {
     }
     public void setMazzo(ArrayList<Carta> mazzo){this.mazzo = mazzo ;}
 
-    public ArrayList<Carta> getMazzo(){
+    public ArrayList<Carta> getMazzoArrayList(){
         return mazzo;
     }
     public static ArrayList<Carta> creaMazzoIniziale(){

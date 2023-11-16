@@ -6,6 +6,7 @@ public class Partita{
     private int id;
     private Giocatore[] giocatori;
     private Giocatore vincitore;
+    private Giocatore toccaA;
     private Mazzo mazzo;
     public Partita(Giocatore[] giocatori){
         this.id = Utili.intCasuale(1,10000);
@@ -20,6 +21,12 @@ public class Partita{
         this.vincitore = null;
         this.mazzo = new Mazzo();
         this.impostaIdGiocatori();
+    }
+    public Giocatore getToccaA() {
+        return toccaA;
+    }
+    public void setToccaA(Giocatore toccaA) {
+        this.toccaA = toccaA;
     }
     public int getId(){return id;}
     public Giocatore[] getGiocatori(){return giocatori;}
@@ -43,6 +50,24 @@ public class Partita{
     public String toString(){
         if (vincitore == null) vincitore = new Giocatore("nessuno");
         return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
+    }
+    private void prossimoTurno(int i){
+        toccaA= giocatori[i];
+    }
+    public void inizia(){
+        mazzo = new Mazzo();
+        System.out.println(giocatori[0]);
+        toccaA = giocatori[0];
+
+        for(int i = 0;i<10;i++){ // per ogni turno
+            for(int j = 0; j< giocatori.length;j++){ // per ogni mano
+                toccaA.pesca(5,this.mazzo); // sempre all'inizio
+                // giocatore fa roba
+                System.out.println("Giocatore:"+toccaA.getNome()+" turno: "+ i+"\nmano: "+Arrays.toString(toccaA.getMano()));
+                prossimoTurno(j); // sempre in fondo
+            }
+            mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+        }
     }
 
 }

@@ -23,6 +23,6 @@ public class Carta {
     }
     @Override
     public String toString() {
-        return "Tipo: "+seme+", Scartata Da:" + scartataDa.toString()+"}";
+        return "Tipo: "+seme+"Numero: "+numero;
     }
 }

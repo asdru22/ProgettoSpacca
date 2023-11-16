@@ -11,12 +11,12 @@ public class test {
             // comandi da eseguire per fare nuova partita
             Giocatore[] giocatori = g.aggiungiGiocatori(tipo);
              */
-            Giocatore gioc[] = new Giocatore[1];
+            Giocatore gioc[] = new Giocatore[2];
             gioc[0] = new Giocatore("paolo");
+            gioc[1] = new Giocatore("dio merda");
+
             Partita p = new Partita(gioc);
-            p.getMazzo().setMazzo(Mazzo.creaMazzoIniziale());
-            p.salva();
-            //System.out.println(Partita.carica(6249));
+            p.inizia();
 
         }
 }
