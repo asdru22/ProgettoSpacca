@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import java.util.Arrays;
 public class Partita{
     private int id;
+    private int turno_salvato;
     private Giocatore[] giocatori;
     private Giocatore vincitore;
     private Giocatore toccaA;
@@ -13,14 +14,14 @@ public class Partita{
         this.giocatori = giocatori;
         this.vincitore = null;
         this.mazzo = new Mazzo();
-        this.impostaIdGiocatori();
+        this.turno_salvato = 0;
     }
     public Partita(int id,Giocatore[] giocatori){
         this.id = id;
         this.giocatori = giocatori;
         this.vincitore = null;
         this.mazzo = new Mazzo();
-        this.impostaIdGiocatori();
+        this.turno_salvato = 0;
     }
     public Giocatore getToccaA() {
         return toccaA;
@@ -43,9 +44,6 @@ public class Partita{
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("partite",Integer.toString(id)), Partita.class);
     }
-    private void impostaIdGiocatori(){
-        for (Giocatore giocatore : giocatori) giocatore.setCodicePartita(id);
-    }
     @Override
     public String toString(){
         if (vincitore == null) vincitore = new Giocatore("nessuno");
@@ -55,19 +53,27 @@ public class Partita{
         toccaA= giocatori[i];
     }
     public void inizia(){
+        for(Giocatore g: giocatori) g.aggiungiSalvataggio();
         mazzo = new Mazzo();
         System.out.println(giocatori[0]);
         toccaA = giocatori[0];
-
-        for(int i = 0;i<10;i++){ // per ogni turno
+        cicloPrincipale();
+    }
+    public void cicloPrincipale(){
+        for(int i = turno_salvato;i<10;i++){ // per ogni turno
+            turno_salvato = i;
             for(int j = 0; j< giocatori.length;j++){ // per ogni mano
                 toccaA.pesca(5,this.mazzo); // sempre all'inizio
                 // giocatore fa roba
-                System.out.println("Giocatore:"+toccaA.getNome()+" turno: "+ i+"\nmano: "+Arrays.toString(toccaA.getMano()));
-                prossimoTurno(j); // sempre in fondo
+                System.out.println("> Giocatore:"+toccaA.getNome()+" turno: "+ i);
+
+                prossimoTurno(j);// sempre in fondo
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
+    }
+    public void riprendi(){
+        cicloPrincipale();
     }
 
 }

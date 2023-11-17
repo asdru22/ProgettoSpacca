@@ -17,6 +17,6 @@ public class test {
 
             Partita p = new Partita(gioc);
             p.inizia();
-
+            //p.salva();
         }
 }
