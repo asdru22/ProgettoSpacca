@@ -3,6 +3,7 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 import java.util.Arrays;
 public class Partita{
+    private static int NUMERO_TURNI = 10;
     private int id;
     private int turno_salvato;
     private Giocatore[] giocatori;
@@ -60,7 +61,7 @@ public class Partita{
         cicloPrincipale();
     }
     public void cicloPrincipale(){
-        for(int i = turno_salvato;i<10;i++){ // per ogni turno
+        for(int i = turno_salvato;i<NUMERO_TURNI;i++){ // per ogni turno
             turno_salvato = i;
             for(int j = 0; j< giocatori.length;j++){ // per ogni mano
                 toccaA.pesca(5,this.mazzo); // sempre all'inizio
