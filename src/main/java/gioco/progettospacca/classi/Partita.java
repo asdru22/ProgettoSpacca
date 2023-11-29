@@ -6,6 +6,7 @@ public class Partita{
     private static int NUMERO_TURNI = 10;
     private int id;
     private int turno_salvato;
+    private int giocatore_salvato;
     private Giocatore[] giocatori;
     private Giocatore vincitore;
     private Giocatore toccaA;
@@ -16,6 +17,8 @@ public class Partita{
         this.vincitore = null;
         this.mazzo = new Mazzo();
         this.turno_salvato = 0;
+        this.giocatore_salvato= 0;
+
     }
     public Partita(int id,Giocatore[] giocatori){
         this.id = id;
@@ -50,13 +53,9 @@ public class Partita{
         if (vincitore == null) vincitore = new Giocatore("nessuno");
         return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
     }
-    private void prossimoTurno(int i){
-        toccaA= giocatori[i];
-    }
     public void inizia(){
         for(Giocatore g: giocatori) g.aggiungiSalvataggio();
         mazzo = new Mazzo();
-        System.out.println(giocatori[0]);
         toccaA = giocatori[0];
         cicloPrincipale();
     }
@@ -64,17 +63,29 @@ public class Partita{
         for(int i = turno_salvato;i<NUMERO_TURNI;i++){ // per ogni turno
             turno_salvato = i;
             for(int j = 0; j< giocatori.length;j++){ // per ogni mano
-                toccaA.pesca(5,this.mazzo); // sempre all'inizio
-                // giocatore fa roba
-                System.out.println("> Giocatore:"+toccaA.getNome()+" turno: "+ i);
-
-                prossimoTurno(j);// sempre in fondo
+                giocatore_salvato = j;
+                azioniGiocatore();
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
     }
-    public void riprendi(){
+    public void azioniGiocatore(){
+        toccaA.pesca(5,this.mazzo); // sempre all'inizio
+        // giocatore fa roba
+        toccaA= giocatori[giocatore_salvato]; // sempre in fondo
+        System.out.print(giocatore_salvato+" ");
+        System.out.println("> Giocatore: "+toccaA.getNome()+" turno: "+ turno_salvato);
+    }
+    public void riprendi(){ //eseguito solo fino alla fine del turno corrente
+        toccaA=giocatori[giocatore_salvato];
+        for(int j = giocatore_salvato; j< giocatori.length;j++){ // per ogni mano
+            giocatore_salvato = j;
+            azioniGiocatore();
+        }
+        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+        turno_salvato+=1;
         cicloPrincipale();
     }
-
 }
+
+

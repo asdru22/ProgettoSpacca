@@ -6,17 +6,14 @@ import java.nio.file.FileSystems;
 public class test {
         public static void main(String[] args) {
             /*
-            store g = new Gestore();
-            g.autenticazione();
-            // comandi da eseguire per fare nuova partita
-            Giocatore[] giocatori = g.aggiungiGiocatori(tipo);
-             */
-            Giocatore gioc[] = new Giocatore[2];
-            gioc[0] = new Giocatore("paolo");
-            gioc[1] = new Giocatore("dio merda");
+            Giocatore temp[] = new Giocatore[2];
+            temp[0] = new Giocatore("paolo");
+            temp[1] = new Giocatore("dio merda");
 
-            Partita p = new Partita(gioc);
+            Partita p = new Partita(temp);
             p.inizia();
             //p.salva();
+            */
+            Utili.riprendiPartita(5007);
         }
 }

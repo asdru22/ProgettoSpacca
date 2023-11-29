@@ -67,4 +67,8 @@ public class Utili {
     public static int intCasuale(int min,int max){
         return min + (int)(Math.random() * ((max - min) + 1));
     }
+    public static void riprendiPartita(int id_partita){
+        Partita p = Partita.carica(id_partita);
+        p.riprendi();
+    }
 }

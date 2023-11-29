@@ -1,6 +1,7 @@
 {
   "id": 5007,
-  "turno_salvato": 0,
+  "turno_salvato": 5,
+  "giocatore_salvato":1,
   "giocatori": [
     {
       "nome": "paolo",
