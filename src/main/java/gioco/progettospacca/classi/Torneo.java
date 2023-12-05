@@ -4,7 +4,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.ArrayList;
 public class Torneo {
-    /*
     private Giocatore[] giocatori;
     private ArrayList<Partita> partite = new ArrayList<>();
     public Torneo(Giocatore[] giocatori){
@@ -29,16 +28,14 @@ public class Torneo {
     }
     private void inizia(Giocatore[] giocatori,int partecipanti){
         Giocatore[] coppia = new Giocatore[2];
-        Gestore gestore = new Gestore();
         ArrayList<Giocatore> g = mischia(giocatori);
         for(int i = 0 ; i<partecipanti;i++){
             coppia[0] = g.get(0);
             g.remove(0);
             coppia[1] = g.get(0);
             g.remove(0);
-            partite.add(gestore.scriviPartita(coppia));
+            partite.add(new Partita(coppia));
         }
-
     }
     private ArrayList<Giocatore> mischia(Giocatore[] giocatori){
         ArrayList<Giocatore> lista = new ArrayList<>(Arrays.asList(giocatori));
@@ -53,6 +50,4 @@ public class Torneo {
         if (n==2) return true;
         else return false;
     }
-
-     */
 }

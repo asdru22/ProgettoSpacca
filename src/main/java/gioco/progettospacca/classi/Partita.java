@@ -5,27 +5,20 @@ import java.util.Arrays;
 public class Partita{
     private static int NUMERO_TURNI = 10;
     private int id;
-    private int turno_salvato;
-    private int giocatore_salvato;
+    private int turno_salvato =0;
+    private int giocatore_salvato=0;
     private Giocatore[] giocatori;
-    private Giocatore vincitore;
+    private Giocatore vincitore = null;
     private Giocatore toccaA;
     private Mazzo mazzo;
+    private Seme seme_che_comanda = null;
     public Partita(Giocatore[] giocatori){
-        this.id = Utili.intCasuale(1,10000);
-        this.giocatori = giocatori;
-        this.vincitore = null;
-        this.mazzo = new Mazzo();
-        this.turno_salvato = 0;
-        this.giocatore_salvato= 0;
-
+        this(Utili.intCasuale(1,10000),giocatori);
     }
     public Partita(int id,Giocatore[] giocatori){
         this.id = id;
         this.giocatori = giocatori;
-        this.vincitore = null;
         this.mazzo = new Mazzo();
-        this.turno_salvato = 0;
     }
     public Giocatore getToccaA() {
         return toccaA;
@@ -62,6 +55,7 @@ public class Partita{
     public void cicloPrincipale(){
         for(int i = turno_salvato;i<NUMERO_TURNI;i++){ // per ogni turno
             turno_salvato = i;
+            seme_che_comanda = Utili.semeCasuale();
             for(int j = 0; j< giocatori.length;j++){ // per ogni mano
                 giocatore_salvato = j;
                 azioniGiocatore();

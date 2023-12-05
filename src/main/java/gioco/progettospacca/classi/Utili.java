@@ -71,4 +71,8 @@ public class Utili {
         Partita p = Partita.carica(id_partita);
         p.riprendi();
     }
+    public static Seme semeCasuale(){
+        Seme[] s = Seme.values();
+        return s[intCasuale(0,4)];
+    }
 }
