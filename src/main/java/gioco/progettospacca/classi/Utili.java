@@ -54,7 +54,6 @@ public class Utili {
             for (Giocatore g: copia_temp) {
                 if (g.getPartiteVinte() >= max_vittorie.getPartiteVinte()){
                     max_vittorie = g;
-
                 }
             }
             if(Objects.equals(max_vittorie.getNome(), "temp")) r+=i+".\n";

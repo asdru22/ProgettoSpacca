@@ -7,20 +7,19 @@ import java.util.Arrays;
 
 public class Giocatore {
     private String nome;
-    private Carta[] mano ;
-    private int partiteVinte;
+    private Carta[] mano = new Carta[5];
+    private int partite_vinte = 0;
+    private int punti = 0;
     public Giocatore(String nome){
         this.nome = nome;
-        this.mano = new Carta[5];
-        this.partiteVinte=0;
     }
     public String getNome(){return nome;}
     public Carta[] getMano() {return mano;}
-    public int getPartiteVinte() {return partiteVinte;}
+    public int getPartiteVinte() {return partite_vinte;}
 
-    public void setPartiteVinte(int partiteVinte) {this.partiteVinte = partiteVinte;}
-    public void scarta(Carta carta){
-
+    public void setPartiteVinte(int partiteVinte) {this.partite_vinte = partiteVinte;}
+    public int getPunti() {
+        return punti;
     }
     public void pesca(int n,Mazzo m){
         for(int i = 0 ; i<n;i++){

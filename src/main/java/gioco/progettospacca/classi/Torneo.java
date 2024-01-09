@@ -34,7 +34,7 @@ public class Torneo {
             g.remove(0);
             coppia[1] = g.get(0);
             g.remove(0);
-            partite.add(new Partita(coppia));
+            partite.add(new Partita(coppia,true));
         }
     }
     private ArrayList<Giocatore> mischia(Giocatore[] giocatori){

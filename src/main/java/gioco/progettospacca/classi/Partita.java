@@ -7,18 +7,20 @@ public class Partita{
     private int id;
     private int turno_salvato =0;
     private int giocatore_salvato=0;
+    private boolean in_torneo;
     private Giocatore[] giocatori;
     private Giocatore vincitore = null;
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Seme seme_che_comanda = null;
-    public Partita(Giocatore[] giocatori){
-        this(Utili.intCasuale(1,10000),giocatori);
+    public Partita(Giocatore[] giocatori, boolean in_torneo){
+        this(Utili.intCasuale(1,10000),giocatori,in_torneo);
     }
-    public Partita(int id,Giocatore[] giocatori){
+    public Partita(int id,Giocatore[] giocatori,boolean in_torneo){
         this.id = id;
         this.giocatori = giocatori;
         this.mazzo = new Mazzo();
+        this.in_torneo = in_torneo;
     }
     public Giocatore getToccaA() {
         return toccaA;
@@ -47,7 +49,8 @@ public class Partita{
         return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
     }
     public void inizia(){
-        for(Giocatore g: giocatori) g.aggiungiSalvataggio();
+        // forse questo va messo quando si aggiungono i giocatori
+        for(Giocatore g: giocatori) g.aggiungiSalvataggio(); // aggiunge il file del giocatore se non esiste
         mazzo = new Mazzo();
         toccaA = giocatori[0];
         cicloPrincipale();
@@ -62,8 +65,9 @@ public class Partita{
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
+        finePartita();
     }
-    public void azioniGiocatore(){
+    private void azioniGiocatore(){
         toccaA.pesca(5,this.mazzo); // sempre all'inizio
         // giocatore fa roba
         toccaA= giocatori[giocatore_salvato]; // sempre in fondo
@@ -79,6 +83,22 @@ public class Partita{
         mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         turno_salvato+=1;
         cicloPrincipale();
+    }
+    private void finePartita(){
+        int max = 0;
+        Giocatore vincitore = null;
+        int temp;
+        for(Giocatore g: giocatori){
+            temp = g.getPunti();
+            if(temp>max){
+                max = temp;
+                vincitore = g;
+            }
+        }
+        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
+        vincitore.salva();
+        Utili.getLeaderboard();
+        System.out.println(vincitore.getNome()+" ha vinto!");
     }
 }
 
