@@ -13,17 +13,29 @@ public class Giocatore {
     public Giocatore(String nome){
         this.nome = nome;
     }
-    public String getNome(){return nome;}
-    public Carta[] getMano() {return mano;}
-    public int getPartiteVinte() {return partite_vinte;}
+    public String getNome(){
+        return nome;
+    }
+    public Carta[] getMano(){
+        return mano;
+    }
 
-    public void setPartiteVinte(int partiteVinte) {this.partite_vinte = partiteVinte;}
+    public int getPartiteVinte(){
+        return partite_vinte;
+    }
+    public void setPartiteVinte(int partiteVinte){
+        this.partite_vinte = partiteVinte;
+    }
     public int getPunti() {
         return punti;
     }
-    public void pesca(int n,Mazzo m){
+
+    public void aggiungiPunti(int punti) {
+        this.punti = this.punti + punti;
+    }
+    public void pesca(int n,Mazzo m){ //n sono le carte da pescare
         for(int i = 0 ; i<n;i++){
-            this.mano[i] = m.getMazzoArrayList().remove(0);
+            this.mano[i] = m.getMazzoArrayList().remove(0); //rimuove dal mazzo e le mette in mano
         }
     }
 

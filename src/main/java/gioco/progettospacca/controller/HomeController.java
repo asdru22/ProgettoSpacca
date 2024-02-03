@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 public class HomeController {
     @FXML
     public void giocaPartita(ActionEvent actionEvent) {
+
     }
 
     public void creaPartita(ActionEvent actionEvent) {

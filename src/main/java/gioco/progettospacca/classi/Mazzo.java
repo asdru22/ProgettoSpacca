@@ -12,7 +12,9 @@ public class Mazzo {
     public Mazzo(){
         this.mazzo = creaMazzoIniziale();
     }
-    public void setMazzo(ArrayList<Carta> mazzo){this.mazzo = mazzo ;}
+    public void setMazzo(ArrayList<Carta> mazzo){
+        this.mazzo = mazzo ;
+    }
 
     public ArrayList<Carta> getMazzoArrayList(){
         return mazzo;

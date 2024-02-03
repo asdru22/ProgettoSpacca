@@ -10,19 +10,24 @@ public class Carta {
         this.numero = numero;
         this.scartataDa = null;
     }
+    /*
     public Carta(Seme seme,int numero, Giocatore giocatore){
         this.seme = seme;
         this.numero = numero;
         this.scartataDa = giocatore;
     }
+    */
     public Seme getSeme(){
         return seme;
     }
+
+    /*
     public Giocatore getScartataDa(){
         return scartataDa;
     }
+     */
     @Override
     public String toString() {
-        return "Tipo: "+seme+", numero: "+numero;
+        return ""+seme+" "+numero;
     }
 }
