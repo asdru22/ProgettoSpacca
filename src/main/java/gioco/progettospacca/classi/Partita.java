@@ -65,7 +65,7 @@ public class Partita{
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
-        finePartita();
+        //finePartita();
     }
     private void azioniGiocatore(){
         toccaA.pesca(5,this.mazzo); // sempre all'inizio

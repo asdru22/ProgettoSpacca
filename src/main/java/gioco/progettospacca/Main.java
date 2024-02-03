@@ -18,7 +18,7 @@ Main extends Application {
         stage.setTitle("Home");
         stage.setScene(new Scene(root));
         stage.setMinHeight(400);
-        stage.setMinWidth(600);
+        stage.setMinWidth(500);
         stage.show();
         System.out.println("alle gatto");
     }
