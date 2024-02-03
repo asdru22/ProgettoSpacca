@@ -22,7 +22,7 @@ Main extends Application {
         stage.show();
         System.out.println("alle gatto");
     }
-
+//ciao a tutti
     public static void main(String[] args) {
         launch(args);
     }
