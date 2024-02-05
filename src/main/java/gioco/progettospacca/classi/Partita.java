@@ -69,6 +69,8 @@ public class Partita{
         cicloPrincipale();
     }
     public void cicloPrincipale(){
+        Scanner scan = new Scanner(System.in);
+        int scelta =0;
         for(int i = turno_salvato;i<NUMERO_TURNI;i++){ // per ogni turno
             turno_salvato = i;
             seme_che_comanda = Utili.semeCasuale();
@@ -77,11 +79,24 @@ public class Partita{
                 azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-                this.salva();
-                break;
+                System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
+                scelta = scan.nextInt();
+
+                if(scelta==1 && giocatore_salvato==0){
+                    giocatore_salvato = j+1;
+                    this.salva();
+                    break;
+                }
+                if(scelta==1 && giocatore_salvato==1){
+                    giocatore_salvato = j-1;
+                    this.salva();
+                    break;
+                }
                 //System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
             }
-
+            if(scelta == 1){
+                break;
+            }
         }
         //finePartita();
     }
