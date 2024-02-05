@@ -1,8 +1,8 @@
 package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+
 
 public class Partita{
     private static int NUMERO_TURNI = 2;
@@ -75,6 +75,8 @@ public class Partita{
             for(int j = 0; j< giocatori.length;j++){ // per ogni mano
                 giocatore_salvato = j;
                 azioniGiocatore();
+
+                System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
@@ -88,38 +90,241 @@ public class Partita{
 
         toccaA.pesca(5,this.mazzo); // sempre all'inizio
         // giocatore fa roba
-        int azione = 0;
         Scanner scan = new Scanner(System.in);
+
+        System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
         System.out.println("premi 1 per scartare, premi 2 per stare");
-        azione = scan.nextInt();
+        int azione = scan.nextInt();
+        int num = 0;
+        int pos = 0;
         switch (azione){
             case 1: System.out.println("quante carte vuoi scartare?");
-                int num = scan.nextInt();
-                switch (num){
-                    case 1:
-                        break;
-                    case 2:
-                        break;
-                    case 3:
-                        break;
-                    default: System.out.println("il numero non è corretto");
-                }
+                do {
+                    num = scan.nextInt();
+                    switch (num) {
+                        case 1:
+                            System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
+                            do {
+                                pos = scan.nextInt();
+                                switch (pos) {
+                                    case 1:
+                                        toccaA.scarta(pos - 1);
+                                        break;
+                                    case 2:
+                                        toccaA.scarta(pos - 1);
+                                        break;
+                                    case 3:
+                                        toccaA.scarta(pos - 1);
+                                        break;
+                                    case 4:
+                                        toccaA.scarta(pos - 1);
+                                        break;
+                                    case 5:
+                                        toccaA.scarta(pos - 1);
+                                        break;
+                                    default:
+                                        System.out.println("devi scegliere un numero tra 0 e 4");
+                                }
+                            }while(pos<1 || pos>5);
+                            break;
+                        case 2:
+                            System.out.println("scegli le 2 posizioni delle carte da scartare:");
+                            int i = 1;
+                            do {
+                                pos = scan.nextInt();
+                                switch (pos) {
+                                    case 1:
+                                        toccaA.scarta(pos - i);
+                                        i++;
+                                        break;
+                                    case 2:
+                                        toccaA.scarta(pos - i);
+                                        i++;
+                                        break;
+                                    case 3:
+                                        toccaA.scarta(pos - i);
+                                        i++;
+                                        break;
+                                    case 4:
+                                        toccaA.scarta(pos - i);
+                                        i++;
+                                        break;
+                                    case 5:
+                                        toccaA.scarta(pos - i);
+                                        i++;
+                                        break;
+                                    default:
+                                        System.out.println("devi scegliere un numero tra 1 e 5");
+
+                                }
+                            }while((pos<1 || pos>5)||i<3);
+                            break;
+                        case 3:
+                            System.out.println("scegli le 3 posizioni delle carte da scartare:");
+                            int j = 1;
+                            do {
+                                pos = scan.nextInt();
+                                switch (pos) {
+                                    case 1:
+                                        toccaA.scarta(pos - j);
+                                        j++;
+                                        break;
+                                    case 2:
+                                        toccaA.scarta(pos - j);
+                                        j++;
+                                        break;
+                                    case 3:
+                                        toccaA.scarta(pos - j);
+                                        j++;
+                                        break;
+                                    case 4:
+                                        toccaA.scarta(pos - j);
+                                        j++;
+                                        break;
+                                    case 5:
+                                        toccaA.scarta(pos - j);
+                                        j++;
+                                        break;
+                                    default:
+                                        System.out.println("devi scegliere un numero tra 1 e 5");
+
+                                }
+                            }while((pos<1 || pos>5)||j<4);
+                            break;
+                        default:
+                            System.out.println("il numero non è corretto");
+                    }
+                }while(num<1 || num>3);
+                System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano())+"\n");
+                toccaA.pesca(num, this.mazzo);
+                System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano())+"\n");
+
+                toccaA.aggiungiPunti( valutaCarte(toccaA.getMano()));
+                System.out.println("punti della mano: "+toccaA.getPunti()+"\n");
                 break;
 
             case 2: System.out.println("mantiene le stesse carte");
-                valutaCarte(toccaA.getMano());
+                toccaA.aggiungiPunti( valutaCarte(toccaA.getMano()));
+                System.out.println("punti della mano: "+toccaA.getPunti()+"\n");
                 break;
 
         }
-        System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano())+"\n");
     }
 
-    public void valutaCarte(Carta [] mano){
+    public int valutaCarte(Carta [] mano){
+        int [] carteNum = new int[5];
+        Seme [] carteSeme = new Seme[5];
+        for(int i = 0; i<5; i++){
+            carteNum[i] = mano[i].getNumero();
+            carteSeme[i] = mano[i].getSeme();
+        }
+        Arrays.sort(carteNum);
+        int punti = 0;
+        //valutiamo se ha coppie,tris,poker,manita in mano
+        switch (numUguali(carteNum)){
+            case 2:
+                System.out.println("hai fatto coppia");
+                punti = punti + 10;
+                break;
+            case 3:
+                System.out.println("hai fatto tris");
+                punti = punti + 20;
+                break;
+            case 4:
+                System.out.println("hai fatto poker");
+                punti = punti + 45;
+                break;
+            case 5:
+                System.out.println("hai fatto manita");
+                punti = punti + 100;
+                break;
+            default: System.out.println("nessun punto per coppie, tris, poker, manita");
+        }
+        //ora verifichiamo se ci sono scale
+        switch (verificaScala(carteNum)){
+            case 3:
+                System.out.println("scala da 3 carte");
+                punti = punti + 15;
+                break;
+            case 4:
+                System.out.println("scala da 4 carte");
+                punti = punti + 35;
+                break;
+            case 5:
+                System.out.println("scala da 5 carte");
+                punti = punti + 60;
+                break;
+            default: System.out.println("nessuna scala");
+        }
 
+        switch (verificaColore(carteSeme)){
+            case 3:
+                System.out.println("3 carte dello stesso colore");
+                punti = punti + 5;
+                break;
+            case 4:
+                System.out.println("4 carte dello stesso colore");
+                punti = punti + 30;
+                break;
+            case 5:
+                System.out.println("5 carte dello stesso colore");
+                punti = punti + 80;
+                break;
+            default:System.out.println("non hai fatto colore");
+        }
+        return punti;
     }
 
+    public int verificaColore(Seme [] carteSeme){
+        Map<Seme, Integer> mappa = new HashMap<>();
 
+        for(Seme chiave : carteSeme){
+            mappa.put(chiave, mappa.getOrDefault(chiave,0)+1);
+        }
+        int numColorePiuVolteRipetuto = 0;
+        for(Seme chiave : mappa.keySet()){
+            int valore = mappa.get(chiave);
+            if(valore>numColorePiuVolteRipetuto){
+                numColorePiuVolteRipetuto = valore;
+            }
+        }
+        return numColorePiuVolteRipetuto;
+    }
 
+    public int numUguali(int[] carteNum){
+        Map<Integer, Integer> mappa = new HashMap<>();  //capisco quale sia il numero che compare più volte e utilizzo quello per valutare la coppia\tris\poker\manita
+        //inserisco come valore il numero di volte in cui viene ripetuto la stessa chiave
+        for(int chiave : carteNum){
+            mappa.put(chiave, mappa.getOrDefault(chiave, 0) + 1);
+        }
+        //troviamo il numero che viene ripetutuo più volte
+        int numVoltePiuRipetuto = 0;
+        for (int chiave : mappa.keySet()) {
+            int valore = mappa.get(chiave);
+            if (valore > numVoltePiuRipetuto) {
+                numVoltePiuRipetuto = valore;
+            }
+        }
+
+        return numVoltePiuRipetuto;
+    }
+
+    public int verificaScala(int [] carteNum){
+        int cont = 1;
+        int contMax = 0;
+        for(int i = 1; i<5; i++){
+            if(carteNum[i]==carteNum[i-1]+1){
+                cont++;
+                if(cont>contMax){
+                    contMax = cont;
+                }
+            }
+            else{
+                cont = 1;
+            }
+        }
+        return contMax;
+    }
 
     public void riprendi(){ //eseguito solo fino alla fine del turno corrente
         toccaA=giocatori[giocatore_salvato];

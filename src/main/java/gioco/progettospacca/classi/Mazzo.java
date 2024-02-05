@@ -17,7 +17,7 @@ public class Mazzo {
     }
 
     public ArrayList<Carta> getMazzoArrayList(){
-        return mazzo;
+        return this.mazzo;
     }
     public static ArrayList<Carta> creaMazzoIniziale(){
         Seme semi[] = Seme.values();

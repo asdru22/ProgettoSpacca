@@ -18,7 +18,11 @@ public class Carta {
     }
     */
     public Seme getSeme(){
-        return seme;
+        return this.seme;
+    }
+
+    public int getNumero(){
+        return this.numero;
     }
 
     /*

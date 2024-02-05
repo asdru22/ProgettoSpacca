@@ -3,8 +3,8 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 
 import java.io.File;
-import java.util.Arrays;
-
+import java.util.*;
+import java.util.*;
 public class Giocatore {
     private String nome;
     private Carta[] mano = new Carta[5];
@@ -34,9 +34,24 @@ public class Giocatore {
         this.punti = this.punti + punti;
     }
     public void pesca(int n,Mazzo m){ //n sono le carte da pescare
-        for(int i = 0 ; i<n;i++){
-            this.mano[i] = m.getMazzoArrayList().remove(0); //rimuove dal mazzo e le mette in mano
+        if(this.mano.length==5){
+            for (int i = 0; i < n; i++) {
+                this.mano[i] = m.getMazzoArrayList().remove(0); //rimuove dal mazzo e le mette in mano
+            }
         }
+        else{
+            List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
+            for(int i = 0; i<n ; i++){
+                manoList.add(m.getMazzoArrayList().remove(0));
+            }
+            this.mano = manoList.toArray(new Carta[0]);
+        }
+    }
+
+    public void scarta(int pos){
+        List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
+        manoList.remove(pos);
+        this.mano = manoList.toArray(new Carta[0]);
     }
 
     // classe->.json

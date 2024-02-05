@@ -1,5 +1,5 @@
 package gioco.progettospacca.classi;
-
+import java.util.*;
 
 import java.nio.file.FileSystems;
 
@@ -13,8 +13,5 @@ public class test {
             Partita p = new Partita(temp,false);
             p.inizia();
 
-            //System.out.println("mano giocatore 1"+temp[1].getMano());
-
-            //Utili.riprendiPartita(5007);
         }
 }
