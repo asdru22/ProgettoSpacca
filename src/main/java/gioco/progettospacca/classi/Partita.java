@@ -80,7 +80,7 @@ public class Partita{
             }
             mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         }
-        //finePartita();
+        finePartita();
     }
     private void azioniGiocatore(){
 
@@ -351,6 +351,7 @@ public class Partita{
         vincitore.salva();
         Utili.getLeaderboard();
         System.out.println(vincitore.getNome()+" ha vinto!");
+        this.salva();
     }
 }
 

@@ -1,12 +1,27 @@
 {
   "nome": "Dani",
   "mano": [
-    null,
-    null,
-    null,
-    null,
-    null
+    {
+      "seme": "Fuoco",
+      "numero": 9
+    },
+    {
+      "seme": "Acqua",
+      "numero": 2
+    },
+    {
+      "seme": "Acqua",
+      "numero": 1
+    },
+    {
+      "seme": "Fuoco",
+      "numero": 2
+    },
+    {
+      "seme": "Elettro",
+      "numero": 0
+    }
   ],
-  "partite_vinte": 0,
-  "punti": 0
+  "partite_vinte": 1,
+  "punti": 60
 }
