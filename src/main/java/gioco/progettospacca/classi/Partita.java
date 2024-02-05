@@ -82,13 +82,7 @@ public class Partita{
                 System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
                 scelta = scan.nextInt();
 
-                if(scelta==1 && giocatore_salvato==0){
-                    giocatore_salvato = j+1;
-                    this.salva();
-                    break;
-                }
-                if(scelta==1 && giocatore_salvato==1){
-                    giocatore_salvato = j-1;
+                if(scelta==1){
                     this.salva();
                     break;
                 }
@@ -99,6 +93,34 @@ public class Partita{
             }
         }
         //finePartita();
+    }
+    public void riprendi(){ //eseguito solo fino alla fine del turno corrente
+        giocatore_salvato = (giocatore_salvato+1)%giocatori.length;
+        toccaA=giocatori[giocatore_salvato];
+        for(int j = giocatore_salvato; j< giocatori.length;j++){ // per ogni mano
+            giocatore_salvato = j;
+            azioniGiocatore();
+        }
+        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+        turno_salvato+=1;
+        cicloPrincipale();
+    }
+    private void finePartita(){
+        int max = 0;
+        Giocatore vincitore = null;
+        int temp;
+        for(Giocatore g: giocatori){
+            temp = g.getPunti();
+            if(temp>max){
+                max = temp;
+                vincitore = g;
+            }
+        }
+        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
+        vincitore.salva();
+        Utili.getLeaderboard();
+        System.out.println(vincitore.getNome()+" ha vinto!");
+        this.salva();
     }
     private void azioniGiocatore(){
 
@@ -344,33 +366,6 @@ public class Partita{
         return contMax;
     }
 
-    public void riprendi(){ //eseguito solo fino alla fine del turno corrente
-        toccaA=giocatori[giocatore_salvato];
-        for(int j = giocatore_salvato; j< giocatori.length;j++){ // per ogni mano
-            giocatore_salvato = j;
-            azioniGiocatore();
-        }
-        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-        turno_salvato+=1;
-        cicloPrincipale();
-    }
-    private void finePartita(){
-        int max = 0;
-        Giocatore vincitore = null;
-        int temp;
-        for(Giocatore g: giocatori){
-            temp = g.getPunti();
-            if(temp>max){
-                max = temp;
-                vincitore = g;
-            }
-        }
-        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
-        vincitore.salva();
-        Utili.getLeaderboard();
-        System.out.println(vincitore.getNome()+" ha vinto!");
-        this.salva();
-    }
 }
 
 
