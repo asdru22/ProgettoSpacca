@@ -76,11 +76,14 @@ public class Partita{
                 giocatore_salvato = j;
                 azioniGiocatore();
 
-                System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
+                mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+                this.salva();
+                break;
+                //System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
             }
-            mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+
         }
-        finePartita();
+        //finePartita();
     }
     private void azioniGiocatore(){
 

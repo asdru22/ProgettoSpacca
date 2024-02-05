@@ -1,27 +1,12 @@
 {
   "nome": "Paolo",
   "mano": [
-    {
-      "seme": "Elettro",
-      "numero": 9
-    },
-    {
-      "seme": "Elettro",
-      "numero": 3
-    },
-    {
-      "seme": "Terra",
-      "numero": 3
-    },
-    {
-      "seme": "Elettro",
-      "numero": 7
-    },
-    {
-      "seme": "Elettro",
-      "numero": 1
-    }
+    null,
+    null,
+    null,
+    null,
+    null
   ],
-  "partite_vinte": 1,
-  "punti": 65
+  "partite_vinte": 0,
+  "punti": 0
 }
