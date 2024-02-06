@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
    <children>
-      <Label layoutX="264.0" layoutY="59.0" text="LOGIN" />
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="LOGIN" textAlignment="CENTER">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label alignment="BOTTOM_LEFT" text="Username:   " HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="7.0" />
+               </HBox.margin>
+            </Label>
+            <TextField maxWidth="120.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Password:    " HBox.hgrow="ALWAYS">
+               <HBox.margin>
+                  <Insets left="7.0" />
+               </HBox.margin>
+            </Label>
+            <PasswordField alignment="CENTER" maxWidth="120.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
    </children>
-</AnchorPane>
+</VBox>

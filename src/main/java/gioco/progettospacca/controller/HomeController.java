@@ -13,25 +13,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class HomeController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+
+
     @FXML
     public void giocaPartita(ActionEvent actionEvent) {
 
     }
 
     public void EventoCreaPartita(ActionEvent actionEvent)throws IOException{
-        try {
             // Il tuo codice esistente qui
-            root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
-            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Parent root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Login amministratore");
+        stage.setScene(new Scene(root,500,400));
+        stage.show();
+
     }
 
     public void giocaTorneo(ActionEvent actionEvent) {
