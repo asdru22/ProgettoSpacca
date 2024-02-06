@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
    <children>
       <HBox maxHeight="100.0" VBox.vgrow="ALWAYS" />
       <HBox VBox.vgrow="ALWAYS">
@@ -38,10 +38,10 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" text="Gioca partita" />
-                              <Button mnemonicParsing="false" text="Crea partita" GridPane.rowIndex="1" />
-                              <Button mnemonicParsing="false" text="Gioca torneo" GridPane.rowIndex="2" />
-                              <Button mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />
+                              <Button fx:id="giocaPartita" mnemonicParsing="false" text="Gioca partita" />
+                              <Button fx:id="creaPartita" mnemonicParsing="false" onAction="#EventoCreaPartita" text="Crea partita" GridPane.rowIndex="1" />
+                              <Button fx:id="giocaTorneo" mnemonicParsing="false" text="Gioca torneo" GridPane.rowIndex="2" />
+                              <Button fx:id="creaTorneo" mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
                      </children>
