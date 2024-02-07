@@ -29,6 +29,9 @@
                <HBox.margin>
                   <Insets left="7.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
             </Label>
             <TextField maxWidth="120.0" HBox.hgrow="ALWAYS" />
          </children>
@@ -39,6 +42,9 @@
                <HBox.margin>
                   <Insets left="7.0" />
                </HBox.margin>
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
             </Label>
             <PasswordField alignment="CENTER" maxWidth="120.0" HBox.hgrow="ALWAYS" />
          </children>

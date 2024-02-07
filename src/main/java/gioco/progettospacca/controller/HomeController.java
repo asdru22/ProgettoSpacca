@@ -23,9 +23,10 @@ public class HomeController {
     public void EventoCreaPartita(ActionEvent actionEvent)throws IOException{
             // Il tuo codice esistente qui
         Parent root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
+        Scene scene=new Scene(root);
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         stage.setTitle("Login amministratore");
-        stage.setScene(new Scene(root,500,400));
+        stage.setScene(scene);
         stage.show();
 
     }
