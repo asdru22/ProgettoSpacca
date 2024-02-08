@@ -13,6 +13,7 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         stage.setTitle("Home");
         stage.setScene(new Scene(root));
