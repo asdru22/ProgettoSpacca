@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -8,12 +9,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
    <children>
       <HBox alignment="CENTER">
          <children>
-            <Label text="LOGIN" textAlignment="CENTER">
+            <VBox prefWidth="50.0">
+               <children>
+                  <Label fx:id="back" text="❮" />
+               </children>
+            </VBox>
+            <Label text="LOGIN AMMINISTRATORE" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
@@ -21,6 +26,7 @@
                   <Insets top="10.0" />
                </HBox.margin>
             </Label>
+            <VBox prefWidth="50.0" />
          </children>
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -33,10 +39,10 @@
                   <Font name="Candara" size="12.0" />
                </font>
             </Label>
-            <TextField maxWidth="120.0" HBox.hgrow="ALWAYS" />
+            <TextField id="txt_user" fx:id="txt_user" maxWidth="120.0" HBox.hgrow="ALWAYS" />
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefWidth="200.0">
          <children>
             <Label text="Password:    " HBox.hgrow="ALWAYS">
                <HBox.margin>
@@ -46,7 +52,17 @@
                   <Font name="Candara" size="12.0" />
                </font>
             </Label>
-            <PasswordField alignment="CENTER" maxWidth="120.0" HBox.hgrow="ALWAYS" />
+            <PasswordField fx:id="txt_psw" alignment="CENTER" maxWidth="120.0" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="40.0">
+         <children>
+            <Button fx:id="btn_login" mnemonicParsing="false" onAction="#LoginAdmin" text="Login" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER">
+         <children>
+            <Label fx:id="lbl_error" />
          </children>
       </HBox>
    </children>
