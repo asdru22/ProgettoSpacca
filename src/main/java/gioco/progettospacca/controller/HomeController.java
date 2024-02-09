@@ -15,9 +15,14 @@ import java.io.IOException;
 import java.util.Random;
 
 public class HomeController {
-    @FXML
-    public void giocaPartita(ActionEvent actionEvent) {
 
+    public void EventoGiocaPartita(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GiocaPartita.fxml"));
+        Scene scene=new Scene(root);
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Gioca partita");
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void EventoCreaPartita(ActionEvent actionEvent) throws IOException{
@@ -45,7 +50,7 @@ public class HomeController {
             Parent root = FXMLLoader.load(getClass().getResource("CreaPartita.fxml"));
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setTitle("Login amministratore");
+            stage.setTitle("Crea partita");
             stage.setScene(scene);
             stage.show();
         //}else
@@ -53,15 +58,15 @@ public class HomeController {
         //}
     }
 
-    //public void BackToHome(ActionEvent actionEvent) throws IOException
-    //{
-    //   Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-    //   Scene scene = new Scene(root);
-    //  Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-    //    stage.setTitle("Home");
-    //   stage.setScene(scene);
-    //    stage.show();
-    //}
+    public void BackToHome(ActionEvent actionEvent) throws IOException
+    {
+       Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+       Scene scene = new Scene(root);
+      Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("Home");
+       stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     private Label lbl_code;

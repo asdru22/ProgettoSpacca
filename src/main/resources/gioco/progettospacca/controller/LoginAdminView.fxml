@@ -13,9 +13,9 @@
    <children>
       <HBox alignment="CENTER">
          <children>
-            <VBox prefWidth="50.0">
+            <VBox alignment="CENTER_LEFT" prefWidth="50.0">
                <children>
-                  <Label fx:id="back" text="❮" />
+                  <Button fx:id="btn_back" mnemonicParsing="false" onAction="#BackToHome" text="❮" />
                </children>
             </VBox>
             <Label text="LOGIN AMMINISTRATORE" textAlignment="CENTER">

@@ -23,7 +23,7 @@
                      <children>
                         <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="175.0" layoutY="79.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="288.6" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.39999999999998" AnchorPane.topAnchor="79.0">
                            <image>
-                              <Image url="@titolo.png" />
+                              <Image url="@../titolo.png" />
                            </image>
                         </ImageView>
                         <GridPane layoutX="170.0" layoutY="155.0" prefHeight="173.0" prefWidth="210.0">
@@ -37,7 +37,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="giocaPartita" mnemonicParsing="false" text="Gioca partita" />
+                              <Button fx:id="giocaPartita" mnemonicParsing="false" onAction="#EventoGiocaPartita" text="Gioca partita" />
                               <Button fx:id="creaPartita" mnemonicParsing="false" onAction="#EventoCreaPartita" text="Crea partita" GridPane.rowIndex="1" />
                               <Button fx:id="giocaTorneo" mnemonicParsing="false" text="Gioca torneo" GridPane.rowIndex="2" />
                               <Button fx:id="creaTorneo" mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />

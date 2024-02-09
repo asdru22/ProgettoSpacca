@@ -32,5 +32,10 @@
             <Label fx:id="lbl_code" />
          </children>
       </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0">
+         <children>
+            <Button fx:id="btn_backHome" mnemonicParsing="false" onAction="#BackToHome" text="Torna alla home" />
+         </children>
+      </HBox>
    </children>
 </VBox>

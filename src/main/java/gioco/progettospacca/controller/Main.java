@@ -1,4 +1,4 @@
-package gioco.progettospacca;
+package gioco.progettospacca.controller;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
