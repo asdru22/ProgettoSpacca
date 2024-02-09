@@ -11,7 +11,7 @@
       <HBox />
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <Button fx:id="btn_crea" mnemonicParsing="false" onAction="#EventoCreaCodicePartita" text="Crea Partita">
+            <Button fx:id="btn_crea" mnemonicParsing="false" onAction="#EventoCreaCodicePartita" stylesheets="@../style.css" text="Crea Partita">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>

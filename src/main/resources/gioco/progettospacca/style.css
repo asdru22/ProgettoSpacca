@@ -1,18 +1,1 @@
 /* style.css */
-
-.gaming-button {
-    -fx-background-color: #2E8B57; /* Colore verde scuro, puoi personalizzarlo */
-    -fx-font-size: 16px;
-    -fx-text-fill: #FFFFFF; /* Testo bianco */
-    -fx-pref-width: 200px;
-    -fx-pref-height: 40px;
-    -fx-background-radius: 10;
-    -fx-border-radius: 10;
-    -fx-border-color: #FFFFFF; /* Colore bianco per il bordo, puoi personalizzarlo */
-    -fx-border-width: 2;
-    -fx-cursor: hand;
-}
-
-.gaming-button:hover {
-    -fx-background-color: #3CB371; /* Cambia il colore al passaggio del mouse, puoi personalizzarlo */
-}
