@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Partita;
+import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -89,24 +90,19 @@ public class HomeController {
     private Label lbl_code;
     @FXML
     private Button btn_crea;
-    public String EventoCreaCodicePartita(ActionEvent actionEvent)
+    public int EventoCreaCodicePartita(ActionEvent actionEvent)
     {
+        int id;
         try {
-            String caratteriPermessi = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            Random random = new Random();
-            StringBuilder sb = new StringBuilder();
+            id=Utili.intCasuale(10000,99999);
 
-            for (int i = 0; i < 6; i++) {
-                int index = random.nextInt(caratteriPermessi.length());
-                sb.append(caratteriPermessi.charAt(index));
-            }
-            lbl_code.setText(sb.toString());
-            return sb.toString();
+            lbl_code.setText(String.valueOf(id));
+            return id;
 
         }catch(Exception e)
         {
             System.out.println(e);
-            return "";
+            return 0;
         }
 
     }
