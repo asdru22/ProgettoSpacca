@@ -15,6 +15,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class CreaController {
     public void BackToHome(ActionEvent actionEvent) throws IOException
@@ -41,26 +44,33 @@ public class CreaController {
     private TextField txt_gioc4;
     @FXML
     private TextField txt_gioc5;
-    public int EventoCreaCodicePartita(ActionEvent actionEvent)
+    public void EventoCreaCodicePartita(ActionEvent actionEvent)
     {
         int id;
-        Giocatore giocatori[]=new Giocatore[5];
+        Giocatore temp;
         try {
             id= Utili.intCasuale(10000,99999);
 
             lbl_code.setText(String.valueOf(id));
 
-            Giocatore g1=new Giocatore(txt_gioc1.getText());
-            Giocatore g2=new Giocatore(txt_gioc2.getText());
-            Giocatore g3=new Giocatore(txt_gioc3.getText());
-            Giocatore g4=new Giocatore(txt_gioc4.getText());
-            Giocatore g5=new Giocatore(txt_gioc5.getText());
+            List<Giocatore> g = new ArrayList<Giocatore>();
 
-            giocatori[0]=g1;
-            giocatori[1]=g2;
-            giocatori[2]=g3;
-            giocatori[3]=g4;
-            giocatori[4]=g5;
+            temp = controllaNome(txt_gioc1.getText());
+            if (temp!=null) g.add(temp);
+
+            temp = controllaNome(txt_gioc2.getText());
+            if (temp!=null) g.add(temp);
+
+            temp = controllaNome(txt_gioc3.getText());
+            if (temp!=null) g.add(temp);
+
+            temp = controllaNome(txt_gioc4.getText());
+            if (temp!=null) g.add(temp);
+
+            temp = controllaNome(txt_gioc5.getText());
+            if (temp!=null) g.add(temp);
+
+            Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
             Partita p=new Partita(id,giocatori,false);
 
@@ -69,15 +79,18 @@ public class CreaController {
             {
                 System.out.println(giocatori[i].getNome());
             }
+            p.inizia();
             p.salva();
-            return id;
 
         }catch(Exception e)
         {
             System.out.println(e);
-            return 0;
         }
 
+    }
+    public Giocatore controllaNome(String nome){
+        if(!Objects.equals(nome, "")) return new Giocatore(nome);
+        else return null;
     }
 
 }
