@@ -15,15 +15,16 @@ public class Partita{
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Seme seme_che_comanda = null;
-    public Partita(Giocatore[] giocatori, boolean in_torneo){
-        this(Utili.intCasuale(1,10000),giocatori,in_torneo);
-    }
     public Partita(int id,Giocatore[] giocatori,boolean in_torneo){
         this.id = id;
         this.giocatori = giocatori;
         this.mazzo = new Mazzo();
         this.in_torneo = in_torneo;
     }
+    public Partita(Giocatore[] giocatori, boolean in_torneo){
+        this(Utili.intCasuale(1,10000),giocatori,in_torneo);
+    }
+
     public Giocatore getToccaA() {
         return toccaA;
     }

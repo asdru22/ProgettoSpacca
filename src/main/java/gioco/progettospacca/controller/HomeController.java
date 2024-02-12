@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
@@ -37,45 +38,6 @@ public class HomeController {
 
     }
 
-
-    public void giocaTorneo(ActionEvent actionEvent) {
-    }
-
-    public void creaTorneo(ActionEvent actionEvent) {
-    }
-
-    @FXML
-    private TextField txt_user;
-    @FXML
-    private TextField txt_psw;
-    @FXML
-    private Button btn_login;
-    public void LoginAdmin(ActionEvent actionEvent) throws IOException
-    {
-        try {
-            String user= String.valueOf((txt_user.getText()));
-            String psw= String.valueOf((txt_psw.getText()));
-            //aggiungere usrrname e password
-            if ("admin".equals(user) && "spacca".equals(psw)) {
-                Parent root = FXMLLoader.load(getClass().getResource("CreaPartita.fxml"));
-                Scene scene = new Scene(root);
-                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                stage.setTitle("Crea partita");
-                stage.setScene(scene);
-                stage.show();
-            } else
-            {
-                System.out.println(user);
-                System.out.println(psw);
-                System.out.println("Email o password errata");
-            }
-
-        }catch(Exception e)
-        {
-            System.out.println(e);
-        }
-    }
-
     public void BackToHome(ActionEvent actionEvent) throws IOException
     {
        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
@@ -86,24 +48,4 @@ public class HomeController {
         stage.show();
     }
 
-    @FXML
-    private Label lbl_code;
-    @FXML
-    private Button btn_crea;
-    public int EventoCreaCodicePartita(ActionEvent actionEvent)
-    {
-        int id;
-        try {
-            id=Utili.intCasuale(10000,99999);
-
-            lbl_code.setText(String.valueOf(id));
-            return id;
-
-        }catch(Exception e)
-        {
-            System.out.println(e);
-            return 0;
-        }
-
-    }
 }
