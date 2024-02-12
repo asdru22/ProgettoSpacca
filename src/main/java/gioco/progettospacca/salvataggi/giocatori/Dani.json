@@ -1,5 +1,5 @@
 {
-  "nome": "Dani",
+  "nome": "dani",
   "mano": [
     {
       "seme": "Fuoco",
@@ -12,7 +12,7 @@
     {
       "seme": "Acqua",
       "numero": 1
-    },d
+    },
     {
       "seme": "Fuoco",
       "numero": 2
@@ -22,6 +22,6 @@
       "numero": 0
     }
   ],
-  "partite_vinte": 1,
-  "punti": 60
+  "partite_vinte": 0,
+  "punti": 0
 }

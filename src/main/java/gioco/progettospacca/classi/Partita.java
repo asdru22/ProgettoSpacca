@@ -60,6 +60,7 @@ public class Partita{
         }
         return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
     }
+    /*// per test
     public void inizia(){
         // forse questo va messo quando si aggiungono i giocatori
         for(Giocatore g: giocatori){
@@ -68,6 +69,18 @@ public class Partita{
         mazzo = new Mazzo();
         toccaA = giocatori[0];
         cicloPrincipale();
+    }
+
+     */
+    //applicazione grafica
+    public void inizia() {
+        // forse questo va messo quando si aggiungono i giocatori
+        for (Giocatore g : giocatori) {
+            g.aggiungiSalvataggio();
+        } // aggiunge il file del giocatore se non esiste
+        mazzo = new Mazzo();
+        toccaA = giocatori[0];
+        azioniGiocatore();
     }
     public void cicloPrincipale(){
         Scanner scan = new Scanner(System.in);
@@ -95,6 +108,8 @@ public class Partita{
         }
         //finePartita();
     }
+    /*
+    //test
     public void riprendi(){ //eseguito solo fino alla fine del turno corrente
         giocatore_salvato = (giocatore_salvato+1)%giocatori.length;
         toccaA=giocatori[giocatore_salvato];
@@ -105,6 +120,19 @@ public class Partita{
         mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         turno_salvato+=1;
         cicloPrincipale();
+    }
+    */
+    //applicazione grafica
+    public void riprendi(){
+        giocatore_salvato = (giocatore_salvato+1)%giocatori.length;
+        toccaA=giocatori[giocatore_salvato];
+        for(int j = giocatore_salvato; j< giocatori.length;j++){ // per ogni mano
+            giocatore_salvato = j;
+            azioniGiocatore();
+        }
+        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+        turno_salvato+=1;
+        //cicloPrincipale();
     }
     private void finePartita(){
         int max = 0;

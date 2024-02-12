@@ -44,7 +44,7 @@ public class CreaController {
     private TextField txt_gioc4;
     @FXML
     private TextField txt_gioc5;
-    public int EventoCreaCodicePartita(ActionEvent actionEvent)
+    public void EventoCreaCodicePartita(ActionEvent actionEvent)
     {
         int id;
         Giocatore temp;
@@ -79,13 +79,12 @@ public class CreaController {
             {
                 System.out.println(giocatori[i].getNome());
             }
+            p.inizia();
             p.salva();
-            return id;
 
         }catch(Exception e)
         {
             System.out.println(e);
-            return 0;
         }
 
     }
