@@ -1,0 +1,27 @@
+{
+  "nome": "marco",
+  "mano": [
+    {
+      "seme": "Elettro",
+      "numero": 8
+    },
+    {
+      "seme": "Terra",
+      "numero": 1
+    },
+    {
+      "seme": "Terra",
+      "numero": 8
+    },
+    {
+      "seme": "Elettro",
+      "numero": 4
+    },
+    {
+      "seme": "Elettro",
+      "numero": 7
+    }
+  ],
+  "partite_vinte": 1,
+  "punti": 35
+}

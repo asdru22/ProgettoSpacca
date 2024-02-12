@@ -66,12 +66,20 @@ public class Utili {
     public static int intCasuale(int min,int max){
         return min + (int)(Math.random() * ((max - min) + 1));
     }
-    public static void riprendiPartita(int id_partita){
-        Partita p = Partita.carica(id_partita);
-        p.riprendi();
-    }
     public static Seme semeCasuale(){
         Seme[] s = Seme.values();
         return s[intCasuale(0,4)];
     }
+    public static void eliminaSalvataggio(int id){
+
+        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/partite/"+id+".json");
+
+        if (fileDaEliminare.delete()) {
+            System.out.println("File eliminato con successo: " + id+".json");
+        }
+        else {
+            System.out.println("Impossibile eliminare il file: " + id+".json");
+        }
+    }
+
 }

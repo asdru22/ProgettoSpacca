@@ -20,6 +20,12 @@ public class Partita{
         this.giocatori = giocatori;
         this.mazzo = new Mazzo();
         this.in_torneo = in_torneo;
+
+        for (Giocatore g : giocatori) {
+            g.aggiungiSalvataggio();
+        }
+        toccaA = giocatori[0];
+        this.salva();
     }
     public Partita(Giocatore[] giocatori, boolean in_torneo){
         this(Utili.intCasuale(1,10000),giocatori,in_torneo);
@@ -72,16 +78,7 @@ public class Partita{
     }
 
      */
-    //applicazione grafica
-    public void inizia() {
-        // forse questo va messo quando si aggiungono i giocatori
-        for (Giocatore g : giocatori) {
-            g.aggiungiSalvataggio();
-        } // aggiunge il file del giocatore se non esiste
-        mazzo = new Mazzo();
-        toccaA = giocatori[0];
-        azioniGiocatore();
-    }
+
     public void cicloPrincipale(){
         Scanner scan = new Scanner(System.in);
         int scelta =0;
@@ -106,9 +103,12 @@ public class Partita{
                 break;
             }
         }
-        //finePartita();
+        finePartita();
     }
-    /*
+    public void inizio(){
+        cicloPrincipale();
+    }
+
     //test
     public void riprendi(){ //eseguito solo fino alla fine del turno corrente
         giocatore_salvato = (giocatore_salvato+1)%giocatori.length;
@@ -121,19 +121,8 @@ public class Partita{
         turno_salvato+=1;
         cicloPrincipale();
     }
-    */
-    //applicazione grafica
-    public void riprendi(){
-        giocatore_salvato = (giocatore_salvato+1)%giocatori.length;
-        toccaA=giocatori[giocatore_salvato];
-        for(int j = giocatore_salvato; j< giocatori.length;j++){ // per ogni mano
-            giocatore_salvato = j;
-            azioniGiocatore();
-        }
-        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-        turno_salvato+=1;
-        //cicloPrincipale();
-    }
+
+
     private void finePartita(){
         int max = 0;
         Giocatore vincitore = null;
@@ -149,7 +138,8 @@ public class Partita{
         vincitore.salva();
         Utili.getLeaderboard();
         System.out.println(vincitore.getNome()+" ha vinto!");
-        this.salva();
+        Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
+        System.exit(0); //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
     }
     private void azioniGiocatore(){
 

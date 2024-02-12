@@ -44,43 +44,49 @@ public class CreaController {
     private TextField txt_gioc4;
     @FXML
     private TextField txt_gioc5;
+
+
     public void EventoCreaCodicePartita(ActionEvent actionEvent)
     {
-        int id;
+
         Giocatore temp;
         try {
-            id= Utili.intCasuale(10000,99999);
+            int id= Utili.intCasuale(10000,99999);
 
             lbl_code.setText(String.valueOf(id));
 
             List<Giocatore> g = new ArrayList<Giocatore>();
 
             temp = controllaNome(txt_gioc1.getText());
-            if (temp!=null) g.add(temp);
+            if (temp!=null) {
+                g.add(temp);
+            }
 
             temp = controllaNome(txt_gioc2.getText());
-            if (temp!=null) g.add(temp);
+            if (temp!=null) {
+                g.add(temp);
+            }
 
             temp = controllaNome(txt_gioc3.getText());
-            if (temp!=null) g.add(temp);
+            if (temp!=null) {
+                g.add(temp);
+            }
 
             temp = controllaNome(txt_gioc4.getText());
-            if (temp!=null) g.add(temp);
+            if (temp!=null) {
+                g.add(temp);
+            }
 
             temp = controllaNome(txt_gioc5.getText());
-            if (temp!=null) g.add(temp);
+            if (temp!=null) {
+                g.add(temp);
+            }
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
             Partita p=new Partita(id,giocatori,false);
 
-            System.out.println("Giocatori:");
-            for(int i=0;i<giocatori.length;i++)
-            {
-                System.out.println(giocatori[i].getNome());
-            }
-            p.inizia();
-            p.salva();
+
 
         }catch(Exception e)
         {
@@ -89,8 +95,12 @@ public class CreaController {
 
     }
     public Giocatore controllaNome(String nome){
-        if(!Objects.equals(nome, "")) return new Giocatore(nome);
-        else return null;
+        if(!Objects.equals(nome, "")) {
+            return new Giocatore(nome);
+        }
+        else {
+            return null;
+        }
     }
 
 }
