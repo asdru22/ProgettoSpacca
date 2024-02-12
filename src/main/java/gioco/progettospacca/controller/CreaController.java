@@ -49,14 +49,26 @@ public class CreaController {
             id= Utili.intCasuale(10000,99999);
 
             lbl_code.setText(String.valueOf(id));
-            giocatori[0]= Giocatore.carica(String.valueOf((txt_gioc1.getText())));
-            giocatori[1]= Giocatore.carica(String.valueOf((txt_gioc2.getText())));
-            giocatori[2]= Giocatore.carica(String.valueOf((txt_gioc3.getText())));
-            giocatori[3]= Giocatore.carica(String.valueOf((txt_gioc4.getText())));
-            giocatori[4]= Giocatore.carica(String.valueOf((txt_gioc5.getText())));
+
+            Giocatore g1=new Giocatore(txt_gioc1.getText());
+            Giocatore g2=new Giocatore(txt_gioc2.getText());
+            Giocatore g3=new Giocatore(txt_gioc3.getText());
+            Giocatore g4=new Giocatore(txt_gioc4.getText());
+            Giocatore g5=new Giocatore(txt_gioc5.getText());
+
+            giocatori[0]=g1;
+            giocatori[1]=g2;
+            giocatori[2]=g3;
+            giocatori[3]=g4;
+            giocatori[4]=g5;
 
             Partita p=new Partita(id,giocatori,false);
 
+            System.out.println("Giocatori:");
+            for(int i=0;i<giocatori.length;i++)
+            {
+                System.out.println(giocatori[i].getNome());
+            }
             return id;
 
         }catch(Exception e)
