@@ -19,4 +19,9 @@ public class GiocaController {
         stage.setScene(scene);
         stage.show();
     }
+
+
+    public void entraInPartita(ActionEvent actionEvent) {
+
+    }
 }

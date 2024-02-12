@@ -69,6 +69,7 @@ public class CreaController {
             {
                 System.out.println(giocatori[i].getNome());
             }
+            p.salva();
             return id;
 
         }catch(Exception e)
