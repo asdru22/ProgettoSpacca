@@ -48,36 +48,36 @@ public class CreaController {
 
     public void EventoCreaCodicePartita(ActionEvent actionEvent)
     {
-
-        Giocatore temp;
         try {
+            Giocatore temp;
+
             int id= Utili.intCasuale(10000,99999);
 
             lbl_code.setText(String.valueOf(id));
 
-            List<Giocatore> g = new ArrayList<Giocatore>();
+            List<Giocatore> g = new ArrayList<>();
 
-            temp = controllaNome(txt_gioc1.getText());
+            temp = Utili.controllaNome(txt_gioc1.getText(),id);
             if (temp!=null) {
                 g.add(temp);
             }
 
-            temp = controllaNome(txt_gioc2.getText());
+            temp = Utili.controllaNome(txt_gioc2.getText(),id);
             if (temp!=null) {
                 g.add(temp);
             }
 
-            temp = controllaNome(txt_gioc3.getText());
+            temp = Utili.controllaNome(txt_gioc3.getText(),id);
             if (temp!=null) {
                 g.add(temp);
             }
 
-            temp = controllaNome(txt_gioc4.getText());
+            temp = Utili.controllaNome(txt_gioc4.getText(),id);
             if (temp!=null) {
                 g.add(temp);
             }
 
-            temp = controllaNome(txt_gioc5.getText());
+            temp = Utili.controllaNome(txt_gioc5.getText(),id);
             if (temp!=null) {
                 g.add(temp);
             }
@@ -86,21 +86,11 @@ public class CreaController {
 
             Partita p=new Partita(id,giocatori,false);
 
-
-
         }catch(Exception e)
         {
             System.out.println(e);
         }
 
-    }
-    public Giocatore controllaNome(String nome){
-        if(!Objects.equals(nome, "")) {
-            return new Giocatore(nome);
-        }
-        else {
-            return null;
-        }
     }
 
 }

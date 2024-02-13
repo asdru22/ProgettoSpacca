@@ -23,12 +23,13 @@ public class Partita{
 
         for (Giocatore g : giocatori) {
             g.aggiungiSalvataggio();
+            System.out.println("Giocatore:"+g.getNome()+ ", Vittorie: "+g.getPartiteVinte());
         }
         toccaA = giocatori[0];
         this.salva();
     }
     public Partita(Giocatore[] giocatori, boolean in_torneo){
-        this(Utili.intCasuale(1,10000),giocatori,in_torneo);
+        this(Utili.intCasuale(10000,99999),giocatori,in_torneo);
     }
 
     public Giocatore getToccaA() {
@@ -125,9 +126,10 @@ public class Partita{
 
     private void finePartita(){
         int max = 0;
-        Giocatore vincitore = null;
+        Giocatore vincitore = giocatori[0];
         int temp;
         for(Giocatore g: giocatori){
+            g.rimuoviPartita(this.id);
             temp = g.getPunti();
             if(temp>max){
                 max = temp;
@@ -135,6 +137,7 @@ public class Partita{
             }
         }
         vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
+        System.out.println("Vittorie: "+vincitore.getPartiteVinte());
         vincitore.salva();
         Utili.getLeaderboard();
         System.out.println(vincitore.getNome()+" ha vinto!");

@@ -1,0 +1,30 @@
+{
+  "nome": "dani",
+  "mano": [
+    {
+      "seme": "Acqua",
+      "numero": 1
+    },
+    {
+      "seme": "Fuoco",
+      "numero": 4
+    },
+    {
+      "seme": "Erba",
+      "numero": 7
+    },
+    {
+      "seme": "Terra",
+      "numero": 6
+    },
+    {
+      "seme": "Fuoco",
+      "numero": 2
+    }
+  ],
+  "partite_vinte": 3,
+  "partite": [
+    31255
+  ],
+  "punti": 100
+}

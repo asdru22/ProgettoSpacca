@@ -9,6 +9,7 @@ public class Giocatore {
     private String nome;
     private Carta[] mano = new Carta[5];
     private int partite_vinte = 0;
+    private ArrayList<Integer> partite = new ArrayList<>();
     private int punti = 0;
     public Giocatore(String nome){
         this.nome = nome;
@@ -29,7 +30,17 @@ public class Giocatore {
     public int getPunti() {
         return punti;
     }
-
+    public ArrayList<Integer> getPartite() {
+        return partite;
+    }
+    public void aggiungiPartita(int id){
+        if(!this.partite.contains(id)){
+            this.partite.add(id);
+        }
+    }
+    public void rimuoviPartita(int id){
+        this.partite.remove((Object)id);
+    }
     public void aggiungiPunti(int punti) {
         this.punti = this.punti + punti;
     }
