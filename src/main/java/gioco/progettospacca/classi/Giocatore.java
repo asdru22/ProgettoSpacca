@@ -90,4 +90,12 @@ public class Giocatore {
     public String toString(){
         return "Nome: "+nome+", mano: "+ Arrays.toString(mano);
     }
+
+    public void resetPunti() {
+        this.punti = 0;
+    }
+
+    public void resetMazzo() {
+        Arrays.fill(this.mano,null);
+    }
 }

@@ -67,18 +67,6 @@ public class Partita{
         }
         return "> Id Partita: " +id+", Giocatori: "+Arrays.toString(giocatori)+", Vincitore: "+vincitore.toString();
     }
-    /*// per test
-    public void inizia(){
-        // forse questo va messo quando si aggiungono i giocatori
-        for(Giocatore g: giocatori){
-            g.aggiungiSalvataggio();
-        } // aggiunge il file del giocatore se non esiste
-        mazzo = new Mazzo();
-        toccaA = giocatori[0];
-        cicloPrincipale();
-    }
-
-     */
 
     public void cicloPrincipale(){
         Scanner scan = new Scanner(System.in);
@@ -107,10 +95,8 @@ public class Partita{
         finePartita();
     }
     public void inizio(){
-        //cicloPrincipale();
-        System.out.println("inserisci");
-        Scanner scan = new Scanner(System.in);
-        int x = scan.nextInt();
+        // scanner aperti fanno crashare momentaneamente l'interfaccia
+        cicloPrincipale();
     }
 
     //test
@@ -132,18 +118,30 @@ public class Partita{
         Giocatore vincitore = giocatori[0];
         int temp;
         for(Giocatore g: giocatori){
-            g.rimuoviPartita(this.id);
             temp = g.getPunti();
             if(temp>max){
                 max = temp;
                 vincitore = g;
             }
         }
-        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
+
+
+        for(Giocatore g: giocatori){
+            g.rimuoviPartita(this.id);
+            g.resetPunti();
+            g.resetMazzo();
+            g.salva();
+        }
+
         System.out.println("Vittorie: "+vincitore.getPartiteVinte());
-        vincitore.salva();
-        Utili.getLeaderboard();
         System.out.println(vincitore.getNome()+" ha vinto!");
+        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+1);
+        vincitore.rimuoviPartita(this.id);
+        vincitore.resetPunti();
+        vincitore.resetMazzo();
+        vincitore.salva();
+
+        Utili.getLeaderboard();
         Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
         System.exit(0); //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
     }
@@ -171,56 +169,18 @@ public class Partita{
                             System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
                             do {
                                 pos = scan.nextInt();
-                                switch (pos) {
-                                    case 1:
-                                        toccaA.scarta(pos - 1);
-                                        break;
-                                    case 2:
-                                        toccaA.scarta(pos - 1);
-                                        break;
-                                    case 3:
-                                        toccaA.scarta(pos - 1);
-                                        break;
-                                    case 4:
-                                        toccaA.scarta(pos - 1);
-                                        break;
-                                    case 5:
-                                        toccaA.scarta(pos - 1);
-                                        break;
-                                    default:
-                                        System.out.println("devi scegliere un numero tra 0 e 4");
-                                }
-                            }while(pos<1 || pos>5);
+                                if(pos>=1 && pos <=5) toccaA.scarta(pos - 1);
+                                else System.out.println("devi scegliere un numero tra 0 e 4");
+                            } while(pos<1 || pos>5);
                             break;
                         case 2:
                             System.out.println("scegli le 2 posizioni delle carte da scartare:");
                             int i = 1;
                             do {
                                 pos = scan.nextInt();
-                                switch (pos) {
-                                    case 1:
-                                        toccaA.scarta(pos - i);
-                                        i++;
-                                        break;
-                                    case 2:
-                                        toccaA.scarta(pos - i);
-                                        i++;
-                                        break;
-                                    case 3:
-                                        toccaA.scarta(pos - i);
-                                        i++;
-                                        break;
-                                    case 4:
-                                        toccaA.scarta(pos - i);
-                                        i++;
-                                        break;
-                                    case 5:
-                                        toccaA.scarta(pos - i);
-                                        i++;
-                                        break;
-                                    default:
-                                        System.out.println("devi scegliere un numero tra 1 e 5");
-
+                                if(pos>=1 && pos <= 5){
+                                    toccaA.scarta(pos - i);
+                                    i++;
                                 }
                             }while((pos<1 || pos>5)||i<3);
                             break;
@@ -229,30 +189,9 @@ public class Partita{
                             int j = 1;
                             do {
                                 pos = scan.nextInt();
-                                switch (pos) {
-                                    case 1:
-                                        toccaA.scarta(pos - j);
-                                        j++;
-                                        break;
-                                    case 2:
-                                        toccaA.scarta(pos - j);
-                                        j++;
-                                        break;
-                                    case 3:
-                                        toccaA.scarta(pos - j);
-                                        j++;
-                                        break;
-                                    case 4:
-                                        toccaA.scarta(pos - j);
-                                        j++;
-                                        break;
-                                    case 5:
-                                        toccaA.scarta(pos - j);
-                                        j++;
-                                        break;
-                                    default:
-                                        System.out.println("devi scegliere un numero tra 1 e 5");
-
+                                if(pos >=1 && pos <= 5){
+                                    toccaA.scarta(pos - j);
+                                    j++;
                                 }
                             }while((pos<1 || pos>5)||j<4);
                             break;
