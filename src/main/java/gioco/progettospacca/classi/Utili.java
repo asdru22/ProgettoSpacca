@@ -42,7 +42,7 @@ public class Utili {
         File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
-        String r = "";
+        String r = "LEADERBOARD\n";
         Gson gson = new Gson();
         for (File file : file_giocatori) {
             if (file.isFile()) {

@@ -1,7 +1,6 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Giocatore;
-import gioco.progettospacca.classi.Partita;
+
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,13 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Random;
 
 public class HomeController {
 
@@ -47,5 +44,17 @@ public class HomeController {
        stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    private Text leaderboardText;
 
+    // Your function that returns the string for the leaderboard
+    private String getLeaderboardText() {
+        return Utili.getLeaderboard(); // Assuming Utili.getLeaderboard() returns a String
+    }
+
+    // Method to initialize the controller after its root element has been completely processed
+    @FXML
+    private void initialize() {
+        leaderboardText.setText(getLeaderboardText());
+    }
 }
