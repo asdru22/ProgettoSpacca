@@ -3,29 +3,28 @@
   "mano": [
     {
       "seme": "Acqua",
-      "numero": 1
+      "numero": 9
     },
     {
-      "seme": "Fuoco",
+      "seme": "Acqua",
       "numero": 4
     },
     {
-      "seme": "Erba",
-      "numero": 7
-    },
-    {
-      "seme": "Terra",
-      "numero": 6
-    },
-    {
       "seme": "Fuoco",
-      "numero": 2
+      "numero": 5
+    },
+    {
+      "seme": "Erba",
+      "numero": 4
+    },
+    {
+      "seme": "Elettro",
+      "numero": 7
     }
   ],
-  "partite_vinte": 3,
+  "partite_vinte": 10,
   "partite": [
-    31255,
-    65825
+    63042
   ],
-  "punti": 100
+  "punti": 265
 }

@@ -56,16 +56,12 @@ public class GiocaController {
         System.out.println(txt_cod1.getText());
         if(!Objects.equals(txt_cod1.getText(), "")){
             int codice = Utili.leggiInt(txt_cod1);
-            try {
                 if(Utili.esistePartita(codice)){
                     partitaEsiste(codice);
                 } else {
-                    throw new Exception("Partita con id " + codice + " non esiste");
+                    System.out.println("Partita con id " + codice + " non esiste");
                 }
-            } catch (Exception e) {
-                // Handle the exception here
-                e.printStackTrace(); // or handle it in a more appropriate way
-            }
+
         }
     }
     private void partitaEsiste(int codice){
@@ -87,32 +83,36 @@ public class GiocaController {
             inizia_partita = controlloGiocatore(txt_gioc5.getText(),Utili.leggiInt(txt_cod5));
         }
 
-        try {
+
             if (inizia_partita && n >= 2) {
-                //al momento per comodità metto il codice del primo text, dopo dovremmo mettere i controlli che tutti i codici siano uguali e che corrispondano ad una partita (e ovviamente che i anche tutti i nomi corrispondano alla stessa partita)
                 p.inizio();
             } else {
-                throw new Exception("Valori invalidi per iniziare partita");
+                System.out.println("Valori invalidi per iniziare partita");
             }
-        } catch (Exception e) {
-            // Handle the exception here
-            e.printStackTrace(); // or handle it in a more appropriate way
-        }
+
 
     }
     private boolean controlloGiocatore(String nome,int id) {
-        try {
+
             if (Utili.esisteGiocatore(nome)) {
                 Giocatore g = Giocatore.carica(nome);
                 ArrayList<Integer> partite = g.getPartite();
-                if (!partite.contains(id)) throw new Error("Giocatore " + nome + " non ha questo id");
+                if (!partite.contains(id)) {
+                    System.out.println("Giocatore " + nome + " non ha questo id");
+                };
                 return partite.contains(id);
             }
-            else throw new Error("Giocatore "+nome+" non esiste");
-        } catch (Exception e){
-            e.printStackTrace();
+            else{
+                System.out.println("Giocatore "+nome+" non esiste");
             return false;
         }
+    }
+
+    public void provaMomentanea(){
+        //mettiamo il codice giusto
+        int codice = Integer.parseInt(txt_cod1.getText());
+        Partita p = Partita.carica(codice);
+        p.inizio();
     }
 }
 

@@ -44,17 +44,5 @@ public class HomeController {
        stage.setScene(scene);
         stage.show();
     }
-    @FXML
-    private Text leaderboardText;
 
-    // Your function that returns the string for the leaderboard
-    private String getLeaderboardText() {
-        return Utili.getLeaderboard(); // Assuming Utili.getLeaderboard() returns a String
-    }
-
-    // Method to initialize the controller after its root element has been completely processed
-    @FXML
-    private void initialize() {
-        leaderboardText.setText(getLeaderboardText());
-    }
 }

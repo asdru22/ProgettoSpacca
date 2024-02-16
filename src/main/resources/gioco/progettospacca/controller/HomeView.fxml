@@ -9,9 +9,8 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
+<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
    <children>
       <HBox alignment="TOP_CENTER" maxHeight="100.0" VBox.vgrow="ALWAYS" />
       <HBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
@@ -44,7 +43,6 @@
                               <Button fx:id="creaTorneo" mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />
                            </children>
                         </GridPane>
-                         <Text fx:id="leaderboardText" layoutX="52.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" />
                      </children>
                   </AnchorPane>
                   <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS" />

@@ -67,6 +67,7 @@
                   <Font name="Candara" size="12.0" />
                </font>
             </Button>
+            <Button fx:id="btn_prova" mnemonicParsing="false" onAction="#provaMomentanea" text="prova momentanea" />
          </children>
       </VBox>
       <VBox prefWidth="20.0" />

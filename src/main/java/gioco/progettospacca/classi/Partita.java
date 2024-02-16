@@ -96,7 +96,7 @@ public class Partita{
 
                 if(scelta==1){
                     this.salva();
-                    break;
+                    System.exit(0);
                 }
                 //System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
             }
@@ -107,7 +107,10 @@ public class Partita{
         finePartita();
     }
     public void inizio(){
-        cicloPrincipale();
+        //cicloPrincipale();
+        System.out.println("inserisci");
+        Scanner scan = new Scanner(System.in);
+        int x = scan.nextInt();
     }
 
     //test
