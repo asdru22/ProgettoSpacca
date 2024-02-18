@@ -45,4 +45,13 @@ public class HomeController {
         stage.show();
     }
 
+    public void showLeaderboard(ActionEvent actionEvent) throws IOException {
+        Parent root = FXMLLoader.load(HomeController.class.getResource("LeaderboardView.fxml"));
+        Scene scene = new Scene(root);
+
+        Stage stage = new Stage();
+        stage.setTitle("Leaderboard Display");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

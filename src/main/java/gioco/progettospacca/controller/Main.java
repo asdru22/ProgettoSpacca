@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Utili;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

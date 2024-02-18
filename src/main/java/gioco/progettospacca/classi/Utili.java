@@ -38,11 +38,10 @@ public class Utili {
         }
     }
 
-    public static String getLeaderboard() {
+    public static String [] getLeaderboard() {
         File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
-        String r = "LEADERBOARD\n";
         Gson gson = new Gson();
         for (File file : file_giocatori) {
             if (file.isFile()) {
@@ -52,6 +51,8 @@ public class Utili {
         }
         ArrayList<Giocatore> copia_temp = new ArrayList<>(temp);
         Giocatore max_vittorie;
+        String [] vett = new String[11];
+        String r = "";
         for (int i = 1; i <= 10; i++) {
             max_vittorie = new Giocatore("temp");
             for (Giocatore g : copia_temp) {
@@ -59,12 +60,17 @@ public class Utili {
                     max_vittorie = g;
                 }
             }
-            if (Objects.equals(max_vittorie.getNome(), "temp")) r += i + ".\n";
-            else r += i + ". " + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte() + "\n";
+            if (Objects.equals(max_vittorie.getNome(), "temp")) {
+                r = i +"";
+            }
+            else{
+                r = i + ". " + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                vett[i]= r;
+            }
             temp.remove(max_vittorie);
             copia_temp = temp;
         }
-        return r;
+        return vett;
     }
 
     public static int intCasuale(int min, int max) {

@@ -5,6 +5,9 @@ import java.nio.file.FileSystems;
 
 public class test {
         public static void main(String[] args) {
-                System.out.println(Utili.getLeaderboard());
+                String [] vett = Utili.getLeaderboard();
+                for(int i = 0; i<=vett.length; i++){
+                        System.out.println(vett[i]+"");
+                }
         }
 }

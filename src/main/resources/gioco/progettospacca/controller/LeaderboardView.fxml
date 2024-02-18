@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="186.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.LeaderboardController">
+   <children>
+      <HBox prefHeight="323.0" prefWidth="186.0">
+         <children>
+            <VBox prefHeight="310.0" prefWidth="195.0">
+               <children>
+                  <AnchorPane prefHeight="351.0" prefWidth="187.0">
+                     <children>
+                        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" prefHeight="18.0" prefWidth="142.0" text="Classifica" textAlignment="CENTER">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos1" layoutX="21.0" layoutY="43.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos2" layoutX="21.0" layoutY="63.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos3" layoutX="21.0" layoutY="83.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos4" layoutX="21.0" layoutY="103.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos5" layoutX="21.0" layoutY="123.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos6" layoutX="21.0" layoutY="145.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos7" layoutX="21.0" layoutY="165.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos8" layoutX="21.0" layoutY="185.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos9" layoutX="21.0" layoutY="205.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_pos10" layoutX="21.0" layoutY="225.0" prefHeight="0.0" prefWidth="106.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
