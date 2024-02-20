@@ -6,11 +6,11 @@ import java.io.File;
 import java.util.*;
 import java.util.*;
 public class Giocatore {
-    private String nome;
-    private Carta[] mano = new Carta[5];
-    private int partite_vinte = 0;
-    private ArrayList<Integer> partite = new ArrayList<>();
-    private int punti = 0;
+    protected String nome;
+    protected Carta[] mano = new Carta[5];
+    protected int partite_vinte = 0;
+    protected ArrayList<Integer> partite = new ArrayList<>();
+    protected int punti = 0;
     public Giocatore(String nome){
         this.nome = nome;
     }

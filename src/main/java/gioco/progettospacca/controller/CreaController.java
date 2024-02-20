@@ -111,7 +111,6 @@ public class CreaController {
             if(chk_gioc5.isSelected()){
                 g.add(new Bot(txt_gioc5.getText()));
             }
-
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
             Partita p=new Partita(id,giocatori,false);
