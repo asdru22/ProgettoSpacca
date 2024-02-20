@@ -7,7 +7,11 @@
     null,
     null
   ],
-  "partite_vinte": 1,
-  "partite": [],
+  "partite_vinte": 3,
+  "partite": [
+    83115,
+    88051,
+    60072
+  ],
   "punti": 0
 }

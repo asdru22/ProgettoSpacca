@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Bot;
 import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
@@ -10,6 +11,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -45,6 +47,19 @@ public class CreaController {
     @FXML
     private TextField txt_gioc5;
 
+    @FXML
+    private CheckBox chk_gioc1;
+
+    @FXML
+    private CheckBox chk_gioc2;
+    @FXML
+    private CheckBox chk_gioc3;
+
+    @FXML
+    private CheckBox chk_gioc4;
+    @FXML
+    private CheckBox chk_gioc5;
+
 
     public void EventoCreaCodicePartita(ActionEvent actionEvent)
     {
@@ -58,28 +73,43 @@ public class CreaController {
             List<Giocatore> g = new ArrayList<>();
 
             temp = Utili.controllaNome(txt_gioc1.getText(),id);
-            if (temp!=null) {
+            if (temp!=null && !chk_gioc1.isSelected()) {
                 g.add(temp);
+            }
+            if(chk_gioc1.isSelected()){
+                g.add(new Bot(txt_gioc1.getText()));
             }
 
             temp = Utili.controllaNome(txt_gioc2.getText(),id);
-            if (temp!=null) {
+            if (temp!=null && !chk_gioc2.isSelected()) {
                 g.add(temp);
+            }
+            if(chk_gioc2.isSelected()){
+                g.add(new Bot(txt_gioc2.getText()));
             }
 
             temp = Utili.controllaNome(txt_gioc3.getText(),id);
-            if (temp!=null) {
+            if (temp!=null && !chk_gioc3.isSelected()) {
                 g.add(temp);
+            }
+            if(chk_gioc3.isSelected()){
+                g.add(new Bot(txt_gioc3.getText()));
             }
 
             temp = Utili.controllaNome(txt_gioc4.getText(),id);
-            if (temp!=null) {
+            if (temp!=null && !chk_gioc4.isSelected()) {
                 g.add(temp);
+            }
+            if(chk_gioc4.isSelected()){
+                g.add(new Bot(txt_gioc4.getText()));
             }
 
             temp = Utili.controllaNome(txt_gioc5.getText(),id);
-            if (temp!=null) {
+            if (temp!=null && !chk_gioc5.isSelected()) {
                 g.add(temp);
+            }
+            if(chk_gioc5.isSelected()){
+                g.add(new Bot(txt_gioc5.getText()));
             }
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
@@ -93,4 +123,56 @@ public class CreaController {
 
     }
 
+
+    public void checkBox1(ActionEvent actionEvent) {
+        if(chk_gioc1.isSelected()){
+            txt_gioc1.setDisable(true);
+            txt_gioc1.setText("bot1");
+        }
+        else{
+            txt_gioc1.setDisable(false);
+            txt_gioc1.setText("");
+        }
+    }
+    public void checkBox2(ActionEvent actionEvent) {
+        if(chk_gioc2.isSelected()){
+            txt_gioc2.setDisable(true);
+            txt_gioc2.setText("bot2");
+        }
+        else{
+            txt_gioc2.setDisable(false);
+            txt_gioc2.setText("");
+        }
+    }
+    public void checkBox3(ActionEvent actionEvent) {
+        if(chk_gioc3.isSelected()){
+            txt_gioc3.setDisable(true);
+            txt_gioc3.setText("bot3");
+        }
+        else{
+            txt_gioc3.setDisable(false);
+            txt_gioc3.setText("");
+        }
+    }
+    public void checkBox4(ActionEvent actionEvent) {
+        if(chk_gioc4.isSelected()){
+            txt_gioc4.setDisable(true);
+            txt_gioc4.setText("bot4");
+        }
+        else{
+            txt_gioc4.setDisable(false);
+            txt_gioc4.setText("");
+        }
+    }
+    public void checkBox5(ActionEvent actionEvent) {
+        if(chk_gioc5.isSelected()){
+            txt_gioc5.setDisable(true);
+            txt_gioc5.setText("bot5");
+            txt_gioc5.setText("");
+        }
+        else{
+            txt_gioc5.setDisable(false);
+            txt_gioc5.setText("");
+        }
+    }
 }

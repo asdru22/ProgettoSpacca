@@ -22,7 +22,13 @@ public class Partita{
         this.in_torneo = in_torneo;
 
         for (Giocatore g : giocatori) {
-            g.aggiungiSalvataggio();
+            if(g instanceof Giocatore) {
+                System.out.println("bot: "+g.getNome());
+            }
+            else{
+                System.out.println(g.getNome());
+                g.aggiungiSalvataggio();
+            }
             System.out.println("Giocatore:"+g.getNome()+ ", Vittorie: "+g.getPartiteVinte());
         }
         toccaA = giocatori[0];

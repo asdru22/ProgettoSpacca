@@ -134,11 +134,19 @@ public class Utili {
                 g.aggiungiPartita(id);
                 g.salva();
                 return g;
-            } else {
-                Giocatore g = new Giocatore(nome);
-                g.aggiungiPartita(id);
-                g.salva();
-                return g;
+            }
+            else {
+                if(nome == "bot1" || nome == "bot2" || nome == "bot3" || nome == "bot4" || nome == "bot5"){
+                    Giocatore g = new Bot(nome);
+                    return g;
+                }
+                else {
+                    Giocatore g = new Giocatore(nome);
+                    g.aggiungiPartita(id);
+                    g.salva();
+                    return g;
+                }
+
             }
 
         } else {
