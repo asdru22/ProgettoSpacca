@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Bot;
 import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;

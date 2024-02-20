@@ -7,6 +7,7 @@ import java.util.*;
 
 public class Partita {
     private static int NUMERO_TURNI = 2;
+    private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
@@ -27,7 +28,7 @@ public class Partita {
             if (g.isBot()) {
                 System.out.println("bot: " + g.getNome());
             } else {
-                System.out.println("giocatore: "+g.getNome());
+                System.out.println("giocatore: " + g.getNome());
                 g.aggiungiSalvataggio();
             }
             //System.out.println("Giocatore:"+g.getNome()+ ", Vittorie: "+g.getPartiteVinte());
@@ -43,7 +44,9 @@ public class Partita {
     public Giocatore getToccaA() {
         return toccaA;
     }
-
+    public int getBot(){
+        return numero_bot;
+    }
     public void setToccaA(Giocatore toccaA) {
         this.toccaA = toccaA;
     }
@@ -142,26 +145,21 @@ public class Partita {
         }
 
         for (Giocatore g : giocatori) {
-            if(g.isBot()){
-                g.elimina();
-            }
-            else{
-                g.rimuoviPartita(this.id);
-                g.resetPunti();
-                g.resetMazzo();
-                g.salva();
-            }
+            g.rimuoviPartita(this.id);
+            g.resetPunti();
+            g.resetMazzo();
+            g.salva();
         }
 
         System.out.println("Vittorie: " + vincitore.getPartiteVinte());
         System.out.println(vincitore.getNome() + " ha vinto!");
-        if(!vincitore.isBot()){
-            vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
-            vincitore.rimuoviPartita(this.id);
-            vincitore.resetPunti();
-            vincitore.resetMazzo();
-            vincitore.salva();
-        }
+
+        vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
+        vincitore.rimuoviPartita(this.id);
+        vincitore.resetPunti();
+        vincitore.resetMazzo();
+        vincitore.salva();
+
 
         Utili.getLeaderboard();
         Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
@@ -181,7 +179,7 @@ public class Partita {
         System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
         System.out.println("premi 1 per scartare, premi 2 per stare");
 
-        System.out.println("nome "+toccaA.getNome()+" "+toccaA.getClass());
+        System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
         if (toccaA.isBot()) {
             azione = Bot.sceltaCasuale(1, 2);
         } else {
@@ -205,7 +203,7 @@ public class Partita {
                                 if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
                                     pos = numeri.get(0);
                                 }
@@ -220,7 +218,7 @@ public class Partita {
                                 if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
                                     pos = numeri.get(0);
                                 }
@@ -237,7 +235,7 @@ public class Partita {
                                 if (!(toccaA.isBot())) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
+                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
                                     pos = numeri.get(0);
                                 }
