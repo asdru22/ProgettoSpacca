@@ -93,6 +93,17 @@ public class Utili {
         }
     }
 
+    public static void eliminaGiocatore(String nome) {
+
+        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/giocatore/" + nome + ".json");
+
+        if (fileDaEliminare.delete()) {
+            System.out.println("File eliminato con successo: " + nome + ".json");
+        } else {
+            System.out.println("Impossibile eliminare il file: " + nome + ".json");
+        }
+    }
+
     public static boolean esisteGiocatore(String nome) {
         File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
@@ -126,7 +137,7 @@ public class Utili {
         return trovato;
     }
 
-    public static Giocatore controllaNome(String nome, int id) {
+    public static Giocatore controllaNome(String nome, int id,boolean bot) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             if (esiste) {
@@ -136,8 +147,8 @@ public class Utili {
                 return g;
             }
             else {
-                if(nome == "bot1" || nome == "bot2" || nome == "bot3" || nome == "bot4" || nome == "bot5"){
-                    Giocatore g = new Bot(nome);
+                if(bot){
+                    Giocatore g = new Giocatore(nome,true);
                     return g;
                 }
                 else {
@@ -156,5 +167,9 @@ public class Utili {
 
     public static int leggiInt(TextField tx){
         return Integer.parseInt(tx.getText());
+    }
+
+    public static boolean nomiBot(String nome){
+        return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
     }
 }

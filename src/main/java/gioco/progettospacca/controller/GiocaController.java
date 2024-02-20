@@ -41,8 +41,7 @@ public class GiocaController {
     @FXML
     private TextField txt_cod5;
 
-    public void BackToHome(ActionEvent actionEvent) throws IOException
-    {
+    public void BackToHome(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -54,61 +53,64 @@ public class GiocaController {
 
     public void entraInPartita(ActionEvent actionEvent) {
         System.out.println(txt_cod1.getText());
-        if(!Objects.equals(txt_cod1.getText(), "")){
+        if (!Objects.equals(txt_cod1.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod1);
-                if(Utili.esistePartita(codice)){
-                    partitaEsiste(codice);
-                } else {
-                    System.out.println("Partita con id " + codice + " non esiste");
-                }
+            if (Utili.esistePartita(codice)) {
+                partitaEsiste(codice);
+            } else {
+                System.out.println("Partita con id " + codice + " non esiste");
+            }
 
         }
     }
-    private void partitaEsiste(int codice){
+
+    private void partitaEsiste(int codice) {
         boolean inizia_partita = true;
         Partita p = Partita.carica(codice);
         int n = p.getGiocatori().length;
         System.out.println(n);
-        inizia_partita = controlloGiocatore(txt_gioc1.getText(),Utili.leggiInt(txt_cod1));
-        if(inizia_partita){
-            inizia_partita = controlloGiocatore(txt_gioc2.getText(),Utili.leggiInt(txt_cod2));
+        inizia_partita = controlloGiocatore(txt_gioc1.getText(), Utili.leggiInt(txt_cod1));
+        if (inizia_partita) {
+            inizia_partita = controlloGiocatore(txt_gioc2.getText(), Utili.leggiInt(txt_cod2));
         }
-        if(inizia_partita&& n>=3){
-            inizia_partita = controlloGiocatore(txt_gioc3.getText(),Utili.leggiInt(txt_cod3));
+        if (inizia_partita && n >= 3) {
+            inizia_partita = controlloGiocatore(txt_gioc3.getText(), Utili.leggiInt(txt_cod3));
         }
-        if(inizia_partita&& n>=4){
-            inizia_partita = controlloGiocatore(txt_gioc4.getText(),Utili.leggiInt(txt_cod4));
+        if (inizia_partita && n >= 4) {
+            inizia_partita = controlloGiocatore(txt_gioc4.getText(), Utili.leggiInt(txt_cod4));
         }
-        if(inizia_partita&& n==5){
-            inizia_partita = controlloGiocatore(txt_gioc5.getText(),Utili.leggiInt(txt_cod5));
+        if (inizia_partita && n == 5) {
+            inizia_partita = controlloGiocatore(txt_gioc5.getText(), Utili.leggiInt(txt_cod5));
         }
 
 
-            if (inizia_partita && n >= 2) {
-                p.inizio();
-            } else {
-                System.out.println("Valori invalidi per iniziare partita");
-            }
+        if (inizia_partita && n >= 2) {
+            p.inizio();
+        } else {
+            System.out.println("Valori invalidi per iniziare partita");
+        }
 
 
     }
-    private boolean controlloGiocatore(String nome,int id) {
 
-            if (Utili.esisteGiocatore(nome)) {
-                Giocatore g = Giocatore.carica(nome);
-                ArrayList<Integer> partite = g.getPartite();
-                if (!partite.contains(id)) {
-                    System.out.println("Giocatore " + nome + " non ha questo id");
-                };
-                return partite.contains(id);
+    private boolean controlloGiocatore(String nome, int id) {
+        if (Utili.esisteGiocatore(nome)) {
+            Giocatore g = Giocatore.carica(nome);
+            ArrayList<Integer> partite = g.getPartite();
+            if (!partite.contains(id)) {
+                System.out.println("Giocatore " + nome + " non ha questo id");
             }
-            else{
-                System.out.println("Giocatore "+nome+" non esiste");
+            ;
+            return partite.contains(id);
+        } else if (Utili.nomiBot(nome)) {
+            return true;
+        } else {
+            System.out.println("Giocatore " + nome + " non esiste");
             return false;
         }
     }
 
-    public void provaMomentanea(){
+    public void provaMomentanea() {
         //mettiamo il codice giusto
         int codice = Integer.parseInt(txt_cod1.getText());
         Partita p = Partita.carica(codice);

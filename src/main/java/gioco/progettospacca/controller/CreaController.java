@@ -22,8 +22,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class CreaController {
-    public void BackToHome(ActionEvent actionEvent) throws IOException
-    {
+    public void BackToHome(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -61,62 +60,45 @@ public class CreaController {
     private CheckBox chk_gioc5;
 
 
-    public void EventoCreaCodicePartita(ActionEvent actionEvent)
-    {
+    public void EventoCreaCodicePartita(ActionEvent actionEvent) {
         try {
             Giocatore temp;
 
-            int id= Utili.intCasuale(10000,99999);
+            int id = Utili.intCasuale(10000, 99999);
 
             lbl_code.setText(String.valueOf(id));
 
             List<Giocatore> g = new ArrayList<>();
 
-            temp = Utili.controllaNome(txt_gioc1.getText(),id);
-            if (temp!=null && !chk_gioc1.isSelected()) {
+            temp = Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected());
+            if (temp != null) {
                 g.add(temp);
             }
-            if(chk_gioc1.isSelected()){
-                g.add(new Bot(txt_gioc1.getText()));
+            temp = Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected());
+            if (temp != null) {
+                g.add(temp);
             }
 
-            temp = Utili.controllaNome(txt_gioc2.getText(),id);
-            if (temp!=null && !chk_gioc2.isSelected()) {
+            temp = Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected());
+            if (temp != null) {
                 g.add(temp);
-            }
-            if(chk_gioc2.isSelected()){
-                g.add(new Bot(txt_gioc2.getText()));
             }
 
-            temp = Utili.controllaNome(txt_gioc3.getText(),id);
-            if (temp!=null && !chk_gioc3.isSelected()) {
+            temp = Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected());
+            if (temp != null) {
                 g.add(temp);
-            }
-            if(chk_gioc3.isSelected()){
-                g.add(new Bot(txt_gioc3.getText()));
             }
 
-            temp = Utili.controllaNome(txt_gioc4.getText(),id);
-            if (temp!=null && !chk_gioc4.isSelected()) {
+            temp = Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected());
+            if (temp != null) {
                 g.add(temp);
-            }
-            if(chk_gioc4.isSelected()){
-                g.add(new Bot(txt_gioc4.getText()));
             }
 
-            temp = Utili.controllaNome(txt_gioc5.getText(),id);
-            if (temp!=null && !chk_gioc5.isSelected()) {
-                g.add(temp);
-            }
-            if(chk_gioc5.isSelected()){
-                g.add(new Bot(txt_gioc5.getText()));
-            }
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
-            Partita p=new Partita(id,giocatori,false);
+            Partita p = new Partita(id, giocatori, false);
 
-        }catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -124,52 +106,51 @@ public class CreaController {
 
 
     public void checkBox1(ActionEvent actionEvent) {
-        if(chk_gioc1.isSelected()){
+        if (chk_gioc1.isSelected()) {
             txt_gioc1.setDisable(true);
             txt_gioc1.setText("bot1");
-        }
-        else{
+        } else {
             txt_gioc1.setDisable(false);
             txt_gioc1.setText("");
         }
     }
+
     public void checkBox2(ActionEvent actionEvent) {
-        if(chk_gioc2.isSelected()){
+        if (chk_gioc2.isSelected()) {
             txt_gioc2.setDisable(true);
             txt_gioc2.setText("bot2");
-        }
-        else{
+        } else {
             txt_gioc2.setDisable(false);
             txt_gioc2.setText("");
         }
     }
+
     public void checkBox3(ActionEvent actionEvent) {
-        if(chk_gioc3.isSelected()){
+        if (chk_gioc3.isSelected()) {
             txt_gioc3.setDisable(true);
             txt_gioc3.setText("bot3");
-        }
-        else{
+        } else {
             txt_gioc3.setDisable(false);
             txt_gioc3.setText("");
         }
     }
+
     public void checkBox4(ActionEvent actionEvent) {
-        if(chk_gioc4.isSelected()){
+        if (chk_gioc4.isSelected()) {
             txt_gioc4.setDisable(true);
             txt_gioc4.setText("bot4");
-        }
-        else{
+        } else {
             txt_gioc4.setDisable(false);
             txt_gioc4.setText("");
         }
     }
+
     public void checkBox5(ActionEvent actionEvent) {
-        if(chk_gioc5.isSelected()){
+        if (chk_gioc5.isSelected()) {
             txt_gioc5.setDisable(true);
             txt_gioc5.setText("bot5");
             txt_gioc5.setText("");
-        }
-        else{
+        } else {
             txt_gioc5.setDisable(false);
             txt_gioc5.setText("");
         }

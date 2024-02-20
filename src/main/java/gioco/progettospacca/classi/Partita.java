@@ -24,11 +24,10 @@ public class Partita {
         this.in_torneo = in_torneo;
 
         for (Giocatore g : giocatori) {
-            if (g instanceof Bot) {
+            if (g.isBot()) {
                 System.out.println("bot: " + g.getNome());
-                System.out.println(g.getClass());
             } else {
-                System.out.println(g.getNome());
+                System.out.println("giocatore: "+g.getNome());
                 g.aggiungiSalvataggio();
             }
             //System.out.println("Giocatore:"+g.getNome()+ ", Vittorie: "+g.getPartiteVinte());
@@ -142,21 +141,27 @@ public class Partita {
             }
         }
 
-
         for (Giocatore g : giocatori) {
-            g.rimuoviPartita(this.id);
-            g.resetPunti();
-            g.resetMazzo();
-            g.salva();
+            if(g.isBot()){
+                g.elimina();
+            }
+            else{
+                g.rimuoviPartita(this.id);
+                g.resetPunti();
+                g.resetMazzo();
+                g.salva();
+            }
         }
 
         System.out.println("Vittorie: " + vincitore.getPartiteVinte());
         System.out.println(vincitore.getNome() + " ha vinto!");
-        vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
-        vincitore.rimuoviPartita(this.id);
-        vincitore.resetPunti();
-        vincitore.resetMazzo();
-        vincitore.salva();
+        if(!vincitore.isBot()){
+            vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
+            vincitore.rimuoviPartita(this.id);
+            vincitore.resetPunti();
+            vincitore.resetMazzo();
+            vincitore.salva();
+        }
 
         Utili.getLeaderboard();
         Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
@@ -172,34 +177,32 @@ public class Partita {
         toccaA.pesca(5, this.mazzo); // sempre all'inizio
         // giocatore fa roba
         Scanner scan = new Scanner(System.in);
-        int azione = 0;
+        int azione;
         System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
         System.out.println("premi 1 per scartare, premi 2 per stare");
 
         System.out.println("nome "+toccaA.getNome()+" "+toccaA.getClass());
-        if ((toccaA instanceof Bot)) {
-            azione = scan.nextInt();
+        if (toccaA.isBot()) {
+            azione = Bot.sceltaCasuale(1, 2);
         } else {
-
-           // azione = toccaA.sceltaCasuale(1, 2);
+            azione = scan.nextInt();
         }
-
         int num = 0;
         int pos = 0;
         switch (azione) {
             case 1:
                 System.out.println("quante carte vuoi scartare?");
                 do {
-                    if (!(toccaA instanceof Bot)) {
-                        num = scan.nextInt();
+                    if (toccaA.isBot()) {
+                        num = Bot.sceltaCasuale(1, 3);
                     } else {
-                        num = ((Bot) toccaA).sceltaCasuale(1, 3);
+                        num = scan.nextInt();
                     }
                     switch (num) {
                         case 1:
                             System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
                             do {
-                                if (!(toccaA instanceof Bot)) {
+                                if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
@@ -214,7 +217,7 @@ public class Partita {
                             System.out.println("scegli le 2 posizioni delle carte da scartare:");
                             int i = 1;
                             do {
-                                if (!(toccaA instanceof Bot)) {
+                                if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
@@ -231,7 +234,7 @@ public class Partita {
                             System.out.println("scegli le 3 posizioni delle carte da scartare:");
                             int j = 1;
                             do {
-                                if (!(toccaA instanceof Bot)) {
+                                if (!(toccaA.isBot())) {
                                     pos = scan.nextInt();
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1,2,3,4,5));
@@ -261,9 +264,7 @@ public class Partita {
                 toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
                 System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
                 break;
-
         }
-
     }
 
     public int valutaCarte(Carta[] mano) {
