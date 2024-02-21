@@ -1,5 +1,5 @@
 {
-  "nome": "a",
+  "nome": "paolo",
   "mano": [
     null,
     null,
@@ -10,7 +10,12 @@
   "bot": false,
   "partite_vinte": 0,
   "partite": [
-    65481
+    55322,
+    36017,
+    70045,
+    21158,
+    45027,
+    29579
   ],
   "punti": 0
 }

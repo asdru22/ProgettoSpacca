@@ -54,7 +54,7 @@
             <Font name="Candara" size="12.0" />
          </font>
       </Label>
-      <Label fx:id="lbl_code" layoutX="364.0" layoutY="173.0" minHeight="17.0" prefHeight="17.0" prefWidth="78.0" />
+      <TextField fx:id="txt_code" alignment="CENTER" editable="false" layoutX="364.0" layoutY="173.0" minHeight="17.0" onMouseClicked="#handleTextClick" prefHeight="17.0" prefWidth="78.0" />
       <Button fx:id="btn_backHome" layoutX="352.0" layoutY="217.0" mnemonicParsing="false" onAction="#BackToHome" text="Torna alla home" />
    </children>
 </Pane>

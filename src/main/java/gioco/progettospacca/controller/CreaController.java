@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -32,7 +33,7 @@ public class CreaController {
     }
 
     @FXML
-    private Label lbl_code;
+    private TextField txt_code;
     @FXML
     private Button btn_crea;
     @FXML
@@ -66,7 +67,7 @@ public class CreaController {
 
             int id = Utili.intCasuale(10000, 99999);
 
-            lbl_code.setText(String.valueOf(id));
+            txt_code.setText(String.valueOf(id));
 
             List<Giocatore> g = new ArrayList<>();
 
@@ -153,6 +154,11 @@ public class CreaController {
         } else {
             txt_gioc5.setDisable(false);
             txt_gioc5.setText("");
+        }
+    }
+    public void handleTextClick(MouseEvent event) {
+        if (event.getClickCount() == 2) { // Doppio clic
+
         }
     }
 }
