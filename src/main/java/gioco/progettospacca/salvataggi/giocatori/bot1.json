@@ -1,0 +1,16 @@
+{
+  "nome": "bot1",
+  "mano": [
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "bot": true,
+  "partite_vinte": 6,
+  "partite": [
+    76333
+  ],
+  "punti": 0
+}

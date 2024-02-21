@@ -147,17 +147,10 @@ public class Utili {
                 return g;
             }
             else {
-                if(bot){
-                    Giocatore g = new Giocatore(nome,true);
-                    return g;
-                }
-                else {
-                    Giocatore g = new Giocatore(nome);
-                    g.aggiungiPartita(id);
-                    g.salva();
-                    return g;
-                }
-
+                Giocatore g = new Giocatore(nome,bot);
+                g.aggiungiPartita(id);
+                g.salva();
+                return g;
             }
 
         } else {
