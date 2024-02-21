@@ -3,73 +3,42 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
    <children>
-      <VBox prefWidth="20.0">
+      <AnchorPane>
          <children>
-            <Button fx:id="btn_back" mnemonicParsing="false" onAction="#BackToHome" text="❮" />
-         </children></VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Nome">
-                     <font>
-                        <Font name="Candara" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefWidth="100.0">
-               <children>
-                  <TextField fx:id="txt_gioc1" />
-                  <TextField fx:id="txt_gioc2" />
-                  <TextField fx:id="txt_gioc3" />
-                  <TextField fx:id="txt_gioc4" />
-                  <TextField fx:id="txt_gioc5" />
-               </children>
-            </VBox>
-            <HBox prefHeight="20.0" />
-         </children>
-      </VBox>
-      <VBox prefWidth="20.0" />
-      <VBox alignment="CENTER">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label text="Inserisci codice partita">
-                     <font>
-                        <Font name="Candara" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-            <VBox alignment="CENTER" prefWidth="100.0">
-               <children>
-                  <TextField fx:id="txt_cod1" />
-                  <TextField fx:id="txt_cod2" />
-                  <TextField fx:id="txt_cod3" />
-                  <TextField fx:id="txt_cod4" />
-                  <TextField fx:id="txt_cod5" />
-                  <HBox prefHeight="20.0" />
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-         <children>
-            <Button fx:id="btn_entra" mnemonicParsing="false" onAction="#entraInPartita" text="Entra">
+            <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" text="❮" />
+            <Label layoutX="40.0" layoutY="14.0" text="Nome">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_gioc1" layoutX="140.0" layoutY="10.0" />
+            <TextField fx:id="txt_gioc2" layoutX="140.0" layoutY="40.0" />
+            <TextField fx:id="txt_gioc3" layoutX="140.0" layoutY="70.0" />
+            <TextField fx:id="txt_gioc4" layoutX="140.0" layoutY="100.0" />
+            <TextField fx:id="txt_gioc5" layoutX="140.0" layoutY="130.0" />
+            <Label layoutX="220.0" layoutY="14.0" text="Inserisci codice partita">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txt_cod1" layoutX="340.0" layoutY="10.0" />
+            <TextField fx:id="txt_cod2" layoutX="340.0" layoutY="40.0" />
+            <TextField fx:id="txt_cod3" layoutX="340.0" layoutY="70.0" />
+            <TextField fx:id="txt_cod4" layoutX="340.0" layoutY="100.0" />
+            <TextField fx:id="txt_cod5" layoutX="340.0" layoutY="130.0" />
+            <Button fx:id="btn_entra" layoutX="440.0" layoutY="40.0" mnemonicParsing="false" onAction="#entraInPartita" text="Entra">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </Button>
-            <Button fx:id="btn_prova" mnemonicParsing="false" onAction="#provaMomentanea" text="prova momentanea" />
+            <Button fx:id="btn_prova" layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onAction="#provaMomentanea" text="prova momentanea" />
          </children>
-      </VBox>
-      <VBox prefWidth="20.0" />
+      </AnchorPane>
    </children>
-</HBox>
+</Pane>

@@ -11,63 +11,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
-   <children>
-      <HBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS">
-         <children>
-            <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-               <children>
-                  <AnchorPane maxHeight="450.0" maxWidth="550.0" minHeight="350.0" minWidth="450.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="175.0" layoutY="79.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="288.6" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.39999999999998" AnchorPane.topAnchor="79.0">
-                           <image>
-                              <Image url="@../titolo.png" />
-                           </image>
-                        </ImageView>
-                        <GridPane layoutX="170.0" layoutY="155.0" prefHeight="173.0" prefWidth="210.0">
-                          <columnConstraints>
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                          </columnConstraints>
-                          <rowConstraints>
-                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                          </rowConstraints>
-                           <children>
-                              <Button fx:id="giocaPartita" mnemonicParsing="false" onAction="#EventoGiocaPartita" text="Gioca partita" />
-                              <Button fx:id="creaPartita" mnemonicParsing="false" onAction="#EventoCreaPartita" text="Crea partita" GridPane.rowIndex="1" />
-                              <Button fx:id="giocaTorneo" mnemonicParsing="false" text="Gioca torneo" GridPane.rowIndex="2" />
-                              <Button fx:id="creaTorneo" mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />
-                           </children>
-                        </GridPane>
-                        <MenuBar fx:id="menBar" accessibleRole="BUTTON" layoutX="-7.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="550.0" AnchorPane.leftAnchor="-7.0">
-                          <menus>
-                            <Menu fx:id="menuBar" mnemonicParsing="false" text="Menu">
-                              <items>
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
+    <children>
+        <AnchorPane maxHeight="450.0" maxWidth="550.0" minHeight="350.0" minWidth="450.0" prefWidth="550.0" prefHeight="450.0">
+            <children>
+                <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="175.0" layoutY="79.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="288.6" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.39999999999998" AnchorPane.topAnchor="79.0">
+                    <image>
+                        <Image url="@../titolo.png" />
+                    </image>
+                </ImageView>
+                <GridPane layoutX="170.0" layoutY="155.0" prefHeight="173.0" prefWidth="210.0">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Button fx:id="giocaPartita" mnemonicParsing="false" onAction="#EventoGiocaPartita" text="Gioca partita" />
+                        <Button fx:id="creaPartita" mnemonicParsing="false" onAction="#EventoCreaPartita" text="Crea partita" GridPane.rowIndex="1" />
+                        <Button fx:id="giocaTorneo" mnemonicParsing="false" text="Gioca torneo" GridPane.rowIndex="2" />
+                        <Button fx:id="creaTorneo" mnemonicParsing="false" text="Crea torneo" GridPane.rowIndex="3" />
+                    </children>
+                </GridPane>
+                <MenuBar fx:id="menBar" accessibleRole="BUTTON" layoutX="-7.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="26.0" prefWidth="550.0" AnchorPane.leftAnchor="-7.0">
+                    <menus>
+                        <Menu fx:id="menuBar" mnemonicParsing="false" text="Menu">
+                            <items>
                                 <MenuItem fx:id="btn_classifica" mnemonicParsing="false" onAction="#showLeaderboard" text="Classifica" />
-                              </items>
-                            </Menu>
-                          </menus>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </MenuBar>
-                     </children>
-                  </AnchorPane>
-                  <VBox alignment="TOP_CENTER" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-            <HBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-      <HBox alignment="TOP_CENTER" maxHeight="100.0" VBox.vgrow="ALWAYS" />
-   </children>
-</VBox>
+                            </items>
+                        </Menu>
+                    </menus>
+                    <opaqueInsets>
+                        <Insets />
+                    </opaqueInsets>
+                    <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                    </cursor>
+                </MenuBar>
+            </children>
+        </AnchorPane>
+    </children>
+</Pane>
