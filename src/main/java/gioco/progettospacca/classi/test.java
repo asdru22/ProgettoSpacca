@@ -3,11 +3,21 @@ import java.util.*;
 
 import java.nio.file.FileSystems;
 
-public class test {
+public class test{
         public static void main(String[] args) {
-                String [] vett = Utili.getLeaderboard();
-                for(int i = 0; i<=vett.length; i++){
-                        System.out.println(vett[i]+"");
-                }
+
+                ArrayList<Giocatore> g = new ArrayList<>();
+                g.add(new Giocatore("bot1",true));
+                g.add(new Giocatore("bot2",true));
+                g.add(new Giocatore("bot3",true));
+
+                Torneo t = new Torneo(g,4);
+
+                t.iniziaMain();
+
+                //Partita p = t.getPartite().get(0);
+                //t.salva();
+                //p.inizio();
+
         }
 }

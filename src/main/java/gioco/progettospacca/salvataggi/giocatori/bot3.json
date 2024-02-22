@@ -8,10 +8,7 @@
     null
   ],
   "bot": true,
-  "partite_vinte": 1,
-  "partite": [
-    57151,
-    25494
-  ],
+  "partite_vinte": 2,
+  "partite": [],
   "punti": 0
 }

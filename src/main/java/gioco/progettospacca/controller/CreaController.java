@@ -107,7 +107,7 @@ public class CreaController {
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
-            Partita p = new Partita(id, giocatori, false);
+            Partita p = new Partita(id, giocatori, 0);
 
         } catch (Exception e) {
             System.out.println(e);

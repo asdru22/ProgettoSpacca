@@ -11,34 +11,24 @@ public class Partita {
     private int id;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
-    private boolean in_torneo;
+    private int id_torneo;
     private Giocatore[] giocatori;
     private Giocatore vincitore = null;
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Seme seme_che_comanda = null;
 
-    public Partita(int id, Giocatore[] giocatori, boolean in_torneo) {
+    public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
         this.giocatori = giocatori;
         this.mazzo = new Mazzo();
-        this.in_torneo = in_torneo;
-
-        for (Giocatore g : giocatori) {
-            if (g.isBot()) {
-                System.out.println("bot: " + g.getNome());
-            } else {
-                System.out.println("giocatore: " + g.getNome());
-                g.aggiungiSalvataggio();
-            }
-            //System.out.println("Giocatore:"+g.getNome()+ ", Vittorie: "+g.getPartiteVinte());
-        }
+        this.id_torneo = id_torneo;
         toccaA = giocatori[0];
         this.salva();
     }
 
-    public Partita(Giocatore[] giocatori, boolean in_torneo) {
-        this(Utili.intCasuale(10000, 99999), giocatori, in_torneo);
+    public Partita(Giocatore[] giocatori, int id_torneo) {
+        this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
 
     public Giocatore getToccaA() {
@@ -81,11 +71,13 @@ public class Partita {
     @Override
     public String toString() {
         if (vincitore == null) {
-            vincitore = new Giocatore("nessuno");
+            vincitore = new Giocatore("vincitore non trovato");
         }
         return "> Id Partita: " + id + ", Giocatori: " + Arrays.toString(giocatori) + ", Vincitore: " + vincitore.toString();
     }
-
+    public int getIdTorneo(){
+        return id_torneo;
+    }
     public void cicloPrincipale() {
         Scanner scan = new Scanner(System.in);
         int scelta = 0;
@@ -98,7 +90,7 @@ public class Partita {
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
                 System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
-                scelta = scan.nextInt();
+                //scelta = scan.nextInt();
 
                 if (scelta == 1) {
                     this.salva();
@@ -134,7 +126,7 @@ public class Partita {
 
     private void finePartita() {
         int max = 0;
-        Giocatore vincitore = giocatori[0];
+        vincitore = giocatori[0];
         int temp;
         for (Giocatore g : giocatori) {
             temp = g.getPunti();
@@ -151,7 +143,6 @@ public class Partita {
             g.salva();
         }
 
-        System.out.println("Vittorie: " + vincitore.getPartiteVinte());
         System.out.println(vincitore.getNome() + " ha vinto!");
 
         vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
@@ -163,7 +154,10 @@ public class Partita {
 
         Utili.getLeaderboard();
         Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
-        System.exit(0); //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
+
+        if(id_torneo==0){
+            System.exit(0);
+        } //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
     }
 
     private void azioniGiocatore() {
