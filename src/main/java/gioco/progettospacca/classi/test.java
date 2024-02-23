@@ -10,13 +10,15 @@ public class test{
                 g.add(new Giocatore("bot1",true));
                 g.add(new Giocatore("bot2",true));
                 g.add(new Giocatore("bot3",true));
+                g.add(new Giocatore("bot4",true));
+                g.add(new Giocatore("bot5",true));
 
                 Torneo t = new Torneo(g,4);
 
                 t.iniziaMain();
 
                 //Partita p = t.getPartite().get(0);
-                //t.salva();
+
                 //p.inizio();
 
         }

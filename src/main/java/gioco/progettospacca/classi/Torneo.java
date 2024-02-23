@@ -6,6 +6,12 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
+    private Giocatore vincitore;
+    private int round_salvato = 0;
+    private int numero_round = 0;
+    private int partita_salvata = 0;
+    private int numero_partite = 0;
+
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Partita> partite = new ArrayList<>();
     private int id;
@@ -41,45 +47,62 @@ public class Torneo {
             inizia();
         } else throw new Error("Errore inizio torneo");
     }
-    private void creaPartite(){
+    public void elimina(){
+        Utili.elimina(id,"tornei");
+    }
 
-        int n_partite = giocatori.size()/2;
-        Giocatore[] coppia = new Giocatore[2];
-        ArrayList<Giocatore> g = mischia(giocatori);
-        for(int i = 0 ; i<n_partite;i++){
-
-            coppia[0] = g.get(0);
-            g.remove(0);
-            coppia[1] = g.get(0);
-            g.remove(0);
-            partite.add(new Partita(coppia,id));
-        }
+    private void riprendi(){
+        riprendiRound();
     }
     private void inizia(){
-        String vincitore = "";
-
-        int n_round = (int)Math.sqrt(giocatori.size()); // caso con 4 giocatori, n_round = 2
-
-        for(int i = 1;i<=n_round;i++){
-
-            creaPartite(); // crea 2 partite nella prima iterazione, 1 nella seconda
-            ArrayList<Partita> p_temp = new ArrayList<>(partite);
-
-            for(Partita p:p_temp){ // for eseguito 2 volte nella prima, 1 nella seconda
-                p.inizio();
-                giocatori.add(p.getVincitore());
-            }
-            // fine round
-            if (i == n_round) vincitore = giocatori.get(0).getNome();
-            partite.clear();
-        }
-        // fine torneo
-        System.out.println(vincitore+" ha vinto il torneo!");
-
+        salva();
+        numero_round = (int)(Math.log(giocatori.size()) / Math.log(2)); // caso con 4 giocatori, n_round = 2
+        System.out.println("Numero round: "+numero_round+", numero giocatori:"+giocatori.size());
+        riprendiRound();
     }
-    private ArrayList<Giocatore> mischia(ArrayList<Giocatore> lista){
-        Collections.shuffle(lista);
-        return lista;
+    private void riprendiRound(){
+
+        for(int i = round_salvato ;i<numero_round;i++){
+            round_salvato = i;
+            creaPartite(); // crea
+            riprendiPartita(); // esegui
+            // fine round
+        }
+        vincitore = giocatori.get(0);
+        // fine torneo
+        System.out.println(vincitore.getNome()+" ha vinto il torneo!");
+        elimina();
+    }
+    private void riprendiPartita(){
+        Partita partita_corrente;
+        numero_partite = partite.size();
+        for(int i = partita_salvata; i<numero_partite;i++){
+            partita_salvata = i;
+            System.out.println(">>> Partita: "+(partita_salvata+1)+"/"+numero_partite+", Round: "+(round_salvato+1)+"/"+numero_round);
+
+            partita_corrente = partite.get(i);
+            // controllo per riprendi partita
+            if(partita_corrente.isIniziata()){partita_corrente.riprendi();}
+            else{partita_corrente.inizio();}
+
+            giocatori.add(partita_corrente.getVincitore());
+        }
+        partita_salvata = 0;
+        partite.clear(); // elimina partite
+    }
+    private void creaPartite(){
+        numero_partite = giocatori.size()/2;
+        Giocatore[] coppia = new Giocatore[2];
+        Collections.shuffle(giocatori);
+        for(int i = 0 ; i<numero_partite;i++){
+
+            coppia[0] = giocatori.get(0);
+            giocatori.remove(0);
+            coppia[1] = giocatori.get(0);
+            giocatori.remove(0);
+            partite.add(new Partita(coppia,id));
+            System.out.println("Creata nuova partita con:"+coppia[0].getNome()+" e " + coppia[1].getNome());
+        }
     }
     private Object[] numeroGiocatoriGiusti(int n){
         Object[] r = new Object[]{false,0};

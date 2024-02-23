@@ -82,9 +82,9 @@ public class Utili {
         return s[intCasuale(0, 4)];
     }
 
-    public static void eliminaSalvataggio(int id) {
+    public static void elimina(int id,String cartella) {
 
-        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/partite/" + id + ".json");
+        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/"+cartella+"/" + id + ".json");
 
         if (fileDaEliminare.delete()) {
             System.out.println("File eliminato con successo: " + id + ".json");

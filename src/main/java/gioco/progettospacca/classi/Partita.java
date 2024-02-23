@@ -6,6 +6,7 @@ import java.util.*;
 
 
 public class Partita {
+    private boolean iniziata = false;
     private static int NUMERO_TURNI = 2;
     private static int numero_bot;
     private int id;
@@ -89,7 +90,7 @@ public class Partita {
                 azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-                System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
+                //System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
                 //scelta = scan.nextInt();
 
                 if (scelta == 1) {
@@ -107,7 +108,12 @@ public class Partita {
 
     public void inizio() {
         // scanner aperti fanno crashare momentaneamente l'interfaccia
+        iniziata = true;
         cicloPrincipale();
+    }
+
+    public boolean isIniziata() {
+        return iniziata;
     }
 
     //test
@@ -153,27 +159,32 @@ public class Partita {
 
 
         Utili.getLeaderboard();
-        Utili.eliminaSalvataggio(this.id);  //viene eliminato il salvataggio solo se viene conclusa la partita
+        elimina();  //viene eliminato il salvataggio solo se viene conclusa la partita
 
         if(id_torneo==0){
             System.exit(0);
         } //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
     }
 
+    public void elimina(){
+        Utili.elimina(id,"partite");
+    }
+
     private void azioniGiocatore() {
+        boolean out = false;
 
         toccaA = giocatori[giocatore_salvato]; // sempre in fondo
-        System.out.print(giocatore_salvato + " ");
-        System.out.println("> Giocatore: " + toccaA.getNome() + " turno: " + turno_salvato);
+        if (out) System.out.print(giocatore_salvato + " ");
+        if (out) System.out.println("> Giocatore: " + toccaA.getNome() + " turno: " + turno_salvato);
 
         toccaA.pesca(5, this.mazzo); // sempre all'inizio
         // giocatore fa roba
         Scanner scan = new Scanner(System.in);
         int azione;
-        System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
-        System.out.println("premi 1 per scartare, premi 2 per stare");
+        if (out) System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
+        if (out) System.out.println("premi 1 per scartare, premi 2 per stare");
 
-        System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
+        if (out) System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
         if (toccaA.isBot()) {
             azione = Bot.sceltaCasuale(1, 2);
         } else {
@@ -183,7 +194,7 @@ public class Partita {
         int pos = 0;
         switch (azione) {
             case 1:
-                System.out.println("quante carte vuoi scartare?");
+                if (out) System.out.println("quante carte vuoi scartare?");
                 do {
                     if (toccaA.isBot()) {
                         num = Bot.sceltaCasuale(1, 3);
@@ -192,7 +203,7 @@ public class Partita {
                     }
                     switch (num) {
                         case 1:
-                            System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
+                            if (out) System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
                             do {
                                 if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
@@ -202,11 +213,11 @@ public class Partita {
                                     pos = numeri.remove(1);
                                 }
                                 if (pos >= 1 && pos <= 5) toccaA.scarta(pos - 1);
-                                else System.out.println("devi scegliere un numero tra 0 e 4");
+                                else if (out) System.out.println("devi scegliere un numero tra 0 e 4");
                             } while (pos < 1 || pos > 5);
                             break;
                         case 2:
-                            System.out.println("scegli le 2 posizioni delle carte da scartare:");
+                            if (out) System.out.println("scegli le 2 posizioni delle carte da scartare:");
                             int i = 1;
                             do {
                                 if (!toccaA.isBot()) {
@@ -223,7 +234,7 @@ public class Partita {
                             } while ((pos < 1 || pos > 5) || i < 3);
                             break;
                         case 3:
-                            System.out.println("scegli le 3 posizioni delle carte da scartare:");
+                            if (out) System.out.println("scegli le 3 posizioni delle carte da scartare:");
                             int j = 1;
                             do {
                                 if (!(toccaA.isBot())) {
@@ -240,26 +251,27 @@ public class Partita {
                             } while ((pos < 1 || pos > 5) || j < 4);
                             break;
                         default:
-                            System.out.println("il numero non è corretto");
+                            if (out) System.out.println("il numero non è corretto");
                     }
                 } while (num < 1 || num > 3);
-                System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano()) + "\n");
+                if (out) System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano()) + "\n");
                 toccaA.pesca(num, this.mazzo);
-                System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
+                if (out) System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
 
                 toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
-                System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
+                if (out) System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
                 break;
 
             case 2:
-                System.out.println("mantiene le stesse carte");
+                if (out) System.out.println("mantiene le stesse carte");
                 toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
-                System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
+                if (out) System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
                 break;
         }
     }
 
     public int valutaCarte(Carta[] mano) {
+        boolean out = false;
         int[] carteNum = new int[5];
         Seme[] carteSeme = new Seme[5];
         for (int i = 0; i < 5; i++) {
@@ -271,57 +283,57 @@ public class Partita {
         //valutiamo se ha coppie,tris,poker,manita in mano
         switch (numUguali(carteNum)) {
             case 2:
-                System.out.println("hai fatto coppia");
+                if (out) System.out.println("hai fatto coppia");
                 punti = punti + 10;
                 break;
             case 3:
-                System.out.println("hai fatto tris");
+                if (out) System.out.println("hai fatto tris");
                 punti = punti + 20;
                 break;
             case 4:
-                System.out.println("hai fatto poker");
+                if (out) System.out.println("hai fatto poker");
                 punti = punti + 45;
                 break;
             case 5:
-                System.out.println("hai fatto manita");
+                if (out) System.out.println("hai fatto manita");
                 punti = punti + 100;
                 break;
             default:
-                System.out.println("nessun punto per coppie, tris, poker, manita");
+                if (out) System.out.println("nessun punto per coppie, tris, poker, manita");
         }
         //ora verifichiamo se ci sono scale
         switch (verificaScala(carteNum)) {
             case 3:
-                System.out.println("scala da 3 carte");
+                if (out) System.out.println("scala da 3 carte");
                 punti = punti + 15;
                 break;
             case 4:
-                System.out.println("scala da 4 carte");
+                if (out) System.out.println("scala da 4 carte");
                 punti = punti + 35;
                 break;
             case 5:
-                System.out.println("scala da 5 carte");
+                if (out) System.out.println("scala da 5 carte");
                 punti = punti + 60;
                 break;
             default:
-                System.out.println("nessuna scala");
+                if (out) System.out.println("nessuna scala");
         }
 
         switch (verificaColore(carteSeme)) {
             case 3:
-                System.out.println("3 carte dello stesso colore");
+                if (out) System.out.println("3 carte dello stesso colore");
                 punti = punti + 5;
                 break;
             case 4:
-                System.out.println("4 carte dello stesso colore");
+                if (out) System.out.println("4 carte dello stesso colore");
                 punti = punti + 30;
                 break;
             case 5:
-                System.out.println("5 carte dello stesso colore");
+                if (out) System.out.println("5 carte dello stesso colore");
                 punti = punti + 80;
                 break;
             default:
-                System.out.println("non hai fatto colore");
+                if (out) System.out.println("non hai fatto colore");
         }
         return punti;
     }
