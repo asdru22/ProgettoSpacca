@@ -9,6 +9,8 @@
   ],
   "bot": true,
   "partite_vinte": 2,
-  "partite": [],
+  "partite": [
+    53629
+  ],
   "punti": 0
 }

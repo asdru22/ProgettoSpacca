@@ -199,7 +199,7 @@ public class Partita {
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
+                                    pos = numeri.remove(1);
                                 }
                                 if (pos >= 1 && pos <= 5) toccaA.scarta(pos - 1);
                                 else System.out.println("devi scegliere un numero tra 0 e 4");
@@ -214,7 +214,7 @@ public class Partita {
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
+                                    pos = numeri.remove(1);
                                 }
                                 if (pos >= 1 && pos <= 5) {
                                     toccaA.scarta(pos - i);
@@ -231,7 +231,7 @@ public class Partita {
                                 } else {
                                     ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
+                                    pos = numeri.remove(1);
                                 }
                                 if (pos >= 1 && pos <= 5) {
                                     toccaA.scarta(pos - j);
