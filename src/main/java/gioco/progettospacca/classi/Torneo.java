@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
+    private final int MAX_ROUND = 4;
     private Giocatore vincitore;
     private int round_salvato = 0;
     private int numero_round = 0;
@@ -108,7 +109,7 @@ public class Torneo {
         Object[] r = new Object[]{false,0};
         int i = 1;
         // controlla se il numero di giocatori è una potenza di 2 e dunque è possibile fare un torneo
-        while(!(boolean)r[0] && i <=4){
+        while(!(boolean)r[0] && i <=MAX_ROUND){
             r[0] = (n == Math.pow(i,2));
             i+=1;
         }
