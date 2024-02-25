@@ -63,8 +63,7 @@ public class Torneo {
     }
     private void riprendiRound(){
 
-        for(int i = round_salvato ;i<numero_round;i++){
-            round_salvato = i;
+        for(;round_salvato<numero_round;round_salvato++){
             creaPartite(); // crea
             riprendiPartita(); // esegui
             // fine round
@@ -72,16 +71,16 @@ public class Torneo {
         vincitore = giocatori.get(0);
         // fine torneo
         System.out.println(vincitore.getNome()+" ha vinto il torneo!");
+        vincitore.setPartiteVinte(vincitore.getPartiteVinte()+numero_round);
         elimina();
     }
     private void riprendiPartita(){
         Partita partita_corrente;
         numero_partite = partite.size();
-        for(int i = partita_salvata; i<numero_partite;i++){
-            partita_salvata = i;
+        for(; partita_salvata<numero_partite; partita_salvata++){
             System.out.println(">>> Partita: "+(partita_salvata+1)+"/"+numero_partite+", Round: "+(round_salvato+1)+"/"+numero_round);
 
-            partita_corrente = partite.get(i);
+            partita_corrente = partite.get(partita_salvata);
             // controllo per riprendi partita
             if(partita_corrente.isIniziata()){partita_corrente.riprendi();}
             else{partita_corrente.inizio();}

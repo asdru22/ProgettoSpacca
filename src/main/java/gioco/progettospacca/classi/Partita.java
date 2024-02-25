@@ -82,11 +82,9 @@ public class Partita {
     public void cicloPrincipale() {
         Scanner scan = new Scanner(System.in);
         int scelta = 0;
-        for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
-            turno_salvato = i;
+        for (; turno_salvato < NUMERO_TURNI; turno_salvato++) { // per ogni turno
             seme_che_comanda = Utili.semeCasuale();
-            for (int j = 0; j < giocatori.length; j++) { // per ogni mano
-                giocatore_salvato = j;
+            for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
                 azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
@@ -120,8 +118,7 @@ public class Partita {
     public void riprendi() { //eseguito solo fino alla fine del turno corrente
         giocatore_salvato = (giocatore_salvato + 1) % giocatori.length;
         toccaA = giocatori[giocatore_salvato];
-        for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
-            giocatore_salvato = j;
+        for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
             azioniGiocatore();
         }
         mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
