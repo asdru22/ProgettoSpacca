@@ -53,7 +53,7 @@ public class Utili {
         Giocatore max_vittorie;
         String [] vett = new String[11];
         String r = "";
-        for (int i = 1; i <= 10; i++) {
+        for (int i = 0; i <= 10; i++) {
             max_vittorie = new Giocatore("temp");
             for (Giocatore g : copia_temp) {
                 if (g.getPartiteVinte() >= max_vittorie.getPartiteVinte()) {
@@ -61,10 +61,10 @@ public class Utili {
                 }
             }
             if (Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = i +"";
+                r = (i+1) +"";
             }
             else{
-                r = i + ". " + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                r = (i+1) + ". " + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
                 vett[i]= r;
             }
             temp.remove(max_vittorie);
