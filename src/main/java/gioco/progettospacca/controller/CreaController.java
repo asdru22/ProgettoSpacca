@@ -25,21 +25,21 @@ import java.util.Objects;
 
 public class CreaController {
     public void BackToHome() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_backHome.getScene().getWindow();
 
-        // Carica la nuova finestra
-        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
 
-        // Chiudi la finestra corrente
-        currentStage.close();
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
 
-        // Imposta la nuova finestra
-        stage.setTitle("Home");
-        stage.setScene(scene);
-        stage.show();
+        // Imposta il titolo della finestra
+        currentStage.setTitle("Home");
     }
+
     @FXML
     private Button btn_backHome;
     @FXML
@@ -70,7 +70,8 @@ public class CreaController {
     @FXML
     private CheckBox chk_gioc5;
 
-    TextField [] txt = {txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_gioc5};
+    TextField[] txt = {txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5};
+
     public void EventoCreaCodicePartita() {
         try {
             Giocatore temp;
@@ -177,34 +178,15 @@ public class CreaController {
         if (keyEvent.getCode() == KeyCode.ENTER && btn_crea.isFocused()) {
             EventoCreaCodicePartita();
         }
+        if ((keyEvent.getCode() == KeyCode.ENTER && btn_backHome.isFocused()) || keyEvent.getCode() == KeyCode.ESCAPE) {
+            BackToHome();
+        }
 
         if ((txt_gioc1.isFocused() || txt_gioc2.isFocused() || txt_gioc3.isFocused() || txt_gioc4.isFocused() || txt_gioc5.isFocused())) {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 if (txt_gioc5.isFocused()) {
                     btn_crea.requestFocus();
-                } else {
-                    if (txt_gioc1.isFocused()) {
-                        txt_gioc2.requestFocus();
-                    } else if (txt_gioc2.isFocused()) {
-                        txt_gioc3.requestFocus();
-                    } else if (txt_gioc3.isFocused()) {
-                        txt_gioc4.requestFocus();
-                    } else if (txt_gioc4.isFocused()) {
-                        txt_gioc5.requestFocus();
-                    }
-                }
-            }
-        }
-        if(keyEvent.getCode() == KeyCode.ESCAPE){
-            BackToHome();
-        }
-
-        if (keyEvent.getCode() == KeyCode.DOWN) {
-            if (txt_gioc5.isFocused()) {
-                System.out.println("sei già nell'ultima casella");
-            }
-            else {
-                if (txt_gioc1.isFocused()) {
+                } else if (txt_gioc1.isFocused()) {
                     txt_gioc2.requestFocus();
                 } else if (txt_gioc2.isFocused()) {
                     txt_gioc3.requestFocus();
@@ -213,54 +195,96 @@ public class CreaController {
                 } else if (txt_gioc4.isFocused()) {
                     txt_gioc5.requestFocus();
                 }
-            }
-            if (chk_gioc5.isFocused()) {
-                System.out.println("sei già nell'ultima casella");
-            }
-            else {
-                if (chk_gioc1.isFocused()) {
-                    txt_gioc2.requestFocus();
-                } else if (chk_gioc2.isFocused()) {
-                    chk_gioc3.requestFocus();
-                } else if (chk_gioc3.isFocused()) {
-                    chk_gioc4.requestFocus();
-                } else if (chk_gioc4.isFocused()) {
-                    chk_gioc5.requestFocus();
-                }
+                pulisci();
             }
         }
 
+        if (keyEvent.getCode() == KeyCode.DOWN) {
+            if (txt_gioc5.isFocused()) {
+                System.out.println("sei già nell'ultima casella");
+            } else if (txt_gioc1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc5.requestFocus();
+            }
+
+            if (chk_gioc5.isFocused()) {
+                System.out.println("sei già nell' ultima casella");
+            } else if (chk_gioc1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (chk_gioc2.isFocused()) {
+                chk_gioc3.requestFocus();
+            } else if (chk_gioc3.isFocused()) {
+                chk_gioc4.requestFocus();
+            } else if (chk_gioc4.isFocused()) {
+                chk_gioc5.requestFocus();
+            }
+
+            if (btn_backHome.isFocused()) {
+                System.out.println("sei già in basso");
+            } else if (txt_code.isFocused()) {
+                btn_backHome.requestFocus();
+            } else if (btn_crea.isFocused()) {
+                txt_code.requestFocus();
+            }
+            pulisci();
+        }
 
         if (keyEvent.getCode() == KeyCode.UP) {
             if (txt_gioc1.isFocused()) {
                 System.out.println("sei già nella prima casella");
-            } else {
-                if (txt_gioc5.isFocused()) {
-                    txt_gioc4.requestFocus();
-                } else if (txt_gioc4.isFocused()) {
-                    txt_gioc3.requestFocus();
-                } else if (txt_gioc3.isFocused()) {
-                    txt_gioc2.requestFocus();
-                } else if (txt_gioc2.isFocused()) {
-                    txt_gioc1.requestFocus();
-                }
+            } else if (txt_gioc5.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc1.requestFocus();
             }
+
             if (chk_gioc1.isFocused()) {
                 System.out.println("sei già nella prima casella");
+            } else if (chk_gioc5.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (chk_gioc4.isFocused()) {
+                chk_gioc3.requestFocus();
+            } else if (chk_gioc3.isFocused()) {
+                chk_gioc2.requestFocus();
+            } else if (chk_gioc2.isFocused()) {
+                chk_gioc1.requestFocus();
             }
-            else {
-                if (chk_gioc5.isFocused()) {
-                    txt_gioc4.requestFocus();
-                } else if (chk_gioc4.isFocused()) {
-                    chk_gioc3.requestFocus();
-                } else if (chk_gioc3.isFocused()) {
-                    chk_gioc2.requestFocus();
-                } else if (chk_gioc2.isFocused()) {
-                    chk_gioc1.requestFocus();
-                }
-            }
-        }
 
+            if (btn_crea.isFocused()) {
+                System.out.println("sei già in alto");
+            } else if (txt_code.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (btn_backHome.isFocused()) {
+                txt_code.requestFocus();
+            }
+            pulisci();
+        }
+        keyEvent.consume();
+    }
+
+    private void pulisci() {
+        chk_gioc1.setFocusTraversable(false);
+        chk_gioc2.setFocusTraversable(false);
+        chk_gioc3.setFocusTraversable(false);
+        chk_gioc4.setFocusTraversable(false);
+        chk_gioc5.setFocusTraversable(false);
+        txt_gioc1.setFocusTraversable(false);
+        txt_gioc2.setFocusTraversable(false);
+        txt_gioc3.setFocusTraversable(false);
+        txt_gioc4.setFocusTraversable(false);
+        txt_gioc5.setFocusTraversable(false);
+        txt_code.setFocusTraversable(false);
+        btn_backHome.setFocusTraversable(false);
+        btn_crea.setFocusTraversable(false);
     }
 
 
