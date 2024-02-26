@@ -10,7 +10,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
@@ -164,5 +166,13 @@ public class Utili {
 
     public static boolean nomiBot(String nome){
         return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
+    }
+    private static Locale lang;
+    public static void setLingua(Locale lingua){
+        lang = lingua;
+    }
+    public static String traduci(String valore){
+        ResourceBundle bundle = ResourceBundle.getBundle("testo",lang);
+        return bundle.getString(valore);
     }
 }
