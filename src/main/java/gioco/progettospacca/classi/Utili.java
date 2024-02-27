@@ -2,7 +2,12 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

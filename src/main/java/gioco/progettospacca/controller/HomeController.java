@@ -26,6 +26,12 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
+    MenuItem btn_cambiaLingua;
+    @FXML
+    MenuItem btn_regole;
+    @FXML
+    MenuItem btn_classifica;
+    @FXML
     Button btn_giocaPartita;
     @FXML
     Button btn_creaPartita;
@@ -33,9 +39,6 @@ public class HomeController implements Initializable {
     Button btn_creaTorneo;
     @FXML
     Button btn_giocaTorneo;
-    @FXML
-    MenuItem btn_classifica;
-    @FXML
     Menu menuBar;
 
     public void EventoGiocaPartita() throws IOException {
@@ -75,7 +78,18 @@ public class HomeController implements Initializable {
 
     }
 
+    public void showCambiaLingua() throws IOException {
 
+        // Carica la nuova finestra
+        Parent root = FXMLLoader.load(getClass().getResource("CambioLinguaView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+
+        // Imposta la nuova finestra
+        stage.setTitle(Utili.traduci("cambio_lingua"));
+        stage.setScene(scene);
+        stage.show();
+    }
     public void showLeaderboard() throws IOException {
 
         // Carica la nuova finestra
@@ -150,12 +164,20 @@ public class HomeController implements Initializable {
         showLeaderboard();
     }
 
+    public void cambiaLingua(ActionEvent ActionEvent) throws IOException {
+        showCambiaLingua();
+    }
+
+
     public void apriRegole(ActionEvent actionEvent) {
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_classifica.setText(Utili.traduci("classifica"));
+        btn_regole.setText(Utili.traduci("regole"));
+        btn_cambiaLingua.setText(Utili.traduci("cambia_lingua"));
+
         btn_creaPartita.setText(Utili.traduci("crea_partita"));
         btn_giocaPartita.setText(Utili.traduci("gioca_partita"));
         btn_creaTorneo.setText(Utili.traduci("crea_torneo"));

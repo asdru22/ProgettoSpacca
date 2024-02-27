@@ -40,7 +40,7 @@ public class CreaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle("Home");
+        currentStage.setTitle(Utili.traduci("pokermon"));
     }
     @FXML
     private Label lbl_nomi_giocatori;
@@ -297,7 +297,5 @@ public class CreaController implements Initializable {
         btn_backHome.setText(Utili.traduci("torna_alla_home"));
         lbl_nomi_giocatori.setText(Utili.traduci("nomi_giocatori"));
         lbl_codice_partita.setText(Utili.traduci("codice_partita"));
-
-
     }
 }

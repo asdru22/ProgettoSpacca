@@ -1,12 +1,15 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -14,9 +17,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class LoginController {
-
+public class LoginController implements Initializable {
+    @FXML
+    public Label lbl_username;
+    @FXML
+    public Label lbl_password;
+    @FXML
+    public Label lbl_error;
     @FXML
     private TextField txt_user;
     @FXML
@@ -25,6 +35,9 @@ public class LoginController {
     private Button btn_login;
     @FXML
     private Button btn_back;
+    @FXML
+    private Label lbl_titolo;
+
     public void BackToHome() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
@@ -38,7 +51,7 @@ public class LoginController {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle("Home");
+        currentStage.setTitle(Utili.traduci("pokermon"));
     }
 
     public void LoginAdmin() throws IOException{
@@ -58,7 +71,7 @@ public class LoginController {
                 currentScene.setRoot(root);
 
                 // Imposta il titolo della finestra
-                currentStage.setTitle("Login");
+                currentStage.setTitle(Utili.traduci("login"));
             } else
             {
                 System.out.println(user);
@@ -117,5 +130,13 @@ public class LoginController {
         txt_user.setFocusTraversable(false);
         btn_login.setFocusTraversable(false);
         btn_back.setFocusTraversable(false);
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_password.setText(Utili.traduci("password"));
+        lbl_username.setText(Utili.traduci("username"));
+        lbl_titolo.setText(Utili.traduci("login_amministratore"));
+        btn_login.setText(Utili.traduci("login"));
     }
 }

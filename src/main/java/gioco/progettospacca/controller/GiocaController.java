@@ -7,18 +7,23 @@ import gioco.progettospacca.classi.ValoriGioca;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class GiocaController {
+public class GiocaController implements Initializable {
 
     @FXML
     private TextField txt_gioc1;
@@ -30,7 +35,6 @@ public class GiocaController {
     private TextField txt_gioc4;
     @FXML
     private TextField txt_gioc5;
-
     @FXML
     private TextField txt_cod1;
     @FXML
@@ -41,12 +45,18 @@ public class GiocaController {
     private TextField txt_cod4;
     @FXML
     private TextField txt_cod5;
+    @FXML
+    private Label lbl_nomi;
+    @FXML
+    private Label lbl_codice;
+    @FXML
+    private Button btn_entra;
 
     public void BackToHome(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle("Home");
+        stage.setTitle(Utili.traduci("pokermon"));
         stage.setScene(scene);
         stage.show();
     }
@@ -96,12 +106,18 @@ public class GiocaController {
 
     }
 
-
     public void provaMomentanea() {
         //mettiamo il codice giusto
         int codice = Integer.parseInt(txt_cod1.getText());
         Partita p = Partita.carica(codice);
         p.inizio();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_nomi.setText(Utili.traduci("nomi"));
+        lbl_codice.setText(Utili.traduci("inserisci_codice"));
+        btn_entra.setText(Utili.traduci("entra"));
     }
 }
 
