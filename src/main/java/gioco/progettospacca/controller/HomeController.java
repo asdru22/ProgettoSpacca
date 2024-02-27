@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,8 +21,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class HomeController {
+public class HomeController implements Initializable {
     @FXML
     Button btn_giocaPartita;
     @FXML
@@ -34,7 +37,9 @@ public class HomeController {
     MenuItem btn_classifica;
     @FXML
     Menu menuBar;
+
     public void EventoGiocaPartita() throws IOException {
+
         // Carica la nuova radice della scena
         Parent root = FXMLLoader.load(getClass().getResource("GiocaPartita.fxml"));
 
@@ -79,7 +84,7 @@ public class HomeController {
         Stage stage = new Stage();
 
         // Imposta la nuova finestra
-        stage.setTitle("leaderboard");
+        stage.setTitle(Utili.traduci("classifica"));
         stage.setScene(scene);
         stage.show();
     }
@@ -146,5 +151,14 @@ public class HomeController {
     }
 
     public void apriRegole(ActionEvent actionEvent) {
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_classifica.setText(Utili.traduci("classifica"));
+        btn_creaPartita.setText(Utili.traduci("crea_partita"));
+        btn_giocaPartita.setText(Utili.traduci("gioca_partita"));
+        btn_creaTorneo.setText(Utili.traduci("crea_torneo"));
+        btn_giocaTorneo.setText(Utili.traduci("gioca_torneo"));
     }
 }

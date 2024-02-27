@@ -6,6 +6,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,11 +20,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.ResourceBundle;
 
-public class CreaController {
+public class CreaController implements Initializable {
     public void BackToHome() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
@@ -39,7 +42,10 @@ public class CreaController {
         // Imposta il titolo della finestra
         currentStage.setTitle("Home");
     }
-
+    @FXML
+    private Label lbl_nomi_giocatori;
+    @FXML
+    private Label lbl_codice_partita;
     @FXML
     private Button btn_backHome;
     @FXML
@@ -285,4 +291,13 @@ public class CreaController {
     }
 
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_crea.setText(Utili.traduci("crea_partita"));
+        btn_backHome.setText(Utili.traduci("torna_alla_home"));
+        lbl_nomi_giocatori.setText(Utili.traduci("nomi_giocatori"));
+        lbl_codice_partita.setText(Utili.traduci("codice_partita"));
+
+
+    }
 }

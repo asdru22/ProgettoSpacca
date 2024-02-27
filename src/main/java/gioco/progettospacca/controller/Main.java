@@ -2,6 +2,7 @@ package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Utili;
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,7 +15,6 @@ import java.util.Locale;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-
 
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         stage.setTitle(Utili.traduci("pokermon"));
