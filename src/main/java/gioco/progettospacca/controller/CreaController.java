@@ -195,7 +195,6 @@ public class CreaController {
                 } else if (txt_gioc4.isFocused()) {
                     txt_gioc5.requestFocus();
                 }
-                pulisci();
             }
         }
 
@@ -231,7 +230,6 @@ public class CreaController {
             } else if (btn_crea.isFocused()) {
                 txt_code.requestFocus();
             }
-            pulisci();
         }
 
         if (keyEvent.getCode() == KeyCode.UP) {
@@ -266,9 +264,8 @@ public class CreaController {
             } else if (btn_backHome.isFocused()) {
                 txt_code.requestFocus();
             }
-            pulisci();
         }
-        keyEvent.consume();
+        pulisci();
     }
 
     private void pulisci() {
