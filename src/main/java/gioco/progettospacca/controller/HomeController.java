@@ -39,6 +39,7 @@ public class HomeController implements Initializable {
     Button btn_creaTorneo;
     @FXML
     Button btn_giocaTorneo;
+    @FXML
     Menu menuBar;
 
     public void EventoGiocaPartita() throws IOException {
@@ -80,15 +81,17 @@ public class HomeController implements Initializable {
 
     public void showCambiaLingua() throws IOException {
 
-        // Carica la nuova finestra
         Parent root = FXMLLoader.load(getClass().getResource("CambioLinguaView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
 
-        // Imposta la nuova finestra
-        stage.setTitle(Utili.traduci("cambio_lingua"));
-        stage.setScene(scene);
-        stage.show();
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_creaPartita.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
     }
     public void showLeaderboard() throws IOException {
 

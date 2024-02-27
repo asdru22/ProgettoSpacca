@@ -27,40 +27,38 @@ public class CambiaLinguaController implements Initializable {
     Button btn_esp;
     @FXML
     Button btn_ing;
+    @FXML
+    Button btn_backToHome;
     public void keyEvent(KeyEvent keyEvent) {
     }
 
     public void linguaItaliana(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.ITALIAN);
-        BackToHome();
 
     }
 
     public void linguaSpagnola(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.KOREA);
-        BackToHome();
     }
 
     public void linguaInglese(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.ENGLISH);
-        BackToHome();
-
     }
 
     public void BackToHome() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_ing.getScene().getWindow();
+            // Ottieni la finestra corrente
+            Stage currentStage = (Stage) btn_backToHome.getScene().getWindow();
 
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
+            // Ottieni la scena corrente
+            Scene currentScene = currentStage.getScene();
 
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
+            // Imposta la nuova radice della scena
+            currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("pokermon"));
+            // Imposta il titolo della finestra
+            currentStage.setTitle(Utili.traduci("pokermon"));
     }
 
     @Override

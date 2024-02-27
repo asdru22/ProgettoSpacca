@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="313.0" prefWidth="279.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CambiaLinguaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="328.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CambiaLinguaController">
    <children>
-      <AnchorPane prefHeight="313.0" prefWidth="279.0">
+      <AnchorPane prefHeight="330.0" prefWidth="418.0">
          <children>
             <Label fx:id="lbl_lingua" alignment="CENTER" layoutX="61.0" layoutY="45.0" prefHeight="29.0" prefWidth="157.0" text="Lingua">
                <font>
@@ -19,6 +18,7 @@
             <Button fx:id="btn_ita" layoutX="114.0" layoutY="88.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#linguaItaliana" prefHeight="25.0" prefWidth="67.0" text="Italiano" />
             <Button fx:id="btn_ing" layoutX="114.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#linguaInglese" prefHeight="25.0" prefWidth="67.0" text="English" />
             <Button fx:id="btn_esp" layoutX="114.0" layoutY="179.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#linguaSpagnola" text="Espanol" />
+            <Button fx:id="btn_backToHome" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" text="&lt;" />
          </children>
       </AnchorPane>
    </children>
