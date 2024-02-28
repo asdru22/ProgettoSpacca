@@ -16,12 +16,12 @@
     <children>
         <AnchorPane prefHeight="450.0" prefWidth="550.0">
             <children>
-            <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="7.0" layoutY="22.0">
+            <ImageView fitHeight="601.0" fitWidth="907.0" layoutY="22.0">
                <image>
                   <Image url="@../backr.png" />
                </image>
             </ImageView>
-                <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="353.0" layoutY="81.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="507.0" AnchorPane.leftAnchor="353.0" AnchorPane.rightAnchor="354.0" AnchorPane.topAnchor="81.0">
+                <ImageView fitHeight="40.0" fitWidth="236.0" layoutX="331.0" layoutY="108.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="476.0" AnchorPane.leftAnchor="331.0" AnchorPane.rightAnchor="340.20000000000005" AnchorPane.topAnchor="108.0">
                     <image>
                         <Image url="@../titolo.png" />
                     </image>
@@ -43,24 +43,24 @@
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </MenuBar>
-            <ImageView fitHeight="100.0" fitWidth="102.0" layoutX="246.0" layoutY="289.0">
+            <ImageView fitHeight="100.0" fitWidth="102.0" layoutX="247.0" layoutY="309.0">
                <image>
                   <Image url="@../tournament.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="375.0" layoutY="349.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Crea torneo">
+            <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="375.0" layoutY="369.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Crea torneo">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="375.0" layoutY="288.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
+            <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btn_creaPartita" focusTraversable="false" layoutX="375.0" layoutY="232.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaPartita" prefHeight="40.0" prefWidth="148.0" text="Crea partita">
+            <Button fx:id="btn_creaPartita" focusTraversable="false" layoutX="375.0" layoutY="241.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaPartita" prefHeight="40.0" prefWidth="148.0" text="Crea partita">
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Button fx:id="btn_giocaPartita" layoutX="375.0" layoutY="173.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaPartita" prefHeight="40.0" prefWidth="148.0" text="Gioca partita">
+            <Button fx:id="btn_giocaPartita" layoutX="375.0" layoutY="192.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaPartita" prefHeight="40.0" prefWidth="148.0" text="Gioca partita">
                <font>
                   <Font size="15.0" />
                </font></Button>
