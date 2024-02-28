@@ -121,7 +121,7 @@ public class HomeController implements Initializable {
         }
         if(keyEvent.getCode() == KeyCode.UP){
             if (btn_giocaPartita.isFocused()) {
-                System.out.println("Il focus è su btn_giocaPartita. Sei già in alto.");
+                System.out.println(" Sei già in alto.");
             } else if (btn_creaPartita.isFocused()) {
                 //System.out.println("Il focus è su btn_creaPartita. Cambio focus a btn_giocaPartita.");
                 btn_giocaPartita.requestFocus();
@@ -132,7 +132,6 @@ public class HomeController implements Initializable {
                 //System.out.println("Il focus è su btn_creaTorneo. Cambio focus a btn_giocaTorneo.");
                 btn_giocaTorneo.requestFocus();
             }
-            pulisci();
         }
         if(keyEvent.getCode() == KeyCode.DOWN){
             if(btn_creaTorneo.isFocused()){
@@ -144,9 +143,8 @@ public class HomeController implements Initializable {
             } else if (btn_giocaTorneo.isFocused()) {
                 btn_creaTorneo.requestFocus();
             }
-            pulisci();
         }
-        keyEvent.consume();
+        pulisci();
     }
 
     private void pulisci(){
