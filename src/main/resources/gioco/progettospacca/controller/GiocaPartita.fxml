@@ -7,37 +7,40 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
+<Pane prefHeight="622.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
    <children>
-      <AnchorPane>
+      <AnchorPane prefHeight="622.0" prefWidth="907.0">
          <children>
-            <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" text="❮" />
-            <Label fx:id="lbl_nomi" layoutX="40.0" layoutY="14.0" text="Nomi">
+            <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Label fx:id="lbl_nomi" layoutX="252.0" layoutY="66.0" prefHeight="18.0" prefWidth="143.0" text="Nomi">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_gioc1" layoutX="140.0" layoutY="10.0" />
-            <TextField fx:id="txt_gioc2" layoutX="140.0" layoutY="40.0" />
-            <TextField fx:id="txt_gioc3" layoutX="140.0" layoutY="70.0" />
-            <TextField fx:id="txt_gioc4" layoutX="140.0" layoutY="100.0" />
-            <TextField fx:id="txt_gioc5" layoutX="140.0" layoutY="130.0" />
-            <Label fx:id="lbl_codice" layoutX="220.0" layoutY="14.0" text="Inserisci codice partita">
+            <TextField fx:id="txt_gioc1" layoutX="252.0" layoutY="117.0" />
+            <TextField fx:id="txt_gioc2" layoutX="252.0" layoutY="186.0" />
+            <TextField fx:id="txt_gioc3" layoutX="252.0" layoutY="261.0" />
+            <TextField fx:id="txt_gioc4" layoutX="259.0" layoutY="328.0" />
+            <TextField fx:id="txt_gioc5" layoutX="259.0" layoutY="393.0" />
+            <Label fx:id="lbl_codice" layoutX="476.0" layoutY="66.0" prefHeight="30.0" prefWidth="274.0" text="Inserisci codice partita">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_cod1" layoutX="340.0" layoutY="10.0" />
-            <TextField fx:id="txt_cod2" layoutX="340.0" layoutY="40.0" />
-            <TextField fx:id="txt_cod3" layoutX="340.0" layoutY="70.0" />
-            <TextField fx:id="txt_cod4" layoutX="340.0" layoutY="100.0" />
-            <TextField fx:id="txt_cod5" layoutX="340.0" layoutY="130.0" />
-            <Button fx:id="btn_entra" layoutX="440.0" layoutY="40.0" mnemonicParsing="false" onAction="#entraInPartita" text="Entra">
+            <TextField fx:id="txt_cod1" layoutX="474.0" layoutY="117.0" />
+            <TextField fx:id="txt_cod2" layoutX="474.0" layoutY="186.0" />
+            <TextField fx:id="txt_cod3" layoutX="474.0" layoutY="261.0" />
+            <TextField fx:id="txt_cod4" layoutX="476.0" layoutY="328.0" />
+            <TextField fx:id="txt_cod5" layoutX="475.0" layoutY="393.0" />
+            <Button fx:id="btn_entra" layoutX="763.0" layoutY="200.0" mnemonicParsing="false" onAction="#entraInPartita" prefHeight="51.0" prefWidth="108.0" text="Entra">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="25.0" />
                </font>
             </Button>
-            <Button fx:id="btn_prova" layoutX="440.0" layoutY="80.0" mnemonicParsing="false" onAction="#provaMomentanea" text="prova momentanea" />
+            <Button fx:id="btn_prova" layoutX="725.0" layoutY="353.0" mnemonicParsing="false" onAction="#provaMomentanea" prefHeight="51.0" prefWidth="167.0" text="prova momentanea">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>

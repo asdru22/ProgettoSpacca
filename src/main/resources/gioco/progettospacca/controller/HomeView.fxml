@@ -10,17 +10,18 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
     <children>
         <AnchorPane prefHeight="450.0" prefWidth="550.0">
             <children>
-            <ImageView fitHeight="434.0" fitWidth="550.0" layoutX="7.0" layoutY="22.0">
+            <ImageView fitHeight="600.0" fitWidth="900.0" layoutX="7.0" layoutY="22.0">
                <image>
                   <Image url="@../backr.png" />
                </image>
             </ImageView>
-                <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="175.0" layoutY="90.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="330.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.39999999999998" AnchorPane.topAnchor="90.0">
+                <ImageView fitHeight="34.0" fitWidth="200.0" layoutX="353.0" layoutY="81.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="507.0" AnchorPane.leftAnchor="353.0" AnchorPane.rightAnchor="354.0" AnchorPane.topAnchor="81.0">
                     <image>
                         <Image url="@../titolo.png" />
                     </image>
@@ -42,15 +43,27 @@
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </MenuBar>
-            <ImageView fitHeight="71.0" fitWidth="71.0" layoutX="140.0" layoutY="252.0">
+            <ImageView fitHeight="100.0" fitWidth="102.0" layoutX="246.0" layoutY="289.0">
                <image>
                   <Image url="@../tournament.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="224.0" layoutY="275.0" mnemonicParsing="false" onKeyPressed="#keyEvent" text="Crea torneo" />
-            <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="223.0" layoutY="239.0" mnemonicParsing="false" onKeyPressed="#keyEvent" text="Gioca torneo" />
-            <Button fx:id="btn_creaPartita" focusTraversable="false" layoutX="225.0" layoutY="203.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaPartita" text="Crea partita" />
-            <Button fx:id="btn_giocaPartita" layoutX="223.0" layoutY="163.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaPartita" text="Gioca partita" />
+            <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="375.0" layoutY="349.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Crea torneo">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="375.0" layoutY="288.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btn_creaPartita" focusTraversable="false" layoutX="375.0" layoutY="232.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaPartita" prefHeight="40.0" prefWidth="148.0" text="Crea partita">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
+            <Button fx:id="btn_giocaPartita" layoutX="375.0" layoutY="173.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaPartita" prefHeight="40.0" prefWidth="148.0" text="Gioca partita">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
             </children>
         </AnchorPane>
     </children>

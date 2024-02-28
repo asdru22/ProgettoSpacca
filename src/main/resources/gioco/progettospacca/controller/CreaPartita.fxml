@@ -8,57 +8,60 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="337.0" prefWidth="483.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaController">
+<Pane prefHeight="622.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaController">
    <children>
-      <AnchorPane>
+      <AnchorPane prefHeight="622.0" prefWidth="907.0">
          <children>
-            <Label fx:id="lbl_nomi_giocatori" layoutX="140.0" layoutY="52.0" text="Nomi giocatori:" textFill="#000000">
+            <Label fx:id="lbl_nomi_giocatori" layoutX="335.0" layoutY="126.0" prefHeight="18.0" prefWidth="118.0" text="Nomi giocatori:" textFill="#000000">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_gioc1" layoutX="116.0" layoutY="88.0" onKeyPressed="#keyEvent">
+            <TextField fx:id="txt_gioc1" layoutX="305.0" layoutY="182.0" onKeyPressed="#keyEvent" prefHeight="38.0" prefWidth="159.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chk_gioc2" layoutX="288.0" layoutY="128.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" />
-            <TextField fx:id="txt_gioc2" focusTraversable="false" layoutX="116.0" layoutY="124.0" onKeyPressed="#keyEvent">
+            <CheckBox fx:id="chk_gioc2" layoutX="509.0" layoutY="249.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" />
+            <TextField fx:id="txt_gioc2" focusTraversable="false" layoutX="305.0" layoutY="238.0" onKeyPressed="#keyEvent" prefHeight="38.0" prefWidth="159.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chk_gioc1" layoutX="288.0" layoutY="92.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" />
-            <TextField fx:id="txt_gioc3" focusTraversable="false" layoutX="116.0" layoutY="159.0" onKeyPressed="#keyEvent">
+            <CheckBox fx:id="chk_gioc1" layoutX="509.0" layoutY="192.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" />
+            <TextField fx:id="txt_gioc3" focusTraversable="false" layoutX="305.0" layoutY="292.0" onKeyPressed="#keyEvent" prefHeight="38.0" prefWidth="159.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chk_gioc3" layoutX="288.0" layoutY="162.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" />
-            <TextField fx:id="txt_gioc4" focusTraversable="false" layoutX="116.0" layoutY="193.0" onKeyPressed="#keyEvent">
+            <CheckBox fx:id="chk_gioc3" layoutX="509.0" layoutY="302.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" />
+            <TextField fx:id="txt_gioc4" focusTraversable="false" layoutX="305.0" layoutY="351.0" onKeyPressed="#keyEvent" prefHeight="38.0" prefWidth="159.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chk_gioc4" layoutX="288.0" layoutY="196.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" />
-            <TextField fx:id="txt_gioc5" focusTraversable="false" layoutX="116.0" layoutY="230.0" onKeyPressed="#keyEvent">
+            <CheckBox fx:id="chk_gioc4" layoutX="509.0" layoutY="362.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" />
+            <TextField fx:id="txt_gioc5" focusTraversable="false" layoutX="305.0" layoutY="410.0" onKeyPressed="#keyEvent" prefHeight="38.0" prefWidth="159.0">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <CheckBox fx:id="chk_gioc5" layoutX="288.0" layoutY="234.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox5" />
-            <Button fx:id="btn_crea" layoutX="366.0" layoutY="76.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaCodicePartita" stylesheets="@style.css" text="Crea Partita">
+            <CheckBox fx:id="chk_gioc5" layoutX="509.0" layoutY="420.0" onKeyPressed="#keyEvent" onMouseClicked="#checkBox5" prefHeight="18.0" prefWidth="17.0" />
+            <Button fx:id="btn_crea" layoutX="618.0" layoutY="182.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaCodicePartita" prefHeight="38.0" prefWidth="130.0" stylesheets="@style.css" text="Crea Partita">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="15.0" />
                </font>
             </Button>
-            <Label fx:id="lbl_codice_partita" layoutX="368.0" layoutY="139.0" text="Codice partita" textFill="#000000">
+            <Label fx:id="lbl_codice_partita" layoutX="632.0" layoutY="263.0" prefHeight="24.0" prefWidth="118.0" text="Codice partita" textFill="#000000">
                <font>
-                  <Font name="Candara" size="12.0" />
+                  <Font name="Candara" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txt_code" alignment="CENTER" editable="false" layoutX="364.0" layoutY="173.0" minHeight="17.0" onKeyPressed="#keyEvent" prefHeight="17.0" prefWidth="78.0" />
-            <Button fx:id="btn_backHome" layoutX="352.0" layoutY="217.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" text="Torna alla home" />
+            <TextField fx:id="txt_code" alignment="CENTER" editable="false" layoutX="632.0" layoutY="308.0" minHeight="17.0" onKeyPressed="#keyEvent" prefHeight="24.0" prefWidth="102.0" />
+            <Button fx:id="btn_backHome" layoutX="619.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="38.0" prefWidth="129.0" text="Torna alla home">
+               <font>
+                  <Font size="15.0" />
+               </font></Button>
          </children>
       </AnchorPane>
    </children>
