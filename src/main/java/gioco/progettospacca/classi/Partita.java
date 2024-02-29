@@ -7,7 +7,11 @@ import java.util.*;
 
 public class Partita {
     private boolean iniziata = false;
+<<<<<<< Updated upstream
     private static int NUMERO_TURNI = 20;
+=======
+    private static int NUMERO_TURNI = 2000;
+>>>>>>> Stashed changes
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
@@ -204,48 +208,51 @@ public class Partita {
                     switch (num) {
                         case 1:
                             if (out) System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
+                            ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                             do {
                                 if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(1);
+                                    pos = numeri.remove(0);
+                                    System.out.println(numeri);
                                 }
-                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos - 1);
+                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos);
                                 else if (out) System.out.println("devi scegliere un numero tra 0 e 4");
                             } while (pos < 1 || pos > 5);
                             break;
                         case 2:
                             if (out) System.out.println("scegli le 2 posizioni delle carte da scartare:");
+                             numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                             int i = 1;
                             do {
                                 if (!toccaA.isBot()) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(1);
+                                    pos = numeri.remove(0);
+                                    System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.scarta(pos - i);
+                                    toccaA.scarta(pos );
                                     i++;
                                 }
                             } while ((pos < 1 || pos > 5) || i < 3);
                             break;
                         case 3:
                             if (out) System.out.println("scegli le 3 posizioni delle carte da scartare:");
+                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                             int j = 1;
                             do {
                                 if (!(toccaA.isBot())) {
                                     pos = scan.nextInt();
                                 } else {
-                                    ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                                     Collections.shuffle(numeri);
-                                    pos = numeri.remove(1);
+                                    pos = numeri.remove(0);
+                                    System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.scarta(pos - j);
+                                    toccaA.scarta(pos );
                                     j++;
                                 }
                             } while ((pos < 1 || pos > 5) || j < 4);
