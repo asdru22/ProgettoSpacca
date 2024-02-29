@@ -36,5 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
-src/main/java/gioco/progettospacca/salvataggi/partite
-src/main/java/gioco/progettospacca/salvataggi/giocatori
+
+src/main/java/gioco/progettospacca/salvataggi
