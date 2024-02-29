@@ -7,7 +7,7 @@ import java.util.*;
 
 public class Partita {
     private boolean iniziata = false;
-    private static int NUMERO_TURNI = 2;
+    private static int NUMERO_TURNI = 20;
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
@@ -82,9 +82,12 @@ public class Partita {
     public void cicloPrincipale() {
         Scanner scan = new Scanner(System.in);
         int scelta = 0;
-        for (; turno_salvato < NUMERO_TURNI; turno_salvato++) { // per ogni turno
+        for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
+            turno_salvato = i;
             seme_che_comanda = Utili.semeCasuale();
-            for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
+            for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
+                giocatore_salvato = j;
+                System.out.println(">>> turno: "+turno_salvato+"/"+NUMERO_TURNI+ ", giocatore: "+(giocatore_salvato+1)+"/"+giocatori.length);
                 azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());

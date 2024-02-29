@@ -63,7 +63,8 @@ public class Torneo {
     }
     private void riprendiRound(){
 
-        for(;round_salvato<numero_round;round_salvato++){
+        for(int j = round_salvato;j<numero_round;j++){
+            round_salvato = j;
             creaPartite(); // crea
             riprendiPartita(); // esegui
             // fine round
@@ -77,7 +78,8 @@ public class Torneo {
     private void riprendiPartita(){
         Partita partita_corrente;
         numero_partite = partite.size();
-        for(; partita_salvata<numero_partite; partita_salvata++){
+        for(int i = partita_salvata; i<numero_partite; i++){
+            partita_salvata = i;
             System.out.println(">>> Partita: "+(partita_salvata+1)+"/"+numero_partite+", Round: "+(round_salvato+1)+"/"+numero_round);
 
             partita_corrente = partite.get(partita_salvata);

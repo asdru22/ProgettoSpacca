@@ -173,8 +173,34 @@ public class Utili {
         return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
     }
     private static Locale lang;
+    public static void getLingua(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gioco/progettospacca/salvataggi/lingua.txt"));
+            String s = reader.readLine();
+            if (Objects.equals(s, "inglese")){
+                lang = Locale.ENGLISH;
+            }
+            else if (Objects.equals(s, "tedesco")){
+                lang = Locale.GERMAN;
+            }
+            else{
+                lang = Locale.ITALIAN;
+            }
+        } catch (IOException e) {
+            System.err.println("lingua.txt non trovato");
+        }
+    }
     public static void setLingua(Locale lingua){
         lang = lingua;
+        try (FileWriter writer = new FileWriter("src/main/java/gioco/progettospacca/salvataggi/lingua.txt")) {
+
+            if(lang==Locale.ITALIAN) writer.write("italiano");
+            if(lang==Locale.ENGLISH) writer.write("inglese");
+            if(lang==Locale.GERMAN) writer.write("tedesco");
+
+        } catch (IOException e) {
+            System.err.println("impossibile accedere a lingua.txt");
+        }
     }
     public static String traduci(String valore){
         ResourceBundle bundle = ResourceBundle.getBundle("testo",lang);
