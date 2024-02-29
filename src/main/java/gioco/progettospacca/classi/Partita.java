@@ -1,13 +1,15 @@
 package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
+import gioco.progettospacca.controller.PartitaController;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 
 public class Partita {
     private boolean iniziata = false;
-    private static int NUMERO_TURNI = 2000;
+    private static int NUMERO_TURNI = 2;
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
@@ -79,8 +81,7 @@ public class Partita {
     public int getIdTorneo(){
         return id_torneo;
     }
-    public void cicloPrincipale() {
-        Scanner scan = new Scanner(System.in);
+    public void cicloPrincipale() throws FileNotFoundException {
         int scelta = 0;
         for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
             turno_salvato = i;
@@ -88,29 +89,19 @@ public class Partita {
             for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
                 giocatore_salvato = j;
                 System.out.println(">>> turno: "+turno_salvato+"/"+NUMERO_TURNI+ ", giocatore: "+(giocatore_salvato+1)+"/"+giocatori.length);
-                azioniGiocatore();
+                //azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-                //System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
-                //scelta = scan.nextInt();
 
-                if (scelta == 1) {
-                    this.salva();
-                    System.exit(0);
-                }
-                //System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
-            }
-            if (scelta == 1) {
-                break;
             }
         }
-        finePartita();
+        //finePartita();
     }
 
-    public void inizio() {
+    public void inizio() throws FileNotFoundException {
         // scanner aperti fanno crashare momentaneamente l'interfaccia
         iniziata = true;
-        cicloPrincipale();
+        //cicloPrincipale();
     }
 
     public boolean isIniziata() {
@@ -126,7 +117,7 @@ public class Partita {
         }
         mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         turno_salvato += 1;
-        cicloPrincipale();
+        //cicloPrincipale();
     }
 
 

@@ -53,6 +53,7 @@ public class HomeController implements Initializable {
 
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
+
     }
     public void EventoGiocaPartita() throws IOException {
 

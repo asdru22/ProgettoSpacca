@@ -13,7 +13,7 @@ public class Carta {
         this.image = image;
     }
 
-    public String getImage(String image) {
+    public String getImage() {
          return this.image = image;
     }
 

@@ -2,6 +2,7 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.ArrayList;
 
@@ -30,7 +31,7 @@ public class Torneo {
     public ArrayList<Partita> getPartite(){
         return partite;
     }
-    public void iniziaMain(){
+    public void iniziaMain() throws FileNotFoundException {
         int bot_esistenti=0;
         for(Giocatore g: giocatori){
             if(g.isBot()) bot_esistenti+=1;
@@ -52,16 +53,16 @@ public class Torneo {
         Utili.elimina(id,"tornei");
     }
 
-    private void riprendi(){
+    private void riprendi() throws FileNotFoundException {
         riprendiRound();
     }
-    private void inizia(){
+    private void inizia() throws FileNotFoundException {
         salva();
         numero_round = (int)(Math.log(giocatori.size()) / Math.log(2)); // caso con 4 giocatori, n_round = 2
         System.out.println("Numero round: "+numero_round+", numero giocatori:"+giocatori.size());
         riprendiRound();
     }
-    private void riprendiRound(){
+    private void riprendiRound() throws FileNotFoundException {
 
         for(int j = round_salvato;j<numero_round;j++){
             round_salvato = j;
@@ -75,7 +76,7 @@ public class Torneo {
         vincitore.setPartiteVinte(vincitore.getPartiteVinte()+numero_round);
         elimina();
     }
-    private void riprendiPartita(){
+    private void riprendiPartita() throws FileNotFoundException {
         Partita partita_corrente;
         numero_partite = partite.size();
         for(int i = partita_salvata; i<numero_partite; i++){
