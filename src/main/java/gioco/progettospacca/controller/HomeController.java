@@ -42,6 +42,18 @@ public class HomeController implements Initializable {
     @FXML
     Menu menuBar;
 
+    public void ridaje(MouseEvent mouseEvent) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_creaPartita.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+    }
     public void EventoGiocaPartita() throws IOException {
 
         // Carica la nuova radice della scena
@@ -160,6 +172,7 @@ public class HomeController implements Initializable {
     public void creaPartita(MouseEvent mouseEvent) throws IOException {
         EventoCreaPartita();
     }
+
 
     public void apriMenu(ActionEvent ActionEvent) throws IOException {
         showLeaderboard();

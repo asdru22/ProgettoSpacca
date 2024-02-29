@@ -14,10 +14,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class CambiaLinguaController implements Initializable {
     @FXML
@@ -120,6 +123,37 @@ public class CambiaLinguaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String linea = null;
+        try {
+            Scanner scanner = new Scanner(new File("src/main/java/gioco/progettospacca/salvataggi/lingua.txt"));
+            if (scanner.hasNextLine()) {
+                linea = scanner.nextLine();
+                //System.out.println(linea);
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        if(linea.equals("inglese")){
+            System.out.println(linea);
+            btn_ita.setFocusTraversable(false);
+            btn_ger.setFocusTraversable(false);
+            btn_ing.setFocusTraversable(true);
+            btn_ing.requestFocus();
+        } else if (linea.equals("italiano")) {
+            btn_ita.setFocusTraversable(true);
+            btn_ger.setFocusTraversable(false);
+            btn_ing.setFocusTraversable(false);
+            btn_ita.requestFocus();
+            System.out.println(linea);
+        } else if (linea.equals("tedesco")) {
+            btn_ita.setFocusTraversable(false);
+            btn_ger.setFocusTraversable(true);
+            btn_ing.setFocusTraversable(false);
+            btn_ger.requestFocus();
+            System.out.println(linea);
+        }
         lbl_lingua.setText(Utili.traduci("lingua"));
     }
 }
