@@ -80,14 +80,41 @@ public class Giocatore {
         }
     }
 
-    public void scarta(int pos) {
+    public void settaCarteNulle(int i){
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
-        // !!!! fix temporanea per scarto carta
-        //pos = 0;
-        // !!!!
-        manoList.remove(pos);
+        manoList.add(i,null);
         this.mano = manoList.toArray(new Carta[0]);
     }
+    public void togliCarteNulle(){
+        List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
+        Iterator<Carta> iterator = manoList.iterator();
+        while (iterator.hasNext()) {
+            Carta elemento = iterator.next();
+            if (elemento == null) {
+                // Rimuove l'elemento null usando il metodo remove dell'iteratore
+                iterator.remove();
+            }
+        }
+        this.mano = manoList.toArray(new Carta[0]);
+    }
+    public void scarta(int pos) {
+        System.out.println("Posizione prima della rimozione: " + pos);
+
+        List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
+
+        System.out.println("Mano prima della rimozione: " + manoList);
+
+        // Rimuovi l'elemento dalla posizione specificata
+        manoList.remove(pos);
+
+        System.out.println("Mano dopo la rimozione: " + manoList);
+
+        // Aggiorna l'array mano con la nuova lista
+        this.mano = manoList.toArray(new Carta[0]);
+
+        System.out.println("Nuova mano dopo l'aggiornamento: " + Arrays.toString(this.mano));
+    }
+
 
     // classe->.json
     public void salva() {

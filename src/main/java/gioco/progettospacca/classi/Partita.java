@@ -7,11 +7,7 @@ import java.util.*;
 
 public class Partita {
     private boolean iniziata = false;
-<<<<<<< Updated upstream
-    private static int NUMERO_TURNI = 20;
-=======
     private static int NUMERO_TURNI = 2000;
->>>>>>> Stashed changes
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
@@ -215,9 +211,9 @@ public class Partita {
                                 } else {
                                     Collections.shuffle(numeri);
                                     pos = numeri.remove(0);
-                                    System.out.println(numeri);
+                                    //System.out.println(numeri);
                                 }
-                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos);
+                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos-1);
                                 else if (out) System.out.println("devi scegliere un numero tra 0 e 4");
                             } while (pos < 1 || pos > 5);
                             break;
@@ -231,10 +227,11 @@ public class Partita {
                                 } else {
                                     Collections.shuffle(numeri);
                                     pos = numeri.remove(0);
-                                    System.out.println(numeri);
+                                    //System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.scarta(pos );
+                                    toccaA.settaCarteNulle(pos-1);
+                                    toccaA.scarta( pos );
                                     i++;
                                 }
                             } while ((pos < 1 || pos > 5) || i < 3);
@@ -249,11 +246,12 @@ public class Partita {
                                 } else {
                                     Collections.shuffle(numeri);
                                     pos = numeri.remove(0);
-                                    System.out.println(numeri);
+                                    //System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.scarta(pos );
-                                    j++;
+                                    toccaA.settaCarteNulle(pos-1);
+                                    toccaA.scarta(pos);
+                                        j++;
                                 }
                             } while ((pos < 1 || pos > 5) || j < 4);
                             break;
@@ -262,6 +260,7 @@ public class Partita {
                     }
                 } while (num < 1 || num > 3);
                 if (out) System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano()) + "\n");
+                toccaA.togliCarteNulle();
                 toccaA.pesca(num, this.mazzo);
                 if (out) System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
 
