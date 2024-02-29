@@ -83,7 +83,7 @@ public class Giocatore {
     public void scarta(int pos) {
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         // !!!! fix temporanea per scarto carta
-        pos = 0;
+        //pos = 0;
         // !!!!
         manoList.remove(pos);
         this.mano = manoList.toArray(new Carta[0]);

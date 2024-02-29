@@ -168,7 +168,7 @@ public class Partita {
     }
 
     private void azioniGiocatore() {
-        boolean out = false;
+        boolean out = true;
 
         toccaA = giocatori[giocatore_salvato]; // sempre in fondo
         if (out) System.out.print(giocatore_salvato + " ");

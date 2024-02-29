@@ -33,15 +33,17 @@ public class CambiaLinguaController implements Initializable {
 
     public void linguaItaliana(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.ITALIAN);
-
+        btn_ita.requestFocus();
     }
 
     public void linguaTedesca(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.GERMAN);
+        btn_ger.requestFocus();
     }
 
     public void linguaInglese(MouseEvent mouseEvent) throws IOException {
         Utili.setLingua(Locale.ENGLISH);
+        btn_ing.requestFocus();
     }
 
     public void BackToHome() throws IOException {
@@ -66,12 +68,15 @@ public class CambiaLinguaController implements Initializable {
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ita.isFocused())) {
             Utili.setLingua(Locale.ITALIAN);
+            btn_ita.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ing.isFocused())) {
             Utili.setLingua(Locale.ENGLISH);
+            btn_ing.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ger.isFocused())) {
             Utili.setLingua(Locale.GERMAN);
+            btn_ger.requestFocus();
         }
 
         if (keyEvent.getCode() == KeyCode.UP) {
