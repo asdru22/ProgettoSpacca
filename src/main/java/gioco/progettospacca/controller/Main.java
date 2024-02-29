@@ -27,7 +27,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Utili.setLingua(Locale.ENGLISH); // lingua di default
+        Utili.setLingua(Locale.ITALIAN); // lingua di default
         launch(args);
     }
 }
