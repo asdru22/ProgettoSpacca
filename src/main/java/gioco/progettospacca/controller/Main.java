@@ -24,6 +24,8 @@ public class Main extends Application {
         //scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
+
+        Utili.suono("avvio.wav");
     }
 
     public static void main(String[] args) {

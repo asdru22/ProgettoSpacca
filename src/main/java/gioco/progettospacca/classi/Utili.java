@@ -2,12 +2,11 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import javax.sound.sampled.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -202,8 +201,15 @@ public class Utili {
             System.err.println("impossibile accedere a lingua.txt");
         }
     }
-    public static String traduci(String valore){
-        ResourceBundle bundle = ResourceBundle.getBundle("testo",lang);
+    public static String traduci(String valore) {
+        ResourceBundle bundle = ResourceBundle.getBundle("testo", lang);
         return bundle.getString(valore);
     }
+    private static boolean suono = true;
+    public static void suono(String nome) {
+        Media s = new Media(new File("src/main/resources/gioco/progettospacca/suoni/"+nome).toURI().toString());
+        MediaPlayer player = new MediaPlayer(s);
+        if(suono) player.play();
+    }
+    public static void toggleAudio(){suono = !suono;}
 }
