@@ -25,7 +25,8 @@ public class Main extends Application {
         stage.setScene(scene);
         stage.show();
 
-        Utili.suono("avvio.wav");
+        Utili.suono("lobby.wav");
+
     }
 
     public static void main(String[] args) {
