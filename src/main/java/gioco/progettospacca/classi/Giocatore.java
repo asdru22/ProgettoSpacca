@@ -142,7 +142,18 @@ public class Giocatore {
 
     @Override
     public String toString() {
-        return "Nome: " + nome + ", mano: " + Arrays.toString(mano);
+         return nome + " ";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Giocatore giocatore = (Giocatore) obj;
+        return Objects.equals(nome, giocatore.nome);
     }
 
     public void resetPunti() {
@@ -155,5 +166,9 @@ public class Giocatore {
 
     public void elimina() {
         Utili.eliminaGiocatore(this.getNome());
+    }
+
+    public void setMano(Carta [] mano) {
+        this.mano = mano;
     }
 }

@@ -1,7 +1,6 @@
 package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
-import gioco.progettospacca.controller.PartitaController;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -20,6 +19,7 @@ public class Partita {
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Seme seme_che_comanda = null;
+    private int cont = 0; //cpntatore turni totali
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -70,6 +70,22 @@ public class Partita {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
     }
+    public int trovaPosizione(Giocatore[] giocatori, Giocatore giocatoreDaCercare) {
+        int i = 0;
+        for (Giocatore giocatore : giocatori) {
+            if (giocatore.equals(giocatoreDaCercare)) {
+                // Il giocatore è stato trovato, restituisci la posizione
+                return i;
+            }
+            i++;
+        }
+
+        // Se il giocatore non è stato trovato, restituisci -1
+        return -1;
+    }
+
+
+
 
     @Override
     public String toString() {
@@ -95,7 +111,18 @@ public class Partita {
 
             }
         }
-        //finePartita();
+        finePartita();
+    }
+
+    public void newMazzo(){
+        this.mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+    }
+
+    public void setTurnoSalvato(int val){
+        this.turno_salvato = val;
+    }
+    public void setGiocatoreSalvato(int val){
+        this.giocatore_salvato = val;
     }
 
     public void inizio() throws FileNotFoundException {
@@ -121,7 +148,7 @@ public class Partita {
     }
 
 
-    private void finePartita() {
+    public void finePartita() {
         int max = 0;
         vincitore = giocatori[0];
         int temp;
@@ -385,6 +412,25 @@ public class Partita {
         return contMax;
     }
 
+    public int getTurnoSalvato() {
+        return this.turno_salvato;
+    }
+
+    public int getGiocatoreSalvato() {
+        return this.giocatore_salvato;
+    }
+
+    public int getCont() {
+        return this.cont;
+    }
+
+    public void setCont(int i) {
+        this.cont = i;
+    }
+
+    public int getNumeroTurni() {
+        return NUMERO_TURNI;
+    }
 }
 
 
