@@ -171,4 +171,8 @@ public class Giocatore {
     public void setMano(Carta [] mano) {
         this.mano = mano;
     }
+
+    public void setPunti(int punti) {
+        this.punti = this.punti+punti;
+    }
 }

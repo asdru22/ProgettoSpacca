@@ -37,7 +37,7 @@ public class PartitaController implements Initializable {
     @FXML
     private AnchorPane carta5;
     @FXML
-    private TextField txt_cod1;
+    private Label lbl_classifica;
     @FXML
     private Button btn_scarta;
     @FXML
@@ -91,7 +91,7 @@ public class PartitaController implements Initializable {
         lbl_punteggio.setText(String.valueOf(punti));
         pulisciSchermata();
         p.setCont(cont+1);
-
+        toccaA.setPunti(punti);
         newScene();
 
     }
@@ -131,10 +131,26 @@ public class PartitaController implements Initializable {
         return new ImageView(image);
     }
 
+    public void BackToHome() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(Utili.traduci("pokermon"));
+    }
+
     private void newScene() throws IOException {
         if(cont == p.getNumeroTurni()*p.getGiocatori().length-1) {
             p.finePartita();
-            System.exit(0);
+            BackToHome();
         }
         else{
             p.salva();
@@ -152,17 +168,28 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int codice = 59480;
+        int codice = 81356;
         p = Partita.carica(codice);
+        mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
         turno_salvato = p.getTurnoSalvato();
         giocatore_salvato = p.getGiocatoreSalvato();
 
-        toccaA = giocatori[giocatore_salvato];
-
         p.setTurnoSalvato(p.getCont()/p.getGiocatori().length);
         turno_salvato = p.getTurnoSalvato();
+
+        if(giocatore_salvato < p.getGiocatori().length){
+            p.setGiocatoreSalvato(giocatore_salvato+1);
+            toccaA = giocatori[p.getGiocatoreSalvato()-1];
+
+        }
+        else{
+            p.setGiocatoreSalvato(1);
+            toccaA = giocatori[0];
+        }
+
+
 
         System.out.println(p.getGiocatoreSalvato()+"       "+p.getTurnoSalvato());
         System.out.println(">>> turno: "+p.getTurnoSalvato()+"/"+p.getNumeroTurni()+ ", giocatore: "+(p.getGiocatoreSalvato())+"/"+p.getGiocatori().length);
@@ -174,5 +201,13 @@ public class PartitaController implements Initializable {
         }
         p.newMazzo();
 
+    }
+
+    private void mostraClassifica() {
+        String s = "";
+        for(int i = 0; i<p.getGiocatori().length;i++){
+            s = s+" giocatore "+p.getGiocatori()[i].getNome()+" punti"+p.getGiocatori()[i].getPunti()+"\n";
+        }
+        lbl_classifica.setText(s);
     }
 }
