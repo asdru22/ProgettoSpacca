@@ -44,6 +44,14 @@ public class PartitaController implements Initializable {
     private Button btn_stai;
     @FXML
     private Label lbl_punteggio;
+    @FXML
+    private AnchorPane anchPane_manoSuccesiva;
+    @FXML
+    private Label lbl_toccaA;
+    @FXML
+    private Label lbl_turno;
+    @FXML
+    private AnchorPane anchPane_toccaA;
 
     private Partita p;
     private static int NUMERO_TURNI = 2;
@@ -58,7 +66,6 @@ public class PartitaController implements Initializable {
 
     public void giocaTurno() throws FileNotFoundException {
         mazzo = p.getMazzo();
-        p.setToccaA(toccaA);
         System.out.println("tocca a "+p.getToccaA());
 
         toccaA.pesca(5, mazzo);
@@ -66,7 +73,6 @@ public class PartitaController implements Initializable {
         toccaA.setMano(mano);
 
         mostraCarte(mano);
-
         comparsaSchermata();
 
         btn_scarta.setOnMouseClicked(event -> scarta(event));
@@ -82,6 +88,7 @@ public class PartitaController implements Initializable {
     public void scarta(MouseEvent event) {
         System.out.println("hai deciso di scartare");
         pulisciSchermata();
+        fineMano();
     }
 
     public void stai(MouseEvent event) throws IOException {
@@ -92,8 +99,12 @@ public class PartitaController implements Initializable {
         pulisciSchermata();
         p.setCont(cont+1);
         toccaA.setPunti(punti);
-        newScene();
+        fineMano();
 
+    }
+
+    public void fineMano(){
+        anchPane_manoSuccesiva.setVisible(true);
     }
 
     public void comparsaSchermata() {
@@ -131,6 +142,9 @@ public class PartitaController implements Initializable {
         return new ImageView(image);
     }
 
+    public void prossimaMano(MouseEvent mouseEvent) throws IOException {
+        newScene();
+    }
     public void BackToHome() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
@@ -145,6 +159,20 @@ public class PartitaController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(Utili.traduci("pokermon"));
+    }
+    public void schermataToccaA(){
+        anchPane_toccaA.setVisible(true);
+        lbl_toccaA.setText("turno: "+p.getToccaA());
+        lbl_turno.setText("turno: "+(p.getTurnoSalvato()));
+    }
+    public void procedi(MouseEvent mouseEvent) throws FileNotFoundException {
+        anchPane_toccaA.setVisible(false);
+
+        try {
+            giocaTurno();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void newScene() throws IOException {
@@ -168,13 +196,14 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int codice = 81356;
+        int codice = 57135;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
         turno_salvato = p.getTurnoSalvato();
         giocatore_salvato = p.getGiocatoreSalvato();
+
 
         p.setTurnoSalvato(p.getCont()/p.getGiocatori().length);
         turno_salvato = p.getTurnoSalvato();
@@ -189,16 +218,15 @@ public class PartitaController implements Initializable {
             toccaA = giocatori[0];
         }
 
+        p.setToccaA(toccaA);
+
+        schermataToccaA();
 
 
         System.out.println(p.getGiocatoreSalvato()+"       "+p.getTurnoSalvato());
         System.out.println(">>> turno: "+p.getTurnoSalvato()+"/"+p.getNumeroTurni()+ ", giocatore: "+(p.getGiocatoreSalvato())+"/"+p.getGiocatori().length);
 
-        try {
-            giocaTurno();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+
         p.newMazzo();
 
     }
@@ -210,4 +238,5 @@ public class PartitaController implements Initializable {
         }
         lbl_classifica.setText(s);
     }
+
 }

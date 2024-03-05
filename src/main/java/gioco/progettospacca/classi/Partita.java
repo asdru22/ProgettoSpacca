@@ -8,7 +8,7 @@ import java.util.*;
 
 public class Partita {
     private boolean iniziata = false;
-    private static int NUMERO_TURNI = 2;
+    private static int NUMERO_TURNI = 3;
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
