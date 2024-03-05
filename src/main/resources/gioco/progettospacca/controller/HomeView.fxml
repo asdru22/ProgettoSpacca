@@ -50,19 +50,19 @@
             </ImageView>
             <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="375.0" layoutY="369.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Crea torneo">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Candara" size="15.0" />
                </font></Button>
             <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="375.0" layoutY="319.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Candara" size="15.0" />
                </font></Button>
             <Button fx:id="btn_creaPartita" focusTraversable="false" layoutX="375.0" layoutY="241.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaPartita" prefHeight="40.0" prefWidth="148.0" text="Crea partita">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Candara" size="15.0" />
                </font></Button>
             <Button fx:id="btn_giocaPartita" layoutX="375.0" layoutY="192.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaPartita" prefHeight="40.0" prefWidth="148.0" text="Gioca partita">
                <font>
-                  <Font size="15.0" />
+                  <Font name="Candara" size="15.0" />
                </font></Button>
             <Button fx:id="btn_daje" layoutX="92.0" layoutY="192.0" mnemonicParsing="false" onMouseClicked="#ridaje" text="daje" />
             </children>
