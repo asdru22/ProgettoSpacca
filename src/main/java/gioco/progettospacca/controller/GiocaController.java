@@ -99,7 +99,7 @@ public class GiocaController implements Initializable {
         }
 
         if (inizia_partita && n >= 2) {
-            p.inizio();
+            //p.inizio();
         } else {
             System.out.println("Valori invalidi per iniziare partita");
         }
@@ -110,7 +110,7 @@ public class GiocaController implements Initializable {
         //mettiamo il codice giusto
         int codice = Integer.parseInt(txt_cod1.getText());
         Partita p = Partita.carica(codice);
-        p.inizio();
+        //p.inizio();
     }
 
     @Override

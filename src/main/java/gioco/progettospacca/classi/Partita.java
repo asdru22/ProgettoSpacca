@@ -2,12 +2,13 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 
 public class Partita {
     private boolean iniziata = false;
-    private static int NUMERO_TURNI = 2000;
+    private static int NUMERO_TURNI = 2;
     private static int numero_bot;
     private int id;
     private int turno_salvato = 0;
@@ -18,6 +19,7 @@ public class Partita {
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Seme seme_che_comanda = null;
+    private int cont = 0; //cpntatore turni totali
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -68,6 +70,22 @@ public class Partita {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
     }
+    public int trovaPosizione(Giocatore[] giocatori, Giocatore giocatoreDaCercare) {
+        int i = 0;
+        for (Giocatore giocatore : giocatori) {
+            if (giocatore.equals(giocatoreDaCercare)) {
+                // Il giocatore è stato trovato, restituisci la posizione
+                return i;
+            }
+            i++;
+        }
+
+        // Se il giocatore non è stato trovato, restituisci -1
+        return -1;
+    }
+
+
+
 
     @Override
     public String toString() {
@@ -79,8 +97,7 @@ public class Partita {
     public int getIdTorneo(){
         return id_torneo;
     }
-    public void cicloPrincipale() {
-        Scanner scan = new Scanner(System.in);
+    public void cicloPrincipale() throws FileNotFoundException {
         int scelta = 0;
         for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
             turno_salvato = i;
@@ -88,29 +105,30 @@ public class Partita {
             for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
                 giocatore_salvato = j;
                 System.out.println(">>> turno: "+turno_salvato+"/"+NUMERO_TURNI+ ", giocatore: "+(giocatore_salvato+1)+"/"+giocatori.length);
-                azioniGiocatore();
+                //azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-                //System.out.println("vuoi interrompere la partita?, clicca 1 per uscire");
-                //scelta = scan.nextInt();
 
-                if (scelta == 1) {
-                    this.salva();
-                    System.exit(0);
-                }
-                //System.out.println("numero rimasto di carte nel mazzo "+ mazzo.getMazzoArrayList().size()); //controllo se le carte nel mazzo vengono rimosse e poi rimescolate bene
-            }
-            if (scelta == 1) {
-                break;
             }
         }
         finePartita();
     }
 
-    public void inizio() {
+    public void newMazzo(){
+        this.mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
+    }
+
+    public void setTurnoSalvato(int val){
+        this.turno_salvato = val;
+    }
+    public void setGiocatoreSalvato(int val){
+        this.giocatore_salvato = val;
+    }
+
+    public void inizio() throws FileNotFoundException {
         // scanner aperti fanno crashare momentaneamente l'interfaccia
         iniziata = true;
-        cicloPrincipale();
+        //cicloPrincipale();
     }
 
     public boolean isIniziata() {
@@ -126,11 +144,11 @@ public class Partita {
         }
         mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
         turno_salvato += 1;
-        cicloPrincipale();
+        //cicloPrincipale();
     }
 
 
-    private void finePartita() {
+    public void finePartita() {
         int max = 0;
         vincitore = giocatori[0];
         int temp;
@@ -160,10 +178,11 @@ public class Partita {
 
         Utili.getLeaderboard();
         elimina();  //viene eliminato il salvataggio solo se viene conclusa la partita
-
+        /*
         if(id_torneo==0){
             System.exit(0);
         } //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
+        */
     }
 
     public void elimina(){
@@ -394,6 +413,25 @@ public class Partita {
         return contMax;
     }
 
+    public int getTurnoSalvato() {
+        return this.turno_salvato;
+    }
+
+    public int getGiocatoreSalvato() {
+        return this.giocatore_salvato;
+    }
+
+    public int getCont() {
+        return this.cont;
+    }
+
+    public void setCont(int i) {
+        this.cont = i;
+    }
+
+    public int getNumeroTurni() {
+        return NUMERO_TURNI;
+    }
 }
 
 

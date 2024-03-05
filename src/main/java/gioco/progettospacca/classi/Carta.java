@@ -5,18 +5,18 @@ public class Carta {
     private Giocatore scartataDa;
     private int numero;
 
-    public Carta(Seme seme,int numero){
+    private String image;
+    public Carta(Seme seme,int numero, String image){
         this.seme = seme;
         this.numero = numero;
         this.scartataDa = null;
+        this.image = image;
     }
-    /*
-    public Carta(Seme seme,int numero, Giocatore giocatore){
-        this.seme = seme;
-        this.numero = numero;
-        this.scartataDa = giocatore;
+
+    public String getImage() {
+         return this.image = image;
     }
-    */
+
     public Seme getSeme(){
         return this.seme;
     }

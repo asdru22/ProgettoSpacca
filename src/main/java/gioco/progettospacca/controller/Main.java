@@ -24,6 +24,9 @@ public class Main extends Application {
         //scene.getStylesheets().add(css);
         stage.setScene(scene);
         stage.show();
+
+        Utili.suono("lobby.wav");
+
     }
 
     public static void main(String[] args) {

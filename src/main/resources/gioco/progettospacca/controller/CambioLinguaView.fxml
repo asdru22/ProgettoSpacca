@@ -18,7 +18,7 @@
                   <Font name="Candara" size="50.0" />
                </font>
             </Label>
-            <Button fx:id="btn_ita" layoutX="323.0" layoutY="139.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#linguaItaliana" prefHeight="121.0" prefWidth="212.0" text="Italiano">
+            <Button fx:id="btn_ita" focusTraversable="false" layoutX="323.0" layoutY="139.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#linguaItaliana" prefHeight="121.0" prefWidth="212.0" text="Italiano">
                <font>
                   <Font size="30.0" />
                </font></Button>

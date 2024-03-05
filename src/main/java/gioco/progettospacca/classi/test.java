@@ -1,25 +1,31 @@
 package gioco.progettospacca.classi;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+
 
 import java.nio.file.FileSystems;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 
 public class test{
         public static void main(String[] args) {
 
-                ArrayList<Giocatore> g = new ArrayList<>();
-                g.add(new Giocatore("bot1",true));
-                g.add(new Giocatore("bot2",true));
-                g.add(new Giocatore("bot3",true));
-                g.add(new Giocatore("bot4",true));
-                g.add(new Giocatore("bot5",true));
+                String nomeFile = "src/main/resources/gioco/progettospacca/1Fuoco.png";
 
-                Torneo t = new Torneo(g,4);
+                try {
+                        File file = new File(nomeFile);
 
-                t.iniziaMain();
+                        // Verifica se il file esiste prima di aprirlo
+                        if (file.exists()) {
+                                Desktop.getDesktop().open(file);
+                        } else {
+                                System.out.println("Il file non esiste.");
+                        }
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
 
-                //Partita p = t.getPartite().get(0);
-
-                //p.inizio();
 
         }
 }
