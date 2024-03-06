@@ -23,6 +23,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
+import java.util.Iterator;
+
 
 public class PartitaController implements Initializable {
 
@@ -133,23 +135,33 @@ public class PartitaController implements Initializable {
         for(int i = 0; i<toccaA.getMano().length; i++){
             System.out.println(toccaA.getMano()[i]+" ");
         }
-        */
-        manoList = new ArrayList<>(Arrays.asList(this.mano));
-        for(Carta carta : manoList){
-            if(carta == null){
 
+         */
+
+        manoList = new ArrayList<>(Arrays.asList(toccaA.getMano()));
+
+        int j = 0;
+        for (int i = 0; i < manoList.size(); i++) {
+            Carta carta = manoList.get(i);
+            if (carta == null) {
+                manoList.remove(i);  // Rimuovi l'elemento null
+                manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));  // Inserisci la nuova carta dal mazzo
             }
+            j++;
         }
-        toccaA.pesca(numCarteDaPescare, this.mazzo);
 
+
+        toccaA.setMano(manoList.toArray(toccaA.getMano()));
         mostraCarte(toccaA.getMano());
+
         /* //per debug
         System.out.println("nuova mano");
         for(int i = 0; i<toccaA.getMano().length; i++){
             System.out.println(toccaA.getMano()[i]+" ");
         }
+
          */
-        /*
+
         lbl_scegliCarteDaScartare.setVisible(false);
         btn_conferma.setVisible(false);
 
@@ -159,8 +171,6 @@ public class PartitaController implements Initializable {
         p.setCont(cont+1);
         toccaA.setPunti(punti);
         fineMano();
-
-         */
     }
 
     public void comparsaSchermata() {
