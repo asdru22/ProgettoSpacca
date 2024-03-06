@@ -98,21 +98,21 @@ public class Giocatore {
         this.mano = manoList.toArray(new Carta[0]);
     }
     public void scarta(int pos) {
-        System.out.println("Posizione prima della rimozione: " + pos);
+        //System.out.println("Posizione prima della rimozione: " + pos);
 
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
 
-        System.out.println("Mano prima della rimozione: " + manoList);
+        //System.out.println("Mano prima della rimozione: " + manoList);
 
         // Rimuovi l'elemento dalla posizione specificata
         manoList.remove(pos);
 
-        System.out.println("Mano dopo la rimozione: " + manoList);
+        //System.out.println("Mano dopo la rimozione: " + manoList);
 
         // Aggiorna l'array mano con la nuova lista
         this.mano = manoList.toArray(new Carta[0]);
 
-        System.out.println("Nuova mano dopo l'aggiornamento: " + Arrays.toString(this.mano));
+        //System.out.println("Nuova mano dopo l'aggiornamento: " + Arrays.toString(this.mano));
     }
 
 

@@ -6,13 +6,21 @@ public class Carta {
     private int numero;
 
     private String image;
+
+    private boolean cliccata = false;
     public Carta(Seme seme,int numero, String image){
         this.seme = seme;
-        this.numero = numero;
+        this.numero = numero+1;
         this.scartataDa = null;
         this.image = image;
     }
 
+    public boolean getCliccata(){
+        return this.cliccata;
+    }
+    public void setCliccata(boolean cliccata){
+        this.cliccata = cliccata;
+    }
     public String getImage() {
          return this.image = image;
     }
