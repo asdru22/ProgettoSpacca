@@ -20,10 +20,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
-import java.util.Iterator;
+import java.util.*;
 
 
 public class PartitaController implements Initializable {
@@ -65,6 +62,8 @@ public class PartitaController implements Initializable {
     private ImageView imageView3;
     private ImageView imageView4;
     private ImageView imageView5;
+
+    private Map<String, AnchorPane> cartaMap = new HashMap<>();
 
     private Partita p;
     private static int NUMERO_TURNI = 2;
@@ -140,14 +139,14 @@ public class PartitaController implements Initializable {
 
         manoList = new ArrayList<>(Arrays.asList(toccaA.getMano()));
 
-        int j = 0;
         for (int i = 0; i < manoList.size(); i++) {
             Carta carta = manoList.get(i);
             if (carta == null) {
                 manoList.remove(i);  // Rimuovi l'elemento null
                 manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));  // Inserisci la nuova carta dal mazzo
+                String pane = "carta"+i;
+                spostaCarta(cartaMap.get(pane),manoList.get(i));
             }
-            j++;
         }
 
 
@@ -284,6 +283,12 @@ public class PartitaController implements Initializable {
         carta3.getChildren().add(imageView3);
         carta4.getChildren().add(imageView4);
         carta5.getChildren().add(imageView5);
+
+        cartaMap.put("carta0",carta1);
+        cartaMap.put("carta1",carta2);
+        cartaMap.put("carta2",carta3);
+        cartaMap.put("carta3",carta4);
+        cartaMap.put("carta4",carta5);
 
 
     }
