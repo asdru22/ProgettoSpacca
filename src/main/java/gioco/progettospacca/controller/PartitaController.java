@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.*;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -73,7 +71,8 @@ public class PartitaController implements Initializable {
     private ImageView imageViewSeme;
 
 
-    private Map<String, AnchorPane> cartaMap = new HashMap<>();
+    private Map<String, AnchorPane> cartaPaneMap = new HashMap<>();
+    private Map<String, ImageView> cartaMap = new HashMap<>();
 
     private Partita p;
     private static int NUMERO_TURNI = 2;
@@ -95,6 +94,7 @@ public class PartitaController implements Initializable {
         toccaA.setMano(mano);
 
         mostraCarte(mano);
+        pescataAnimazione();
         comparsaSchermata();
 
 
@@ -127,9 +127,10 @@ public class PartitaController implements Initializable {
         fineMano();
 
     }
-
+    //tasto conferma carte da scartare
     public void cambiaCarteSelezionate(MouseEvent mouseEvent) throws FileNotFoundException {
         ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
+        scartataAnimazione();
         int numCarteDaPescare= 0;
         int pos = 1;
         for(Carta carta : manoList){
@@ -153,15 +154,15 @@ public class PartitaController implements Initializable {
             Carta carta = manoList.get(i);
             if (carta == null) {
                 manoList.remove(i);  // Rimuovi l'elemento null
-                manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));  // Inserisci la nuova carta dal mazzo
+                manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));// Inserisci la nuova carta dal mazzo
+                manoList.get(i).setCliccata(true);
                 String pane = "carta"+i;
-                spostaCarta(cartaMap.get(pane),manoList.get(i));
+                //spostaCarta(cartaMap.get(pane),manoList.get(i));
             }
         }
 
 
         toccaA.setMano(manoList.toArray(toccaA.getMano()));
-        mostraCarte(toccaA.getMano());
 
         /* //per debug
         System.out.println("nuova mano");
@@ -300,36 +301,117 @@ public class PartitaController implements Initializable {
         anch_mazzo.getChildren().add(imageViewMazzo);
         anch_seme.getChildren().add(imageViewSeme);
 
-        cartaMap.put("carta0",carta1);
-        cartaMap.put("carta1",carta2);
-        cartaMap.put("carta2",carta3);
-        cartaMap.put("carta3",carta4);
-        cartaMap.put("carta4",carta5);
-        /*
+        cartaPaneMap.put("carta0",carta1);
+        cartaPaneMap.put("carta1",carta2);
+        cartaPaneMap.put("carta2",carta3);
+        cartaPaneMap.put("carta3",carta4);
+        cartaPaneMap.put("carta4",carta5);
+
+        cartaMap.put("carta0",imageView1);
+        cartaMap.put("carta1",imageView2);
+        cartaMap.put("carta2",imageView3);
+        cartaMap.put("carta3",imageView4);
+        cartaMap.put("carta4",imageView5);
+
+
+    }
+    //animazione quando le nuove carte pescate arrivano in mano
+    public void nuoveCartePescateAnimazione() throws FileNotFoundException {
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
-        System.out.println(startFromX);
         double startFromY = anch_mazzo.getLayoutY();
-        System.out.println(startFromY);
 
-        // Imposta la posizione finale della carta
-        double endToX = carta1.getLayoutX();
-        System.out.println(endToX);
-        double endToY = carta1.getLayoutY();
-        System.out.println(endToY);
+        for (int i = 0; i < 5; i++) {
+            if (toccaA.getMano()[i].getCliccata()==true) {
+                String cartaName = "carta" + i;
 
-        // Crea la transizione
-        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), imageView1);
-        transition.setFromX(startFromX);
-        transition.setFromY(startFromY);
-        transition.setToX(endToX);
-        transition.setToY(endToY);
+                AnchorPane currentCarta = cartaPaneMap.get(cartaName); // recupera l'ImageView corrente in base al nome dinamico, potrebbe essere necessario un array o una mappa */;
 
-        // Esegui l'animazione
-        transition.play();
-        */
+                ImageView imageView = createImageView(toccaA.getMano()[i].getImage());
+
+                currentCarta.getChildren().add(imageView);
 
 
+                double endToX = (130*(i+1));
+                double endToY = 365;
+
+
+                currentCarta.setLayoutX(startFromX);
+                currentCarta.setLayoutY(startFromY);
+
+                // Crea la transizione
+                TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), currentCarta);
+                transition.setToX(-(startFromX - endToX));
+                transition.setToY(-(startFromY - endToY));
+
+                // Esegui l'animazione
+                transition.play();
+                toccaA.getMano()[i].setCliccata(false);
+            }
+        }
+    }
+    //animazione quando le carte scartate tornano nel mazzo
+    public void scartataAnimazione(){
+        // Imposta la posizione iniziale della cartaMazzo
+        double startFromX = anch_mazzo.getLayoutX();
+        double startFromY = anch_mazzo.getLayoutY();
+
+        for (int i = 0; i < 5; i++) {
+            if (toccaA.getMano()[i].getCliccata()==true) {
+                String cartaName = "carta" + i;
+                AnchorPane currentCarta = cartaPaneMap.get(cartaName)/* recupera l'ImageView corrente in base al nome dinamico, potrebbe essere necessario un array o una mappa */;
+
+                double endToX = currentCarta.getLayoutX();
+                double endToY = currentCarta.getLayoutY();
+
+                currentCarta.setLayoutX(startFromX);
+                currentCarta.setLayoutY(startFromY);
+
+                // Crea la transizione
+                TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), currentCarta);
+                transition.setToX(-(startFromX - endToX));
+                transition.setToY(-(startFromY - endToY));
+
+                // Esegui l'animazione
+                transition.play();
+                transition.setOnFinished(event -> {
+                    //creo una pausa tra l'animazione delle carte scartate e quelle pescate
+                    PauseTransition pause = new PauseTransition(Duration.seconds(1));
+                    pause.play();
+                    pause.setOnFinished(event2 ->{
+                        try {
+                            nuoveCartePescateAnimazione();
+                        } catch (FileNotFoundException e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
+                });
+            }
+        }
+    }
+    public void pescataAnimazione(){
+        // Imposta la posizione iniziale della cartaMazzo
+        double startFromX = anch_mazzo.getLayoutX();
+        double startFromY = anch_mazzo.getLayoutY();
+
+        for (int i = 0; i < 5; i++) {
+            String cartaName = "carta" + i;
+            AnchorPane currentCarta = cartaPaneMap.get(cartaName)/* recupera l'ImageView corrente in base al nome dinamico, potrebbe essere necessario un array o una mappa */;
+
+            double endToX = currentCarta.getLayoutX();
+            double endToY = currentCarta.getLayoutY();
+
+            currentCarta.setLayoutX(startFromX);
+            currentCarta.setLayoutY(startFromY);
+
+            // Crea la transizione
+            TranslateTransition transition = new TranslateTransition(Duration.seconds(0.5), currentCarta);
+            transition.setToX(-(startFromX - endToX));
+            transition.setToY(-(startFromY - endToY));
+
+            // Esegui l'animazione
+            transition.play();
+        }
     }
 
     private ImageView createImageView(String percorsoImmagine) throws FileNotFoundException {
@@ -397,7 +479,7 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int codice = 39913;
+        int codice = 43619;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
