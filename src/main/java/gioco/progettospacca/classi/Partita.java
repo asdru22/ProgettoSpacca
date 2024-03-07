@@ -18,8 +18,9 @@ public class Partita {
     private Giocatore vincitore = null;
     private Giocatore toccaA;
     private Mazzo mazzo;
-    private Seme seme_che_comanda = null;
+    private Carta seme_che_comanda;
     private int cont = 0; //cpntatore turni totali
+    private boolean primoTurnoScena = true;
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -28,12 +29,18 @@ public class Partita {
         this.id_torneo = id_torneo;
         toccaA = giocatori[0];
         this.salva();
+        this.seme_che_comanda = this.mazzo.getMazzoArrayList().get(0);
     }
 
     public Partita(Giocatore[] giocatori, int id_torneo) {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
-
+    public boolean getPrimoTurnoScena(){
+        return this.primoTurnoScena;
+    }
+    public void setPrimoTurnoScena(boolean b){
+        this.primoTurnoScena = b;
+    }
     public Giocatore getToccaA() {
         return toccaA;
     }
@@ -101,7 +108,7 @@ public class Partita {
         int scelta = 0;
         for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
             turno_salvato = i;
-            seme_che_comanda = Utili.semeCasuale();
+            //seme_che_comanda = Utili.semeCasuale();
             for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
                 giocatore_salvato = j;
                 System.out.println(">>> turno: "+turno_salvato+"/"+NUMERO_TURNI+ ", giocatore: "+(giocatore_salvato+1)+"/"+giocatori.length);
@@ -112,6 +119,12 @@ public class Partita {
             }
         }
         finePartita();
+    }
+    public Carta getSeme(){
+        return this.seme_che_comanda;
+    }
+    public void setSeme(Carta seme){
+        this.seme_che_comanda = seme;
     }
 
     public void newMazzo(){
@@ -137,7 +150,7 @@ public class Partita {
 
     //test
     public void riprendi() { //eseguito solo fino alla fine del turno corrente
-        giocatore_salvato = (giocatore_salvato + 1) % giocatori.length;
+        giocatore_salvato = (giocatore_salvato+1) % giocatori.length;
         toccaA = giocatori[giocatore_salvato];
         for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
             azioniGiocatore();

@@ -13,6 +13,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -57,11 +60,18 @@ public class PartitaController implements Initializable {
     private Button btn_conferma;
     @FXML
     private AnchorPane anchPane_toccaA;
+    @FXML
+    private AnchorPane anch_mazzo;
+    @FXML
+    private AnchorPane anch_seme;
     private ImageView imageView1;
     private ImageView imageView2;
     private ImageView imageView3;
     private ImageView imageView4;
     private ImageView imageView5;
+    private ImageView imageViewMazzo;
+    private ImageView imageViewSeme;
+
 
     private Map<String, AnchorPane> cartaMap = new HashMap<>();
 
@@ -75,17 +85,18 @@ public class PartitaController implements Initializable {
     private Seme seme_che_comanda = null;
     private Giocatore toccaA;
     private int cont;
-
     public void giocaTurno() throws FileNotFoundException {
         mazzo = p.getMazzo();
         System.out.println("tocca a "+p.getToccaA());
 
         toccaA.pesca(5, mazzo);
+
         mano = toccaA.getMano();
         toccaA.setMano(mano);
 
         mostraCarte(mano);
         comparsaSchermata();
+
 
         btn_scarta.setOnMouseClicked(event -> scarta(event));
         btn_stai.setOnMouseClicked(event -> {
@@ -103,7 +114,6 @@ public class PartitaController implements Initializable {
         aggiungiEventiCarte();
         lbl_scegliCarteDaScartare.setVisible(true);
         btn_conferma.setVisible(true);
-        //fineMano();
     }
 
     public void stai(MouseEvent event) throws IOException {
@@ -271,24 +281,53 @@ public class PartitaController implements Initializable {
         String percorsoCarta3 = mano[2].getImage();
         String percorsoCarta4 = mano[3].getImage();
         String percorsoCarta5 = mano[4].getImage();
+        String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
+        String percorsoSeme = p.getSeme().getImage();
 
         imageView1 = createImageView(percorsoCarta1);
         imageView2 = createImageView(percorsoCarta2);
         imageView3 = createImageView(percorsoCarta3);
         imageView4 = createImageView(percorsoCarta4);
         imageView5 = createImageView(percorsoCarta5);
+        imageViewMazzo = createImageView(percorsoMazzo);
+        imageViewSeme = createImageView(percorsoSeme);
 
         carta1.getChildren().add(imageView1);
         carta2.getChildren().add(imageView2);
         carta3.getChildren().add(imageView3);
         carta4.getChildren().add(imageView4);
         carta5.getChildren().add(imageView5);
+        anch_mazzo.getChildren().add(imageViewMazzo);
+        anch_seme.getChildren().add(imageViewSeme);
 
         cartaMap.put("carta0",carta1);
         cartaMap.put("carta1",carta2);
         cartaMap.put("carta2",carta3);
         cartaMap.put("carta3",carta4);
         cartaMap.put("carta4",carta5);
+        /*
+        // Imposta la posizione iniziale della cartaMazzo
+        double startFromX = anch_mazzo.getLayoutX();
+        System.out.println(startFromX);
+        double startFromY = anch_mazzo.getLayoutY();
+        System.out.println(startFromY);
+
+        // Imposta la posizione finale della carta
+        double endToX = carta1.getLayoutX();
+        System.out.println(endToX);
+        double endToY = carta1.getLayoutY();
+        System.out.println(endToY);
+
+        // Crea la transizione
+        TranslateTransition transition = new TranslateTransition(Duration.seconds(1), imageView1);
+        transition.setFromX(startFromX);
+        transition.setFromY(startFromY);
+        transition.setToX(endToX);
+        transition.setToY(endToY);
+
+        // Esegui l'animazione
+        transition.play();
+        */
 
 
     }
@@ -342,6 +381,7 @@ public class PartitaController implements Initializable {
             BackToHome();
         }
         else{
+
             p.salva();
             Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
@@ -357,14 +397,14 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        int codice = 57135;
+        int codice = 39913;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
         turno_salvato = p.getTurnoSalvato();
         giocatore_salvato = p.getGiocatoreSalvato();
-
+        p.setSeme(p.getMazzo().getMazzoArrayList().remove(0));
 
         p.setTurnoSalvato(p.getCont()/p.getGiocatori().length);
         turno_salvato = p.getTurnoSalvato();
@@ -383,9 +423,10 @@ public class PartitaController implements Initializable {
 
         schermataToccaA();
 
-
+        /*
         System.out.println(p.getGiocatoreSalvato()+"       "+p.getTurnoSalvato());
         System.out.println(">>> turno: "+p.getTurnoSalvato()+"/"+p.getNumeroTurni()+ ", giocatore: "+(p.getGiocatoreSalvato())+"/"+p.getGiocatori().length);
+         */
 
 
         p.newMazzo();

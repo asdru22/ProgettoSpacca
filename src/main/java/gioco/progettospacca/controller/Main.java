@@ -11,7 +11,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Locale;
 
-
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -23,8 +22,9 @@ public class Main extends Application {
         //scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
 
-        Utili.suono("lobby.wav");
+        //Utili.suono("lobby.wav");
 
     }
 
