@@ -58,6 +58,7 @@ public class GiocaController implements Initializable {
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setTitle(Utili.traduci("pokermon"));
         stage.setScene(scene);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.show();
     }
 

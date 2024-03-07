@@ -69,8 +69,13 @@ public class HomeController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
+        currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
         // Imposta il titolo della finestra
         currentStage.setTitle("Gioca Partita");
+
+
+
     }
 
 
@@ -104,6 +109,7 @@ public class HomeController implements Initializable {
 
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
+        currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
     }
     public void showLeaderboard() throws IOException {

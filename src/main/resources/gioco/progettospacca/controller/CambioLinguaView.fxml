@@ -13,6 +13,11 @@
    <children>
       <AnchorPane prefHeight="622.0" prefWidth="907.0">
          <children>
+            <ImageView fitHeight="625.0" fitWidth="907.0">
+               <image>
+                  <Image url="@../Sfondo.png" />
+               </image>
+            </ImageView>
             <Label fx:id="lbl_lingua" alignment="CENTER" layoutX="282.0" layoutY="43.0" prefHeight="62.0" prefWidth="292.0" text="Lingua">
                <font>
                   <Font name="Candara" size="50.0" />
