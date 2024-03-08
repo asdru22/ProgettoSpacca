@@ -15,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        stage.setTitle(Utili.traduci("pokermon"));
+        stage.setTitle(Utili.traduci("spacca"));
 
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene=new Scene(root);
