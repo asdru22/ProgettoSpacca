@@ -479,6 +479,7 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Utili.suono("gioco.mp3",Suoni.Musica);
         int codice = 43619;
         p = Partita.carica(codice);
         mostraClassifica();

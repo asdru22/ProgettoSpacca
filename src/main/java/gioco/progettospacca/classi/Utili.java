@@ -206,10 +206,32 @@ public class Utili {
         return bundle.getString(valore);
     }
     private static boolean suono = true;
-    public static void suono(String nome) {
-        Media s = new Media(new File("src/main/resources/gioco/progettospacca/suoni/"+nome).toURI().toString());
-        MediaPlayer player = new MediaPlayer(s);
-        if(suono) player.play();
+    private static MediaPlayer musica;
+    private static MediaPlayer sfx;
+
+    public static void suono(String nome, Suoni tipo) {
+        if(suono){
+            if(tipo==Suoni.Musica){
+                if (musica != null) {
+                    musica.stop(); // Stop any previously playing media
+                }
+                musica = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
+                musica.setCycleCount(MediaPlayer.INDEFINITE);
+                musica.play();
+                System.out.println("play music");
+            } else if (tipo==Suoni.SFX){
+                sfx = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
+                sfx.setCycleCount(1);
+                sfx.play();
+                System.out.println("play sfx");
+            }
+        }
+    }
+    public static void premiBottone(){
+        Utili.suono("bottone.wav",Suoni.SFX);
+    }
+    public static void premiFreccia(){
+        Utili.suono("freccia.wav",Suoni.SFX);
     }
     public static void toggleAudio(){suono = !suono;}
 }

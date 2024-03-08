@@ -56,7 +56,7 @@ public class GiocaController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle(Utili.traduci("pokermon"));
+        stage.setTitle(Utili.traduci("spacca"));
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.show();

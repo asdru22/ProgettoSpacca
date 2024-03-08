@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Suoni;
 import gioco.progettospacca.classi.Utili;
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -28,7 +29,7 @@ public class Main extends Application {
         stage.show();
         stage.setResizable(false);
 
-        //Utili.suono("lobby.wav");
+        Utili.suono("lobby.wav", Suoni.Musica);
 
     }
 

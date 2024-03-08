@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("pokermon"));
+        currentStage.setTitle(Utili.traduci("spacca"));
     }
 
     public void LoginAdmin() throws IOException{

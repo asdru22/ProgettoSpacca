@@ -43,6 +43,7 @@ public class HomeController implements Initializable {
     Menu menuBar;
 
     public void ridaje(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
         // Ottieni la finestra corrente
@@ -73,11 +74,7 @@ public class HomeController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle("Gioca Partita");
-
-
-
     }
-
 
     public void EventoCreaPartita() throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
@@ -93,8 +90,6 @@ public class HomeController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle("Login");
-
-
     }
 
     public void showCambiaLingua() throws IOException {
@@ -173,24 +168,28 @@ public class HomeController implements Initializable {
         btn_creaTorneo.setFocusTraversable(false);
     }
     public void giocaPartita(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         EventoGiocaPartita();
     }
 
     public void creaPartita(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         EventoCreaPartita();
     }
 
-
     public void apriMenu(ActionEvent ActionEvent) throws IOException {
         showLeaderboard();
+        Utili.premiBottone();
     }
 
     public void cambiaLingua(ActionEvent ActionEvent) throws IOException {
         showCambiaLingua();
+        Utili.premiBottone();
     }
 
 
     public void apriRegole(ActionEvent actionEvent) {
+        Utili.premiBottone();
     }
 
     @Override
