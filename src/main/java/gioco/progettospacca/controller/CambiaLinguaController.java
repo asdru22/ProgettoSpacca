@@ -35,21 +35,25 @@ public class CambiaLinguaController implements Initializable {
     Button btn_backToHome;
 
     public void linguaItaliana(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         Utili.setLingua(Locale.ITALIAN);
         btn_ita.requestFocus();
     }
 
     public void linguaTedesca(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         Utili.setLingua(Locale.GERMAN);
         btn_ger.requestFocus();
     }
 
     public void linguaInglese(MouseEvent mouseEvent) throws IOException {
+        Utili.premiBottone();
         Utili.setLingua(Locale.ENGLISH);
         btn_ing.requestFocus();
     }
 
-    public void BackToHome() throws IOException {
+    public void BackToHome() throws IOException {Utili.premiBottone();
+
             Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
             // Ottieni la finestra corrente
@@ -62,10 +66,11 @@ public class CambiaLinguaController implements Initializable {
             currentScene.setRoot(root);
 
             // Imposta il titolo della finestra
-            currentStage.setTitle(Utili.traduci("pokermon"));
+            currentStage.setTitle(Utili.traduci("spacca"));
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
+        Utili.premiFreccia();
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_backToHome.isFocused()) || keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
         }

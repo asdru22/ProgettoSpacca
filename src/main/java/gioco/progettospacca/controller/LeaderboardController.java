@@ -50,8 +50,4 @@ public class LeaderboardController {
         lbl_pos10.setText(lead[9]);
 
     }
-
-
-
-
 }

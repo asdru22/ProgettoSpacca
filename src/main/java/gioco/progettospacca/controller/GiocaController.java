@@ -53,6 +53,7 @@ public class GiocaController implements Initializable {
     private Button btn_entra;
 
     public void BackToHome(ActionEvent actionEvent) throws IOException {
+        Utili.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -64,6 +65,7 @@ public class GiocaController implements Initializable {
 
 
     public void entraInPartita(ActionEvent actionEvent) {
+        Utili.premiBottone();
         System.out.println(txt_cod1.getText());
         if (!Objects.equals(txt_cod1.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod1);

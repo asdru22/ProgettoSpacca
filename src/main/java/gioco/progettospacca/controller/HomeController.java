@@ -121,7 +121,7 @@ public class HomeController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-
+        Utili.premiFreccia();
         if(keyEvent.getCode() == KeyCode.ESCAPE || keyEvent.getCode() == KeyCode.M){
             menuBar.show();
         }
@@ -187,7 +187,6 @@ public class HomeController implements Initializable {
         Utili.premiBottone();
     }
 
-
     public void apriRegole(ActionEvent actionEvent) {
         Utili.premiBottone();
     }
@@ -202,5 +201,9 @@ public class HomeController implements Initializable {
         btn_giocaPartita.setText(Utili.traduci("gioca_partita"));
         btn_creaTorneo.setText(Utili.traduci("crea_torneo"));
         btn_giocaTorneo.setText(Utili.traduci("gioca_torneo"));
+    }
+
+    public void suonoMenu(ActionEvent actionEvent) {
+        Utili.premiBottone();
     }
 }

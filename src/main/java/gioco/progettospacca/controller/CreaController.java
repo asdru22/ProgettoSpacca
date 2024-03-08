@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class CreaController implements Initializable {
     public void BackToHome() throws IOException {
+        Utili.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
@@ -79,6 +80,7 @@ public class CreaController implements Initializable {
     TextField[] txt = {txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5};
 
     public void EventoCreaCodicePartita() {
+        Utili.premiBottone();
         try {
             Giocatore temp;
 
@@ -123,6 +125,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox1(MouseEvent mouseEvent) {
+        Utili.premiBottone();
         if (chk_gioc1.isSelected()) {
             txt_gioc1.setDisable(true);
             txt_gioc1.setText("bot1");
@@ -135,6 +138,7 @@ public class CreaController implements Initializable {
 
 
     public void checkBox2(MouseEvent mouseEvent) {
+        Utili.premiBottone();
         if (chk_gioc2.isSelected()) {
             txt_gioc2.setDisable(true);
             txt_gioc2.setText("bot2");
@@ -146,6 +150,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox3(MouseEvent mouseEvent) {
+        Utili.premiBottone();
         if (chk_gioc3.isSelected()) {
             txt_gioc3.setDisable(true);
             txt_gioc3.setText("bot3");
@@ -157,6 +162,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox4(MouseEvent mouseEvent) {
+        Utili.premiBottone();
         if (chk_gioc4.isSelected()) {
             txt_gioc4.setDisable(true);
             txt_gioc4.setText("bot4");
@@ -168,10 +174,10 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox5(MouseEvent mouseEvent) {
+        Utili.premiBottone();
         if (chk_gioc5.isSelected()) {
             txt_gioc5.setDisable(true);
             txt_gioc5.setText("bot5");
-            txt_gioc5.setText("");
         } else {
             txt_gioc5.setDisable(false);
             txt_gioc5.setText("");
@@ -181,6 +187,7 @@ public class CreaController implements Initializable {
 
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
+        Utili.premiFreccia();
         if (keyEvent.getCode() == KeyCode.ENTER && btn_crea.isFocused()) {
             EventoCreaCodicePartita();
         }

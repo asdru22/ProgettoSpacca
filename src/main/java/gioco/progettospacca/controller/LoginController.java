@@ -39,6 +39,7 @@ public class LoginController implements Initializable {
     private Label lbl_titolo;
 
     public void BackToHome() throws IOException {
+        Utili.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
@@ -58,7 +59,8 @@ public class LoginController implements Initializable {
             String user= String.valueOf((txt_user.getText()));
             String psw= String.valueOf((txt_psw.getText()));
             //aggiungere usrrname e password
-            if ("admin".equals(user) && "spacca".equals(psw)) {
+            if ("a".equals(user) && "s".equals(psw)) {
+            //if ("admin".equals(user) && "spacca".equals(psw)) {
                 Parent root = FXMLLoader.load(getClass().getResource("CreaPartita.fxml"));
 
                 // Ottieni la finestra corrente
@@ -83,9 +85,11 @@ public class LoginController implements Initializable {
         BackToHome();
     }
     public void loginAdmin(MouseEvent mouseEvent) throws IOException {
-       LoginAdmin();
+        Utili.premiBottone();
+        LoginAdmin();
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
+        Utili.premiFreccia();
         pulisci();
         if(keyEvent.getCode() == KeyCode.ESCAPE ){
             BackToHome();
