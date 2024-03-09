@@ -432,7 +432,7 @@ public class PartitaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("pokermon"));
+        currentStage.setTitle(Utili.traduci("spacca"));
     }
     public void fineMano(){
         anchPane_manoSuccesiva.setVisible(true);
@@ -479,7 +479,7 @@ public class PartitaController implements Initializable {
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Utili.suono("gioco.mp3",Suoni.Musica);
+        System.out.println(">>> initializa");
         int codice = 43619;
         p = Partita.carica(codice);
         mostraClassifica();

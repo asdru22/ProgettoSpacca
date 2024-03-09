@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 
+import gioco.progettospacca.classi.Suoni;
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,6 +45,7 @@ public class HomeController implements Initializable {
 
     public void ridaje(MouseEvent mouseEvent) throws IOException {
         Utili.premiBottone();
+        Utili.suono("gioco.mp3", Suoni.Musica);
         Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
         // Ottieni la finestra corrente

@@ -233,5 +233,9 @@ public class Utili {
     public static void premiFreccia(){
         Utili.suono("freccia.wav",Suoni.SFX);
     }
+    public static void cliccaCarta(){
+        Utili.suono("carta.wav",Suoni.SFX);
+    }
+
     public static void toggleAudio(){suono = !suono;}
 }

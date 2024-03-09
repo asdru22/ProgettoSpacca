@@ -11,7 +11,7 @@ import java.io.IOException;
 public class test{
         public static void main(String[] args) {
 
-                String nomeFile = "src/main/resources/gioco/progettospacca/1Fuoco.png";
+                String nomeFile = "src/main/resources/gioco/progettospacca/carte/fuoco/1.png";
 
                 try {
                         File file = new File(nomeFile);

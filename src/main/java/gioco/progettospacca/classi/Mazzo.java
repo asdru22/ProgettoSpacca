@@ -24,11 +24,11 @@ public class Mazzo {
         ArrayList<Carta> temp = new ArrayList<>();
 
         for(int i = 0 ; i<10; i++){
-            temp.add(new Carta(semi[0],i,"src/main/resources/gioco/progettospacca/"+(i+1)+"Fuoco.png"));
-            temp.add(new Carta(semi[1],i,"src/main/resources/gioco/progettospacca/"+(i+1)+"Terra.png"));
-            temp.add(new Carta(semi[2],i,"src/main/resources/gioco/progettospacca/"+(i+1)+"Erba.png"));
-            temp.add(new Carta(semi[3],i,"src/main/resources/gioco/progettospacca/"+(i+1)+"Elettro.png"));
-            temp.add(new Carta(semi[4],i,"src/main/resources/gioco/progettospacca/"+(i+1)+"Acqua.png"));
+            temp.add(new Carta(semi[0],i,"src/main/resources/gioco/progettospacca/carte/fuoco/"+(i+1)+".png"));
+            temp.add(new Carta(semi[1],i,"src/main/resources/gioco/progettospacca/carte/terra/"+(i+1)+".png"));
+            temp.add(new Carta(semi[2],i,"src/main/resources/gioco/progettospacca/carte/erba/"+(i+1)+".png"));
+            temp.add(new Carta(semi[3],i,"src/main/resources/gioco/progettospacca/carte/elettro/"+(i+1)+".png"));
+            temp.add(new Carta(semi[4],i,"src/main/resources/gioco/progettospacca/carte/acqua/"+(i+1)+".png"));
         }
         Collections.shuffle(temp);
         return temp;

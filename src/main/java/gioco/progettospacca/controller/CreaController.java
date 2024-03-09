@@ -41,7 +41,7 @@ public class CreaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("pokermon"));
+        currentStage.setTitle(Utili.traduci("spacca"));
     }
     @FXML
     private Label lbl_nomi_giocatori;
