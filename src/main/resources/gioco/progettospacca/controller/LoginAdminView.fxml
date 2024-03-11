@@ -15,18 +15,18 @@
       <!-- Aggiunta dell'AnchorPane all'interno del Pane -->
       <AnchorPane layoutX="2.0" layoutY="3.0" prefHeight="622.0" prefWidth="907.0">
          <children>
-            <ImageView fitHeight="631.0" fitWidth="907.0" layoutY="-9.0">
+            <ImageView fitHeight="629.0" fitWidth="926.0" layoutX="-8.0" layoutY="-3.0">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
             <Button fx:id="btn_back" focusTraversable="false" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#backToHome" prefHeight="38.0" prefWidth="39.0" text="❮" />
-            <Label fx:id="lbl_titolo" layoutX="302.0" layoutY="107.0" text="LOGIN AMMINISTRATORE" textAlignment="CENTER">
+            <Label fx:id="lbl_titolo" alignment="CENTER" layoutX="235.0" layoutY="107.0" prefHeight="43.0" prefWidth="447.0" text="Login amministratore" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="35.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_username" layoutX="264.0" layoutY="215.0" prefHeight="26.0" prefWidth="74.0" text="Username:">
+            <Label fx:id="lbl_username" layoutX="250.0" layoutY="215.0" prefHeight="26.0" prefWidth="112.0" text="Username:">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
@@ -36,18 +36,18 @@
                   <Font name="Candara" size="12.0" />
                </font>
             </TextField>
-            <Label fx:id="lbl_password" layoutX="265.0" layoutY="298.0" prefHeight="26.0" prefWidth="73.0" text="Password:">
+            <Label fx:id="lbl_password" layoutX="250.0" layoutY="298.0" prefHeight="26.0" prefWidth="112.0" text="Password:">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
             </Label>
             <PasswordField fx:id="txt_psw" focusTraversable="false" layoutX="368.0" layoutY="288.0" maxWidth="182.0" onKeyPressed="#keyEvent" prefHeight="46.0" prefWidth="182.0" />
-            <Button fx:id="btn_login" focusTraversable="false" layoutX="422.0" layoutY="373.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#loginAdmin" prefHeight="38.0" prefWidth="74.0" text="Login">
+            <Button fx:id="btn_login" focusTraversable="false" layoutX="403.0" layoutY="377.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#loginAdmin" prefHeight="38.0" prefWidth="112.0" text="Login">
                <font>
                   <Font size="15.0" />
                </font></Button>
             <Label fx:id="lbl_error" layoutX="10.0" layoutY="190.0" />
-            <ImageView fitHeight="123.0" fitWidth="112.0" layoutX="126.0" layoutY="67.0">
+            <ImageView fitHeight="96.0" fitWidth="88.0" layoutX="147.0" layoutY="81.0">
                <image>
                   <Image url="@../admin.png" />
                </image>
