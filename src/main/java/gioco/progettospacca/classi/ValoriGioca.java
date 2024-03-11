@@ -16,7 +16,9 @@ public class ValoriGioca {
         if (Utili.esisteGiocatore(nome)) {
             Giocatore g = Giocatore.carica(nome);
             ArrayList<Integer> partite = g.getPartite();
-            if (!partite.contains(codice)) {
+            String nome = g.getNome();
+            if(nome=="admin") return true; // admin può entrare in tutte le partite
+            else if (!partite.contains(codice)) {
                 System.out.println("Giocatore " + nome + " non ha questo id");
             }
             return partite.contains(codice);
