@@ -9,13 +9,8 @@
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="907.0">
+      <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="512.0">
          <children>
-            <Label alignment="CENTER" focusTraversable="false" layoutX="312.0" layoutY="18.0" prefHeight="30.0" prefWidth="170.0" text="seme che comanda">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
             <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="516.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="92.0" text="Scarta" visible="false" />
             <Button fx:id="btn_stai" focusTraversable="false" layoutX="760.0" layoutY="516.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="92.0" text="Stai" visible="false" />
             <AnchorPane fx:id="carta1" layoutX="130.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
@@ -51,9 +46,9 @@
                   <Button fx:id="btn_gioca" layoutX="171.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="64.0" prefWidth="169.0" text="Gioca" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="186.0" layoutY="100.0" prefHeight="396.0" prefWidth="535.0" visible="false">
+            <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="490.0" layoutY="51.0" prefHeight="142.0" prefWidth="348.0" visible="false">
                <children>
-                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="89.0" prefHeight="143.0" prefWidth="211.0">
+                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="41.0" prefHeight="143.0" prefWidth="211.0">
                      <font>
                         <Font size="96.0" />
                      </font>
@@ -61,12 +56,12 @@
                         <Insets top="-2.0" />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="btn_prossimaMano" layoutX="174.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="52.0" prefWidth="162.0" text="Prossimo turno">
+                  <Button fx:id="btn_prossimaMano" layoutX="168.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="52.0" prefWidth="211.0" text="Prossimo turno">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Label alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="26.0" prefHeight="52.0" prefWidth="211.0" text="punteggio fatto:">
+                  <Label alignment="CENTER" focusTraversable="false" layoutX="162.0" prefHeight="52.0" prefWidth="211.0" text="punteggio fatto:">
                      <font>
                         <Font size="20.0" />
                      </font>

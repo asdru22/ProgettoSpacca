@@ -344,7 +344,7 @@ public class PartitaController implements Initializable {
                 transition.play();
                 toccaA.getMano()[i].setCliccata(false);
                 transition.setOnFinished(event -> {
-                    PauseTransition pause = new PauseTransition(Duration.seconds(3));
+                    PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
                     pause.play();
                     pause.setOnFinished(event2 ->{
                         fineMano();

@@ -56,17 +56,17 @@
             </ImageView>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="281.0" layoutY="144.0" stroke="DODGERBLUE" strokeType="INSIDE" width="1.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="573.0" layoutY="145.0" stroke="DODGERBLUE" strokeType="INSIDE" width="1.0" />
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="175.0">
+            <ImageView fx:id="img_spunta1" fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="175.0">
                <image>
                   <Image url="@../spunta.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="314.0">
+            <ImageView fx:id="img_spunta2" fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="314.0">
                <image>
                   <Image url="@../spunta.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="461.0">
+            <ImageView fx:id="img_spunta3" fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="461.0">
                <image>
                   <Image url="@../spunta.png" />
                </image>

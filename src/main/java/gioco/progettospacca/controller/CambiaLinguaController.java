@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -33,22 +35,38 @@ public class CambiaLinguaController implements Initializable {
     Button btn_ing;
     @FXML
     Button btn_backToHome;
+    @FXML
+    ImageView img_spunta1;
+    @FXML
+    ImageView img_spunta2;
+    @FXML
+    ImageView img_spunta3;
+
 
     public void linguaItaliana(MouseEvent mouseEvent) throws IOException {
         Utili.premiBottone();
         Utili.setLingua(Locale.ITALIAN);
+        img_spunta1.setVisible(true);
+        img_spunta2.setVisible(false);
+        img_spunta3.setVisible(false);
         btn_ita.requestFocus();
     }
 
     public void linguaTedesca(MouseEvent mouseEvent) throws IOException {
         Utili.premiBottone();
         Utili.setLingua(Locale.GERMAN);
+        img_spunta1.setVisible(false);
+        img_spunta2.setVisible(false);
+        img_spunta3.setVisible(true);
         btn_ger.requestFocus();
     }
 
     public void linguaInglese(MouseEvent mouseEvent) throws IOException {
         Utili.premiBottone();
         Utili.setLingua(Locale.ENGLISH);
+        img_spunta1.setVisible(false);
+        img_spunta2.setVisible(true);
+        img_spunta3.setVisible(false);
         btn_ing.requestFocus();
     }
 
@@ -141,23 +159,29 @@ public class CambiaLinguaController implements Initializable {
         }
 
         if(linea.equals("inglese")){
-            System.out.println(linea);
             btn_ita.setFocusTraversable(false);
             btn_ger.setFocusTraversable(false);
             btn_ing.setFocusTraversable(true);
             btn_ing.requestFocus();
+            img_spunta1.setVisible(false);
+            img_spunta2.setVisible(true);
+            img_spunta3.setVisible(false);
         } else if (linea.equals("italiano")) {
             btn_ita.setFocusTraversable(true);
             btn_ger.setFocusTraversable(false);
             btn_ing.setFocusTraversable(false);
             btn_ita.requestFocus();
-            System.out.println(linea);
+            img_spunta1.setVisible(true);
+            img_spunta2.setVisible(false);
+            img_spunta3.setVisible(false);
         } else if (linea.equals("tedesco")) {
             btn_ita.setFocusTraversable(false);
             btn_ger.setFocusTraversable(true);
             btn_ing.setFocusTraversable(false);
             btn_ger.requestFocus();
-            System.out.println(linea);
+            img_spunta1.setVisible(false);
+            img_spunta2.setVisible(false);
+            img_spunta3.setVisible(true);
         }
         lbl_lingua.setText(Utili.traduci("lingua"));
     }
