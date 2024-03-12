@@ -35,7 +35,10 @@
                <font>
                   <Font size="30.0" />
                </font></Button>
-            <Button fx:id="btn_backToHome" focusTraversable="false" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="45.0" prefWidth="50.0" text="&lt;" />
+            <Button fx:id="btn_backToHome" focusTraversable="false" layoutX="21.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="50.0" prefWidth="50.0" text="&lt;">
+               <font>
+                  <Font name="Candara" size="25.0" />
+               </font></Button>
             <ImageView fitHeight="112.0" fitWidth="200.0" layoutX="329.0" layoutY="144.0" mouseTransparent="true">
                <image>
                   <Image url="@../italia.jpg" />
@@ -51,8 +54,23 @@
                   <Image url="@../germania.jpg" />
                </image>
             </ImageView>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="281.0" layoutY="144.0" stroke="BLACK" strokeType="INSIDE" width="1.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="573.0" layoutY="145.0" stroke="BLACK" strokeType="INSIDE" width="1.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="281.0" layoutY="144.0" stroke="DODGERBLUE" strokeType="INSIDE" width="1.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="389.0" layoutX="573.0" layoutY="145.0" stroke="DODGERBLUE" strokeType="INSIDE" width="1.0" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="175.0">
+               <image>
+                  <Image url="@../spunta.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="314.0">
+               <image>
+                  <Image url="@../spunta.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="510.0" layoutY="461.0">
+               <image>
+                  <Image url="@../spunta.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
