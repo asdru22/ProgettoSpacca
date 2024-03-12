@@ -82,7 +82,8 @@ public class GiocaController implements Initializable {
     private void partitaEsiste(int codice) {
         Partita p = Partita.carica(codice);
         int n = p.getGiocatori().length;
-        int nbot = p.getBot();
+        int gioc_no_bot = n- p.getBot();
+
         // n-nbot è il numero di giocatori non bot in partita
 
         System.out.println(n);
@@ -101,7 +102,7 @@ public class GiocaController implements Initializable {
             }
         }
 
-        if (inizia_partita && n >= 2) {
+        if (inizia_partita && (n >= 2)) {
             System.out.println("PARTITA INIZIATA");
             //p.inizio();
         } else {

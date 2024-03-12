@@ -139,13 +139,13 @@ public class HomeController implements Initializable {
             if (btn_giocaPartita.isFocused()) {
                 System.out.println(" Sei già in alto.");
             } else if (btn_creaPartita.isFocused()) {
-                //System.out.println("Il focus è su btn_creaPartita. Cambio focus a btn_giocaPartita.");
+                Utili.premiFreccia();
                 btn_giocaPartita.requestFocus();
             } else if (btn_giocaTorneo.isFocused()) {
-                //System.out.println("Il focus è su btn_giocaTorneo. Cambio focus a btn_creaPartita.");
+                Utili.premiFreccia();
                 btn_creaPartita.requestFocus();
             } else if (btn_creaTorneo.isFocused()) {
-                //System.out.println("Il focus è su btn_creaTorneo. Cambio focus a btn_giocaTorneo.");
+                Utili.premiFreccia();
                 btn_giocaTorneo.requestFocus();
             }
         }
@@ -153,10 +153,13 @@ public class HomeController implements Initializable {
             if(btn_creaTorneo.isFocused()){
                 System.out.println("sei gia in basso");
             } else if (btn_giocaPartita.isFocused()) {
+                Utili.premiFreccia();
                 btn_creaPartita.requestFocus();
             } else if (btn_creaPartita.isFocused()) {
+                Utili.premiFreccia();
                 btn_giocaTorneo.requestFocus();
             } else if (btn_giocaTorneo.isFocused()) {
+                Utili.premiFreccia();
                 btn_creaTorneo.requestFocus();
             }
         }

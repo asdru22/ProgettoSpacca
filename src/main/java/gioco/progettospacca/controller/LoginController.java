@@ -110,10 +110,13 @@ public class LoginController implements Initializable {
             if(btn_back.isFocused()){
                 System.out.println("sei già in alto");
             } else if (txt_user.isFocused()) {
+                Utili.premiFreccia();
                 btn_back.requestFocus();
             } else if (txt_psw.isFocused()) {
+                Utili.premiFreccia();
                 txt_user.requestFocus();
             } else if (btn_login.isFocused()) {
+                Utili.premiFreccia();
                 txt_psw.requestFocus();
             }
         }
@@ -121,10 +124,13 @@ public class LoginController implements Initializable {
             if(btn_login.isFocused()){
                 System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
+                Utili.premiFreccia();
                 txt_user.requestFocus();
             } else if (txt_user.isFocused()) {
+                Utili.premiFreccia();
                 txt_psw.requestFocus();
             } else if (txt_psw.isFocused()) {
+                Utili.premiFreccia();
                 btn_login.requestFocus();
             }
         }

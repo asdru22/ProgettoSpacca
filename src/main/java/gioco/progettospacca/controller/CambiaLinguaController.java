@@ -88,7 +88,6 @@ public class CambiaLinguaController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        Utili.premiFreccia();
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_backToHome.isFocused()) || keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
         }
@@ -109,10 +108,13 @@ public class CambiaLinguaController implements Initializable {
             if (btn_backToHome.isFocused()) {
                 System.out.println("Sei già in alto");
             } else if (btn_ita.isFocused()) {
+                Utili.premiFreccia();
                 btn_backToHome.requestFocus();
             } else if (btn_ger.isFocused()) {
+                Utili.premiFreccia();
                 btn_ing.requestFocus();
             } else if (btn_ing.isFocused()) {
+                Utili.premiFreccia();
                 btn_ita.requestFocus();
             }
         }
@@ -121,20 +123,19 @@ public class CambiaLinguaController implements Initializable {
             if (btn_ger.isFocused()) {
                 System.out.println("Sei già in basso");
             } else if (btn_backToHome.isFocused()) {
+                Utili.premiFreccia();
+
                 btn_ita.requestFocus();
             } else if (btn_ita.isFocused()) {
+                Utili.premiFreccia();
+
                 btn_ing.requestFocus();
             } else if (btn_ing.isFocused()) {
+                Utili.premiFreccia();
+
                 btn_ger.requestFocus();
             }
         }
-        /*
-        System.out.println("Focused button: " + (btn_backToHome.isFocused() ? "btn_backToHome" :
-                btn_ita.isFocused() ? "btn_ita" :
-                        btn_ing.isFocused() ? "btn_ing" :
-                                btn_ger.isFocused() ? "btn_ger" : "None"));
-        */
-
         pulisci();
     }
     public void pulisci(){
