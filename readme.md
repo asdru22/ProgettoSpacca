@@ -17,4 +17,4 @@ GSON: Lettura/scrittura/caricamento file Json
 4. Cliccare "crea partita" e copiare il codice generato
 5. Tornare alla home
 6. Cliccare gioca partita
-7. Inserire per ogni giocatore il codice della parita da giocare
+7. Inserire per ogni giocatore il codice della parita da giocare (Admin possono entrare in tutte le partite)

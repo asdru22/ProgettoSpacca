@@ -102,6 +102,7 @@ public class GiocaController implements Initializable {
         }
 
         if (inizia_partita && n >= 2) {
+            System.out.println("PARTITA INIZIATA");
             //p.inizio();
         } else {
             System.out.println("Valori invalidi per iniziare partita");
