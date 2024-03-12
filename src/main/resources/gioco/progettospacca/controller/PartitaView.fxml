@@ -61,7 +61,7 @@
                         <Insets top="-2.0" />
                      </opaqueInsets>
                   </Label>
-                  <Button fx:id="btn_prossimaMano" layoutX="162.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="79.0" prefWidth="211.0" text="Prossimo turno">
+                  <Button fx:id="btn_prossimaMano" layoutX="174.0" layoutY="206.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="52.0" prefWidth="162.0" text="Prossimo turno">
                      <font>
                         <Font size="20.0" />
                      </font>

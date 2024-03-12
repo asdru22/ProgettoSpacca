@@ -156,8 +156,6 @@ public class PartitaController implements Initializable {
                 manoList.remove(i);  // Rimuovi l'elemento null
                 manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));// Inserisci la nuova carta dal mazzo
                 manoList.get(i).setCliccata(true);
-                String pane = "carta"+i;
-                //spostaCarta(cartaMap.get(pane),manoList.get(i));
             }
         }
 
@@ -176,11 +174,9 @@ public class PartitaController implements Initializable {
         btn_conferma.setVisible(false);
 
         int punti = p.valutaCarte(mano);
-        lbl_punteggio.setVisible(true);
         lbl_punteggio.setText(String.valueOf(punti));
         p.setCont(cont+1);
         toccaA.setPunti(punti);
-        fineMano();
     }
 
     public void comparsaSchermata() {
@@ -347,6 +343,13 @@ public class PartitaController implements Initializable {
                 // Esegui l'animazione
                 transition.play();
                 toccaA.getMano()[i].setCliccata(false);
+                transition.setOnFinished(event -> {
+                    PauseTransition pause = new PauseTransition(Duration.seconds(3));
+                    pause.play();
+                    pause.setOnFinished(event2 ->{
+                        fineMano();
+                    });
+                });
             }
         }
     }
@@ -480,7 +483,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-        int codice = 43619;
+        int codice = 15811;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
