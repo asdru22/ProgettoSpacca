@@ -10,107 +10,89 @@
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
-   <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="512.0">
-         <children>
-<<<<<<< Updated upstream
-            <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="516.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="92.0" text="Scarta" visible="false" />
-            <Button fx:id="btn_stai" focusTraversable="false" layoutX="760.0" layoutY="516.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="92.0" text="Stai" visible="false" />
-=======
-            <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
-               <font>
-                  <Font name="Candara Bold Italic" size="15.0" />
-               </font></Button>
-            <Button fx:id="btn_stai" focusTraversable="false" layoutX="779.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
-               <font>
-                  <Font name="Candara Bold Italic" size="15.0" />
-               </font></Button>
->>>>>>> Stashed changes
-            <AnchorPane fx:id="carta1" layoutX="130.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-            <AnchorPane fx:id="carta2" layoutX="260.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-            <AnchorPane fx:id="carta3" layoutX="390.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-            <AnchorPane fx:id="carta4" layoutX="520.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-            <AnchorPane fx:id="carta5" layoutX="650.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-            <Label fx:id="lbl_classifica" alignment="CENTER" layoutX="23.0" layoutY="113.0" prefHeight="192.0" prefWidth="211.0" textAlignment="CENTER">
-               <font>
-                  <Font name="Candara" size="16.0" />
-               </font></Label>
-            <AnchorPane fx:id="anch_seme" layoutX="357.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
-            <AnchorPane fx:id="anch_mazzo" layoutX="479.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
-            <Button fx:id="btn_conferma" layoutX="404.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#cambiaCarteSelezionate" prefHeight="35.0" prefWidth="100.0" text="Conferma" visible="false">
-               <font>
-                  <Font name="Candara" size="16.0" />
-               </font>
-            </Button>
-            <Label fx:id="lbl_scegliCarteDaScartare" alignment="CENTER" focusTraversable="false" layoutX="348.0" layoutY="220.0" prefHeight="32.0" prefWidth="211.0" text="Scegli le carte da scartare" visible="false">
-               <font>
-                  <Font name="Candara Bold Italic" size="14.0" />
-               </font>
-            </Label>
-            <AnchorPane fx:id="anchPane_toccaA" layoutX="186.0" layoutY="100.0" prefHeight="396.0" prefWidth="535.0" visible="false">
-               <children>
-                  <Label fx:id="lbl_turno" alignment="CENTER" focusTraversable="false" layoutX="140.0" layoutY="39.0" prefHeight="79.0" prefWidth="282.0" textAlignment="CENTER">
-                     <font>
-                        <Font name="Candara" size="26.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbl_toccaA" alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="115.0" prefHeight="52.0" prefWidth="254.0">
-                     <font>
-                        <Font name="Candara" size="27.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="btn_gioca" alignment="CENTER" layoutX="205.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="39.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
-                     <font>
-                        <Font name="Candara Bold" size="11.0" />
-                     </font></Button>
-               </children>
-            </AnchorPane>
-<<<<<<< Updated upstream
-            <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="490.0" layoutY="51.0" prefHeight="142.0" prefWidth="348.0" visible="false">
-               <children>
-                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="41.0" prefHeight="143.0" prefWidth="211.0">
-=======
-            <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="558.0" layoutY="10.0" prefHeight="374.0" prefWidth="326.0" visible="false">
-               <children>
-                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="56.0" layoutY="89.0" prefHeight="163.0" prefWidth="231.0" textAlignment="CENTER">
->>>>>>> Stashed changes
-                     <font>
-                        <Font size="62.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets top="-2.0" />
-                     </opaqueInsets>
-                  </Label>
-<<<<<<< Updated upstream
-                  <Button fx:id="btn_prossimaMano" layoutX="168.0" layoutY="184.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="52.0" prefWidth="211.0" text="Prossimo turno">
-=======
-                  <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="40.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="254.0" text="Prossimo turno" textAlignment="CENTER">
->>>>>>> Stashed changes
-                     <font>
-                        <Font name="Candara" size="18.0" />
-                     </font>
-                  </Button>
-<<<<<<< Updated upstream
-                  <Label alignment="CENTER" focusTraversable="false" layoutX="162.0" prefHeight="52.0" prefWidth="211.0" text="punteggio fatto:">
-=======
-                  <Label alignment="CENTER" focusTraversable="false" layoutX="27.0" layoutY="26.0" prefHeight="52.0" prefWidth="282.0" text="Punteggio fatto:" textAlignment="CENTER">
->>>>>>> Stashed changes
-                     <font>
-                        <Font name="Candara" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-<<<<<<< Updated upstream
-            <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="336.0" layoutY="321.0" prefHeight="23.0" prefWidth="201.0" text="devi scegliere almeno una carta" visible="false" />
-=======
-            <ImageView fitHeight="70.0" fitWidth="74.0" layoutX="92.0" layoutY="30.0">
-               <image>
-                  <Image url="@../score.png" />
-               </image>
-            </ImageView>
->>>>>>> Stashed changes
-         </children>
-      </AnchorPane>
-   </children>
+    <children>
+        <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="512.0">
+            <children>
+                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
+                    <font>
+                        <Font name="Candara Bold Italic" size="15.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btn_stai" focusTraversable="false" layoutX="779.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
+                    <font>
+                        <Font name="Candara Bold Italic" size="15.0" />
+                    </font>
+                </Button>
+                <AnchorPane fx:id="carta1" layoutX="130.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta2" layoutX="260.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta3" layoutX="390.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta4" layoutX="520.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta5" layoutX="650.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <Label fx:id="lbl_classifica" alignment="CENTER" layoutX="23.0" layoutY="113.0" prefHeight="192.0" prefWidth="211.0" textAlignment="CENTER">
+                    <font>
+                        <Font name="Candara" size="16.0" />
+                    </font>
+                </Label>
+                <AnchorPane fx:id="anch_seme" layoutX="357.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="anch_mazzo" layoutX="479.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
+                <Button fx:id="btn_conferma" layoutX="404.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#cambiaCarteSelezionate" prefHeight="35.0" prefWidth="100.0" text="Conferma" visible="false">
+                    <font>
+                        <Font name="Candara" size="16.0" />
+                    </font>
+                </Button>
+                <Label fx:id="lbl_scegliCarteDaScartare" alignment="CENTER" focusTraversable="false" layoutX="348.0" layoutY="220.0" prefHeight="32.0" prefWidth="211.0" text="Scegli le carte da scartare" visible="false">
+                    <font>
+                        <Font name="Candara Bold Italic" size="14.0" />
+                    </font>
+                </Label>
+                <AnchorPane fx:id="anchPane_toccaA" layoutX="186.0" layoutY="100.0" prefHeight="396.0" prefWidth="535.0" visible="false">
+                    <children>
+                        <Label fx:id="lbl_turno" alignment="CENTER" focusTraversable="false" layoutX="140.0" layoutY="39.0" prefHeight="79.0" prefWidth="282.0" textAlignment="CENTER">
+                            <font>
+                                <Font name="Candara" size="26.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="lbl_toccaA" alignment="CENTER" focusTraversable="false" layoutX="162.0" layoutY="115.0" prefHeight="52.0" prefWidth="254.0">
+                            <font>
+                                <Font name="Candara" size="27.0" />
+                            </font>
+                        </Label>
+                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="205.0" layoutY="211.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="39.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
+                            <font>
+                                <Font name="Candara Bold" size="11.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="558.0" layoutY="10.0" prefHeight="374.0" prefWidth="326.0" visible="false">
+                    <children>
+                        <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="56.0" layoutY="89.0" prefHeight="163.0" prefWidth="231.0" textAlignment="CENTER">
+                            <font>
+                                <Font size="62.0" />
+                            </font>
+                            <opaqueInsets>
+                                <Insets top="-2.0" />
+                            </opaqueInsets>
+                        </Label>
+                        <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="40.0" layoutY="249.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="254.0" text="Prossimo turno" textAlignment="CENTER">
+                            <font>
+                                <Font name="Candara" size="18.0" />
+                            </font>
+                        </Button>
+                        <Label alignment="CENTER" focusTraversable="false" layoutX="27.0" layoutY="26.0" prefHeight="52.0" prefWidth="282.0" text="Punteggio fatto:" textAlignment="CENTER">
+                            <font>
+                                <Font name="Candara" size="20.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="336.0" layoutY="321.0" prefHeight="23.0" prefWidth="201.0" text="devi scegliere almeno una carta" visible="false" />
+                <ImageView fitHeight="70.0" fitWidth="74.0" layoutX="92.0" layoutY="30.0">
+                    <image>
+                        <Image url="@../score.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </AnchorPane>
+    </children>
 </Pane>

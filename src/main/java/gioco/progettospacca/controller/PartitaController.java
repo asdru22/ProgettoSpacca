@@ -541,11 +541,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-<<<<<<< Updated upstream
-        int codice = 84293;
-=======
         int codice = 12767;
->>>>>>> Stashed changes
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();

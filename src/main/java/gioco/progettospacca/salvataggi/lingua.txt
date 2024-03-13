@@ -1,5 +1,1 @@
-<<<<<<< Updated upstream
 inglese
-=======
-italiano
->>>>>>> Stashed changes
