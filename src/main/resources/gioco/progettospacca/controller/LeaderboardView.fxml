@@ -11,27 +11,23 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.LeaderboardController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="186.0">
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="400.0">
          <children>
             <AnchorPane prefHeight="351.0" prefWidth="187.0">
                <children>
-                  <ImageView fitHeight="310.0" fitWidth="186.0">
+                  <ImageView fitHeight="624.0" fitWidth="400.0">
                      <image>
                         <Image url="@../Sfondo.png" />
                      </image>
                   </ImageView>
-                  <GridPane alignment="CENTER" layoutX="11.0" layoutY="46.0" prefHeight="249.0" prefWidth="166.0">
+                  <GridPane alignment="CENTER" layoutX="7.0" layoutY="213.0" prefHeight="366.0" prefWidth="376.0">
                     <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="91.20001220703125" minWidth="10.0" prefWidth="30.20001220703125" />
-                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="156.79999160766602" minWidth="10.0" prefWidth="136.59998779296876" />
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="156.79999160766602" minWidth="10.0" prefWidth="136.59998779296876" />
                     </columnConstraints>
                     <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -41,50 +37,100 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="21.0" fitWidth="14.0" GridPane.rowIndex="2">
+                        <Label fx:id="lbl_pos4" alignment="CENTER" prefHeight="18.0" prefWidth="130.0" textAlignment="CENTER" GridPane.columnIndex="1" />
+                        <Label fx:id="lbl_pos5" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="lbl_pos6" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="lbl_pos7" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="lbl_pos8" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="lbl_pos9" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="lbl_pos10" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT">
                            <image>
-                              <Image url="@../medagliaBronzo.png" />
+                              <Image url="@../playerimg.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="21.0" fitWidth="14.0" GridPane.rowIndex="1">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../medagliaArgento.png" />
+                              <Image url="@../playerimg.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="21.0" fitWidth="14.0">
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../medagliaOro.png" />
+                              <Image url="@../playerimg.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lbl_pos1" prefHeight="18.0" prefWidth="132.0" text="1" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="Candara" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbl_pos2" prefHeight="18.0" prefWidth="129.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font name="Candara" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbl_pos3" prefHeight="18.0" prefWidth="130.0" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font name="Candara" size="12.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="lbl_pos4" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="lbl_pos5" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="lbl_pos6" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label fx:id="lbl_pos7" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                        <Label fx:id="lbl_pos8" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                        <Label fx:id="lbl_pos9" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                        <Label fx:id="lbl_pos10" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                           <image>
+                              <Image url="@../playerimg.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@../playerimg.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../playerimg.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../playerimg.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="-1.0" layoutY="10.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
+                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
                      <font>
-                        <Font name="Candara" size="20.0" />
+                        <Font name="Candara Bold Italic" size="23.0" />
                      </font>
                   </Label>
+                  <Label fx:id="lbl_pos3" alignment="CENTER" layoutX="262.0" layoutY="122.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="300.0" layoutY="70.0">
+                     <image>
+                        <Image url="@../playerimg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="286.0" layoutY="75.0">
+                     <image>
+                        <Image url="@../medagliaBronzo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="169.0" layoutY="96.0">
+                     <image>
+                        <Image url="@../playerimg.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="45.0" fitWidth="30.0" layoutX="155.0" layoutY="114.0">
+                     <image>
+                        <Image url="@../medagliaOro.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_pos1" alignment="CENTER" layoutX="129.0" layoutY="166.0" prefHeight="18.0" prefWidth="132.0" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="57.0" layoutY="70.0">
+                     <image>
+                        <Image url="@../playerimg.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_pos2" alignment="CENTER" layoutX="19.0" layoutY="122.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
+                     <font>
+                        <Font name="Candara" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="43.0" layoutY="75.0">
+                     <image>
+                        <Image url="@../medagliaArgento.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </children>
