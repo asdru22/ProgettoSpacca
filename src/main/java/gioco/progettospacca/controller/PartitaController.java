@@ -92,7 +92,7 @@ public class PartitaController implements Initializable {
     String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
     public void giocaTurno() throws FileNotFoundException {
         mazzo = p.getMazzo();
-        System.out.println("tocca a "+p.getToccaA());
+        System.out.println("Tocca a "+p.getToccaA());
 
         toccaA.pesca(5, mazzo);
 
@@ -115,7 +115,7 @@ public class PartitaController implements Initializable {
     }
 
     public void scarta(MouseEvent event) {
-        System.out.println("hai deciso di scartare");
+        System.out.println("Hai deciso di scartare");
         pulisciSchermata();
         aggiungiEventiCarte();
         lbl_scegliCarteDaScartare.setVisible(true);
@@ -123,7 +123,7 @@ public class PartitaController implements Initializable {
     }
 
     public void stai(MouseEvent event) throws IOException {
-        System.out.println("hai deciso di stare");
+        System.out.println("Hai deciso di stare");
         int punti = p.valutaCarte(mano);
         lbl_punteggio.setVisible(true);
         lbl_punteggio.setText(String.valueOf(punti));
@@ -504,8 +504,8 @@ public class PartitaController implements Initializable {
     }
     public void schermataToccaA(){
         anchPane_toccaA.setVisible(true);
-        lbl_toccaA.setText("turno: "+p.getToccaA());
-        lbl_turno.setText("turno: "+(p.getTurnoSalvato()));
+        lbl_toccaA.setText("Turno: "+p.getToccaA());
+        lbl_turno.setText("Turno: "+(p.getTurnoSalvato()));
     }
     //collegato al bottone del anchor pane toccaA
     public void procedi(MouseEvent mouseEvent) throws FileNotFoundException {
@@ -541,7 +541,11 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
+<<<<<<< Updated upstream
         int codice = 84293;
+=======
+        int codice = 12767;
+>>>>>>> Stashed changes
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
@@ -574,7 +578,7 @@ public class PartitaController implements Initializable {
     private void mostraClassifica() {
         String s = "";
         for(int i = 0; i<p.getGiocatori().length;i++){
-            s = s+" giocatore "+p.getGiocatori()[i].getNome()+" punti"+p.getGiocatori()[i].getPunti()+"\n";
+            s = s+p.getGiocatori()[i].getNome()+":  "+p.getGiocatori()[i].getPunti()+"\n";
         }
         lbl_classifica.setText(s);
     }
