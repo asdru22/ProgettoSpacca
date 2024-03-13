@@ -348,7 +348,7 @@ public class PartitaController implements Initializable {
                 currentCarta.getChildren().add(retroCarta);
 
                 //posizioni delle carte sul terreno che sono fisse
-                double endToX = (130*(i+1));
+                double endToX = (140*(i+1)-(10*(i)));
                 double endToY = 365;
 
 
@@ -393,7 +393,7 @@ public class PartitaController implements Initializable {
                 String cartaName = "carta" + i;
 
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
-                currentCarta.setLayoutX(130*(i+1));
+                currentCarta.setLayoutX(140*(i+1)-(10*(i)));
                 currentCarta.setLayoutY(365);
 
                 ImageView imageView = createImageView(toccaA.getMano()[i].getImage());
@@ -541,7 +541,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-        int codice = 84080;
+        int codice = 59172;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();

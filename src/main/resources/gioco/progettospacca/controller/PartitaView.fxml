@@ -11,7 +11,7 @@
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
-        <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="512.0">
+        <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="907.0">
             <children>
                 <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
                     <font>
@@ -23,18 +23,18 @@
                         <Font name="Candara Bold Italic" size="15.0" />
                     </font>
                 </Button>
-                <AnchorPane fx:id="carta1" layoutX="130.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane fx:id="carta2" layoutX="260.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane fx:id="carta3" layoutX="390.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane fx:id="carta4" layoutX="520.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane fx:id="carta5" layoutX="650.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta1" layoutX="140.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta2" layoutX="270.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta3" layoutX="400.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta4" layoutX="530.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta5" layoutX="660.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
                 <Label fx:id="lbl_classifica" alignment="CENTER" layoutX="23.0" layoutY="113.0" prefHeight="192.0" prefWidth="211.0" textAlignment="CENTER">
                     <font>
                         <Font name="Candara" size="16.0" />
                     </font>
                 </Label>
-                <AnchorPane fx:id="anch_seme" layoutX="357.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane fx:id="anch_mazzo" layoutX="479.0" layoutY="51.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="anch_seme" layoutX="335.0" layoutY="60.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="anch_mazzo" layoutX="465.0" layoutY="60.0" prefHeight="150.0" prefWidth="100.0" />
                 <Button fx:id="btn_conferma" layoutX="404.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#cambiaCarteSelezionate" prefHeight="35.0" prefWidth="100.0" text="Conferma" visible="false">
                     <font>
                         <Font name="Candara" size="16.0" />
