@@ -182,6 +182,9 @@ public class Utili {
             else if (Objects.equals(s, "tedesco")){
                 lang = Locale.GERMAN;
             }
+            else if (Objects.equals(s, "gatto")){
+                lang = Locale.CHINA;
+            }
             else{
                 lang = Locale.ITALIAN;
             }
