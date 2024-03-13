@@ -68,6 +68,7 @@
                   </Label>
                </children>
             </AnchorPane>
+            <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="336.0" layoutY="321.0" prefHeight="23.0" prefWidth="201.0" text="devi scegliere almeno una carta" visible="false" />
          </children>
       </AnchorPane>
    </children>

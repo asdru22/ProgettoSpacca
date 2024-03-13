@@ -321,6 +321,7 @@ public class Partita {
         //valutiamo se ha coppie,tris,poker,manita in mano
         switch (numUguali(carteNum)) {
             case 2:
+                //per scelta non si può avere più di una coppia, cioè anche se ne hai due vale come una
                 if (out) System.out.println("hai fatto coppia");
                 punti = punti + 10;
                 break;
