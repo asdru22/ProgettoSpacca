@@ -240,5 +240,13 @@ public class Utili {
         Utili.suono("carta.wav",Suoni.SFX);
     }
 
-    public static void toggleAudio(){suono = !suono;}
+    public static void toggleAudio(){
+        suono = !suono;
+        if(!suono){
+            musica.stop();
+        }
+        else{
+            musica.play();
+        }
+    }
 }
