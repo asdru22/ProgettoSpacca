@@ -14,8 +14,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -67,6 +70,18 @@ public class PartitaController implements Initializable {
     private AnchorPane anch_seme;
     @FXML
     private Label lbl_attenzione;
+    @FXML
+    private AnchorPane anchPane_score;
+    @FXML
+    private Pane pane_pausa;
+    @FXML
+    private Button btn_esci;
+    @FXML
+    private Button btn_suono;
+    @FXML
+    private Button btn_regole;
+
+
     private ImageView imageView1;
     private ImageView imageView2;
     private ImageView imageView3;
@@ -90,7 +105,10 @@ public class PartitaController implements Initializable {
     private Giocatore toccaA;
     private int cont;
     String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
+    boolean pausa = false;
     public void giocaTurno() throws FileNotFoundException {
+        anch_mazzo.getScene().setOnKeyPressed(this::keyEventPausa); //recupero la scena corrente e imposto il gestore degli eventi da tastiera
+
         mazzo = p.getMazzo();
         System.out.println("Tocca a "+p.getToccaA());
 
@@ -496,7 +514,10 @@ public class PartitaController implements Initializable {
         currentStage.setTitle(Utili.traduci("spacca"));
     }
     public void fineMano(){
-        anchPane_manoSuccesiva.setVisible(true);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), anchPane_manoSuccesiva);
+        translateTransition.setByX(-300);
+        translateTransition.play();
+
     }
     //collegato al bottone del anchor pane manoSuccesiva
     public void prossimaMano(MouseEvent mouseEvent) throws IOException {
@@ -510,7 +531,9 @@ public class PartitaController implements Initializable {
     //collegato al bottone del anchor pane toccaA
     public void procedi(MouseEvent mouseEvent) throws FileNotFoundException {
         anchPane_toccaA.setVisible(false);
-
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), anchPane_score);
+        translateTransition.setByX(220);
+        translateTransition.play();
         try {
             giocaTurno();
         } catch (FileNotFoundException e) {
@@ -541,7 +564,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-        int codice = 87280;
+        int codice = 26435;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
@@ -579,5 +602,57 @@ public class PartitaController implements Initializable {
         lbl_classifica.setText(s);
     }
 
+    public void keyEventPausa(KeyEvent keyEvent){
+        if(keyEvent.getCode() == KeyCode.ESCAPE){
+            if(pausa == false) {
+                System.out.println("entra");
+                pane_pausa.setVisible(true);
+                anchorPane.setDisable(true);
+                anchPane_manoSuccesiva.setDisable(true);
+                anchPane_score.setDisable(true);
+                btn_regole.requestFocus();
+                pausa = true;
+            }
+            else{
+                System.out.println("esce");
+                pane_pausa.setVisible(false);
+                anchorPane.setDisable(false);
+                anchPane_manoSuccesiva.setDisable(false);
+                anchPane_score.setDisable(false);
+                pausa = false;
+            }
+        }
+    }
+    public void keyEventTastini(KeyEvent keyEvent) {
+        if(btn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused()) {
+            if (keyEvent.getCode() == KeyCode.DOWN) {
+                if (btn_regole.isFocused()) {
+                    btn_suono.requestFocus();
+                } else if (btn_suono.isFocused()) {
+                    btn_esci.requestFocus();
+                } else {
+                    System.out.println("sei in basso");
+                }
+            }
+            if (keyEvent.getCode() == KeyCode.UP) {
+                if (btn_esci.isFocused()) {
+                    btn_suono.requestFocus();
+                } else if (btn_suono.isFocused()) {
+                    btn_regole.requestFocus();
+                } else {
+                    System.out.println("sei in alto");
+                }
+            }
+            pulisci();
 
+        }
+
+
+    }
+    //sistemare ogni volta i focus dei bottoni
+    public void pulisci(){
+        btn_esci.setFocusTraversable(false);
+        btn_suono.setFocusTraversable(false);
+        btn_regole.setFocusTraversable(false);
+    }
 }
