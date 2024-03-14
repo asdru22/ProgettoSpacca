@@ -11,19 +11,19 @@
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
+      <ImageView fitHeight="624.0" fitWidth="907.0">
+         <image>
+            <Image url="@../campoGioco.png" />
+         </image>
+      </ImageView>
         <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="907.0">
             <children>
-            <ImageView fitHeight="332.0" fitWidth="380.0" layoutX="-158.0" layoutY="10.0">
-               <image>
-                  <Image url="@../darkScore.png" />
-               </image>
-            </ImageView>
-                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
+                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta">
                     <font>
-                        <Font name="Candara Bold Italic" size="15.0" />
+                        <Font name="Candara Bold Italic" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_stai" focusTraversable="false" layoutX="779.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
+                <Button fx:id="btn_stai" focusTraversable="false" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai">
                     <font>
                         <Font name="Candara Bold Italic" size="15.0" />
                     </font>
@@ -64,70 +64,103 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="595.0" layoutY="17.0" prefHeight="302.0" prefWidth="307.0" visible="false">
-                    <children>
-                  <ImageView fitHeight="332.0" fitWidth="380.0" layoutX="83.0" layoutY="-14.0" rotate="-180.0">
-                     <image>
-                        <Image url="@../darkScore.png" />
-                     </image>
-                  </ImageView>
-                        <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="149.0" layoutY="117.0" prefHeight="98.0" prefWidth="150.0" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font size="62.0" />
-                            </font>
-                            <opaqueInsets>
-                                <Insets top="-2.0" />
-                            </opaqueInsets>
-                        </Label>
-                        <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="141.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER">
-                            <font>
-                                <Font name="Candara" size="14.0" />
-                            </font>
-                        </Button>
-                        <Label alignment="CENTER" focusTraversable="false" layoutX="83.0" layoutY="44.0" prefHeight="52.0" prefWidth="282.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
-                            <font>
-                                <Font name="Candara Bold" size="17.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
                 <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="336.0" layoutY="321.0" prefHeight="23.0" prefWidth="201.0" text="devi scegliere almeno una carta" visible="false" />
-                <ImageView fitHeight="70.0" fitWidth="74.0" layoutX="60.0" layoutY="41.0">
+            </children>
+        </AnchorPane>
+          <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="936.0" layoutY="14.0" prefHeight="302.0" prefWidth="307.0">
+              <children>
+            <ImageView fitHeight="366.0" fitWidth="459.0" layoutY="-39.0" rotate="-180.0">
+               <image>
+                  <Image url="@../darkScore.png" />
+               </image>
+            </ImageView>
+                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="89.0" layoutY="104.0" prefHeight="98.0" prefWidth="150.0" textAlignment="CENTER" textFill="WHITE">
+                      <font>
+                          <Font size="62.0" />
+                      </font>
+                      <opaqueInsets>
+                          <Insets top="-2.0" />
+                      </opaqueInsets>
+                  </Label>
+                  <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="81.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER">
+                      <font>
+                          <Font name="Candara" size="14.0" />
+                      </font>
+                  </Button>
+                  <Label alignment="CENTER" focusTraversable="false" layoutX="41.0" layoutY="42.0" prefHeight="52.0" prefWidth="248.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
+                      <font>
+                          <Font name="Candara Bold" size="17.0" />
+                      </font>
+                  </Label>
+              </children>
+          </AnchorPane>
+      <AnchorPane fx:id="anchPane_score" layoutX="-413.0" layoutY="-1.0" prefHeight="357.0" prefWidth="0.0">
+         <children>
+            <ImageView fitHeight="358.0" fitWidth="413.0" layoutX="-1.0" layoutY="-4.0">
+               <image>
+                  <Image url="@../darkScore.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="218.0" layoutY="99.0">
+               <image>
+                  <Image url="@../star.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="230.0" layoutY="99.0">
+               <image>
+                  <Image url="@../star.png" />
+               </image>
+            </ImageView>
+                <ImageView fitHeight="70.0" fitWidth="74.0" layoutX="244.0" layoutY="41.0">
                     <image>
                         <Image url="@../score.png" />
                     </image>
                 </ImageView>
-                <Label fx:id="lbl_classifica" alignment="CENTER" layoutY="115.0" lineSpacing="8.0" prefHeight="182.0" prefWidth="194.0" textAlignment="CENTER" textFill="WHITE">
+            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="332.0" layoutY="99.0">
+               <image>
+                  <Image url="@../star.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="320.0" layoutY="99.0">
+               <image>
+                  <Image url="@../star.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="270.0" layoutY="43.0">
+               <image>
+                  <Image url="@../star.png" />
+               </image>
+            </ImageView>
+                <Label fx:id="lbl_classifica" alignment="CENTER" layoutX="179.0" layoutY="118.0" lineSpacing="8.0" prefHeight="182.0" prefWidth="202.0" textAlignment="CENTER" textFill="WHITE">
                     <font>
                         <Font name="Candara" size="16.0" />
                     </font>
                 </Label>
-            <ImageView fitHeight="23.0" fitWidth="23.0" layoutX="85.0" layoutY="41.0">
-               <image>
-                  <Image url="@../star.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="147.0" layoutY="95.0">
-               <image>
-                  <Image url="@../star.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="14.0" layoutY="95.0">
-               <image>
-                  <Image url="@../star.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="164.0" layoutY="95.0">
-               <image>
-                  <Image url="@../star.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="11.0" fitWidth="11.0" layoutX="32.0" layoutY="95.0">
-               <image>
-                  <Image url="@../star.png" />
-               </image>
-            </ImageView>
-            </children>
-        </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0" visible="false">
+         <children>
+            <Label alignment="CENTER" focusTraversable="false" layoutX="91.0" layoutY="23.0" prefHeight="62.0" prefWidth="202.0" text="PAUSA">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_regole" layoutX="91.0" layoutY="120.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="66.0" prefWidth="202.0" text="Regole">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_esci" focusTraversable="false" layoutX="91.0" layoutY="307.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="66.0" prefWidth="202.0" text="Salva ed esci">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+            <Button fx:id="btn_suono" focusTraversable="false" layoutX="91.0" layoutY="212.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="66.0" prefWidth="202.0" text="Suono">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
     </children>
 </Pane>

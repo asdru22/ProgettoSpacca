@@ -12,7 +12,7 @@
 
 <Pane prefHeight="622.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaController">
    <children>
-      <AnchorPane prefHeight="622.0" prefWidth="907.0">
+      <AnchorPane fx:id="anchPane" prefHeight="622.0" prefWidth="907.0">
          <children>
             <ImageView fitHeight="631.0" fitWidth="915.0" layoutX="-4.0" layoutY="-5.0">
                <image>
