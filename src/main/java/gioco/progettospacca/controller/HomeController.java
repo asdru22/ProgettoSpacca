@@ -123,7 +123,6 @@ public class HomeController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        Utili.premiFreccia();
         if(keyEvent.getCode() == KeyCode.ESCAPE || keyEvent.getCode() == KeyCode.M){
             menuBar.show();
         }
