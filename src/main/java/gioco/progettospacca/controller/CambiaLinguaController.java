@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -149,19 +150,8 @@ public class CambiaLinguaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String linea = null;
-        try {
-            Scanner scanner = new Scanner(new File("src/main/java/gioco/progettospacca/salvataggi/lingua.txt"));
-            if (scanner.hasNextLine()) {
-                linea = scanner.nextLine();
-                //System.out.println(linea);
-            }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-
-        if(linea.equals("inglese")){
+        if(OPZ.getLingua().equals("en")){
             btn_ita.setFocusTraversable(false);
             btn_ger.setFocusTraversable(false);
             btn_ing.setFocusTraversable(true);
@@ -169,7 +159,7 @@ public class CambiaLinguaController implements Initializable {
             img_spunta1.setVisible(false);
             img_spunta2.setVisible(true);
             img_spunta3.setVisible(false);
-        } else if (linea.equals("italiano")) {
+        } else if (Objects.equals(OPZ.getLingua(), "it")) {
             btn_ita.setFocusTraversable(true);
             btn_ger.setFocusTraversable(false);
             btn_ing.setFocusTraversable(false);
@@ -177,7 +167,7 @@ public class CambiaLinguaController implements Initializable {
             img_spunta1.setVisible(true);
             img_spunta2.setVisible(false);
             img_spunta3.setVisible(false);
-        } else if (linea.equals("tedesco")) {
+        } else if (Objects.equals(OPZ.getLingua(), "de")) {
             btn_ita.setFocusTraversable(false);
             btn_ger.setFocusTraversable(true);
             btn_ing.setFocusTraversable(false);

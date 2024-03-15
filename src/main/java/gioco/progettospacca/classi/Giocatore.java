@@ -123,8 +123,7 @@ public class Giocatore {
 
     // .json->classe
     public static Giocatore carica(String nome) {
-        Gson gson = new Gson();
-        return gson.fromJson(Utili.leggiFileJson("giocatori", nome), Giocatore.class);
+        return new Gson().fromJson(Utili.leggiFileJson("giocatori", nome), Giocatore.class);
     }
 
     public void aggiungiSalvataggio() {

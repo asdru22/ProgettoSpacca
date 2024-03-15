@@ -74,8 +74,7 @@ public class Partita {
 
     // .json->classe
     public static Partita carica(int id) {
-        Gson gson = new Gson();
-        return gson.fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
+        return new Gson().fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
     }
     public int trovaPosizione(Giocatore[] giocatori, Giocatore giocatoreDaCercare) {
         int i = 0;

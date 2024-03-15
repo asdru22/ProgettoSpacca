@@ -87,7 +87,7 @@
         </AnchorPane>
       <Pane fx:id="pane_suoni" layoutX="275.0" layoutY="79.0" prefHeight="470.0" prefWidth="384.0" visible="false">
          <children>
-            <Label alignment="CENTER" focusTraversable="false" layoutX="47.0" layoutY="23.0" prefHeight="66.0" prefWidth="290.0" text="suoni / musica">
+            <Label fx:id="lbl_suoni" alignment="CENTER" focusTraversable="false" layoutX="47.0" layoutY="23.0" prefHeight="66.0" prefWidth="290.0" text="suoni / musica">
                <font>
                   <Font size="45.0" />
                </font>

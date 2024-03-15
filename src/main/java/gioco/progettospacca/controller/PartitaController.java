@@ -33,7 +33,9 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 25066;
+    public static final int CODICE_TEMP = 64038;
+  @FXML
+    public Label lbl_pausa;
 
     @FXML
     private AnchorPane anchorPane;
@@ -111,6 +113,19 @@ public class PartitaController implements Initializable {
     private int cont;
     String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
     boolean pausa = false;
+
+    private void inizializzaTraduzioni(){
+
+        lbl_pausa.setText(OPZ.traduci("pausa"));
+        lbl_attenzione.setText(OPZ.traduci("attenzione"));
+        lbl_classifica.setText(OPZ.traduci("classifica"));
+        lbl_scegliCarteDaScartare.setText(OPZ.traduci("scegli_carte_da_scartare"));
+        btn_esci.setText(OPZ.traduci("esci"));
+        tglbtn_suono.setSelected(OPZ.getSuono());
+        tglbtn_musica.setSelected(OPZ.getMusica());
+        Utili.gestisciSuoni(tglbtn_suono);
+        Utili.gestisciMusica(tglbtn_musica);
+    }
     public void giocaTurno() throws FileNotFoundException {
         anch_mazzo.getScene().setOnKeyPressed(this::keyEventPausa); //recupero la scena corrente e imposto il gestore degli eventi da tastiera
 
@@ -550,7 +565,7 @@ public class PartitaController implements Initializable {
     private void newScene() throws IOException {
         if(cont == p.getNumeroTurni()*p.getGiocatori().length-1) {
             p.finePartita();
-            BackToHome();
+            salvaEdEsci();
         }
         else{
 
@@ -567,9 +582,16 @@ public class PartitaController implements Initializable {
             currentScene.setRoot(root);
         }
     }
+    public void salvaEdEsci() throws IOException {
+        BackToHome();
+        OPZ.playMusica("lobby.wav");
+    }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(">>> initializa");
+
+        inizializzaTraduzioni();
+
+        System.out.println(">>> initializa partita con codice "+CODICE_TEMP);
         int codice = CODICE_TEMP;
         p = Partita.carica(codice);
         mostraClassifica();
@@ -655,21 +677,13 @@ public class PartitaController implements Initializable {
 
         }
         if(keyEvent.getCode() == KeyCode.ENTER && btn_esci.isFocused()){
-            BackToHome();
+            salvaEdEsci();
         }
         if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()){
-            if(tglbtn_musica.isSelected()){
-                tglbtn_musica.setText("musica ON");
-            }else{
-                tglbtn_musica.setText("musica OFF");
-            }
+            Utili.gestisciMusica(tglbtn_musica);
         }
         if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()){
-            if(tglbtn_suono.isSelected()){
-                tglbtn_suono.setText("suono ON");
-            }else{
-                tglbtn_suono.setText("suono OFF");
-            }
+            Utili.gestisciSuoni(tglbtn_suono);
         }
 
     }
@@ -682,26 +696,14 @@ public class PartitaController implements Initializable {
     }
 
     public void salvaEdEsci(MouseEvent mouseEvent) throws IOException {
-        BackToHome();
+        salvaEdEsci();
     }
 
     public void setSuono(MouseEvent mouseEvent) {
-        if(tglbtn_suono.isSelected()){
-            tglbtn_suono.setText("suono OFF");
-        }else{
-            tglbtn_suono.setText("suono ON");
-        }
+        Utili.gestisciSuoni(tglbtn_suono);
     }
 
     public void setMusica(MouseEvent mouseEvent) {
-        if(tglbtn_musica.isSelected()){
-            tglbtn_musica.setText("musica OFF");
-            OPZ.pausaMusica();
-
-        }else{
-            tglbtn_musica.setText("musica ON");
-            OPZ.riprendiMusica();
-
-        }
+        Utili.gestisciMusica(tglbtn_musica);
     }
 }

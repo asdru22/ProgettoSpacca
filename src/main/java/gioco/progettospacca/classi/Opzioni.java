@@ -7,7 +7,6 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.*;
 import java.util.Locale;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Opzioni {
@@ -43,8 +42,10 @@ public class Opzioni {
             reader.close();
             return gson.fromJson(jsonBuilder.toString(), Opzioni.class);
         } catch (IOException e) {
-            System.err.println("Errore lettura file");
-            return null;
+            System.err.println("File impostazioni non trovato, creazione nuovo");
+            Opzioni o = new Opzioni();
+            o.salva();
+            return o ;
         }
     }
 
@@ -61,12 +62,13 @@ public class Opzioni {
         this.salva();
     }
     public void pausaMusica(){
-        musica.pause();
+        if(musica!=null) musica.pause();
+
         musicaPausa = true;
         this.salva();
     }
     public void riprendiMusica(){
-        musica.play();
+        if(musica!=null) musica.play();
     }
 
     public void playSfx(String nome){
@@ -77,12 +79,12 @@ public class Opzioni {
         System.out.println("playing sfx");
     }
     public void pausaSfx(){
-        sfx.stop();
+        if(sfx!=null) sfx.stop();
         sfxPausa = true;
         this.salva();
     }
     public void riprendiSfx(){
-        sfx.play();
+        if(sfx!=null) sfx.play();
         sfxPausa = false;
         this.salva();
     }
@@ -97,6 +99,7 @@ public class Opzioni {
 
     public void setLingua(Locale lingua) {
         this.lingua = lingua;
+        this.salva();
     }
 
     public void premiBottone() {

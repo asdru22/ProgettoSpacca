@@ -3,10 +3,7 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.control.TextField;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import javax.sound.sampled.*;
+import javafx.scene.control.ToggleButton;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,9 +11,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Locale;
 import java.util.Objects;
-import java.util.ResourceBundle;
+
+import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
@@ -168,6 +165,24 @@ public class Utili {
 
     public static boolean nomiBot(String nome) {
         return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
+    }
+    public static void gestisciMusica(ToggleButton tglb){
+        if (tglb.isSelected()) {
+            OPZ.pausaMusica();
+            tglb.setText(OPZ.traduci("musica_off"));
+        } else {
+            OPZ.riprendiMusica();
+            tglb.setText(OPZ.traduci("musica_on"));
+        }
+    }
+    public static void gestisciSuoni(ToggleButton tglb){
+        if (tglb.isSelected()) {
+            OPZ.pausaSfx();
+            tglb.setText(OPZ.traduci("suono_off"));
+        } else {
+            OPZ.riprendiSfx();
+            tglb.setText(OPZ.traduci("suono_on"));
+        }
     }
 
 }
