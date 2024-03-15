@@ -16,14 +16,14 @@
             <Image url="@../campoGioco.png" />
          </image>
       </ImageView>
-        <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="907.0">
+        <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="899.0">
             <children>
-                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta">
+                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
                     <font>
                         <Font name="Candara Bold Italic" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_stai" focusTraversable="false" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai">
+                <Button fx:id="btn_stai" focusTraversable="false" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
                     <font>
                         <Font name="Candara Bold Italic" size="15.0" />
                     </font>
