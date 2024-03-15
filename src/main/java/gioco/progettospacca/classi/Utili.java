@@ -58,7 +58,7 @@ public class Utili {
         ArrayList<Giocatore> copia_temp = new ArrayList<>(temp);
         Giocatore max_vittorie;
         String [] vett = new String[11];
-        String r = "";
+        String r;
         for (int i = 0; i <= 10; i++) {
             max_vittorie = new Giocatore("temp");
             for (Giocatore g : copia_temp) {
@@ -67,10 +67,10 @@ public class Utili {
                 }
             }
             if (Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = (i+1) +"";
+                r = (i<=2? "" : i+1 )+"";
             }
             else{
-                r = (i+1) + ". " + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                r = (i<=2? "" : i+1+ ". " )  + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
                 vett[i]= r;
             }
             temp.remove(max_vittorie);

@@ -81,7 +81,7 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
+                  <Label fx:id="lbl_classifica" alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
                      <font>
                         <Font name="Candara Bold Italic" size="23.0" />
                      </font>
