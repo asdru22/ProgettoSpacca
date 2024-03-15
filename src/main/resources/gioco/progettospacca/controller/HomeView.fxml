@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
+<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
     <children>
         <AnchorPane prefHeight="622.0" prefWidth="907.0">
             <children>
@@ -38,6 +38,7 @@
                                 <MenuItem fx:id="btn_classifica" mnemonicParsing="false" onAction="#apriMenu" text="Classifica" />
                                 <MenuItem fx:id="btn_cambiaLingua" mnemonicParsing="false" onAction="#cambiaLingua" text="Cambia Lingua" />
                                 <MenuItem fx:id="btn_regole" mnemonicParsing="false" onAction="#apriRegole" text="Regole" />
+                        <MenuItem fx:id="btn_audio" mnemonicParsing="false" onAction="#toggleAudio" text="ToggleAudio" />
                             </items>
                         </Menu>
                     </menus>

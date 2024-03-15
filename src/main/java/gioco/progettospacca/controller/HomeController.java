@@ -27,6 +27,8 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
+    public MenuItem btn_audio;
+    @FXML
     MenuItem btn_cambiaLingua;
     @FXML
     MenuItem btn_regole;
@@ -205,9 +207,14 @@ public class HomeController implements Initializable {
         btn_giocaPartita.setText(Utili.traduci("gioca_partita"));
         btn_creaTorneo.setText(Utili.traduci("crea_torneo"));
         btn_giocaTorneo.setText(Utili.traduci("gioca_torneo"));
+        btn_audio.setText(Utili.traduci("toggle_audio"));
     }
 
     public void suonoMenu(ActionEvent actionEvent) {
         Utili.premiBottone();
+    }
+
+    public void toggleAudio(ActionEvent actionEvent) {
+        Utili.toggleAudio();
     }
 }
