@@ -37,7 +37,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="lbl_pos4" alignment="CENTER" prefHeight="18.0" prefWidth="130.0" textAlignment="CENTER" GridPane.columnIndex="1" />
+                        <Label fx:id="lbl_pos4" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" />
                         <Label fx:id="lbl_pos5" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <Label fx:id="lbl_pos6" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <Label fx:id="lbl_pos7" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -81,7 +81,7 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Label alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
+                  <Label fx:id="lbl_classifica" alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
                      <font>
                         <Font name="Candara Bold Italic" size="23.0" />
                      </font>
@@ -91,22 +91,22 @@
                         <Font name="Candara" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="300.0" layoutY="70.0">
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="300.0" layoutY="101.0">
                      <image>
                         <Image url="@../playerimg.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="286.0" layoutY="75.0">
+                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="286.0" layoutY="119.0">
                      <image>
                         <Image url="@../medagliaBronzo.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="169.0" layoutY="96.0">
+                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="169.0" layoutY="75.0">
                      <image>
                         <Image url="@../playerimg.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="45.0" fitWidth="30.0" layoutX="155.0" layoutY="114.0">
+                  <ImageView fitHeight="45.0" fitWidth="30.0" layoutX="154.0" layoutY="100.0">
                      <image>
                         <Image url="@../medagliaOro.png" />
                      </image>
@@ -116,7 +116,7 @@
                         <Font name="Candara" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="57.0" layoutY="70.0">
+                  <ImageView fitHeight="43.0" fitWidth="43.0" layoutX="57.0" layoutY="101.0">
                      <image>
                         <Image url="@../playerimg.png" />
                      </image>
@@ -126,7 +126,7 @@
                         <Font name="Candara" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="43.0" layoutY="75.0">
+                  <ImageView fitHeight="43.0" fitWidth="28.0" layoutX="43.0" layoutY="119.0">
                      <image>
                         <Image url="@../medagliaArgento.png" />
                      </image>

@@ -4,7 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class LeaderboardController {
-
+    @FXML
+    public Label lbl_classifica;
     @FXML
     private Label lbl_pos1;
 
@@ -48,6 +49,8 @@ public class LeaderboardController {
         lbl_pos8.setText(lead[7]);
         lbl_pos9.setText(lead[8]);
         lbl_pos10.setText(lead[9]);
+        lbl_classifica.setText(Utili.traduci("classifica"));
+
 
     }
 }

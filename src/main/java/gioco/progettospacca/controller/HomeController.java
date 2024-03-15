@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
     @FXML
+    public MenuItem btn_audio;
+    @FXML
     MenuItem btn_cambiaLingua;
     @FXML
     MenuItem btn_regole;
@@ -286,5 +288,6 @@ public class HomeController implements Initializable {
         pane_suoni.setVisible(false);
         btn_giocaPartita.requestFocus();
         anchorPane.setDisable(false);
+
     }
 }
