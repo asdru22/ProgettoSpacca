@@ -24,6 +24,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
+import static gioco.progettospacca.controller.Main.OPZ;
+
 public class CambiaLinguaController implements Initializable {
     @FXML
     public Label lbl_lingua;
@@ -44,8 +46,8 @@ public class CambiaLinguaController implements Initializable {
 
 
     public void linguaItaliana(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
-        Utili.setLingua(Locale.ITALIAN);
+        OPZ.premiBottone();
+        OPZ.setLingua(Locale.ITALIAN);
         img_spunta1.setVisible(true);
         img_spunta2.setVisible(false);
         img_spunta3.setVisible(false);
@@ -53,8 +55,8 @@ public class CambiaLinguaController implements Initializable {
     }
 
     public void linguaTedesca(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
-        Utili.setLingua(Locale.GERMAN);
+        OPZ.premiBottone();
+        OPZ.setLingua(Locale.GERMAN);
         img_spunta1.setVisible(false);
         img_spunta2.setVisible(false);
         img_spunta3.setVisible(true);
@@ -62,15 +64,15 @@ public class CambiaLinguaController implements Initializable {
     }
 
     public void linguaInglese(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
-        Utili.setLingua(Locale.ENGLISH);
+        OPZ.premiBottone();
+        OPZ.setLingua(Locale.ENGLISH);
         img_spunta1.setVisible(false);
         img_spunta2.setVisible(true);
         img_spunta3.setVisible(false);
         btn_ing.requestFocus();
     }
 
-    public void BackToHome() throws IOException {Utili.premiBottone();
+    public void BackToHome() throws IOException {OPZ.premiBottone();
 
             Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
@@ -84,7 +86,7 @@ public class CambiaLinguaController implements Initializable {
             currentScene.setRoot(root);
 
             // Imposta il titolo della finestra
-            currentStage.setTitle(Utili.traduci("spacca"));
+            currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
@@ -92,15 +94,15 @@ public class CambiaLinguaController implements Initializable {
             BackToHome();
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ita.isFocused())) {
-            Utili.setLingua(Locale.ITALIAN);
+            OPZ.setLingua(Locale.ITALIAN);
             btn_ita.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ing.isFocused())) {
-            Utili.setLingua(Locale.ENGLISH);
+            OPZ.setLingua(Locale.ENGLISH);
             btn_ing.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ger.isFocused())) {
-            Utili.setLingua(Locale.GERMAN);
+            OPZ.setLingua(Locale.GERMAN);
             btn_ger.requestFocus();
         }
 
@@ -108,13 +110,13 @@ public class CambiaLinguaController implements Initializable {
             if (btn_backToHome.isFocused()) {
                 System.out.println("Sei già in alto");
             } else if (btn_ita.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_backToHome.requestFocus();
             } else if (btn_ger.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_ing.requestFocus();
             } else if (btn_ing.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_ita.requestFocus();
             }
         }
@@ -123,15 +125,15 @@ public class CambiaLinguaController implements Initializable {
             if (btn_ger.isFocused()) {
                 System.out.println("Sei già in basso");
             } else if (btn_backToHome.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
 
                 btn_ita.requestFocus();
             } else if (btn_ita.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
 
                 btn_ing.requestFocus();
             } else if (btn_ing.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
 
                 btn_ger.requestFocus();
             }
@@ -184,6 +186,6 @@ public class CambiaLinguaController implements Initializable {
             img_spunta2.setVisible(false);
             img_spunta3.setVisible(true);
         }
-        lbl_lingua.setText(Utili.traduci("lingua"));
+        lbl_lingua.setText(OPZ.traduci("lingua"));
     }
 }

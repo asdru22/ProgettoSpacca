@@ -1,13 +1,10 @@
 package gioco.progettospacca.controller;
 
 
-import gioco.progettospacca.classi.Suoni;
-import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -17,12 +14,13 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import static gioco.progettospacca.controller.Main.OPZ;
 
 public class HomeController implements Initializable {
     @FXML
@@ -57,8 +55,8 @@ public class HomeController implements Initializable {
     private AnchorPane anchorPane;
 
     public void ridaje(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
-        Utili.suono("gioco.mp3", Suoni.Musica);
+        OPZ.premiBottone();
+        OPZ.playMusica("gioco.mp3");
         Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
         // Ottieni la finestra corrente
@@ -130,7 +128,7 @@ public class HomeController implements Initializable {
         Stage stage = new Stage();
 
         // Imposta la nuova finestra
-        stage.setTitle(Utili.traduci("classifica"));
+        stage.setTitle(OPZ.traduci("classifica"));
         stage.setScene(scene);
         stage.show();
     }
@@ -148,15 +146,19 @@ public class HomeController implements Initializable {
         }
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()) {
             if(tglbtn_musica.isSelected()){
+                OPZ.riprendiMusica();
                 tglbtn_musica.setText("musica ON");
             }else{
+                OPZ.pausaMusica();
                 tglbtn_musica.setText("musica OFF");
             }
         }
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
             if(tglbtn_suono.isSelected()){
+                OPZ.riprendiSfx();
                 tglbtn_suono.setText("suono ON");
             }else{
+                OPZ.pausaSfx();
                 tglbtn_suono.setText("suono OFF");
             }
         }
@@ -168,13 +170,13 @@ public class HomeController implements Initializable {
             if (btn_giocaPartita.isFocused()) {
                 System.out.println(" Sei già in alto.");
             } else if (btn_creaPartita.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_giocaPartita.requestFocus();
             } else if (btn_giocaTorneo.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_creaPartita.requestFocus();
             } else if (btn_creaTorneo.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_giocaTorneo.requestFocus();
             }
         }
@@ -182,13 +184,13 @@ public class HomeController implements Initializable {
             if(btn_creaTorneo.isFocused()){
                 System.out.println("sei gia in basso");
             } else if (btn_giocaPartita.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_creaPartita.requestFocus();
             } else if (btn_creaPartita.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_giocaTorneo.requestFocus();
             } else if (btn_giocaTorneo.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_creaTorneo.requestFocus();
             }
         }
@@ -223,43 +225,46 @@ public class HomeController implements Initializable {
         btn_creaTorneo.setFocusTraversable(false);
     }
     public void giocaPartita(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         EventoGiocaPartita();
     }
 
     public void creaPartita(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         EventoCreaPartita();
     }
 
     public void apriMenu(ActionEvent ActionEvent) throws IOException {
         showLeaderboard();
-        Utili.premiBottone();
+        OPZ.premiBottone();
     }
 
     public void cambiaLingua(ActionEvent ActionEvent) throws IOException {
         showCambiaLingua();
-        Utili.premiBottone();
+        OPZ.premiBottone();
     }
 
     public void apriRegole(ActionEvent actionEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_classifica.setText(Utili.traduci("classifica"));
-        btn_regole.setText(Utili.traduci("regole"));
-        btn_cambiaLingua.setText(Utili.traduci("cambia_lingua"));
+        btn_classifica.setText(OPZ.traduci("classifica"));
+        btn_regole.setText(OPZ.traduci("regole"));
+        btn_cambiaLingua.setText(OPZ.traduci("cambia_lingua"));
 
-        btn_creaPartita.setText(Utili.traduci("crea_partita"));
-        btn_giocaPartita.setText(Utili.traduci("gioca_partita"));
-        btn_creaTorneo.setText(Utili.traduci("crea_torneo"));
-        btn_giocaTorneo.setText(Utili.traduci("gioca_torneo"));
+        btn_creaPartita.setText(OPZ.traduci("crea_partita"));
+        btn_giocaPartita.setText(OPZ.traduci("gioca_partita"));
+        btn_creaTorneo.setText(OPZ.traduci("crea_torneo"));
+        btn_giocaTorneo.setText(OPZ.traduci("gioca_torneo"));
+
+        tglbtn_suono.setSelected(OPZ.getSuono());
+        tglbtn_musica.setSelected(OPZ.getMusica());
     }
 
     public void suonoMenu(ActionEvent actionEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
     }
 
     public void apriSuoni(ActionEvent actionEvent) {
@@ -270,16 +275,20 @@ public class HomeController implements Initializable {
 
     public void setSuono(MouseEvent mouseEvent) {
         if(tglbtn_suono.isSelected()){
+            OPZ.pausaSfx();
             tglbtn_suono.setText("suono OFF");
         }else{
+            OPZ.riprendiSfx();
             tglbtn_suono.setText("suono ON");
         }
     }
 
     public void setMusica(MouseEvent mouseEvent) {
         if(tglbtn_musica.isSelected()){
+            OPZ.pausaMusica();
             tglbtn_musica.setText("musica OFF");
         }else{
+            OPZ.riprendiMusica();
             tglbtn_musica.setText("musica ON");
         }
     }

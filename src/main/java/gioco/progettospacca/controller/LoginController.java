@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.controller.Main.OPZ;
+
 public class LoginController implements Initializable {
     @FXML
     public Label lbl_username;
@@ -39,7 +41,7 @@ public class LoginController implements Initializable {
     private Label lbl_titolo;
 
     public void BackToHome() throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
@@ -52,7 +54,7 @@ public class LoginController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("spacca"));
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void LoginAdmin() throws IOException{
@@ -73,7 +75,7 @@ public class LoginController implements Initializable {
                 currentScene.setRoot(root);
 
                 // Imposta il titolo della finestra
-                currentStage.setTitle(Utili.traduci("login"));
+                currentStage.setTitle(OPZ.traduci("login"));
             } else
             {
                 System.out.println(user);
@@ -85,11 +87,11 @@ public class LoginController implements Initializable {
         BackToHome();
     }
     public void loginAdmin(MouseEvent mouseEvent) throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         LoginAdmin();
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        Utili.premiFreccia();
+        OPZ.premiFreccia();
         pulisci();
         if(keyEvent.getCode() == KeyCode.ESCAPE ){
             BackToHome();
@@ -110,13 +112,13 @@ public class LoginController implements Initializable {
             if(btn_back.isFocused()){
                 System.out.println("sei già in alto");
             } else if (txt_user.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_back.requestFocus();
             } else if (txt_psw.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_user.requestFocus();
             } else if (btn_login.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_psw.requestFocus();
             }
         }
@@ -124,13 +126,13 @@ public class LoginController implements Initializable {
             if(btn_login.isFocused()){
                 System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_user.requestFocus();
             } else if (txt_user.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_psw.requestFocus();
             } else if (txt_psw.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_login.requestFocus();
             }
         }
@@ -144,9 +146,9 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lbl_password.setText(Utili.traduci("password"));
-        lbl_username.setText(Utili.traduci("username"));
-        lbl_titolo.setText(Utili.traduci("login_amministratore"));
-        btn_login.setText(Utili.traduci("login"));
+        lbl_password.setText(OPZ.traduci("password"));
+        lbl_username.setText(OPZ.traduci("username"));
+        lbl_titolo.setText(OPZ.traduci("login_amministratore"));
+        btn_login.setText(OPZ.traduci("login"));
     }
 }

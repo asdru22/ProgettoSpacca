@@ -6,6 +6,8 @@ module gioco.progettospacca {
     requires javafx.media;
     opens gioco.progettospacca to javafx.fxml;
     exports gioco.progettospacca.controller;
+    exports gioco.progettospacca.classi;
+
     opens gioco.progettospacca.controller to javafx.fxml;
     opens gioco.progettospacca.classi to com.google.gson;
 }

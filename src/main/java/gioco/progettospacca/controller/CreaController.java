@@ -26,9 +26,11 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.controller.Main.OPZ;
+
 public class CreaController implements Initializable {
     public void BackToHome() throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
@@ -41,7 +43,7 @@ public class CreaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("spacca"));
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
     @FXML
     private Label lbl_nomi_giocatori;
@@ -80,7 +82,7 @@ public class CreaController implements Initializable {
     TextField[] txt = {txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5};
 
     public void EventoCreaCodicePartita() {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         try {
             Giocatore temp;
 
@@ -125,7 +127,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox1(MouseEvent mouseEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         if (chk_gioc1.isSelected()) {
             txt_gioc1.setDisable(true);
             txt_gioc1.setText("bot1");
@@ -138,7 +140,7 @@ public class CreaController implements Initializable {
 
 
     public void checkBox2(MouseEvent mouseEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         if (chk_gioc2.isSelected()) {
             txt_gioc2.setDisable(true);
             txt_gioc2.setText("bot2");
@@ -150,7 +152,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox3(MouseEvent mouseEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         if (chk_gioc3.isSelected()) {
             txt_gioc3.setDisable(true);
             txt_gioc3.setText("bot3");
@@ -162,7 +164,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox4(MouseEvent mouseEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         if (chk_gioc4.isSelected()) {
             txt_gioc4.setDisable(true);
             txt_gioc4.setText("bot4");
@@ -174,7 +176,7 @@ public class CreaController implements Initializable {
     }
 
     public void checkBox5(MouseEvent mouseEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         if (chk_gioc5.isSelected()) {
             txt_gioc5.setDisable(true);
             txt_gioc5.setText("bot5");
@@ -214,42 +216,42 @@ public class CreaController implements Initializable {
             if (txt_gioc5.isFocused()) {
                 System.out.println("sei già nell'ultima casella");
             } else if (txt_gioc1.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc3.requestFocus();
             } else if (txt_gioc3.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc4.requestFocus();
             } else if (txt_gioc4.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc5.requestFocus();
             }
 
             if (chk_gioc5.isFocused()) {
                 System.out.println("sei già nell' ultima casella");
             } else if (chk_gioc1.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc2.requestFocus();
             } else if (chk_gioc2.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc3.requestFocus();
             } else if (chk_gioc3.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc4.requestFocus();
             } else if (chk_gioc4.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc5.requestFocus();
             }
 
             if (btn_backHome.isFocused()) {
                 System.out.println("sei già in basso");
             } else if (txt_code.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_backHome.requestFocus();
             } else if (btn_crea.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_code.requestFocus();
             }
         }
@@ -258,42 +260,42 @@ public class CreaController implements Initializable {
             if (txt_gioc1.isFocused()) {
                 System.out.println("sei già nella prima casella");
             } else if (txt_gioc5.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc4.requestFocus();
             } else if (txt_gioc4.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc3.requestFocus();
             } else if (txt_gioc3.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc1.requestFocus();
             }
 
             if (chk_gioc1.isFocused()) {
                 System.out.println("sei già nella prima casella");
             } else if (chk_gioc5.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_gioc4.requestFocus();
             } else if (chk_gioc4.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc3.requestFocus();
             } else if (chk_gioc3.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc2.requestFocus();
             } else if (chk_gioc2.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 chk_gioc1.requestFocus();
             }
 
             if (btn_crea.isFocused()) {
                 System.out.println("sei già in alto");
             } else if (txt_code.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 btn_crea.requestFocus();
             } else if (btn_backHome.isFocused()) {
-                Utili.premiFreccia();
+                OPZ.premiFreccia();
                 txt_code.requestFocus();
             }
         }
@@ -319,9 +321,9 @@ public class CreaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        btn_crea.setText(Utili.traduci("crea_partita"));
-        btn_backHome.setText(Utili.traduci("torna_alla_home"));
-        lbl_nomi_giocatori.setText(Utili.traduci("nomi_giocatori"));
-        lbl_codice_partita.setText(Utili.traduci("codice_partita"));
+        btn_crea.setText(OPZ.traduci("crea_partita"));
+        btn_backHome.setText(OPZ.traduci("torna_alla_home"));
+        lbl_nomi_giocatori.setText(OPZ.traduci("nomi_giocatori"));
+        lbl_codice_partita.setText(OPZ.traduci("codice_partita"));
     }
 }

@@ -44,7 +44,7 @@ public class Utili {
         }
     }
 
-    public static String [] getLeaderboard() {
+    public static String[] getLeaderboard() {
         File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Utili {
         }
         ArrayList<Giocatore> copia_temp = new ArrayList<>(temp);
         Giocatore max_vittorie;
-        String [] vett = new String[11];
+        String[] vett = new String[11];
         String r;
         for (int i = 0; i <= 10; i++) {
             max_vittorie = new Giocatore("temp");
@@ -67,11 +67,10 @@ public class Utili {
                 }
             }
             if (Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = (i<=2? "" : i+1 )+"";
-            }
-            else{
-                r = (i<=2? "" : i+1+ ". " )  + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
-                vett[i]= r;
+                r = (i <= 2 ? "" : i + 1) + "";
+            } else {
+                r = (i <= 2 ? "" : i + 1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                vett[i] = r;
             }
             temp.remove(max_vittorie);
             copia_temp = temp;
@@ -88,9 +87,9 @@ public class Utili {
         return s[intCasuale(0, 4)];
     }
 
-    public static void elimina(int id,String cartella) {
+    public static void elimina(int id, String cartella) {
 
-        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/"+cartella+"/" + id + ".json");
+        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/" + cartella + "/" + id + ".json");
 
         if (fileDaEliminare.delete()) {
             System.out.println("File eliminato con successo: " + id + ".json");
@@ -143,7 +142,7 @@ public class Utili {
         return trovato;
     }
 
-    public static Giocatore controllaNome(String nome, int id,boolean bot) {
+    public static Giocatore controllaNome(String nome, int id, boolean bot) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             if (esiste) {
@@ -151,9 +150,8 @@ public class Utili {
                 g.aggiungiPartita(id);
                 g.salva();
                 return g;
-            }
-            else {
-                Giocatore g = new Giocatore(nome,bot);
+            } else {
+                Giocatore g = new Giocatore(nome, bot);
                 g.aggiungiPartita(id);
                 g.salva();
                 return g;
@@ -164,89 +162,12 @@ public class Utili {
         }
     }
 
-    public static int leggiInt(TextField tx){
+    public static int leggiInt(TextField tx) {
         return Integer.parseInt(tx.getText());
     }
 
-    public static boolean nomiBot(String nome){
+    public static boolean nomiBot(String nome) {
         return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
     }
-    private static Locale lang;
-    public static void getLingua(){
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gioco/progettospacca/salvataggi/lingua.txt"));
-            String s = reader.readLine();
-            if (Objects.equals(s, "inglese")){
-                lang = Locale.ENGLISH;
-            }
-            else if (Objects.equals(s, "tedesco")){
-                lang = Locale.GERMAN;
-            }
-            else if (Objects.equals(s, "gatto")){
-                lang = Locale.CHINA;
-            }
-            else{
-                lang = Locale.ITALIAN;
-            }
-        } catch (IOException e) {
-            System.err.println("lingua.txt non trovato");
-        }
-    }
-    public static void setLingua(Locale lingua){
-        lang = lingua;
-        try (FileWriter writer = new FileWriter("src/main/java/gioco/progettospacca/salvataggi/lingua.txt")) {
 
-            if(lang==Locale.ITALIAN) writer.write("italiano");
-            if(lang==Locale.ENGLISH) writer.write("inglese");
-            if(lang==Locale.GERMAN) writer.write("tedesco");
-
-        } catch (IOException e) {
-            System.err.println("impossibile accedere a lingua.txt");
-        }
-    }
-    public static String traduci(String valore) {
-        ResourceBundle bundle = ResourceBundle.getBundle("testo", lang);
-        return bundle.getString(valore);
-    }
-    private static boolean suono = true;
-    private static MediaPlayer musica;
-    private static MediaPlayer sfx;
-
-    public static void suono(String nome, Suoni tipo) {
-        if(suono){
-            if(tipo==Suoni.Musica){
-                if (musica != null) {
-                    musica.stop(); // Stop any previously playing media
-                }
-                musica = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
-                musica.setCycleCount(MediaPlayer.INDEFINITE);
-                musica.play();
-                System.out.println("play music");
-            } else if (tipo==Suoni.SFX){
-                sfx = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
-                sfx.setCycleCount(1);
-                sfx.play();
-                System.out.println("play sfx");
-            }
-        }
-    }
-    public static void premiBottone(){
-        Utili.suono("bottone.wav",Suoni.SFX);
-    }
-    public static void premiFreccia(){
-        Utili.suono("freccia.wav",Suoni.SFX);
-    }
-    public static void cliccaCarta(){
-        Utili.suono("carta.wav",Suoni.SFX);
-    }
-
-    public static void toggleAudio(){
-        suono = !suono;
-        if(!suono){
-            musica.stop();
-        }
-        else{
-            musica.play();
-        }
-    }
 }

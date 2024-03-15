@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import gioco.progettospacca.classi.ValoriGioca;
@@ -16,12 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
+
+import static gioco.progettospacca.controller.Main.OPZ;
 
 public class GiocaController implements Initializable {
 
@@ -53,11 +53,11 @@ public class GiocaController implements Initializable {
     private Button btn_entra;
 
     public void BackToHome(ActionEvent actionEvent) throws IOException {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle(Utili.traduci("spacca"));
+        stage.setTitle(OPZ.traduci("spacca"));
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.show();
@@ -65,7 +65,7 @@ public class GiocaController implements Initializable {
 
 
     public void entraInPartita(ActionEvent actionEvent) {
-        Utili.premiBottone();
+        OPZ.premiBottone();
         System.out.println(txt_cod1.getText());
         if (!Objects.equals(txt_cod1.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod1);
@@ -120,9 +120,9 @@ public class GiocaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lbl_nomi.setText(Utili.traduci("nomi"));
-        lbl_codice.setText(Utili.traduci("inserisci_codice"));
-        btn_entra.setText(Utili.traduci("entra"));
+        lbl_nomi.setText(OPZ.traduci("nomi"));
+        lbl_codice.setText(OPZ.traduci("inserisci_codice"));
+        btn_entra.setText(OPZ.traduci("entra"));
     }
 }
 

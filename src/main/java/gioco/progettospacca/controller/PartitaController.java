@@ -30,8 +30,10 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
+    public static final int CODICE_TEMP = 25066;
 
     @FXML
     private AnchorPane anchorPane;
@@ -514,7 +516,7 @@ public class PartitaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(Utili.traduci("spacca"));
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
     public void fineMano(){
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), anchPane_manoSuccesiva);
@@ -568,7 +570,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-        int codice = 11173;
+        int codice = CODICE_TEMP;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
@@ -608,7 +610,7 @@ public class PartitaController implements Initializable {
 
     public void keyEventPausa(KeyEvent keyEvent){
         if(keyEvent.getCode() == KeyCode.ESCAPE){
-            if(pausa == false) {
+            if(!pausa) {
                 pane_pausa.setVisible(true);
                 anchorPane.setDisable(true);
                 anchPane_manoSuccesiva.setDisable(true);
@@ -694,8 +696,12 @@ public class PartitaController implements Initializable {
     public void setMusica(MouseEvent mouseEvent) {
         if(tglbtn_musica.isSelected()){
             tglbtn_musica.setText("musica OFF");
+            OPZ.pausaMusica();
+
         }else{
             tglbtn_musica.setText("musica ON");
+            OPZ.riprendiMusica();
+
         }
     }
 }
