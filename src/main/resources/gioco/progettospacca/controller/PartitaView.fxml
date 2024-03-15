@@ -11,14 +11,19 @@
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
+      <ImageView fitHeight="624.0" fitWidth="907.0">
+         <image>
+            <Image url="@../campoGioco.png" />
+         </image>
+      </ImageView>
         <AnchorPane fx:id="anchorPane" prefHeight="624.0" prefWidth="907.0">
             <children>
-                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="37.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
+                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta">
                     <font>
-                        <Font name="Candara Bold Italic" size="15.0" />
+                        <Font name="Candara Bold Italic" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_stai" focusTraversable="false" layoutX="779.0" layoutY="528.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
+                <Button fx:id="btn_stai" focusTraversable="false" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai">
                     <font>
                         <Font name="Candara Bold Italic" size="15.0" />
                     </font>
@@ -69,7 +74,7 @@
                   <Image url="@../darkScore.png" />
                </image>
             </ImageView>
-                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="100.0" layoutY="113.0" prefHeight="98.0" prefWidth="150.0" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="lbl_punteggio" alignment="CENTER" focusTraversable="false" layoutX="89.0" layoutY="104.0" prefHeight="98.0" prefWidth="150.0" textAlignment="CENTER" textFill="WHITE">
                       <font>
                           <Font size="62.0" />
                       </font>
@@ -77,12 +82,12 @@
                           <Insets top="-2.0" />
                       </opaqueInsets>
                   </Label>
-                  <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="91.0" layoutY="226.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER">
+                  <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="81.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER">
                       <font>
                           <Font name="Candara" size="14.0" />
                       </font>
                   </Button>
-                  <Label alignment="CENTER" focusTraversable="false" layoutX="34.0" layoutY="41.0" prefHeight="52.0" prefWidth="282.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" focusTraversable="false" layoutX="41.0" layoutY="42.0" prefHeight="52.0" prefWidth="248.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
                       <font>
                           <Font name="Candara Bold" size="17.0" />
                       </font>
