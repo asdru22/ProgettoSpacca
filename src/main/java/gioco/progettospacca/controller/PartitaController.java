@@ -605,7 +605,6 @@ public class PartitaController implements Initializable {
     public void keyEventPausa(KeyEvent keyEvent){
         if(keyEvent.getCode() == KeyCode.ESCAPE){
             if(pausa == false) {
-                System.out.println("entra");
                 pane_pausa.setVisible(true);
                 anchorPane.setDisable(true);
                 anchPane_manoSuccesiva.setDisable(true);
@@ -614,7 +613,6 @@ public class PartitaController implements Initializable {
                 pausa = true;
             }
             else{
-                System.out.println("esce");
                 pane_pausa.setVisible(false);
                 anchorPane.setDisable(false);
                 anchPane_manoSuccesiva.setDisable(false);
