@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -77,9 +78,11 @@ public class PartitaController implements Initializable {
     @FXML
     private Button btn_esci;
     @FXML
-    private Button btn_suono;
+    private ToggleButton tglbtn_suono;
     @FXML
     private Button btn_regole;
+    @FXML
+    private ToggleButton tglbtn_musica;
 
 
     private ImageView imageView1;
@@ -524,6 +527,7 @@ public class PartitaController implements Initializable {
         newScene();
     }
     public void schermataToccaA(){
+        pulisciSchermata();
         anchPane_toccaA.setVisible(true);
         lbl_toccaA.setText("Turno: "+p.getToccaA());
         lbl_turno.setText("Turno: "+(p.getTurnoSalvato()));
@@ -564,7 +568,7 @@ public class PartitaController implements Initializable {
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
         System.out.println(">>> initializa");
-        int codice = 75746;
+        int codice = 11173;
         p = Partita.carica(codice);
         mostraClassifica();
         cont = p.getCont();
@@ -621,12 +625,14 @@ public class PartitaController implements Initializable {
             }
         }
     }
-    public void keyEventTastini(KeyEvent keyEvent) {
-        if(btn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused()) {
+    public void keyEventTastini(KeyEvent keyEvent) throws IOException {
+        if(tglbtn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused() || tglbtn_musica.isFocused()) {
             if (keyEvent.getCode() == KeyCode.DOWN) {
                 if (btn_regole.isFocused()) {
-                    btn_suono.requestFocus();
-                } else if (btn_suono.isFocused()) {
+                    tglbtn_suono.requestFocus();
+                } else if (tglbtn_suono.isFocused()) {
+                    tglbtn_musica.requestFocus();
+                } else if (tglbtn_musica.isFocused()) {
                     btn_esci.requestFocus();
                 } else {
                     System.out.println("sei in basso");
@@ -634,8 +640,10 @@ public class PartitaController implements Initializable {
             }
             if (keyEvent.getCode() == KeyCode.UP) {
                 if (btn_esci.isFocused()) {
-                    btn_suono.requestFocus();
-                } else if (btn_suono.isFocused()) {
+                    tglbtn_musica.requestFocus();
+                } else if (tglbtn_musica.isFocused()) {
+                    tglbtn_suono.requestFocus();
+                } else if (tglbtn_suono.isFocused()) {
                     btn_regole.requestFocus();
                 } else {
                     System.out.println("sei in alto");
@@ -644,13 +652,50 @@ public class PartitaController implements Initializable {
             pulisci();
 
         }
-
+        if(keyEvent.getCode() == KeyCode.ENTER && btn_esci.isFocused()){
+            BackToHome();
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()){
+            if(tglbtn_musica.isSelected()){
+                tglbtn_musica.setText("musica ON");
+            }else{
+                tglbtn_musica.setText("musica OFF");
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()){
+            if(tglbtn_suono.isSelected()){
+                tglbtn_suono.setText("suono ON");
+            }else{
+                tglbtn_suono.setText("suono OFF");
+            }
+        }
 
     }
     //sistemare ogni volta i focus dei bottoni
     public void pulisci(){
         btn_esci.setFocusTraversable(false);
-        btn_suono.setFocusTraversable(false);
+        tglbtn_suono.setFocusTraversable(false);
         btn_regole.setFocusTraversable(false);
+        tglbtn_musica.setFocusTraversable(false);
+    }
+
+    public void salvaEdEsci(MouseEvent mouseEvent) throws IOException {
+        BackToHome();
+    }
+
+    public void setSuono(MouseEvent mouseEvent) {
+        if(tglbtn_suono.isSelected()){
+            tglbtn_suono.setText("suono OFF");
+        }else{
+            tglbtn_suono.setText("suono ON");
+        }
+    }
+
+    public void setMusica(MouseEvent mouseEvent) {
+        if(tglbtn_musica.isSelected()){
+            tglbtn_musica.setText("musica OFF");
+        }else{
+            tglbtn_musica.setText("musica ON");
+        }
     }
 }

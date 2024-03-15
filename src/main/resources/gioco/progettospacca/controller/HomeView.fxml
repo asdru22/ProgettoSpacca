@@ -3,9 +3,11 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,9 +16,9 @@
 
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
     <children>
-        <AnchorPane prefHeight="622.0" prefWidth="907.0">
+        <AnchorPane fx:id="anchorPane" prefHeight="622.0" prefWidth="907.0">
             <children>
-                <ImageView fitHeight="596.0" fitWidth="907.0" layoutY="27.0">
+                <ImageView fitHeight="596.0" fitWidth="907.0" layoutX="-3.0" layoutY="27.0">
                     <image>
                         <Image url="@../Sfondo.png" />
                     </image>
@@ -38,6 +40,7 @@
                                 <MenuItem fx:id="btn_classifica" mnemonicParsing="false" onAction="#apriMenu" text="Classifica" />
                                 <MenuItem fx:id="btn_cambiaLingua" mnemonicParsing="false" onAction="#cambiaLingua" text="Cambia Lingua" />
                                 <MenuItem fx:id="btn_regole" mnemonicParsing="false" onAction="#apriRegole" text="Regole" />
+                        <MenuItem fx:id="btn_suoni" mnemonicParsing="false" onAction="#apriSuoni" text="suoni e musica" />
                             </items>
                         </Menu>
                     </menus>
@@ -81,5 +84,30 @@
             </ImageView>
             </children>
         </AnchorPane>
+      <Pane fx:id="pane_suoni" layoutX="275.0" layoutY="79.0" prefHeight="470.0" prefWidth="384.0" visible="false">
+         <children>
+            <Label alignment="CENTER" focusTraversable="false" layoutX="47.0" layoutY="23.0" prefHeight="66.0" prefWidth="290.0" text="suoni / musica">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
+            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="84.0" layoutY="129.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setSuono" prefHeight="66.0" prefWidth="202.0" text=" suono ON">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="84.0" layoutY="222.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setMusica" prefHeight="66.0" prefWidth="202.0" text="musica ON">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </ToggleButton>
+            <Button fx:id="btn_chiudiPaneSuoni" focusTraversable="false" layoutX="25.0" layoutY="354.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#chiudiPaneSuoni" prefHeight="66.0" prefWidth="71.0" text="&gt;">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
     </children>
 </Pane>

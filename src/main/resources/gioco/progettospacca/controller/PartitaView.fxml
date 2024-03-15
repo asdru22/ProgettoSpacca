@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -150,16 +151,22 @@
                   <Font size="25.0" />
                </font>
             </Button>
-            <Button fx:id="btn_esci" focusTraversable="false" layoutX="91.0" layoutY="307.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="66.0" prefWidth="202.0" text="Salva ed esci">
+            <Button fx:id="btn_esci" focusTraversable="false" layoutX="91.0" layoutY="367.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#salvaEdEsci" prefHeight="66.0" prefWidth="202.0" text="Salva ed esci">
                <font>
                   <Font size="25.0" />
                </font>
             </Button>
-            <Button fx:id="btn_suono" focusTraversable="false" layoutX="91.0" layoutY="212.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="66.0" prefWidth="202.0" text="Suono">
+            <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
+            <ToggleButton fx:id="tglbtn_suono" layoutX="91.0" layoutY="202.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#setSuono" prefHeight="66.0" prefWidth="202.0" text=" suono ON">
                <font>
                   <Font size="25.0" />
                </font>
-            </Button>
+            </ToggleButton>
+            <ToggleButton fx:id="tglbtn_musica" layoutX="91.0" layoutY="286.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#setMusica" prefHeight="66.0" prefWidth="202.0" text="musica ON">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </ToggleButton>
          </children>
       </Pane>
     </children>

@@ -11,13 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,6 +32,8 @@ public class HomeController implements Initializable {
     @FXML
     MenuItem btn_classifica;
     @FXML
+    MenuItem btn_suoni;
+    @FXML
     Button btn_giocaPartita;
     @FXML
     Button btn_creaPartita;
@@ -42,6 +43,16 @@ public class HomeController implements Initializable {
     Button btn_giocaTorneo;
     @FXML
     Menu menuBar;
+    @FXML
+    Pane pane_suoni;
+    @FXML
+    private ToggleButton tglbtn_suono;
+    @FXML
+    private ToggleButton tglbtn_musica;
+    @FXML
+    private Button btn_chiudiPaneSuoni;
+    @FXML
+    private AnchorPane anchorPane;
 
     public void ridaje(MouseEvent mouseEvent) throws IOException {
         Utili.premiBottone();
@@ -132,7 +143,24 @@ public class HomeController implements Initializable {
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_creaPartita.isFocused()) {
             EventoCreaPartita();
-
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()) {
+            if(tglbtn_musica.isSelected()){
+                tglbtn_musica.setText("musica ON");
+            }else{
+                tglbtn_musica.setText("musica OFF");
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
+            if(tglbtn_suono.isSelected()){
+                tglbtn_suono.setText("suono ON");
+            }else{
+                tglbtn_suono.setText("suono OFF");
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_chiudiPaneSuoni.isFocused()) {
+            pane_suoni.setVisible(false);
+            btn_giocaPartita.requestFocus();
         }
         if(keyEvent.getCode() == KeyCode.UP){
             if (btn_giocaPartita.isFocused()) {
@@ -161,6 +189,27 @@ public class HomeController implements Initializable {
                 Utili.premiFreccia();
                 btn_creaTorneo.requestFocus();
             }
+        }
+        if(pane_suoni.isVisible()) {
+            if (keyEvent.getCode() == KeyCode.DOWN) {
+                if(tglbtn_suono.isFocused()){
+                    tglbtn_musica.requestFocus();
+                } else if (tglbtn_musica.isFocused()) {
+                    btn_chiudiPaneSuoni.requestFocus();
+                } else{
+                    System.out.println("sei già in basso");
+                }
+            }
+            if (keyEvent.getCode() == KeyCode.UP) {
+                if(btn_chiudiPaneSuoni.isFocused()){
+                    tglbtn_musica.requestFocus();
+                } else if(tglbtn_musica.isFocused()){
+                    tglbtn_suono.requestFocus();
+                }else{
+                    System.out.println("sei già in alto");
+                }
+            }
+
         }
         pulisci();
     }
@@ -209,5 +258,33 @@ public class HomeController implements Initializable {
 
     public void suonoMenu(ActionEvent actionEvent) {
         Utili.premiBottone();
+    }
+
+    public void apriSuoni(ActionEvent actionEvent) {
+        pane_suoni.setVisible(true);
+        tglbtn_suono.requestFocus();
+        anchorPane.setDisable(true);
+    }
+
+    public void setSuono(MouseEvent mouseEvent) {
+        if(tglbtn_suono.isSelected()){
+            tglbtn_suono.setText("suono OFF");
+        }else{
+            tglbtn_suono.setText("suono ON");
+        }
+    }
+
+    public void setMusica(MouseEvent mouseEvent) {
+        if(tglbtn_musica.isSelected()){
+            tglbtn_musica.setText("musica OFF");
+        }else{
+            tglbtn_musica.setText("musica ON");
+        }
+    }
+
+    public void chiudiPaneSuoni(MouseEvent mouseEvent) {
+        pane_suoni.setVisible(false);
+        btn_giocaPartita.requestFocus();
+        anchorPane.setDisable(false);
     }
 }
