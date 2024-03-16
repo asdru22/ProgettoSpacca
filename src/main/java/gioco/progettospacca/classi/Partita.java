@@ -217,7 +217,7 @@ public class Partita {
 
         if (out) System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
         if (toccaA.isBot()) {
-            azione = Bot.sceltaCasuale(1, 2);
+            azione =  Utili.intCasuale(1,2);
         } else {
             azione = scan.nextInt();
         }
@@ -228,7 +228,7 @@ public class Partita {
                 if (out) System.out.println("quante carte vuoi scartare?");
                 do {
                     if (toccaA.isBot()) {
-                        num = Bot.sceltaCasuale(1, 3);
+                        num = Utili.intCasuale(1,3);
                     } else {
                         num = scan.nextInt();
                     }

@@ -113,6 +113,9 @@ public class Opzioni {
     public void cliccaCarta() {
         playSfx("carta.wav");
     }
+    public void vittoria() {
+        playSfx("vittoria.wav");
+    }
 
     public boolean getSuono() {
         return sfxPausa;

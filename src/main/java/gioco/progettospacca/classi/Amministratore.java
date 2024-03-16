@@ -1,21 +1,17 @@
 package gioco.progettospacca.classi;
 
-public class Amministratore {
-    private String nome;
+public class Amministratore extends Giocatore {
     private String password;
 
     public Amministratore(String nome, String password){
-        this.nome = nome;
+        super(nome);
         this.password = password;
-    }
-    public String getNome(){
-        return nome;
     }
     public String getPassword(){
         return password;
     }
     @Override
     public String toString(){
-        return "{Nome: "+nome+", Password: "+password+"}";
+        return "{Nome: "+this.getNome()+", Password: "+password+"}";
     }
 }
