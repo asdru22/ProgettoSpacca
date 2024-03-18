@@ -91,6 +91,7 @@ public class LoginController implements Initializable {
         LoginAdmin();
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
+        OPZ.premiFreccia();
         pulisci();
         if(keyEvent.getCode() == KeyCode.ESCAPE ){
             BackToHome();
