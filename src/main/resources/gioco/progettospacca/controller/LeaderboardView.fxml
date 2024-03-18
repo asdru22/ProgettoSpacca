@@ -81,12 +81,12 @@
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Label fx:id="lbl_classifica" alignment="CENTER" graphicTextGap="5.0" layoutX="101.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
+                  <Label fx:id="lbl_classifica" alignment="CENTER" graphicTextGap="5.0" layoutX="106.0" layoutY="21.0" prefHeight="26.0" prefWidth="187.0" text="Classifica" textAlignment="CENTER">
                      <font>
                         <Font name="Candara Bold Italic" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbl_pos3" alignment="CENTER" layoutX="262.0" layoutY="122.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
+                  <Label fx:id="lbl_pos3" alignment="CENTER" layoutX="262.0" layoutY="166.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
                      <font>
                         <Font name="Candara" size="12.0" />
                      </font>
@@ -101,17 +101,17 @@
                         <Image url="@../medagliaBronzo.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="169.0" layoutY="75.0">
+                  <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="174.0" layoutY="75.0">
                      <image>
                         <Image url="@../playerimg.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="45.0" fitWidth="30.0" layoutX="154.0" layoutY="100.0">
+                  <ImageView fitHeight="45.0" fitWidth="30.0" layoutX="159.0" layoutY="97.0">
                      <image>
                         <Image url="@../medagliaOro.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lbl_pos1" alignment="CENTER" layoutX="129.0" layoutY="166.0" prefHeight="18.0" prefWidth="132.0" textAlignment="CENTER">
+                  <Label fx:id="lbl_pos1" alignment="CENTER" layoutX="134.0" layoutY="153.0" prefHeight="18.0" prefWidth="132.0" textAlignment="CENTER">
                      <font>
                         <Font name="Candara" size="12.0" />
                      </font>
@@ -121,7 +121,7 @@
                         <Image url="@../playerimg.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lbl_pos2" alignment="CENTER" layoutX="19.0" layoutY="122.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
+                  <Label fx:id="lbl_pos2" alignment="CENTER" layoutX="19.0" layoutY="166.0" prefHeight="18.0" prefWidth="118.0" textAlignment="CENTER">
                      <font>
                         <Font name="Candara" size="12.0" />
                      </font>

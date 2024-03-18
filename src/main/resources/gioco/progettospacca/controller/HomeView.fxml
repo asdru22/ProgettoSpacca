@@ -14,11 +14,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.HomeController">
     <children>
         <AnchorPane fx:id="anchorPane" prefHeight="622.0" prefWidth="907.0">
             <children>
-                <ImageView fitHeight="596.0" fitWidth="907.0" layoutX="-3.0" layoutY="27.0">
+                <ImageView fitHeight="596.0" fitWidth="914.0" layoutX="-3.0" layoutY="27.0">
                     <image>
                         <Image url="@../Sfondo.png" />
                     </image>
