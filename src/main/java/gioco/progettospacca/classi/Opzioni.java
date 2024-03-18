@@ -50,34 +50,36 @@ public class Opzioni {
     }
 
     public void playMusica(String nome){
-        if (musica != null) {
+        if (musica != null) { // stoppa musica precedente
             musica.stop();
-            musicaPausa = true;
         }
         musica = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
         musica.setCycleCount(MediaPlayer.INDEFINITE);
-        musica.play();
-        musicaPausa = false;
-        System.out.println("playing music");
+        if(!musicaPausa){
+            musica.play();
+            System.out.println("playing music");
+        }
         this.salva();
     }
     public void pausaMusica(){
         if(musica!=null) musica.pause();
-
         musicaPausa = true;
         this.salva();
     }
     public void riprendiMusica(){
         if(musica!=null) musica.play();
         musicaPausa = false;
+        this.salva();
     }
 
     public void playSfx(String nome){
         sfx = new MediaPlayer(new Media(new File("src/main/resources/gioco/progettospacca/suoni/" + nome).toURI().toString()));
         sfx.setCycleCount(1);
-        if(!sfxPausa) sfx.play();
+        if(!sfxPausa){
+            sfx.play();
+            System.out.println("playing sfx");
+        }
         this.salva();
-        System.out.println("playing sfx");
     }
     public void pausaSfx(){
         if(sfx!=null) sfx.stop();
