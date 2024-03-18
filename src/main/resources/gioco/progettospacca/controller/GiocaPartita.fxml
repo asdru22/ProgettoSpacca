@@ -6,7 +6,10 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
 <Pane prefHeight="622.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
@@ -19,35 +22,53 @@
                </image>
             </ImageView>
             <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
-            <Label fx:id="lbl_nomi" alignment="CENTER" layoutX="220.0" layoutY="107.0" prefHeight="30.0" prefWidth="102.0" text="Nomi">
-               <font>
-                  <Font name="Candara" size="25.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txt_gioc1" layoutX="197.0" layoutY="186.0" />
-            <TextField fx:id="txt_gioc2" layoutX="196.0" layoutY="255.0" />
-            <TextField fx:id="txt_gioc3" layoutX="197.0" layoutY="317.0" />
-            <TextField fx:id="txt_gioc4" layoutX="197.0" layoutY="384.0" />
-            <TextField fx:id="txt_gioc5" layoutX="197.0" layoutY="449.0" />
-            <Label fx:id="lbl_codice" alignment="CENTER" layoutX="329.0" layoutY="107.0" prefHeight="30.0" prefWidth="324.0" text="Inserisci codice partita:">
-               <font>
-                  <Font name="Candara" size="22.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txt_cod1" layoutX="416.0" layoutY="186.0" />
-            <TextField fx:id="txt_cod2" layoutX="416.0" layoutY="242.0" />
-            <TextField fx:id="txt_cod3" layoutX="416.0" layoutY="317.0" />
-            <TextField fx:id="txt_cod4" layoutX="416.0" layoutY="384.0" />
-            <TextField fx:id="txt_cod5" layoutX="416.0" layoutY="449.0" />
-            <Button fx:id="btn_entra" layoutX="648.0" layoutY="268.0" mnemonicParsing="false" onAction="#entraInPartita" prefHeight="51.0" prefWidth="150.0" text="Entra">
-               <font>
-                  <Font name="Candara" size="25.0" />
-               </font>
-            </Button>
-            <Button fx:id="btn_prova" layoutX="640.0" layoutY="358.0" mnemonicParsing="false" onAction="#provaMomentanea" prefHeight="51.0" prefWidth="167.0" text="prova momentanea">
-               <font>
-                  <Font size="15.0" />
-               </font></Button>
+            <GridPane layoutX="214.0" layoutY="101.0" prefHeight="441.0" prefWidth="478.0">
+              <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="58.59995117187498" minHeight="10.0" prefHeight="45.79996337890623" valignment="CENTER" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="81.00003662109373" minHeight="10.0" prefHeight="81.00003662109373" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label fx:id="lbl_nomi" alignment="CENTER" prefHeight="30.0" prefWidth="242.0" text="Nomi giocatori:">
+                     <font>
+                        <Font name="Candara" size="25.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txt_gioc1" maxWidth="200.0" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_gioc2" maxWidth="200.0" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_gioc3" maxWidth="200.0" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_gioc4" maxWidth="200.0" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_gioc5" maxWidth="200.0" GridPane.rowIndex="5" />
+                  <Button fx:id="btn_entra" mnemonicParsing="false" onAction="#entraInPartita" prefHeight="51.0" prefWidth="150.0" text="Entra" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Candara" size="25.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_prova" mnemonicParsing="false" onAction="#provaMomentanea" prefHeight="51.0" prefWidth="167.0" text="prova momentanea" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="lbl_codice" alignment="CENTER" prefHeight="30.0" prefWidth="324.0" text="Inserisci codice partita:" GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Candara" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txt_cod1" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_cod2" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_cod3" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_cod4" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_cod5" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+               </children>
+            </GridPane>
          </children>
       </AnchorPane>
    </children>
