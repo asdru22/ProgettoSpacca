@@ -33,7 +33,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 64038;
+    public static final int CODICE_TEMP = 18328;
   @FXML
     public Label lbl_pausa;
 
