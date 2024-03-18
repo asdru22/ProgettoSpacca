@@ -69,6 +69,7 @@ public class Opzioni {
     }
     public void riprendiMusica(){
         if(musica!=null) musica.play();
+        musicaPausa = false;
     }
 
     public void playSfx(String nome){
