@@ -85,27 +85,42 @@
             </ImageView>
             </children>
         </AnchorPane>
-      <Pane fx:id="pane_suoni" layoutX="275.0" layoutY="79.0" prefHeight="470.0" prefWidth="384.0" visible="false">
+      <Pane fx:id="pane_suoni" layoutX="73.0" layoutY="79.0" prefHeight="470.0" prefWidth="760.0" visible="false">
          <children>
-            <Label fx:id="lbl_suoni" alignment="CENTER" focusTraversable="false" layoutX="47.0" layoutY="23.0" prefHeight="66.0" prefWidth="290.0" text="suoni / musica">
+            <ImageView fitHeight="434.0" fitWidth="586.0" layoutX="94.0" layoutY="-15.0">
+               <image>
+                  <Image url="@../darkScore.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl_suoni" alignment="CENTER" focusTraversable="false" layoutX="268.0" layoutY="32.0" prefHeight="66.0" prefWidth="223.0" text="Audio" textFill="WHITE">
                <font>
-                  <Font size="45.0" />
+                  <Font name="Candara" size="48.0" />
                </font>
             </Label>
             <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
-            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="84.0" layoutY="129.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setSuono" prefHeight="66.0" prefWidth="202.0" text=" suono ON">
+            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="269.0" layoutY="145.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setSuono" prefHeight="66.0" prefWidth="223.0" text="Suoni ON">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Candara" size="22.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="84.0" layoutY="222.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setMusica" prefHeight="66.0" prefWidth="202.0" text="musica ON">
+            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="269.0" layoutY="235.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setMusica" prefHeight="66.0" prefWidth="223.0" text="Musica ON">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Candara" size="22.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="btn_chiudiPaneSuoni" focusTraversable="false" layoutX="25.0" layoutY="354.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#chiudiPaneSuoni" prefHeight="66.0" prefWidth="71.0" text="&gt;">
+            <ImageView fitHeight="78.0" fitWidth="175.0" layoutX="460.0" layoutY="26.0" rotate="-180.0">
+               <image>
+                  <Image url="@../audioOnde.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="78.0" fitWidth="175.0" layoutX="123.0" layoutY="26.0">
+               <image>
+                  <Image url="@../audioOnde.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_chiudiPaneSuoni" focusTraversable="false" layoutX="154.0" layoutY="47.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#chiudiPaneSuoni" prefHeight="34.0" prefWidth="38.0" text="&lt;">
                <font>
-                  <Font size="20.0" />
+                  <Font size="16.0" />
                </font>
             </Button>
          </children>

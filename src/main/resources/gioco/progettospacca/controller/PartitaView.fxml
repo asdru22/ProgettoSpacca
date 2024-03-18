@@ -54,24 +54,32 @@
                         <Image url="@../darkScore.png" />
                      </image>
                   </ImageView>
-                        <Label fx:id="lbl_turno" alignment="CENTER" focusTraversable="false" layoutX="312.0" layoutY="180.0" prefHeight="79.0" prefWidth="282.0" textAlignment="CENTER" textFill="WHITE">
+                  <ImageView fitHeight="423.0" fitWidth="447.0" layoutX="228.0" layoutY="75.0" opacity="0.27">
+                     <image>
+                        <Image url="@../Logo.png" />
+                     </image>
+                  </ImageView>
+                        <Label fx:id="lbl_turno" alignment="CENTER" focusTraversable="false" layoutX="290.0" layoutY="180.0" prefHeight="79.0" prefWidth="328.0" textAlignment="CENTER" textFill="WHITE">
                             <font>
-                                <Font name="Candara Bold Italic" size="26.0" />
+                                <Font name="Candara Bold Italic" size="31.0" />
                             </font>
                         </Label>
-                        <Label fx:id="lbl_toccaA" alignment="CENTER" focusTraversable="false" layoutX="326.0" layoutY="260.0" prefHeight="52.0" prefWidth="254.0" textFill="WHITE">
+                        <Label fx:id="lbl_toccaA" alignment="CENTER" focusTraversable="false" layoutX="324.0" layoutY="261.0" prefHeight="52.0" prefWidth="254.0" textFill="WHITE">
                             <font>
                                 <Font name="Candara Bold" size="23.0" />
                             </font>
                         </Label>
-                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="369.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="39.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
+                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="368.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="39.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
                             <font>
                                 <Font name="Candara" size="22.0" />
                             </font>
                         </Button>
                     </children>
                 </AnchorPane>
-                <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="336.0" layoutY="321.0" prefHeight="23.0" prefWidth="201.0" text="devi scegliere almeno una carta" visible="false" />
+                <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="-2.0" layoutY="321.0" prefHeight="23.0" prefWidth="907.0" text="devi scegliere almeno una carta" visible="false">
+               <font>
+                  <Font name="Candara Light" size="15.0" />
+               </font></Label>
             </children>
         </AnchorPane>
           <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="936.0" layoutY="14.0" prefHeight="302.0" prefWidth="307.0">
@@ -147,7 +155,7 @@
       </AnchorPane>
       <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d1fff7" height="62.0" layoutX="41.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="304.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bde2f2" height="62.0" layoutX="41.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="304.0" />
             <ImageView fitHeight="423.0" fitWidth="406.0" layoutX="-5.0" layoutY="75.0">
                <image>
                   <Image url="@../darkScore.png" />
@@ -179,9 +187,9 @@
                   <Image url="@../pausaTitle.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_pausa" alignment="CENTER" focusTraversable="false" layoutX="91.0" layoutY="22.0" prefHeight="62.0" prefWidth="202.0" text="PAUSA">
+            <Label fx:id="lbl_pausa" alignment="CENTER" focusTraversable="false" layoutX="91.0" layoutY="22.0" prefHeight="62.0" prefWidth="202.0" text="PAUSA" textAlignment="CENTER">
                <font>
-                  <Font name="Candara Bold" size="39.0" />
+                  <Font name="Candara Bold" size="43.0" />
                </font>
             </Label>
          </children>
