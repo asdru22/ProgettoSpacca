@@ -19,7 +19,7 @@ public class ValoriGioca {
             Giocatore g = Giocatore.carica(nome); // carica il suo file
             ArrayList<Integer> partite = g.getPartite(); // prendi le partite
             // se non è bot
-            if (Objects.equals(nome, "admin")){
+            if (Objects.equals(nome, "admin")) {
                 return true;
             } else if (!partite.contains(codice)) {
                 System.out.println("Giocatore " + nome + " non ha questo id");

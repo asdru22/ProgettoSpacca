@@ -2,6 +2,7 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gioco.progettospacca.controller.Main;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
@@ -17,7 +18,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
-        try (FileWriter writer = new FileWriter("src/main/java/gioco/progettospacca/salvataggi/" + tipo + "/" + nome + ".json")) {
+        try (FileWriter writer = new FileWriter("salvataggi/"+tipo + "/" + nome + ".json")) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(o));
         } catch (IOException e) {
@@ -27,7 +28,7 @@ public class Utili {
 
     public static String leggiFileJson(String tipo, String nome) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("src/main/java/gioco/progettospacca/salvataggi/" + tipo + "/" + nome + ".json"));
+            BufferedReader reader = new BufferedReader(new FileReader("salvataggi/"+tipo + "/" + nome + ".json"));
             StringBuilder jsonBuilder = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -42,7 +43,7 @@ public class Utili {
     }
 
     public static String[] getLeaderboard() {
-        File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
+        File folder = new File("salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
         Gson gson = new Gson();
@@ -86,7 +87,7 @@ public class Utili {
 
     public static void elimina(int id, String cartella) {
 
-        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/" + cartella + "/" + id + ".json");
+        File fileDaEliminare = new File("salvataggi/" + cartella + "/" + id + ".json");
 
         if (fileDaEliminare.delete()) {
             System.out.println("File eliminato con successo: " + id + ".json");
@@ -97,7 +98,7 @@ public class Utili {
 
     public static void eliminaGiocatore(String nome) {
 
-        File fileDaEliminare = new File("src/main/java/gioco/progettospacca/salvataggi/giocatore/" + nome + ".json");
+        File fileDaEliminare = new File("salvataggi/giocatori/" + nome + ".json");
 
         if (fileDaEliminare.delete()) {
             System.out.println("File eliminato con successo: " + nome + ".json");
@@ -107,7 +108,7 @@ public class Utili {
     }
 
     public static boolean esisteGiocatore(String nome) {
-        File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
+        File folder = new File("salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         Gson gson = new Gson();
         boolean trovato = false;
@@ -123,7 +124,7 @@ public class Utili {
     }
 
     public static boolean esistePartita(int id) {
-        File folder = new File("src/main/java/gioco/progettospacca/salvataggi/partite");
+        File folder = new File("salvataggi/partite");
         File[] file_partite = folder.listFiles();
         Gson gson = new Gson();
         boolean trovato = false;
@@ -166,7 +167,8 @@ public class Utili {
     public static boolean nomiBot(String nome) {
         return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
     }
-    public static void gestisciMusica(ToggleButton tglb){
+
+    public static void gestisciMusica(ToggleButton tglb) {
         if (tglb.isSelected()) {
             OPZ.pausaMusica();
             tglb.setText(OPZ.traduci("musica_off"));
@@ -175,7 +177,8 @@ public class Utili {
             tglb.setText(OPZ.traduci("musica_on"));
         }
     }
-    public static void gestisciSuoni(ToggleButton tglb){
+
+    public static void gestisciSuoni(ToggleButton tglb) {
         if (tglb.isSelected()) {
             OPZ.pausaSfx();
             tglb.setText(OPZ.traduci("suono_off"));
@@ -183,6 +186,23 @@ public class Utili {
             OPZ.riprendiSfx();
             tglb.setText(OPZ.traduci("suono_on"));
         }
+    }
+
+    public static String getPath() {
+        String jarPath = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+
+        // Decode the URL-encoded path (if necessary)
+        try {
+            jarPath = java.net.URLDecoder.decode(jarPath, "UTF-8");
+        } catch (java.io.UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        // Get the directory containing the JAR file
+        String jarDir = new File(jarPath).getParent();
+
+        System.out.println("Path of the currently running JAR: " + jarDir);
+        return jarDir;
     }
 
 }

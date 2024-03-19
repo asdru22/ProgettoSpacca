@@ -80,12 +80,13 @@ public class Giocatore {
         }
     }
 
-    public void settaCarteNulle(int i){
+    public void settaCarteNulle(int i) {
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
-        manoList.add(i,null);
+        manoList.add(i, null);
         this.mano = manoList.toArray(new Carta[0]);
     }
-    public void togliCarteNulle(){
+
+    public void togliCarteNulle() {
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         Iterator<Carta> iterator = manoList.iterator();
         while (iterator.hasNext()) {
@@ -97,6 +98,7 @@ public class Giocatore {
         }
         this.mano = manoList.toArray(new Carta[0]);
     }
+
     public void scarta(int pos) {
         //System.out.println("Posizione prima della rimozione: " + pos);
 
@@ -141,8 +143,9 @@ public class Giocatore {
 
     @Override
     public String toString() {
-         return nome + " ";
+        return nome + " ";
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -167,11 +170,11 @@ public class Giocatore {
         Utili.eliminaGiocatore(this.getNome());
     }
 
-    public void setMano(Carta [] mano) {
+    public void setMano(Carta[] mano) {
         this.mano = mano;
     }
 
     public void setPunti(int punti) {
-        this.punti = this.punti+punti;
+        this.punti = this.punti + punti;
     }
 }

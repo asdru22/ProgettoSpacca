@@ -57,9 +57,9 @@ public class LoginController2 implements Initializable {
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
-    public void LoginAdmin() throws IOException{
-        String user= String.valueOf((txt_user.getText()));
-        String psw= String.valueOf((txt_psw.getText()));
+    public void LoginAdmin() throws IOException {
+        String user = String.valueOf((txt_user.getText()));
+        String psw = String.valueOf((txt_psw.getText()));
         //aggiungere usrrname e password
         if ("a".equals(user) && "s".equals(psw)) {
             //if ("admin".equals(user) && "spacca".equals(psw)) {
@@ -76,40 +76,42 @@ public class LoginController2 implements Initializable {
 
             // Imposta il titolo della finestra
             currentStage.setTitle(OPZ.traduci("login"));
-        } else
-        {
+        } else {
             System.out.println(user);
             System.out.println(psw);
             System.out.println("Email o password errata");
         }
     }
+
     public void backToHome(MouseEvent mouseEvent) throws IOException {
         BackToHome();
     }
+
     public void loginAdmin(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         LoginAdmin();
     }
+
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         OPZ.premiFreccia();
         pulisci();
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
         }
-        if(keyEvent.getCode() == KeyCode.ENTER ){
-            if(btn_login.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (btn_login.isFocused()) {
                 LoginAdmin();
-            } else if(btn_back.isFocused()){
+            } else if (btn_back.isFocused()) {
                 BackToHome();
-            } else if(txt_user.isFocused()){
+            } else if (txt_user.isFocused()) {
                 txt_psw.requestFocus();
-            } else if(txt_psw.isFocused()){
+            } else if (txt_psw.isFocused()) {
                 btn_login.requestFocus();
             }
         }
 
-        if(keyEvent.getCode() == KeyCode.UP){
-            if(btn_back.isFocused()){
+        if (keyEvent.getCode() == KeyCode.UP) {
+            if (btn_back.isFocused()) {
                 System.out.println("sei già in alto");
             } else if (txt_user.isFocused()) {
                 OPZ.premiFreccia();
@@ -122,8 +124,8 @@ public class LoginController2 implements Initializable {
                 txt_psw.requestFocus();
             }
         }
-        if(keyEvent.getCode() == KeyCode.DOWN){
-            if(btn_login.isFocused()){
+        if (keyEvent.getCode() == KeyCode.DOWN) {
+            if (btn_login.isFocused()) {
                 System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
                 OPZ.premiFreccia();
@@ -137,7 +139,8 @@ public class LoginController2 implements Initializable {
             }
         }
     }
-    private void pulisci(){
+
+    private void pulisci() {
         txt_psw.setFocusTraversable(false);
         txt_user.setFocusTraversable(false);
         btn_login.setFocusTraversable(false);

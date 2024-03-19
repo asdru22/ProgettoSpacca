@@ -45,6 +45,7 @@ public class CreaController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
+
     @FXML
     private Label lbl_nomi_giocatori;
     @FXML

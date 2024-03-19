@@ -1,4 +1,5 @@
 package gioco.progettospacca.controller;
+
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -40,7 +41,7 @@ public class LeaderboardController {
 
     @FXML
     public void initialize() {
-        String [] lead = Utili.getLeaderboard();
+        String[] lead = Utili.getLeaderboard();
         lbl_pos1.setText(lead[0]);
         lbl_pos2.setText(lead[1]);
         lbl_pos3.setText(lead[2]);

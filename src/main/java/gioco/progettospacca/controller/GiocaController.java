@@ -82,23 +82,23 @@ public class GiocaController implements Initializable {
     private void partitaEsiste(int codice) {
         Partita p = Partita.carica(codice);
         int n = p.getGiocatori().length;
-        int gioc_no_bot = n- p.getBot();
+        int gioc_no_bot = n - p.getBot();
 
         // n-nbot è il numero di giocatori non bot in partita
 
         System.out.println(n);
         ArrayList<ValoriGioca> temp = new ArrayList<>();
-        if(!Objects.equals(txt_gioc1.getText(), "")) temp.add(new ValoriGioca(txt_gioc1,txt_cod1));
-        if(!Objects.equals(txt_gioc2.getText(), "")) temp.add(new ValoriGioca(txt_gioc2,txt_cod1));
-        if(!Objects.equals(txt_gioc3.getText(), "")) temp.add(new ValoriGioca(txt_gioc3,txt_cod1));
-        if(!Objects.equals(txt_gioc4.getText(), "")) temp.add(new ValoriGioca(txt_gioc4,txt_cod1));
-        if(!Objects.equals(txt_gioc5.getText(), "")) temp.add(new ValoriGioca(txt_gioc5,txt_cod1));
+        if (!Objects.equals(txt_gioc1.getText(), "")) temp.add(new ValoriGioca(txt_gioc1, txt_cod1));
+        if (!Objects.equals(txt_gioc2.getText(), "")) temp.add(new ValoriGioca(txt_gioc2, txt_cod1));
+        if (!Objects.equals(txt_gioc3.getText(), "")) temp.add(new ValoriGioca(txt_gioc3, txt_cod1));
+        if (!Objects.equals(txt_gioc4.getText(), "")) temp.add(new ValoriGioca(txt_gioc4, txt_cod1));
+        if (!Objects.equals(txt_gioc5.getText(), "")) temp.add(new ValoriGioca(txt_gioc5, txt_cod1));
 
-        boolean inizia_partita = (n==temp.size());
-        if(inizia_partita){
-            for(ValoriGioca v: temp){
+        boolean inizia_partita = (n == temp.size());
+        if (inizia_partita) {
+            for (ValoriGioca v : temp) {
                 inizia_partita = v.controlloGiocatore();
-                if(!inizia_partita) break;
+                if (!inizia_partita) break;
             }
         }
 

@@ -35,18 +35,23 @@ public class Partita {
     public Partita(Giocatore[] giocatori, int id_torneo) {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
-    public boolean getPrimoTurnoScena(){
+
+    public boolean getPrimoTurnoScena() {
         return this.primoTurnoScena;
     }
-    public void setPrimoTurnoScena(boolean b){
+
+    public void setPrimoTurnoScena(boolean b) {
         this.primoTurnoScena = b;
     }
+
     public Giocatore getToccaA() {
         return toccaA;
     }
-    public int getBot(){
+
+    public int getBot() {
         return numero_bot;
     }
+
     public void setToccaA(Giocatore toccaA) {
         this.toccaA = toccaA;
     }
@@ -76,6 +81,7 @@ public class Partita {
     public static Partita carica(int id) {
         return new Gson().fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
     }
+
     public int trovaPosizione(Giocatore[] giocatori, Giocatore giocatoreDaCercare) {
         int i = 0;
         for (Giocatore giocatore : giocatori) {
@@ -91,8 +97,6 @@ public class Partita {
     }
 
 
-
-
     @Override
     public String toString() {
         if (vincitore == null) {
@@ -100,9 +104,11 @@ public class Partita {
         }
         return "> Id Partita: " + id + ", Giocatori: " + Arrays.toString(giocatori) + ", Vincitore: " + vincitore.toString();
     }
-    public int getIdTorneo(){
+
+    public int getIdTorneo() {
         return id_torneo;
     }
+
     public void cicloPrincipale() throws FileNotFoundException {
         int scelta = 0;
         for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
@@ -110,7 +116,7 @@ public class Partita {
             //seme_che_comanda = Utili.semeCasuale();
             for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
                 giocatore_salvato = j;
-                System.out.println(">>> turno: "+turno_salvato+"/"+NUMERO_TURNI+ ", giocatore: "+(giocatore_salvato+1)+"/"+giocatori.length);
+                System.out.println(">>> turno: " + turno_salvato + "/" + NUMERO_TURNI + ", giocatore: " + (giocatore_salvato + 1) + "/" + giocatori.length);
                 //azioniGiocatore();
 
                 mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
@@ -119,21 +125,24 @@ public class Partita {
         }
         finePartita();
     }
-    public Carta getSeme(){
+
+    public Carta getSeme() {
         return this.seme_che_comanda;
     }
-    public void setSeme(Carta seme){
+
+    public void setSeme(Carta seme) {
         this.seme_che_comanda = seme;
     }
 
-    public void newMazzo(){
+    public void newMazzo() {
         this.mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
     }
 
-    public void setTurnoSalvato(int val){
+    public void setTurnoSalvato(int val) {
         this.turno_salvato = val;
     }
-    public void setGiocatoreSalvato(int val){
+
+    public void setGiocatoreSalvato(int val) {
         this.giocatore_salvato = val;
     }
 
@@ -149,7 +158,7 @@ public class Partita {
 
     //test
     public void riprendi() { //eseguito solo fino alla fine del turno corrente
-        giocatore_salvato = (giocatore_salvato+1) % giocatori.length;
+        giocatore_salvato = (giocatore_salvato + 1) % giocatori.length;
         toccaA = giocatori[giocatore_salvato];
         for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
             azioniGiocatore();
@@ -197,8 +206,8 @@ public class Partita {
         */
     }
 
-    public void elimina(){
-        Utili.elimina(id,"partite");
+    public void elimina() {
+        Utili.elimina(id, "partite");
     }
 
     private void azioniGiocatore() {
@@ -217,7 +226,7 @@ public class Partita {
 
         if (out) System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
         if (toccaA.isBot()) {
-            azione =  Utili.intCasuale(1,2);
+            azione = Utili.intCasuale(1, 2);
         } else {
             azione = scan.nextInt();
         }
@@ -228,7 +237,7 @@ public class Partita {
                 if (out) System.out.println("quante carte vuoi scartare?");
                 do {
                     if (toccaA.isBot()) {
-                        num = Utili.intCasuale(1,3);
+                        num = Utili.intCasuale(1, 3);
                     } else {
                         num = scan.nextInt();
                     }
@@ -244,13 +253,13 @@ public class Partita {
                                     pos = numeri.remove(0);
                                     //System.out.println(numeri);
                                 }
-                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos-1);
+                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos - 1);
                                 else if (out) System.out.println("devi scegliere un numero tra 0 e 4");
                             } while (pos < 1 || pos > 5);
                             break;
                         case 2:
                             if (out) System.out.println("scegli le 2 posizioni delle carte da scartare:");
-                             numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
                             int i = 1;
                             do {
                                 if (!toccaA.isBot()) {
@@ -261,8 +270,8 @@ public class Partita {
                                     //System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.settaCarteNulle(pos-1);
-                                    toccaA.scarta( pos );
+                                    toccaA.settaCarteNulle(pos - 1);
+                                    toccaA.scarta(pos);
                                     i++;
                                 }
                             } while ((pos < 1 || pos > 5) || i < 3);
@@ -280,9 +289,9 @@ public class Partita {
                                     //System.out.println(numeri);
                                 }
                                 if (pos >= 1 && pos <= 5) {
-                                    toccaA.settaCarteNulle(pos-1);
+                                    toccaA.settaCarteNulle(pos - 1);
                                     toccaA.scarta(pos);
-                                        j++;
+                                    j++;
                                 }
                             } while ((pos < 1 || pos > 5) || j < 4);
                             break;
@@ -293,7 +302,8 @@ public class Partita {
                 if (out) System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano()) + "\n");
                 toccaA.togliCarteNulle();
                 toccaA.pesca(num, this.mazzo);
-                if (out) System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
+                if (out)
+                    System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
 
                 toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
                 if (out) System.out.println("punti della mano: " + toccaA.getPunti() + "\n");

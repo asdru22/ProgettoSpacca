@@ -73,21 +73,22 @@ public class CambiaLinguaController implements Initializable {
         btn_ing.requestFocus();
     }
 
-    public void BackToHome() throws IOException {OPZ.premiBottone();
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
 
-            Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
-            // Ottieni la finestra corrente
-            Stage currentStage = (Stage) btn_backToHome.getScene().getWindow();
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_backToHome.getScene().getWindow();
 
-            // Ottieni la scena corrente
-            Scene currentScene = currentStage.getScene();
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
 
-            // Imposta la nuova radice della scena
-            currentScene.setRoot(root);
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
 
-            // Imposta il titolo della finestra
-            currentStage.setTitle(OPZ.traduci("spacca"));
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
@@ -141,7 +142,8 @@ public class CambiaLinguaController implements Initializable {
         }
         pulisci();
     }
-    public void pulisci(){
+
+    public void pulisci() {
         btn_ita.setFocusTraversable(false);
         btn_ger.setFocusTraversable(false);
         btn_backToHome.setFocusTraversable(false);
@@ -151,7 +153,7 @@ public class CambiaLinguaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        if(OPZ.getLingua().equals("en")){
+        if (OPZ.getLingua().equals("en")) {
             btn_ita.setFocusTraversable(false);
             btn_ger.setFocusTraversable(false);
             btn_ing.setFocusTraversable(true);

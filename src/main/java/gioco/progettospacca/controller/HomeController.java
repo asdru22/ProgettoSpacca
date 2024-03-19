@@ -107,6 +107,7 @@ public class HomeController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("login"));
     }
+
     public void EventoCreaTorneo() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginAdminViewTorneo.fxml"));
 
@@ -122,8 +123,9 @@ public class HomeController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("login"));
     }
-    public void EventoGiocaTorneo()throws IOException
-    {}
+
+    public void EventoGiocaTorneo() throws IOException {
+    }
 
     public void showCambiaLingua() throws IOException {
 

@@ -8,28 +8,31 @@ public class Carta {
     private String image;
 
     private boolean cliccata = false;
-    public Carta(Seme seme,int numero, String image){
+
+    public Carta(Seme seme, int numero, String image) {
         this.seme = seme;
-        this.numero = numero+1;
+        this.numero = numero + 1;
         this.scartataDa = null;
         this.image = image;
     }
 
-    public boolean getCliccata(){
+    public boolean getCliccata() {
         return this.cliccata;
     }
-    public void setCliccata(boolean cliccata){
+
+    public void setCliccata(boolean cliccata) {
         this.cliccata = cliccata;
     }
+
     public String getImage() {
-         return this.image = image;
+        return this.image = image;
     }
 
-    public Seme getSeme(){
+    public Seme getSeme() {
         return this.seme;
     }
 
-    public int getNumero(){
+    public int getNumero() {
         return this.numero;
     }
 
@@ -40,6 +43,6 @@ public class Carta {
      */
     @Override
     public String toString() {
-        return ""+seme+" "+numero;
+        return "" + seme + " " + numero;
     }
 }
