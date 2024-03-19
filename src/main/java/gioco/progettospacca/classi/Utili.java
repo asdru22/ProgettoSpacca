@@ -2,7 +2,6 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gioco.progettospacca.controller.Main;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
@@ -47,6 +46,7 @@ public class Utili {
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
         Gson gson = new Gson();
+        assert file_giocatori != null;
         for (File file : file_giocatori) {
             if (file.isFile()) {
                 String s = file.getName().substring(0, file.getName().length() - 5);
@@ -64,9 +64,7 @@ public class Utili {
                     max_vittorie = g;
                 }
             }
-            if (Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = (i <= 2 ? "" : i + 1) + "";
-            } else {
+            if (!Objects.equals(max_vittorie.getNome(), "temp")) {
                 r = (i <= 2 ? "" : i + 1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
                 vett[i] = r;
             }
@@ -110,8 +108,8 @@ public class Utili {
     public static boolean esisteGiocatore(String nome) {
         File folder = new File("salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
-        Gson gson = new Gson();
         boolean trovato = false;
+        assert file_giocatori != null;
         for (File file : file_giocatori) {
             if (file.isFile() && !trovato) {
                 String s = file.getName().substring(0, file.getName().length() - 5);
@@ -126,9 +124,9 @@ public class Utili {
     public static boolean esistePartita(int id) {
         File folder = new File("salvataggi/partite");
         File[] file_partite = folder.listFiles();
-        Gson gson = new Gson();
         boolean trovato = false;
         int s;
+        assert file_partite != null;
         for (File file : file_partite) {
             if (file.isFile() && !trovato) {
                 s = Integer.parseInt(file.getName().substring(0, file.getName().length() - 5));
@@ -143,17 +141,15 @@ public class Utili {
     public static Giocatore controllaNome(String nome, int id, boolean bot) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
+            Giocatore g;
             if (esiste) {
-                Giocatore g = Giocatore.carica(nome);
-                g.aggiungiPartita(id);
-                g.salva();
-                return g;
+                g = Giocatore.carica(nome);
             } else {
-                Giocatore g = new Giocatore(nome, bot);
-                g.aggiungiPartita(id);
-                g.salva();
-                return g;
+                g = new Giocatore(nome, bot);
             }
+            g.aggiungiPartita(id);
+            g.salva();
+            return g;
 
         } else {
             return null;
@@ -162,10 +158,6 @@ public class Utili {
 
     public static int leggiInt(TextField tx) {
         return Integer.parseInt(tx.getText());
-    }
-
-    public static boolean nomiBot(String nome) {
-        return Objects.equals(nome, "bot1") || Objects.equals(nome, "bot2") || Objects.equals(nome, "bot3") || Objects.equals(nome, "bot4") || Objects.equals(nome, "bot5");
     }
 
     public static void gestisciMusica(ToggleButton tglb) {
@@ -186,23 +178,6 @@ public class Utili {
             OPZ.riprendiSfx();
             tglb.setText(OPZ.traduci("suono_on"));
         }
-    }
-
-    public static String getPath() {
-        String jarPath = Main.class.getProtectionDomain().getCodeSource().getLocation().getPath();
-
-        // Decode the URL-encoded path (if necessary)
-        try {
-            jarPath = java.net.URLDecoder.decode(jarPath, "UTF-8");
-        } catch (java.io.UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        // Get the directory containing the JAR file
-        String jarDir = new File(jarPath).getParent();
-
-        System.out.println("Path of the currently running JAR: " + jarDir);
-        return jarDir;
     }
 
 }

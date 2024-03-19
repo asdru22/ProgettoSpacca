@@ -1,7 +1,6 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Opzioni;
-import gioco.progettospacca.classi.Utili;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,8 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application {
     public static Opzioni OPZ;
@@ -23,18 +22,16 @@ public class Main extends Application {
         }
     }
 
-    public static String PATH = Utili.getPath()+ File.separator;
-
     @Override
     public void start(Stage stage) throws IOException {
 
         stage.setTitle(OPZ.traduci("spacca"));
 
-        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeView.fxml")));
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("style.css")).toExternalForm());
         stage.setScene(scene);
-        stage.getIcons().add(new Image(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png")));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
         stage.show();
         stage.setResizable(false);
 
