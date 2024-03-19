@@ -57,12 +57,12 @@
                         <Image url="@../tournament.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="362.0" layoutY="387.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="182.0" text="Crea torneo">
+                <Button fx:id="btn_creaTorneo" focusTraversable="false" layoutX="362.0" layoutY="387.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaTorneo" prefHeight="40.0" prefWidth="182.0" text="Crea torneo">
                     <font>
                         <Font name="Candara" size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="376.0" layoutY="335.0" mnemonicParsing="false" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
+                <Button fx:id="btn_giocaTorneo" focusTraversable="false" layoutX="376.0" layoutY="335.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#giocaTorneo" prefHeight="40.0" prefWidth="148.0" text="Gioca torneo">
                     <font>
                         <Font name="Candara" size="15.0" />
                     </font>

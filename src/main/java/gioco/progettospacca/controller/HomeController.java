@@ -107,6 +107,23 @@ public class HomeController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("login"));
     }
+    public void EventoCreaTorneo() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_creaTorneo.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("login"));
+    }
+    public void EventoGiocaTorneo()throws IOException
+    {}
 
     public void showCambiaLingua() throws IOException {
 
@@ -235,6 +252,16 @@ public class HomeController implements Initializable {
     public void creaPartita(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         EventoCreaPartita();
+    }
+
+    public void creaTorneo(MouseEvent mouseEvent) throws IOException {
+        OPZ.premiBottone();
+        EventoCreaTorneo();
+    }
+
+    public void giocaTorneo(MouseEvent mouseEvent) throws IOException {
+        OPZ.premiBottone();
+        EventoGiocaTorneo();
     }
 
     public void apriMenu(ActionEvent ActionEvent) throws IOException {
