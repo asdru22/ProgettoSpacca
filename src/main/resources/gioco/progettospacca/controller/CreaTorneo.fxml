@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gioco.progettospacca.controller.CreaTorneoController"
-            prefHeight="400.0" prefWidth="600.0">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaTorneoController">
+   <children>
+      <AnchorPane prefHeight="622.0" prefWidth="907.0">
+         <children>
+            <ImageView fitHeight="622.4" fitWidth="907.2">
+               <image>
+                  <Image url="@../Sfondo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl_npart" alignment="CENTER" layoutX="238.0" layoutY="96.0" prefHeight="40.0" prefWidth="430.0" text="Scegli il numero di partecipanti">
+               <font>
+                  <Font name="Candara Bold" size="25.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_continua" layoutX="399.0" layoutY="487.0" mnemonicParsing="false" text="Continua">
+               <font>
+                  <Font name="Candara" size="21.0" />
+               </font>
+            </Button>
+            <GridPane layoutX="116.0" layoutY="235.0" prefHeight="210.0" prefWidth="674.0">
+              <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints />
+                <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints maxHeight="157.60001220703126" minHeight="10.0" prefHeight="157.60001220703126" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="92.00000610351563" minHeight="10.0" prefHeight="39.199987792968756" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Button fx:id="btn_4players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_8players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_16players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Label text="4" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Candara Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="8" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Candara Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="16" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Candara Bold Italic" size="24.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="62.0" fitWidth="63.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <image>
+                        <Image url="@../spunta.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="63.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <image>
+                        <Image url="@../spunta.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="62.0" fitWidth="63.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
+                     <image>
+                        <Image url="@../spunta.png" />
+                     </image>
+                  </ImageView>
 
-</AnchorPane>
+               </children>
+            </GridPane>
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
