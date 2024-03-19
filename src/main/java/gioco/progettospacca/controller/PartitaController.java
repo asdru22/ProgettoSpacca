@@ -34,10 +34,10 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
 
-    
-    public static final int CODICE_TEMP = 71090;
 
-  @FXML
+    public static final int CODICE_TEMP = 96188;
+
+    @FXML
     public Label lbl_pausa;
 
     @FXML
@@ -90,7 +90,10 @@ public class PartitaController implements Initializable {
     private Button btn_regole;
     @FXML
     private ToggleButton tglbtn_musica;
-
+    @FXML
+    private Button btn_gioca;
+    @FXML
+    private Button btn_prossimaMano;
 
     private ImageView imageView1;
     private ImageView imageView2;
@@ -103,6 +106,7 @@ public class PartitaController implements Initializable {
 
     private Map<String, AnchorPane> cartaPaneMap = new HashMap<>();
     private Map<String, ImageView> cartaMap = new HashMap<>();
+
 
     private Partita p;
     private static int NUMERO_TURNI = 2;
@@ -117,7 +121,7 @@ public class PartitaController implements Initializable {
     String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
     boolean pausa = false;
 
-    private void inizializzaTraduzioni(){
+    private void inizializzaTraduzioni() {
 
         lbl_pausa.setText(OPZ.traduci("pausa"));
         lbl_attenzione.setText(OPZ.traduci("attenzione"));
@@ -129,11 +133,12 @@ public class PartitaController implements Initializable {
         Utili.gestisciSuoni(tglbtn_suono);
         Utili.gestisciMusica(tglbtn_musica);
     }
-    public void giocaTurno() throws FileNotFoundException {
+
+    public void giocaTurno() throws IOException {
         anch_mazzo.getScene().setOnKeyPressed(this::keyEventPausa); //recupero la scena corrente e imposto il gestore degli eventi da tastiera
 
         mazzo = p.getMazzo();
-        System.out.println("Tocca a "+p.getToccaA());
+        System.out.println("Tocca a " + p.getToccaA());
 
         toccaA.pesca(5, mazzo);
 
@@ -144,15 +149,126 @@ public class PartitaController implements Initializable {
         pescataAnimazione();
         comparsaSchermata();
 
+        if (!toccaA.isBot()) {       //giocatore reale
+            btn_scarta.setOnMouseClicked(event -> scarta(event));
+            btn_stai.setOnMouseClicked(event -> {
+                try {
+                    stai(event);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        } else {       //bot
+            btn_stai.setDisable(true);
+            btn_scarta.setDisable(true);
+            int azione = 2;
+            switch (azione) {
+                case 1:
+                    PauseTransition pause1 = new PauseTransition(Duration.seconds(2));
+                    pause1.play();
+                    pause1.setOnFinished(event -> {
+                        pulisciSchermata();
+                        System.out.println("Hai deciso di stare");
+                        int punti = p.valutaCarte(mano);
+                        lbl_punteggio.setVisible(true);
+                        lbl_punteggio.setText(String.valueOf(punti));
+                        pulisciSchermata();
+                        p.setCont(cont + 1);
+                        toccaA.setPunti(punti);
+                        PauseTransition pause2 = new PauseTransition(Duration.seconds(1.5));
+                        pause2.play();
+                        pause2.setOnFinished(event2 -> {
+                            fineMano();
+                        });
+                    });
 
-        btn_scarta.setOnMouseClicked(event -> scarta(event));
-        btn_stai.setOnMouseClicked(event -> {
-            try {
-                stai(event);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                    break;
+                case 2:
+                    int num = 0;
+                    int pos = 0;
+                    num = Utili.intCasuale(1, 3);
+                    switch (num) {
+                        case 1:
+                            ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+
+                            Collections.shuffle(numeri);
+                            pos = numeri.remove(0);
+
+                            toccaA.settaCarteNulle(pos - 1);
+                            toccaA.scarta(pos);
+
+                            break;
+                        case 2:
+                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+                            int i = 1;
+                            do {
+
+                                Collections.shuffle(numeri);
+                                pos = numeri.remove(0);
+
+                                toccaA.settaCarteNulle(pos - 1);
+                                toccaA.scarta(pos);
+                                i++;
+
+                            } while (i < 3);
+                            break;
+                        case 3:
+                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
+                            int j = 1;
+                            do {
+                                Collections.shuffle(numeri);
+                                pos = numeri.remove(0);
+
+
+                                toccaA.settaCarteNulle(pos - 1);
+                                toccaA.scarta(pos);
+                                j++;
+
+
+                            } while (j < 4);
+                            break;
+                        default:
+                            System.out.println("qualcosa è andato storto");
+                    }
+
+
+                    ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(toccaA.getMano()));
+
+                    for (int i = 0; i < manoList.size(); i++) {
+                        Carta carta = manoList.get(i);
+                        if (carta == null) {
+                            manoList.remove(i);  // Rimuovi l'elemento null
+                            manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));// Inserisci la nuova carta dal mazzo
+                            manoList.get(i).setCliccata(true);
+                        }
+                    }
+
+
+                    PauseTransition pause2 = new PauseTransition(Duration.seconds(2.5));
+                    pause2.play();
+                    pause2.setOnFinished(event2 -> {
+                        pulisciSchermata();
+                        toccaA.setMano(manoList.toArray(new Carta[0]));
+                        scartataAnimazione();
+                        int punti = p.valutaCarte(toccaA.getMano());
+                        lbl_punteggio.setText(String.valueOf(punti));
+                        p.setCont(cont + 1);
+                        toccaA.setPunti(punti);
+                        btn_prossimaMano.setDisable(true);
+                        PauseTransition pause3 = new PauseTransition(Duration.seconds(8));
+                        pause3.play();
+                        pause3.setOnFinished(event3 -> {
+                            try {
+                                newScene();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+                    });
+
+
             }
-        });
+        }
     }
 
     public void scarta(MouseEvent event) {
@@ -169,26 +285,27 @@ public class PartitaController implements Initializable {
         lbl_punteggio.setVisible(true);
         lbl_punteggio.setText(String.valueOf(punti));
         pulisciSchermata();
-        p.setCont(cont+1);
+        p.setCont(cont + 1);
         toccaA.setPunti(punti);
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.play();
-        pause.setOnFinished(event2 ->{
+        pause.setOnFinished(event2 -> {
             fineMano();
         });
 
     }
+
     //tasto conferma carte da scartare
     public void cambiaCarteSelezionate(MouseEvent mouseEvent) throws FileNotFoundException {
         ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         boolean almenoUnaTrue = false;
-        for(Carta carta : manoList){
-            if(carta.getCliccata()){
+        for (Carta carta : manoList) {
+            if (carta.getCliccata()) {
                 almenoUnaTrue = true;
                 break;
             }
         }
-        if(almenoUnaTrue) {
+        if (almenoUnaTrue) {
             scartataAnimazione(); //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
             // la fine dell'animazione, quindi cambia le carte animatamente corrette poi eseguo lo scarto effettivo in questo metodo poi una volta terminata
             // l'animazione dello scarto, parte l'animazione della pescata con le carte già modificate in quanto il codice di questo metodo ha
@@ -196,13 +313,11 @@ public class PartitaController implements Initializable {
 
             //debug
             //System.out.println("ciao");
-            int numCarteDaPescare = 0;
             int pos = 1;
             for (Carta carta : manoList) {
                 if (carta.getCliccata()) {
                     toccaA.settaCarteNulle(pos - 1);
                     toccaA.scarta(pos);
-                    numCarteDaPescare++;
                 }
                 pos++;
             }
@@ -228,14 +343,13 @@ public class PartitaController implements Initializable {
             p.setCont(cont + 1);
             toccaA.setPunti(punti);
             rimuoviEventiCarte();
-        }
-        else{
+        } else {
             lbl_attenzione.setVisible(true);
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
             fadeTransition.play();
-            fadeTransition.setOnFinished(event ->{
+            fadeTransition.setOnFinished(event -> {
                 lbl_attenzione.setVisible(false);
             });
 
@@ -251,24 +365,26 @@ public class PartitaController implements Initializable {
         btn_scarta.setVisible(false);
         btn_stai.setVisible(false);
     }
-    public void rimuoviEventiCarte(){
+
+    public void rimuoviEventiCarte() {
         imageView1.setOnMouseClicked(null);
         imageView2.setOnMouseClicked(null);
         imageView3.setOnMouseClicked(null);
         imageView4.setOnMouseClicked(null);
         imageView5.setOnMouseClicked(null);
     }
-    public void aggiungiEventiCarte(){
+
+    public void aggiungiEventiCarte() {
         imageView1.setOnMouseClicked(event -> carta1Click(event));
         imageView2.setOnMouseClicked(event -> carta2Click(event));
         imageView3.setOnMouseClicked(event -> carta3Click(event));
         imageView4.setOnMouseClicked(event -> carta4Click(event));
         imageView5.setOnMouseClicked(event -> carta5Click(event));
     }
-    //per selezionare la carta da scartare
+
+    //per selezionare la carta da scartare per giocatori reali
     private void spostaCarta(AnchorPane carta, Carta cartaSelezionata) {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.2), carta);
-
         if (cartaSelezionata.getCliccata()) {
             // Se la carta è cliccata, spostala verso l'alto di 20 unità
             translateTransition.setByY(-20);
@@ -281,50 +397,49 @@ public class PartitaController implements Initializable {
         translateTransition.play();
     }
 
-
     private void carta1Click(MouseEvent event) {
-        if(mano[0].getCliccata()){
+        if (mano[0].getCliccata()) {
             mano[0].setCliccata(false);
-        }else{
+        } else {
             mano[0].setCliccata(true);
         }
-        spostaCarta(carta1,mano[0]);
+        spostaCarta(carta1, mano[0]);
     }
 
     private void carta2Click(MouseEvent event) {
-        if(mano[1].getCliccata()){
+        if (mano[1].getCliccata()) {
             mano[1].setCliccata(false);
-        }else{
+        } else {
             mano[1].setCliccata(true);
         }
-        spostaCarta(carta2,mano[1]);
+        spostaCarta(carta2, mano[1]);
     }
 
     private void carta3Click(MouseEvent event) {
-        if(mano[2].getCliccata()){
+        if (mano[2].getCliccata()) {
             mano[2].setCliccata(false);
-        }else{
+        } else {
             mano[2].setCliccata(true);
         }
-        spostaCarta(carta3,mano[2]);
+        spostaCarta(carta3, mano[2]);
     }
 
     private void carta4Click(MouseEvent event) {
-        if(mano[3].getCliccata()){
+        if (mano[3].getCliccata()) {
             mano[3].setCliccata(false);
-        }else{
+        } else {
             mano[3].setCliccata(true);
         }
-        spostaCarta(carta4,mano[3]);
+        spostaCarta(carta4, mano[3]);
     }
 
     private void carta5Click(MouseEvent event) {
-        if(mano[4].getCliccata()){
+        if (mano[4].getCliccata()) {
             mano[4].setCliccata(false);
-        }else{
+        } else {
             mano[4].setCliccata(true);
         }
-        spostaCarta(carta5,mano[4]);
+        spostaCarta(carta5, mano[4]);
     }
 
 
@@ -358,20 +473,21 @@ public class PartitaController implements Initializable {
         anch_mazzo.getChildren().add(imageViewMazzo);
         anch_seme.getChildren().add(imageViewSeme);
 
-        cartaPaneMap.put("carta0",carta1);
-        cartaPaneMap.put("carta1",carta2);
-        cartaPaneMap.put("carta2",carta3);
-        cartaPaneMap.put("carta3",carta4);
-        cartaPaneMap.put("carta4",carta5);
+        cartaPaneMap.put("carta0", carta1);
+        cartaPaneMap.put("carta1", carta2);
+        cartaPaneMap.put("carta2", carta3);
+        cartaPaneMap.put("carta3", carta4);
+        cartaPaneMap.put("carta4", carta5);
 
-        cartaMap.put("carta0",imageView1);
-        cartaMap.put("carta1",imageView2);
-        cartaMap.put("carta2",imageView3);
-        cartaMap.put("carta3",imageView4);
-        cartaMap.put("carta4",imageView5);
+        cartaMap.put("carta0", imageView1);
+        cartaMap.put("carta1", imageView2);
+        cartaMap.put("carta2", imageView3);
+        cartaMap.put("carta3", imageView4);
+        cartaMap.put("carta4", imageView5);
 
 
     }
+
     public void nuoveCartePescateAnimazione() throws FileNotFoundException {
         //debug
         //System.out.println("sto per pescare");
@@ -380,7 +496,7 @@ public class PartitaController implements Initializable {
         double startFromY = anch_mazzo.getLayoutY();
 
         for (int i = 0; i < 5; i++) {
-            if (toccaA.getMano()[i].getCliccata()==true) {
+            if (toccaA.getMano()[i].getCliccata() == true) {
                 String cartaName = "carta" + i;
 
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
@@ -389,7 +505,7 @@ public class PartitaController implements Initializable {
                 currentCarta.getChildren().add(retroCarta);
 
                 //posizioni delle carte sul terreno che sono fisse
-                double endToX = (140*(i+1)-(10*(i)));
+                double endToX = (140 * (i + 1) - (10 * (i)));
                 double endToY = 365;
 
 
@@ -406,35 +522,36 @@ public class PartitaController implements Initializable {
                 transition.setOnFinished(event -> {
                     PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
                     pause.play();
-                    pause.setOnFinished(event2 ->{
-                            RotateTransition rotate = new RotateTransition(Duration.seconds(0.25), retroCarta);
+                    pause.setOnFinished(event2 -> {
+                        RotateTransition rotate = new RotateTransition(Duration.seconds(0.25), retroCarta);
 
-                            rotate.setByAngle(180); // Specifica l'angolo di rotazione desiderato
-                            rotate.setAxis(Rotate.Y_AXIS);
+                        rotate.setByAngle(180); // Specifica l'angolo di rotazione desiderato
+                        rotate.setAxis(Rotate.Y_AXIS);
 
-                            rotate.play();
-                            rotate.setOnFinished(event3 -> {
-                                try {
-                                    currentCarta.getChildren().remove(retroCarta);
-                                    giroCarte();
-                                } catch (FileNotFoundException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            });
+                        rotate.play();
+                        rotate.setOnFinished(event3 -> {
+                            try {
+                                currentCarta.getChildren().remove(retroCarta);
+                                giroCarte();
+                            } catch (FileNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
                     });
                 });
             }
         }
     }
+
     //animazione quando le nuove carte pescate arrivano in mano
     public void giroCarte() throws FileNotFoundException {
 
         for (int i = 0; i < 5; i++) {
-            if (toccaA.getMano()[i].getCliccata()==true) {
+            if (toccaA.getMano()[i].getCliccata() == true) {
                 String cartaName = "carta" + i;
 
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
-                currentCarta.setLayoutX(140*(i+1)-(10*(i)));
+                currentCarta.setLayoutX(140 * (i + 1) - (10 * (i)));
                 currentCarta.setLayoutY(365);
 
                 ImageView imageView = createImageView(toccaA.getMano()[i].getImage());
@@ -443,21 +560,25 @@ public class PartitaController implements Initializable {
                 toccaA.getMano()[i].setCliccata(false);
                 PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
                 pause.play();
-                pause.setOnFinished(event2 ->{
+                pause.setOnFinished(event2 -> {
                     fineMano();
                 });
 
             }
         }
     }
+
     //animazione quando le carte scartate tornano nel mazzo
-    public void scartataAnimazione(){
+    public void scartataAnimazione() {
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
+        for (int j = 0; j < 5; j++) {
+            System.out.print(toccaA.getMano()[j] + " ");
+        }
 
         for (int i = 0; i < 5; i++) {
-            if (toccaA.getMano()[i].getCliccata()==true) {
+            if (toccaA.getMano()[i].getCliccata() == true) {
                 String cartaName = "carta" + i;
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName)/* recupera l'ImageView corrente in base al nome dinamico, potrebbe essere necessario un array o una mappa */;
 
@@ -480,7 +601,7 @@ public class PartitaController implements Initializable {
                     //creo una pausa tra l'animazione delle carte scartate e quelle pescate
                     PauseTransition pause = new PauseTransition(Duration.seconds(1));
                     pause.play();
-                    pause.setOnFinished(event2 ->{
+                    pause.setOnFinished(event2 -> {
                         try {
                             nuoveCartePescateAnimazione();
                         } catch (FileNotFoundException e) {
@@ -491,7 +612,8 @@ public class PartitaController implements Initializable {
             }
         }
     }
-    public void pescataAnimazione(){
+
+    public void pescataAnimazione() {
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
@@ -536,22 +658,51 @@ public class PartitaController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
-    public void fineMano(){
+
+    public void fineMano() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), anchPane_manoSuccesiva);
         translateTransition.setByX(-300);
         translateTransition.play();
 
     }
+
     //collegato al bottone del anchor pane manoSuccesiva
     public void prossimaMano(MouseEvent mouseEvent) throws IOException {
         newScene();
     }
-    public void schermataToccaA(){
-        pulisciSchermata();
-        anchPane_toccaA.setVisible(true);
-        lbl_toccaA.setText("Turno: "+p.getToccaA());
-        lbl_turno.setText("Turno: "+(p.getTurnoSalvato()));
+
+    public void schermataToccaA() {
+        if (!toccaA.isBot()) {       //persona reale
+            pulisciSchermata();
+            anchPane_toccaA.setVisible(true);
+            lbl_toccaA.setText("Turno: " + p.getToccaA());
+            lbl_turno.setText("Turno: " + (p.getTurnoSalvato()));
+        } else {          //bot
+            pulisciSchermata();
+            anchPane_toccaA.setVisible(true);
+            btn_gioca.setDisable(true);
+            lbl_toccaA.setText("Turno: " + p.getToccaA());
+            lbl_turno.setText("Turno: " + (p.getTurnoSalvato()));
+
+            PauseTransition pause = new PauseTransition(Duration.seconds(2));
+            pause.play();
+            pause.setOnFinished(event -> {
+                anchPane_toccaA.setVisible(false);
+                TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), anchPane_score);
+                translateTransition.setByX(220);
+                translateTransition.play();
+                try {
+                    giocaTurno();
+                } catch (FileNotFoundException e) {
+                    throw new RuntimeException(e);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+        }
     }
+
     //collegato al bottone del anchor pane toccaA
     public void procedi(MouseEvent mouseEvent) throws FileNotFoundException {
         anchPane_toccaA.setVisible(false);
@@ -562,15 +713,16 @@ public class PartitaController implements Initializable {
             giocaTurno();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
     private void newScene() throws IOException {
-        if(cont == p.getNumeroTurni()*p.getGiocatori().length-1) {
+        if (cont == p.getNumeroTurni() * p.getGiocatori().length - 1) {
             p.finePartita();
             salvaEdEsci();
-        }
-        else{
+        } else {
 
             p.salva();
             Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
@@ -585,6 +737,7 @@ public class PartitaController implements Initializable {
             currentScene.setRoot(root);
         }
     }
+
     public void salvaEdEsci() throws IOException {
         BackToHome();
         OPZ.playMusica("lobby.wav");
@@ -594,7 +747,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
 
-        System.out.println(">>> initializa partita con codice "+CODICE_TEMP);
+        System.out.println(">>> initializa partita con codice " + CODICE_TEMP);
         int codice = CODICE_TEMP;
         p = Partita.carica(codice);
         mostraClassifica();
@@ -604,15 +757,14 @@ public class PartitaController implements Initializable {
         giocatore_salvato = p.getGiocatoreSalvato();
         p.setSeme(p.getMazzo().getMazzoArrayList().remove(0));
 
-        p.setTurnoSalvato(p.getCont()/p.getGiocatori().length);
+        p.setTurnoSalvato(p.getCont() / p.getGiocatori().length);
         turno_salvato = p.getTurnoSalvato();
 
-        if(giocatore_salvato < p.getGiocatori().length){
-            p.setGiocatoreSalvato(giocatore_salvato+1);
-            toccaA = giocatori[p.getGiocatoreSalvato()-1];
+        if (giocatore_salvato < p.getGiocatori().length) {
+            p.setGiocatoreSalvato(giocatore_salvato + 1);
+            toccaA = giocatori[p.getGiocatoreSalvato() - 1];
 
-        }
-        else{
+        } else {
             p.setGiocatoreSalvato(1);
             toccaA = giocatori[0];
         }
@@ -627,23 +779,22 @@ public class PartitaController implements Initializable {
 
     private void mostraClassifica() {
         String s = "";
-        for(int i = 0; i<p.getGiocatori().length;i++){
-            s = s+p.getGiocatori()[i].getNome()+":  "+p.getGiocatori()[i].getPunti()+"\n";
+        for (int i = 0; i < p.getGiocatori().length; i++) {
+            s = s + p.getGiocatori()[i].getNome() + ":  " + p.getGiocatori()[i].getPunti() + "\n";
         }
         lbl_classifica.setText(s);
     }
 
-    public void keyEventPausa(KeyEvent keyEvent){
-        if(keyEvent.getCode() == KeyCode.ESCAPE){
-            if(!pausa) {
+    public void keyEventPausa(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            if (!pausa) {
                 pane_pausa.setVisible(true);
                 anchorPane.setDisable(true);
                 anchPane_manoSuccesiva.setDisable(true);
                 anchPane_score.setDisable(true);
                 btn_regole.requestFocus();
                 pausa = true;
-            }
-            else{
+            } else {
                 pane_pausa.setVisible(false);
                 anchorPane.setDisable(false);
                 anchPane_manoSuccesiva.setDisable(false);
@@ -652,8 +803,9 @@ public class PartitaController implements Initializable {
             }
         }
     }
+
     public void keyEventTastini(KeyEvent keyEvent) throws IOException {
-        if(tglbtn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused() || tglbtn_musica.isFocused()) {
+        if (tglbtn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused() || tglbtn_musica.isFocused()) {
             if (keyEvent.getCode() == KeyCode.DOWN) {
                 if (btn_regole.isFocused()) {
                     tglbtn_suono.requestFocus();
@@ -679,19 +831,20 @@ public class PartitaController implements Initializable {
             pulisci();
 
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_esci.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_esci.isFocused()) {
             salvaEdEsci();
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()) {
             Utili.gestisciMusica(tglbtn_musica);
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
             Utili.gestisciSuoni(tglbtn_suono);
         }
 
     }
+
     //sistemare ogni volta i focus dei bottoni
-    public void pulisci(){
+    public void pulisci() {
         btn_esci.setFocusTraversable(false);
         tglbtn_suono.setFocusTraversable(false);
         btn_regole.setFocusTraversable(false);
