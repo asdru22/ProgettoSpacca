@@ -8,6 +8,6 @@ module gioco.progettospacca {
     exports gioco.progettospacca.controller;
     exports gioco.progettospacca.classi;
 
-    opens gioco.progettospacca.controller to javafx.fxml;
     opens gioco.progettospacca.classi to com.google.gson;
+    opens gioco.progettospacca.controller to com.google.gson, javafx.fxml;
 }
