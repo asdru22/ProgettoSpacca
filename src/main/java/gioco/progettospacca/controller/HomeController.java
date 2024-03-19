@@ -108,7 +108,7 @@ public class HomeController implements Initializable {
         currentStage.setTitle(OPZ.traduci("login"));
     }
     public void EventoCreaTorneo() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginAdminView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("LoginAdminViewTorneo.fxml"));
 
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_creaTorneo.getScene().getWindow();
