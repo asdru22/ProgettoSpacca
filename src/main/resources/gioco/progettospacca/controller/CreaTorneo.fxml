@@ -25,7 +25,7 @@
                   <Font name="Candara Bold" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="btn_continua" layoutX="399.0" layoutY="487.0" mnemonicParsing="false" text="Continua">
+            <Button fx:id="btn_continua" alignment="CENTER" layoutX="384.0" layoutY="487.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Continua" textAlignment="CENTER">
                <font>
                   <Font name="Candara" size="21.0" />
                </font>
