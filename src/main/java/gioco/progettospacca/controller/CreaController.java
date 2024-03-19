@@ -3,7 +3,6 @@ package gioco.progettospacca.controller;
 import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -78,6 +78,8 @@ public class CreaController implements Initializable {
     private CheckBox chk_gioc4;
     @FXML
     private CheckBox chk_gioc5;
+    @FXML
+    private Button btn_copiaCodice;
 
     TextField[] txt = {txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5};
 
@@ -301,6 +303,7 @@ public class CreaController implements Initializable {
         }
         pulisci();
     }
+
 
     private void pulisci() {
         chk_gioc1.setFocusTraversable(false);
