@@ -35,7 +35,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 public class PartitaController implements Initializable {
 
 
-    public static final int CODICE_TEMP = 18982;
+    public static final int CODICE_TEMP = 41583;
     @FXML
     public Label lbl_pausa;
 
