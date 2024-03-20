@@ -105,12 +105,12 @@
             <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
             <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="269.0" layoutY="145.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setSuono" prefHeight="66.0" prefWidth="223.0" text="Suoni ON">
                <font>
-                  <Font name="Candara" size="22.0" />
+                  <Font name="Candara" size="19.0" />
                </font>
             </ToggleButton>
             <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="269.0" layoutY="235.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#setMusica" prefHeight="66.0" prefWidth="223.0" text="Musica ON">
                <font>
-                  <Font name="Candara" size="22.0" />
+                  <Font name="Candara" size="19.0" />
                </font>
             </ToggleButton>
             <ImageView fitHeight="78.0" fitWidth="175.0" layoutX="460.0" layoutY="26.0" rotate="-180.0">
