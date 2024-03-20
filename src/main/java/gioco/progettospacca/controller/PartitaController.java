@@ -174,10 +174,16 @@ public class PartitaController implements Initializable {
                         pulisciSchermata();
                         p.setCont(cont + 1);
                         toccaA.setPunti(punti);
-                        PauseTransition pause2 = new PauseTransition(Duration.seconds(1.5));
-                        pause2.play();
-                        pause2.setOnFinished(event2 -> {
-                            fineMano();
+                        fineMano();
+                        btn_prossimaMano.setDisable(true);
+                        PauseTransition pause3 = new PauseTransition(Duration.seconds(3));
+                        pause3.play();
+                        pause3.setOnFinished(event3 -> {
+                            try {
+                                newScene();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
                         });
                     });
 
