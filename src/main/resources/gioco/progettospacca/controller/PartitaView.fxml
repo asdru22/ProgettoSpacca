@@ -69,9 +69,9 @@
                                 <Font name="Candara Bold" size="23.0" />
                             </font>
                         </Label>
-                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="368.0" layoutY="322.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="39.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
+                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="368.0" layoutY="329.0" minHeight="40.0" minWidth="167.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="40.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
                             <font>
-                                <Font name="Candara" size="22.0" />
+                                <Font name="Candara" size="19.0" />
                             </font>
                         </Button>
                     </children>
