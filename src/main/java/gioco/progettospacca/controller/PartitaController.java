@@ -461,20 +461,20 @@ public class PartitaController implements Initializable {
         anch_mazzo.getChildren().add(Carta.createImageView(percorsoMazzo));
         anch_seme.getChildren().add(Carta.createImageView(p.getSeme().getImage()));
  */
-        imageView1 = Carta.makeImageView(mano[0].getImage(),p);
+        imageView1 = Carta.makeImageView(mano[0].getImage());
         carta1.getChildren().add(imageView1);
-        imageView2 = Carta.makeImageView(mano[1].getImage(),p);
+        imageView2 = Carta.makeImageView(mano[1].getImage());
         carta2.getChildren().add(imageView2);
-        imageView3 = Carta.makeImageView(mano[2].getImage(),p);
+        imageView3 = Carta.makeImageView(mano[2].getImage());
         carta3.getChildren().add(imageView3);
-        imageView4 = Carta.makeImageView(mano[3].getImage(),p);
+        imageView4 = Carta.makeImageView(mano[3].getImage());
         carta4.getChildren().add(imageView4);
-        imageView5 = Carta.makeImageView(mano[4].getImage(),p);
+        imageView5 = Carta.makeImageView(mano[4].getImage());
         carta5.getChildren().add(imageView5);
 
-        imageViewMazzo = Carta.makeImageView(percorsoMazzo,p);
+        imageViewMazzo = Carta.makeImageView(percorsoMazzo);
         anch_mazzo.getChildren().add(imageViewMazzo);
-        imageViewSeme = Carta.makeImageView(p.getSeme().getImage(),p);
+        imageViewSeme = Carta.makeImageView(p.getSeme().getImage());
         anch_seme.getChildren().add(imageViewSeme);
 
         cartaPaneMap.put("carta0", carta1);
@@ -505,7 +505,7 @@ public class PartitaController implements Initializable {
 
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
 
-                ImageView retroCarta = Carta.makeImageView(percorsoMazzo,p);
+                ImageView retroCarta = Carta.makeImageView(percorsoMazzo);
                 currentCarta.getChildren().add(retroCarta);
 
                 //posizioni delle carte sul terreno che sono fisse
@@ -558,7 +558,7 @@ public class PartitaController implements Initializable {
                 currentCarta.setLayoutX(140 * (i + 1) - (10 * (i)));
                 currentCarta.setLayoutY(365);
 
-                currentCarta.getChildren().add(Carta.makeImageView(toccaA.getMano()[i].getImage(),p));
+                currentCarta.getChildren().add(Carta.makeImageView(toccaA.getMano()[i].getImage()));
 
                 toccaA.getMano()[i].setCliccata(false);
                 PauseTransition pause = new PauseTransition(Duration.seconds(1.5));

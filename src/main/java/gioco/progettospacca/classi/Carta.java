@@ -5,6 +5,7 @@ import javafx.scene.image.ImageView;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Objects;
 
 public class Carta {
     private Seme seme;
@@ -51,23 +52,11 @@ public class Carta {
         return "" + seme + " " + numero;
     }
 
-    public static ImageView createImageView(String percorsoImmagine) throws FileNotFoundException {
-        InputStream inputStream = Carta.class.getResourceAsStream(percorsoImmagine);
-        if (inputStream == null) {
-            throw new IllegalArgumentException("Image not found: " + percorsoImmagine);
-        }
-
-        // Load the image from the input stream
-        Image image = new Image(inputStream);
-
-        // Return the image view
-        return new ImageView(image);
-    }
-    public static ImageView makeImageView(String path,Partita p){
+    public static ImageView makeImageView(String path) {
         try {
-            return Carta.createImageView(path);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return new ImageView(new Image(Objects.requireNonNull(Carta.class.getResourceAsStream(path))));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException("Immagine non trovata: " + path, e);
         }
     }
 }
