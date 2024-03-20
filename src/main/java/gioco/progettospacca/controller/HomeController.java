@@ -328,4 +328,19 @@ public class HomeController implements Initializable {
         anchorPane.setDisable(false);
 
     }
+    public void apriLogin(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("LoginAdminViewPrivilegi.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_creaTorneo.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("login"));
+    }
 }

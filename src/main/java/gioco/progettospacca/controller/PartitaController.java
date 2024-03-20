@@ -35,7 +35,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 public class PartitaController implements Initializable {
 
 
-    public static final int CODICE_TEMP = 18982;
+    public static final int CODICE_TEMP = 93018;
     @FXML
     public Label lbl_pausa;
 
@@ -160,7 +160,7 @@ public class PartitaController implements Initializable {
         } else {       //bot
             btn_stai.setDisable(true);
             btn_scarta.setDisable(true);
-            int azione = 2;
+            int azione = Utili.intCasuale(1,2);
             switch (azione) {
                 case 1:
                     PauseTransition pause1 = new PauseTransition(Duration.seconds(2));

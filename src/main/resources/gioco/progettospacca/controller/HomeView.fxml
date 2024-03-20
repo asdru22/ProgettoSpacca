@@ -35,15 +35,20 @@
                 </ImageView>
                 <MenuBar fx:id="menBar" accessibleRole="BUTTON" layoutX="-7.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#keyEvent" prefHeight="26.0" prefWidth="914.0" AnchorPane.leftAnchor="-7.0">
                     <menus>
-                        <Menu fx:id="menuBar" mnemonicParsing="false" onAction="#suonoMenu" text="Menu">
+                        <Menu fx:id="menuBar" mnemonicParsing="false" onAction="#suonoMenu" text="Impostazioni">
                             <items>
-                                <MenuItem fx:id="btn_classifica" mnemonicParsing="false" onAction="#apriMenu" text="Classifica" />
                                 <MenuItem fx:id="btn_cambiaLingua" mnemonicParsing="false" onAction="#cambiaLingua" text="Cambia Lingua" />
                                 <MenuItem fx:id="btn_regole" mnemonicParsing="false" onAction="#apriRegole" text="Regole" />
-                        <MenuItem fx:id="btn_suoni" mnemonicParsing="false" onAction="#apriSuoni" text="suoni e musica" />
+                        <MenuItem fx:id="btn_suoni" mnemonicParsing="false" onAction="#apriSuoni" text="Suoni e Musica" />
+                        <MenuItem fx:id="btn_privilegi" mnemonicParsing="false" onAction="#apriLogin" text="Privilegi Amministratore" />
 
                             </items>
                         </Menu>
+                  <Menu fx:id="menuClassifica" mnemonicParsing="false" onAction="#suonoMenu" text="Classifica">
+                     <items>
+                                <MenuItem fx:id="btn_classifica" mnemonicParsing="false" onAction="#apriMenu" text="Classifica" />
+                     </items>
+                  </Menu>
                     </menus>
                     <opaqueInsets>
                         <Insets />
