@@ -63,7 +63,7 @@ public class LoginController3 implements Initializable {
         //aggiungere usrrname e password
         if ("a".equals(user) && "s".equals(psw)) {
             //if ("admin".equals(user) && "spacca".equals(psw)) {
-            Parent root = FXMLLoader.load(getClass().getResource("CreaPartita.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("PrivilegiAdminView.fxml"));
 
             // Ottieni la finestra corrente
             Stage currentStage = (Stage) btn_login.getScene().getWindow();
