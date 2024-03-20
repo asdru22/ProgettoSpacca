@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 
+import gioco.progettospacca.classi.Carta;
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -17,6 +19,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -298,7 +301,16 @@ public class HomeController implements Initializable {
         tglbtn_musica.setSelected(OPZ.getMusica());
         Utili.gestisciSuoni(tglbtn_suono);
         Utili.gestisciMusica(tglbtn_musica);
-
+        /*
+        String percorsoMazzo = "/gioco/progettospacca/carte/acqua/1.png";
+        ImageView imageViewMazzo;
+        try {
+            imageViewMazzo = Carta.createImageView(percorsoMazzo);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        anchorPane.getChildren().add(imageViewMazzo);
+         */
     }
 
     public void suonoMenu(ActionEvent actionEvent) {

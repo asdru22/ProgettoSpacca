@@ -1,5 +1,6 @@
 # Pokermon
-## Implementazione
+### Requisiti
+Per eseguire il jar è necessaria almeno la versione 21 di java ([Download](https://www.oracle.com/it/java/technologies/downloads/#java21))
 ### Software usato
 IntelliJ: IDE e download librerie  
 Github Dekstop: Upload e download modifiche dalla repository online  

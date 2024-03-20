@@ -33,9 +33,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-
-
-    public static final int CODICE_TEMP = 93018;
+    public static final int CODICE_TEMP = 74162;
     @FXML
     public Label lbl_pausa;
 
@@ -117,7 +115,7 @@ public class PartitaController implements Initializable {
     private Seme seme_che_comanda = null;
     private Giocatore toccaA;
     private int cont;
-    String percorsoMazzo = "src/main/resources/gioco/progettospacca/Retro.png";
+    String percorsoMazzo = "/gioco/progettospacca/Retro.png";
     boolean pausa = false;
 
     private void inizializzaTraduzioni() {
@@ -454,28 +452,29 @@ public class PartitaController implements Initializable {
         mano[2].setCliccata(false);
         mano[3].setCliccata(false);
         mano[4].setCliccata(false);
-
-        String percorsoCarta1 = mano[0].getImage();
-        String percorsoCarta2 = mano[1].getImage();
-        String percorsoCarta3 = mano[2].getImage();
-        String percorsoCarta4 = mano[3].getImage();
-        String percorsoCarta5 = mano[4].getImage();
-        String percorsoSeme = p.getSeme().getImage();
-
-        imageView1 = createImageView(percorsoCarta1);
-        imageView2 = createImageView(percorsoCarta2);
-        imageView3 = createImageView(percorsoCarta3);
-        imageView4 = createImageView(percorsoCarta4);
-        imageView5 = createImageView(percorsoCarta5);
-        imageViewMazzo = createImageView(percorsoMazzo);
-        imageViewSeme = createImageView(percorsoSeme);
-
+/*
+        carta1.getChildren().add(Carta.createImageView(mano[0].getImage()));
+        carta2.getChildren().add(Carta.createImageView(mano[1].getImage()));
+        carta3.getChildren().add(Carta.createImageView(mano[2].getImage()));
+        carta4.getChildren().add(Carta.createImageView(mano[3].getImage()));
+        carta5.getChildren().add(Carta.createImageView(mano[4].getImage()));
+        anch_mazzo.getChildren().add(Carta.createImageView(percorsoMazzo));
+        anch_seme.getChildren().add(Carta.createImageView(p.getSeme().getImage()));
+ */
+        imageView1 = Carta.makeImageView(mano[0].getImage(),p);
         carta1.getChildren().add(imageView1);
+        imageView2 = Carta.makeImageView(mano[1].getImage(),p);
         carta2.getChildren().add(imageView2);
+        imageView3 = Carta.makeImageView(mano[2].getImage(),p);
         carta3.getChildren().add(imageView3);
+        imageView4 = Carta.makeImageView(mano[3].getImage(),p);
         carta4.getChildren().add(imageView4);
+        imageView5 = Carta.makeImageView(mano[4].getImage(),p);
         carta5.getChildren().add(imageView5);
+
+        imageViewMazzo = Carta.makeImageView(percorsoMazzo,p);
         anch_mazzo.getChildren().add(imageViewMazzo);
+        imageViewSeme = Carta.makeImageView(p.getSeme().getImage(),p);
         anch_seme.getChildren().add(imageViewSeme);
 
         cartaPaneMap.put("carta0", carta1);
@@ -506,7 +505,7 @@ public class PartitaController implements Initializable {
 
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
 
-                ImageView retroCarta = createImageView(percorsoMazzo);
+                ImageView retroCarta = Carta.makeImageView(percorsoMazzo,p);
                 currentCarta.getChildren().add(retroCarta);
 
                 //posizioni delle carte sul terreno che sono fisse
@@ -559,8 +558,7 @@ public class PartitaController implements Initializable {
                 currentCarta.setLayoutX(140 * (i + 1) - (10 * (i)));
                 currentCarta.setLayoutY(365);
 
-                ImageView imageView = createImageView(toccaA.getMano()[i].getImage());
-                currentCarta.getChildren().add(imageView);
+                currentCarta.getChildren().add(Carta.makeImageView(toccaA.getMano()[i].getImage(),p));
 
                 toccaA.getMano()[i].setCliccata(false);
                 PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
@@ -641,11 +639,6 @@ public class PartitaController implements Initializable {
             // Esegui l'animazione
             transition.play();
         }
-    }
-
-    private ImageView createImageView(String percorsoImmagine) throws FileNotFoundException {
-        Image image = new Image(new FileInputStream(percorsoImmagine));
-        return new ImageView(image);
     }
 
     public void BackToHome() throws IOException {
