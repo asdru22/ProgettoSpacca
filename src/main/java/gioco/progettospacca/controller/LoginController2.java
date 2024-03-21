@@ -93,7 +93,6 @@ public class LoginController2 implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        OPZ.premiFreccia();
         pulisci();
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
@@ -111,6 +110,7 @@ public class LoginController2 implements Initializable {
         }
 
         if (keyEvent.getCode() == KeyCode.UP) {
+            OPZ.premiFreccia();
             if (btn_back.isFocused()) {
                 System.out.println("sei già in alto");
             } else if (txt_user.isFocused()) {
@@ -125,6 +125,7 @@ public class LoginController2 implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (btn_login.isFocused()) {
                 System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {

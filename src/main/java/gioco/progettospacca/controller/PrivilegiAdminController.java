@@ -2,6 +2,7 @@ package gioco.progettospacca.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,10 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.OPZ;
 
-public class PrivilegiAdminController {
+public class PrivilegiAdminController implements Initializable {
 
     @FXML
     private Button btn_back;
@@ -94,8 +97,6 @@ public class PrivilegiAdminController {
         //currentStage.setTitle(OPZ.traduci("Modifica giocatore"));
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        OPZ.premiFreccia();
-        pulisci();
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
         }
@@ -110,33 +111,34 @@ public class PrivilegiAdminController {
         }
 
         if (keyEvent.getCode() == KeyCode.UP) {
+            OPZ.premiFreccia();
             if (btn_back.isFocused()) {
                 System.out.println("sei già in alto");
             } else if (btn_partiteSalvate.isFocused()) {
-                OPZ.premiFreccia();
                 btn_back.requestFocus();
             } else if (btn_modificaGiocatore.isFocused()) {
-                OPZ.premiFreccia();
                 btn_partiteSalvate.requestFocus();
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (btn_modificaGiocatore.isFocused()) {
                 System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
-                OPZ.premiFreccia();
                 btn_partiteSalvate.requestFocus();
             } else if (btn_partiteSalvate.isFocused()) {
-                OPZ.premiFreccia();
                 btn_modificaGiocatore.requestFocus();
             }
         }
+        pulisci();
     }
     private void pulisci() {
         btn_partiteSalvate.setFocusTraversable(false);
         btn_modificaGiocatore.setFocusTraversable(false);
         btn_back.setFocusTraversable(false);
     }
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    }
 
 }

@@ -424,7 +424,7 @@ public class Partita {
         int cont = 1;
         int contMax = 0;
         for (int i = 1; i < 5; i++) {
-            if (carteNum[i] == carteNum[i - 1] + 1) {
+            if (carteNum[i] == carteNum[i - 1]+1) { //va tolto il +1 prob, dopo faccio i controlli
                 cont++;
                 if (cont > contMax) {
                     contMax = cont;
