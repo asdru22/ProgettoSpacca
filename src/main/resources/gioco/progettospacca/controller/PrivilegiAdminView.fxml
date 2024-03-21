@@ -45,19 +45,19 @@
                         <Font name="Candara Bold Italic" size="22.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btn_cancellaPartita" minHeight="35.0" minWidth="160.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="160.0" text="Cancella Partita" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="btn_partiteSalvate" minHeight="35.0" minWidth="160.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#partiteSalvate" prefHeight="35.0" prefWidth="160.0" text="Partite salvate" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font name="Candara" size="16.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_modificaPartIta" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="200.0" text="Modifica giocatore" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Button fx:id="btn_modificaGiocatore" minHeight="35.0" minWidth="200.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#modificaGiocatore" prefHeight="35.0" prefWidth="200.0" text="Modifica giocatore" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara" size="16.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-            <Button fx:id="btn_back" focusTraversable="false" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#backToHome" prefHeight="38.0" prefWidth="39.0" text="❮" />
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#backToHome" prefHeight="38.0" prefWidth="39.0" text="❮" />
          </children>
       </AnchorPane>
    </children>
