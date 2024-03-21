@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ValoriGioca {
-    private String nome;
-    private int codice;
+    private final String nome;
+    private final int codice;
 
     public ValoriGioca(TextField nome, TextField codice) {
         this.nome = nome.getText();

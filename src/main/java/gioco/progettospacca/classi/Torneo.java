@@ -7,8 +7,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
-    private final int MAX_ROUND = 4;
-    private Giocatore vincitore;
     private int round_salvato = 0;
     private int numero_round = 0;
     private int partita_salvata = 0;
@@ -16,7 +14,7 @@ public class Torneo {
 
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Partita> partite = new ArrayList<>();
-    private int id;
+    private final int id;
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
         this.giocatori = giocatori;
@@ -37,6 +35,7 @@ public class Torneo {
     }
 
     public void iniziaMain(int giocatori_scelti) throws FileNotFoundException {
+        // aggiunge bot se il numero di giocatori partecipanti non è 4,8 o 16
         int bot_esistenti = 0;
         for (Giocatore g : giocatori) {
             if (g.isBot()) bot_esistenti += 1;
@@ -52,7 +51,7 @@ public class Torneo {
 
 
     public void elimina() {
-        Utili.elimina(id, "tornei");
+        Utili.eliminaTorneo(id);
     }
 
     private void riprendi() throws FileNotFoundException {
@@ -74,7 +73,7 @@ public class Torneo {
             riprendiPartita(); // esegui
             // fine round
         }
-        vincitore = giocatori.get(0);
+        Giocatore vincitore = giocatori.get(0);
         // fine torneo
         System.out.println(vincitore.getNome() + " ha vinto il torneo!");
         vincitore.setPartiteVinte(vincitore.getPartiteVinte() + numero_round);
@@ -103,6 +102,7 @@ public class Torneo {
     }
 
     private void creaPartite() {
+        // numero partite dati i giocatori
         numero_partite = giocatori.size() / 2;
         Giocatore[] coppia = new Giocatore[2];
         Collections.shuffle(giocatori);

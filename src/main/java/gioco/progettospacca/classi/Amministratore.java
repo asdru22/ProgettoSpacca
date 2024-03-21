@@ -1,7 +1,7 @@
 package gioco.progettospacca.classi;
 
 public class Amministratore extends Giocatore {
-    private String password;
+    private final String password;
 
     public Amministratore(String nome, String password) {
         super(nome);

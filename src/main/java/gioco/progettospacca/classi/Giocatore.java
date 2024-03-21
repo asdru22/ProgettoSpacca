@@ -177,4 +177,8 @@ public class Giocatore {
     public void setPunti(int punti) {
         this.punti = this.punti + punti;
     }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 }

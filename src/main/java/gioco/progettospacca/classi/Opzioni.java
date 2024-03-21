@@ -24,7 +24,9 @@ public class Opzioni {
 
     public void salva() {
         try (FileWriter writer = new FileWriter("salvataggi/impostazioni.json")) {
+            // crea classe gson che permette l'indentazione del dizionario
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            // scrivi il file json della classe convertita in stringa in formmato json
             writer.write(gson.toJson(this));
         } catch (IOException e) {
             System.err.println("Errore salvataggio impostazioni");
@@ -34,7 +36,9 @@ public class Opzioni {
     public static Opzioni carica() throws IOException {
         try {
             Gson gson = new Gson();
+            // creo lettore
             BufferedReader reader = new BufferedReader(new FileReader( "salvataggi/impostazioni.json"));
+            // classe speciale per estendere stringhe
             StringBuilder jsonBuilder = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -42,6 +46,7 @@ public class Opzioni {
             }
             reader.close();
             System.out.println(">>> Opzioni Caricate!");
+            // restituisce la stringa json convertita in classe
             return gson.fromJson(jsonBuilder.toString(), Opzioni.class);
         } catch (IOException e) {
             System.err.println("[!] Esecuzione jar per la prima volta");
@@ -51,6 +56,7 @@ public class Opzioni {
     }
 
     private static Opzioni inizializza(){
+        // crea cartelle salvataggi per la prima esecuzione in assoluto
         File d_salvataggi = new File("salvataggi");
         d_salvataggi.mkdir();
 
@@ -72,13 +78,12 @@ public class Opzioni {
         if (musica != null) { // stoppa musica precedente
             musica.stop();
         }
-        String resourcePath = "/gioco/progettospacca/suoni/" + nome;
-        String resourceUrl = Main.class.getResource(resourcePath).toString();
-        musica = new MediaPlayer(new Media(resourceUrl));
+        // carica il path come path apposta delle risorse
+        String pathRisorse = Main.class.getResource("/gioco/progettospacca/suoni/" + nome).toString();
+        musica = new MediaPlayer(new Media(pathRisorse));
         musica.setCycleCount(MediaPlayer.INDEFINITE);
         if (!musicaPausa) {
             musica.play();
-            System.out.println("playing music");
         }
         this.salva();
     }
@@ -96,13 +101,11 @@ public class Opzioni {
     }
 
     public void playSfx(String nome) {
-        String resourcePath = "/gioco/progettospacca/suoni/" + nome;
-        String resourceUrl = Main.class.getResource(resourcePath).toString();
-        sfx = new MediaPlayer(new Media(resourceUrl));
+        String pathRisorse = Main.class.getResource("/gioco/progettospacca/suoni/" + nome).toString();
+        sfx = new MediaPlayer(new Media(pathRisorse));
         sfx.setCycleCount(1);
         if (!sfxPausa) {
             sfx.play();
-            System.out.println("playing sfx");
         }
         this.salva();
     }

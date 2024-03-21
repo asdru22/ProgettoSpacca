@@ -10,7 +10,7 @@ public class Partita {
     private boolean iniziata = false;
     private static int NUMERO_TURNI = 3;
     private static int numero_bot;
-    private int id;
+    private final int id;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
     private int id_torneo;
@@ -199,15 +199,10 @@ public class Partita {
 
         Utili.getLeaderboard();
         elimina();  //viene eliminato il salvataggio solo se viene conclusa la partita
-        /*
-        if(id_torneo==0){
-            System.exit(0);
-        } //termina l'applicazione (per il momento teniamolo per comodità più avanti metteremo un bottone torna alla home una vota terminata la partita )
-        */
     }
 
     public void elimina() {
-        Utili.elimina(id, "partite");
+        Utili.eliminaPartita(id);
     }
 
     private void azioniGiocatore() {

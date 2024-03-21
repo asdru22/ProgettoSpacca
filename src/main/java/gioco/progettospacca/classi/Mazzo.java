@@ -14,16 +14,12 @@ public class Mazzo {
         this.mazzo = creaMazzoIniziale();
     }
 
-    public void setMazzo(ArrayList<Carta> mazzo) {
-        this.mazzo = mazzo;
-    }
-
     public ArrayList<Carta> getMazzoArrayList() {
         return this.mazzo;
     }
 
     public static ArrayList<Carta> creaMazzoIniziale() {
-        Seme semi[] = Seme.values();
+        Seme[] semi = Seme.values();
         ArrayList<Carta> temp = new ArrayList<>();
 
         for (int i = 0; i < 10; i++) {
@@ -35,11 +31,6 @@ public class Mazzo {
         }
         Collections.shuffle(temp);
         return temp;
-
-    }
-
-    public Carta getCartaInCima() {
-        return mazzo.get(0);
     }
 
 }

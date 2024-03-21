@@ -55,9 +55,9 @@ public class Utili {
         }
         ArrayList<Giocatore> copia_temp = new ArrayList<>(temp);
         Giocatore max_vittorie;
-        String[] vett = new String[11];
+        String[] top10 = new String[10];
         String r;
-        for (int i = 0; i <= 10; i++) {
+        for (int i = 0; i < 10; i++) {
             max_vittorie = new Giocatore("temp");
             for (Giocatore g : copia_temp) {
                 if (g.getPartiteVinte() >= max_vittorie.getPartiteVinte()) {
@@ -65,13 +65,13 @@ public class Utili {
                 }
             }
             if (!Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = (i <= 2 ? "" : i + 1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
-                vett[i] = r;
+                r = (i <= 2 ? "" : i+1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                top10[i] = r;
             }
             temp.remove(max_vittorie);
             copia_temp = temp;
         }
-        return vett;
+        return top10;
     }
 
     public static int intCasuale(int min, int max) {
@@ -83,7 +83,7 @@ public class Utili {
         return s[intCasuale(0, 4)];
     }
 
-    public static void elimina(int id, String cartella) {
+    public static void elimina(String id, String cartella) {
 
         File fileDaEliminare = new File("salvataggi/" + cartella + "/" + id + ".json");
 
@@ -95,14 +95,13 @@ public class Utili {
     }
 
     public static void eliminaGiocatore(String nome) {
-
-        File fileDaEliminare = new File("salvataggi/giocatori/" + nome + ".json");
-
-        if (fileDaEliminare.delete()) {
-            System.out.println("File eliminato con successo: " + nome + ".json");
-        } else {
-            System.out.println("Impossibile eliminare il file: " + nome + ".json");
-        }
+        elimina(nome,"giocatori");
+    }
+    public static void eliminaPartita(int id) {
+        elimina(id+"","partite");
+    }
+    public static void eliminaTorneo(int id) {
+        elimina(id+"","tornei");
     }
 
     public static boolean esisteGiocatore(String nome) {
@@ -124,11 +123,12 @@ public class Utili {
     public static boolean esistePartita(int id) {
         File folder = new File("salvataggi/partite");
         File[] file_partite = folder.listFiles();
+        assert file_partite != null; // controllo che il file esista
         boolean trovato = false;
         int s;
-        assert file_partite != null;
         for (File file : file_partite) {
             if (file.isFile() && !trovato) {
+                // prendo il nome togliendo il suffisso .json
                 s = Integer.parseInt(file.getName().substring(0, file.getName().length() - 5));
                 if (id == s) {
                     trovato = true;
@@ -150,7 +150,6 @@ public class Utili {
             g.aggiungiPartita(id);
             g.salva();
             return g;
-
         } else {
             return null;
         }
@@ -178,6 +177,20 @@ public class Utili {
             OPZ.riprendiSfx();
             tglb.setText(OPZ.traduci("suono_on"));
         }
+    }
+    public static void cambiaNomeGiocatore(String vecchio, String nuovo) {
+        if(esisteGiocatore(vecchio)&&!esisteGiocatore(nuovo)){
+            Giocatore g = Giocatore.carica(vecchio);
+            eliminaGiocatore(vecchio);
+            g.setNome(nuovo);
+            g.salva();
+        } else System.err.println("Impossibile eseguire l'operazione, assicurarsi che esista un giocatore col nome vecchio e che non esista un giocatore col nome nuovo.");
+    }
+    public static String adminEliminaPartita(int id){
+        if(esistePartita(id)){
+            eliminaPartita(id);
+            return OPZ.traduci("partita_eliminata");
+        } else return OPZ.traduci("partita_non_trovata");
     }
 
 }
