@@ -35,3 +35,57 @@
     -fx-background-color: #a9a9a9 , #0a7ec4 , white;
     -fx-background-insets: 0 -1.5 -1.5 -1.5, 0 0 0 0, -2 -3 5 -3;
 }
+
+
+
+
+
+
+
+
+
+.menu-bar {
+    -fx-background-color: #0a7dc4 ;
+    -fx-opacity: 1;
+    -fx-border-width: 2.0;
+
+}
+.menu-bar .label {
+    -fx-font-size: 14.0 pt;
+    -fx-font-family: "Candara";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    /**-fx-padding: 10.0px;
+    */
+
+}
+
+.menu-item {
+    -fx-padding: 1.0em 1.0em 1.0em 1.0em;
+    -fx-text-fill: white;
+    -fx-background: #0a7dc4 ;
+}
+.menu-item .label{
+    -fx-font-size: 14.0 pt;
+    -fx-text-fill: white;
+}
+.menu-item .label:hover{
+    -fx-font-size: 14.0 pt;
+    -fx-background: #0a7dc4 ;
+    -fx-text-fill: white;
+}
+
+.context-menu {
+    -fx-background-color: #0a7dc4;
+}
+
+.context-menu .menu-item {
+    -fx-background: #0a7dc4;
+}
+
+.context-menu .menu-item:hover .label {
+    -fx-font-size: 14.0pt;
+    -fx-background: #0a7dc4;
+    -fx-text-fill: white;
+}
+

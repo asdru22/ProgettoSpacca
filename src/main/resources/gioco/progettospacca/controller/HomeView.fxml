@@ -18,7 +18,7 @@
     <children>
         <AnchorPane fx:id="anchorPane" prefHeight="622.0" prefWidth="907.0">
             <children>
-                <ImageView fitHeight="596.0" fitWidth="914.0" layoutX="-3.0" layoutY="27.0">
+                <ImageView fitHeight="596.0" fitWidth="915.0" layoutX="-3.0" layoutY="27.0">
                     <image>
                         <Image url="@../Sfondo.png" />
                     </image>
@@ -33,7 +33,7 @@
                         <Image url="@../Logo.png" />
                     </image>
                 </ImageView>
-                <MenuBar fx:id="menBar" accessibleRole="BUTTON" layoutX="-7.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#keyEvent" prefHeight="26.0" prefWidth="914.0" AnchorPane.leftAnchor="-7.0">
+                <MenuBar fx:id="menBar" accessibleRole="BUTTON" layoutX="-7.0" layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#keyEvent" prefHeight="26.0" prefWidth="919.0" AnchorPane.leftAnchor="-7.0">
                     <menus>
                         <Menu fx:id="menuBar" mnemonicParsing="false" onAction="#suonoMenu" text="Impostazioni">
                             <items>
