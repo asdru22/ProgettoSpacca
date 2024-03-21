@@ -2,18 +2,24 @@ package gioco.progettospacca.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.OPZ;
 
-public class ModificaGiocatoreController {
+public class ModificaGiocatoreController implements Initializable {
+    @FXML
+    Label lbl_caNome;
     @FXML
     private TextField txt_vecchioNome;
     @FXML
@@ -22,6 +28,10 @@ public class ModificaGiocatoreController {
     private Button btn_confermaCambioNome;
     @FXML
     private Button btn_back;
+    @FXML
+    private Label lbl_veNome;
+    @FXML
+    private Label lbl_nuNome;
 
     public void giocaPartita(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
@@ -51,4 +61,13 @@ public class ModificaGiocatoreController {
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_veNome.setText(OPZ.traduci("vecchio_nome"));
+        lbl_nuNome.setText(OPZ.traduci("nuovo_nome"));
+        lbl_caNome.setText(OPZ.traduci("cambia_nome"));
+
+        btn_confermaCambioNome.setText(OPZ.traduci("conferma"));
+
+    }
 }

@@ -37,7 +37,7 @@ public class Opzioni {
         try {
             Gson gson = new Gson();
             // creo lettore
-            BufferedReader reader = new BufferedReader(new FileReader( "salvataggi/impostazioni.json"));
+            BufferedReader reader = new BufferedReader(new FileReader("salvataggi/impostazioni.json"));
             // classe speciale per estendere stringhe
             StringBuilder jsonBuilder = new StringBuilder();
             String line;
@@ -55,13 +55,14 @@ public class Opzioni {
         }
     }
 
-    private static Opzioni inizializza(){
+    private static Opzioni inizializza() {
         // crea cartelle salvataggi per la prima esecuzione in assoluto
         File d_salvataggi = new File("salvataggi");
         d_salvataggi.mkdir();
 
         File d_giocatori = new File("salvataggi/giocatori");
         d_giocatori.mkdir();
+        new Giocatore("admin").salva();
 
         File d_partite = new File("salvataggi/partite");
         d_partite.mkdir();

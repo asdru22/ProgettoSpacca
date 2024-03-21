@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static gioco.progettospacca.controller.Main.OPZ;
+import static gioco.progettospacca.controller.Main.*;
 
 public class LoginController3 implements Initializable {
     @FXML
@@ -61,7 +61,7 @@ public class LoginController3 implements Initializable {
         String user = String.valueOf((txt_user.getText()));
         String psw = String.valueOf((txt_psw.getText()));
         //aggiungere usrrname e password
-        if ("a".equals(user) && "s".equals(psw)) {
+        if (user.equals(USERNAME) && psw.equals(PASSWORD)) {
             //if ("admin".equals(user) && "spacca".equals(psw)) {
             Parent root = FXMLLoader.load(getClass().getResource("PrivilegiAdminView.fxml"));
 

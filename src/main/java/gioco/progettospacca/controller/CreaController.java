@@ -69,20 +69,14 @@ public class CreaController implements Initializable {
 
     @FXML
     private CheckBox chk_gioc1;
-
     @FXML
     private CheckBox chk_gioc2;
     @FXML
     private CheckBox chk_gioc3;
-
     @FXML
     private CheckBox chk_gioc4;
     @FXML
     private CheckBox chk_gioc5;
-    @FXML
-    private Button btn_copiaCodice;
-
-    TextField[] txt = {txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5};
 
     public void EventoCreaCodicePartita() {
         OPZ.premiBottone();

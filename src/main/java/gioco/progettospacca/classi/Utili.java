@@ -17,7 +17,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
-        try (FileWriter writer = new FileWriter("salvataggi/"+tipo + "/" + nome + ".json")) {
+        try (FileWriter writer = new FileWriter("salvataggi/" + tipo + "/" + nome + ".json")) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(o));
         } catch (IOException e) {
@@ -27,7 +27,7 @@ public class Utili {
 
     public static String leggiFileJson(String tipo, String nome) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("salvataggi/"+tipo + "/" + nome + ".json"));
+            BufferedReader reader = new BufferedReader(new FileReader("salvataggi/" + tipo + "/" + nome + ".json"));
             StringBuilder jsonBuilder = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
@@ -65,7 +65,7 @@ public class Utili {
                 }
             }
             if (!Objects.equals(max_vittorie.getNome(), "temp")) {
-                r = (i <= 2 ? "" : i+1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
+                r = (i <= 2 ? "" : i + 1 + ". ") + max_vittorie.getNome() + " - " + max_vittorie.getPartiteVinte();
                 top10[i] = r;
             }
             temp.remove(max_vittorie);
@@ -95,13 +95,15 @@ public class Utili {
     }
 
     public static void eliminaGiocatore(String nome) {
-        elimina(nome,"giocatori");
+        elimina(nome, "giocatori");
     }
+
     public static void eliminaPartita(int id) {
-        elimina(id+"","partite");
+        elimina(id + "", "partite");
     }
+
     public static void eliminaTorneo(int id) {
-        elimina(id+"","tornei");
+        elimina(id + "", "tornei");
     }
 
     public static boolean esisteGiocatore(String nome) {
@@ -178,19 +180,25 @@ public class Utili {
             tglb.setText(OPZ.traduci("suono_on"));
         }
     }
+
     public static void cambiaNomeGiocatore(String vecchio, String nuovo) {
-        if(esisteGiocatore(vecchio)&&!esisteGiocatore(nuovo)){
+        if (esisteGiocatore(vecchio) && !esisteGiocatore(nuovo)) {
             Giocatore g = Giocatore.carica(vecchio);
             eliminaGiocatore(vecchio);
             g.setNome(nuovo);
             g.salva();
-        } else System.err.println("Impossibile eseguire l'operazione, assicurarsi che esista un giocatore col nome vecchio e che non esista un giocatore col nome nuovo.");
-    }
-    public static String adminEliminaPartita(int id){
-        if(esistePartita(id)){
-            eliminaPartita(id);
-            return OPZ.traduci("partita_eliminata");
-        } else return OPZ.traduci("partita_non_trovata");
+        } else
+            System.err.println("Impossibile eseguire l'operazione, assicurarsi che esista un giocatore col nome vecchio e che non esista un giocatore col nome nuovo.");
     }
 
+    public static String adminEliminaPartita(int id) {
+        if (esistePartita(id)) {
+            Partita p = Partita.carica(id);
+            if(p.getIdTorneo()==0){
+                eliminaPartita(id);
+                return OPZ.traduci("partita_eliminata");
+            }
+            else return OPZ.traduci("partita_in_torneo");
+        } else return OPZ.traduci("partita_non_trovata");
+    }
 }

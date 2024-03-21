@@ -29,7 +29,9 @@ import static gioco.progettospacca.controller.Main.OPZ;
 public class HomeController implements Initializable {
 
     @FXML
-    public Label lbl_suoni;
+    MenuItem btn_privilegi;
+    @FXML
+    Label lbl_suoni;
     @FXML
     MenuItem btn_cambiaLingua;
     @FXML
@@ -288,6 +290,8 @@ public class HomeController implements Initializable {
         btn_classifica.setText(OPZ.traduci("classifica"));
         btn_regole.setText(OPZ.traduci("regole"));
         btn_cambiaLingua.setText(OPZ.traduci("cambia_lingua"));
+        btn_privilegi.setText(OPZ.traduci("privilegi"));
+
         btn_suoni.setText(OPZ.traduci("suoni"));
         lbl_suoni.setText(OPZ.traduci("suoni"));
 
@@ -301,16 +305,6 @@ public class HomeController implements Initializable {
         tglbtn_musica.setSelected(OPZ.getMusica());
         Utili.gestisciSuoni(tglbtn_suono);
         Utili.gestisciMusica(tglbtn_musica);
-        /*
-        String percorsoMazzo = "/gioco/progettospacca/carte/acqua/1.png";
-        ImageView imageViewMazzo;
-        try {
-            imageViewMazzo = Carta.createImageView(percorsoMazzo);
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        anchorPane.getChildren().add(imageViewMazzo);
-         */
     }
 
     public void suonoMenu(ActionEvent actionEvent) {

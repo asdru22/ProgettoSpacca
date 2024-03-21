@@ -13,7 +13,9 @@ import java.util.Objects;
 
 public class Main extends Application {
     public static Opzioni OPZ;
-
+    public static int CODICE_GLOBALE;
+    public static String USERNAME = "a";
+    public static String PASSWORD = "s";
     static {
         try {
             OPZ = Opzioni.carica();

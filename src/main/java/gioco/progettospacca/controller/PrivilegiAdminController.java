@@ -139,6 +139,9 @@ public class PrivilegiAdminController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_partiteSalvate.setText(OPZ.traduci("partite_salvate"));
+        btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
+
     }
 
 }

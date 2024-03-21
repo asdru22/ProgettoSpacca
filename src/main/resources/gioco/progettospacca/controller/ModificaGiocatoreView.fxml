@@ -59,7 +59,7 @@
                         <Font name="Candara" size="14.0" />
                      </font>
                   </Label>
-                  <Label text="Cambia nome Utente" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                  <Label fx:id="lbl_caNome" text="Cambia nome Utente" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Candara Bold" size="24.0" />
                      </font>

@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
@@ -745,9 +746,8 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
 
-        System.out.println(">>> initializa partita con codice " + CODICE_TEMP);
-        int codice = CODICE_TEMP;
-        p = Partita.carica(codice);
+        System.out.println(">>> initializa partita con codice " + CODICE_GLOBALE);
+        p = Partita.carica(CODICE_GLOBALE);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();

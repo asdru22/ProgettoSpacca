@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class GiocaController implements Initializable {
@@ -37,14 +38,6 @@ public class GiocaController implements Initializable {
     private TextField txt_gioc5;
     @FXML
     private TextField txt_cod1;
-    @FXML
-    private TextField txt_cod2;
-    @FXML
-    private TextField txt_cod3;
-    @FXML
-    private TextField txt_cod4;
-    @FXML
-    private TextField txt_cod5;
     @FXML
     private Label lbl_nomi;
     @FXML
@@ -64,7 +57,7 @@ public class GiocaController implements Initializable {
     }
 
 
-    public void entraInPartita(ActionEvent actionEvent) {
+    public void entraInPartita(ActionEvent actionEvent) throws IOException {
         OPZ.premiBottone();
         System.out.println(txt_cod1.getText());
         if (!Objects.equals(txt_cod1.getText(), "")) {
@@ -79,12 +72,9 @@ public class GiocaController implements Initializable {
         }
     }
 
-    private void partitaEsiste(int codice) {
+    private void partitaEsiste(int codice) throws IOException {
         Partita p = Partita.carica(codice);
         int n = p.getGiocatori().length;
-        int gioc_no_bot = n - p.getBot();
-
-        // n-nbot è il numero di giocatori non bot in partita
 
         System.out.println(n);
         ArrayList<ValoriGioca> temp = new ArrayList<>();
@@ -103,19 +93,24 @@ public class GiocaController implements Initializable {
         }
 
         if (inizia_partita && (n >= 2)) {
+            CODICE_GLOBALE = Utili.leggiInt(txt_cod1);
             System.out.println("PARTITA INIZIATA");
-            //p.inizio();
+            OPZ.premiBottone();
+            OPZ.playMusica("gioco.mp3");
+            Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
+
+            // Ottieni la finestra corrente
+            Stage currentStage = (Stage) btn_entra.getScene().getWindow();
+
+            // Ottieni la scena corrente
+            Scene currentScene = currentStage.getScene();
+
+            // Imposta la nuova radice della scena
+            currentScene.setRoot(root);
         } else {
             System.out.println("Valori invalidi per iniziare partita");
         }
 
-    }
-
-    public void provaMomentanea() {
-        //mettiamo il codice giusto
-        int codice = Integer.parseInt(txt_cod1.getText());
-        Partita p = Partita.carica(codice);
-        //p.inizio();
     }
 
     @Override

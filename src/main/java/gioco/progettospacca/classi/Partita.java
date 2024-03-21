@@ -146,10 +146,8 @@ public class Partita {
         this.giocatore_salvato = val;
     }
 
-    public void inizio() throws FileNotFoundException {
-        // scanner aperti fanno crashare momentaneamente l'interfaccia
+    public void inizio() {
         iniziata = true;
-        //cicloPrincipale();
     }
 
     public boolean isIniziata() {
