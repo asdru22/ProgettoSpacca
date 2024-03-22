@@ -11,14 +11,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="622.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CambiaLinguaController">
    <children>
-      <AnchorPane prefHeight="622.0" prefWidth="907.0">
+      <AnchorPane>
          <children>
-            <ImageView fitHeight="625.0" fitWidth="907.0">
+            <ImageView fitHeight="631.0" fitWidth="915.0" layoutX="-4.0">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_lingua" alignment="CENTER" layoutX="282.0" layoutY="43.0" prefHeight="62.0" prefWidth="292.0" text="Lingua">
+            <Label fx:id="lbl_lingua" alignment="CENTER" layoutX="283.0" layoutY="39.0" prefHeight="62.0" prefWidth="292.0" text="Lingua">
                <font>
                   <Font name="Candara" size="50.0" />
                </font>

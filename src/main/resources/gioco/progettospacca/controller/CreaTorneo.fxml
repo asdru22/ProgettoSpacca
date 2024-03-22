@@ -13,9 +13,9 @@
 
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaTorneoController">
    <children>
-      <AnchorPane prefHeight="622.0" prefWidth="907.0">
+      <AnchorPane>
          <children>
-            <ImageView fitHeight="627.0" fitWidth="907.0" layoutY="-1.0">
+            <ImageView fitHeight="631.0" fitWidth="915.0">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
