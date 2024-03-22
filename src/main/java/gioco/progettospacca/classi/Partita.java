@@ -311,7 +311,6 @@ public class Partita {
     }
 
     public int valutaCarte(Carta[] mano) {
-        boolean out = false;
         int[] carteNum = new int[5];
         Seme[] carteSeme = new Seme[5];
         for (int i = 0; i < 5; i++) {
@@ -320,42 +319,42 @@ public class Partita {
         }
         Arrays.sort(carteNum);
         int punti = 0;
-        //valutiamo se ha coppie,tris,poker,manita in mano
+        //valutiamo se ha coppie,tris,poker,manita, full, doppia coppia in mano
         punti = punti + numUguali(carteNum);
 
         //ora verifichiamo se ci sono scale
         switch (verificaScala(carteNum)) {
             case 3:
-                System.out.println("scala da 3 carte");
+                //System.out.println("scala da 3 carte");
                 punti = punti + 15;
                 break;
             case 4:
-                System.out.println("scala da 4 carte");
+                //System.out.println("scala da 4 carte");
                 punti = punti + 35;
                 break;
             case 5:
-                System.out.println("scala da 5 carte");
+                //System.out.println("scala da 5 carte");
                 punti = punti + 60;
                 break;
             default:
-                System.out.println("nessuna scala");
+                //System.out.println("nessuna scala");
         }
 
         switch (verificaColore(carteSeme)) {
             case 3:
-                System.out.println("3 carte dello stesso colore");
+                //System.out.println("3 carte dello stesso colore");
                 punti = punti + 10;
                 break;
             case 4:
-                System.out.println("4 carte dello stesso colore");
+                //System.out.println("4 carte dello stesso colore");
                 punti = punti + 30;
                 break;
             case 5:
-                System.out.println("5 carte dello stesso colore");
+                //System.out.println("5 carte dello stesso colore");
                 punti = punti + 80;
                 break;
             default:
-                System.out.println("non hai fatto colore");
+                //System.out.println("non hai fatto colore");
         }
         return punti;
     }
@@ -383,7 +382,7 @@ public class Partita {
         for (int numero : carteNum) {
             conteggioNumeri.put(numero, conteggioNumeri.getOrDefault(numero, 0) + 1);
         }
-        System.out.println(conteggioNumeri);
+        //System.out.println(conteggioNumeri);
 
         // Trova e rimuovi tutte le voci con valore 1 che devono essere ignorate per la valutazione in quanto si comincia a valutare dalla coppia in su
         Iterator<Map.Entry<Integer, Integer>> iterator = conteggioNumeri.entrySet().iterator();
@@ -394,31 +393,32 @@ public class Partita {
             }
         }
 
-        System.out.println(conteggioNumeri);
-        System.out.println("Size "+conteggioNumeri.size());
+        //System.out.println(conteggioNumeri);
+        //System.out.println("Size "+conteggioNumeri.size());
 
         //inserisco i valori in una collezione per sapere se ho doppia coppie o tris e coppia
         Collection<Integer> valori = conteggioNumeri.values();
-        System.out.println(valori);
+        //System.out.println(valori);
+
         //converto in array così riesco a prendere le posizioni singole della collezione ed effettuare dei confronti
         Integer[] array = valori.toArray(new Integer[0]);
         // Verifica il tipo di mano
         switch (conteggioNumeri.size()) {
             case 1:
-                if (array[0] == 2) {
+                if (array[0] == 2) {    //coppia
                     punti = punti + 5;
-                } else if (array[0] == 3) {
+                } else if (array[0] == 3) {     //tris
                     punti = punti + 15;
-                } else if (array[0] == 4) {
+                } else if (array[0] == 4) {     //poker
                     punti = punti + 40;
-                } else if (array[0] == 5) {
+                } else if (array[0] == 5) {     //manita
                     punti = punti + 80;
                 }
                 break;
             case 2:
-                if ((array[0] == 2 && array[1] == 3) || (array[0] == 3 && array[1] == 2)) {
+                if ((array[0] == 2 && array[1] == 3) || (array[0] == 3 && array[1] == 2)) {     //full
                     punti = punti + 30;
-                } else if (array[0] == 2 && array[1] == 2) {
+                } else if (array[0] == 2 && array[1] == 2) {    //doppia coppia
                     punti = punti + 15;
                 }
                 break;
