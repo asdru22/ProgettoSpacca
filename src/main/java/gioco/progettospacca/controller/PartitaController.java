@@ -747,7 +747,7 @@ public class PartitaController implements Initializable {
         inizializzaTraduzioni();
 
         System.out.println(">>> initializa partita con codice " + CODICE_GLOBALE);
-        p = Partita.carica(CODICE_GLOBALE);
+        p = Partita.carica(CODICE_TEMP);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();

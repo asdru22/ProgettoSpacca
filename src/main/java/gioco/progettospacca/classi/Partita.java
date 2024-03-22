@@ -321,60 +321,41 @@ public class Partita {
         Arrays.sort(carteNum);
         int punti = 0;
         //valutiamo se ha coppie,tris,poker,manita in mano
-        switch (numUguali(carteNum)) {
-            case 2:
-                //per scelta non si può avere più di una coppia, cioè anche se ne hai due vale come una
-                if (out) System.out.println("hai fatto coppia");
-                punti = punti + 10;
-                break;
-            case 3:
-                if (out) System.out.println("hai fatto tris");
-                punti = punti + 20;
-                break;
-            case 4:
-                if (out) System.out.println("hai fatto poker");
-                punti = punti + 45;
-                break;
-            case 5:
-                if (out) System.out.println("hai fatto manita");
-                punti = punti + 100;
-                break;
-            default:
-                if (out) System.out.println("nessun punto per coppie, tris, poker, manita");
-        }
+        punti = punti + numUguali(carteNum);
+
         //ora verifichiamo se ci sono scale
         switch (verificaScala(carteNum)) {
             case 3:
-                if (out) System.out.println("scala da 3 carte");
+                System.out.println("scala da 3 carte");
                 punti = punti + 15;
                 break;
             case 4:
-                if (out) System.out.println("scala da 4 carte");
+                System.out.println("scala da 4 carte");
                 punti = punti + 35;
                 break;
             case 5:
-                if (out) System.out.println("scala da 5 carte");
+                System.out.println("scala da 5 carte");
                 punti = punti + 60;
                 break;
             default:
-                if (out) System.out.println("nessuna scala");
+                System.out.println("nessuna scala");
         }
 
         switch (verificaColore(carteSeme)) {
             case 3:
-                if (out) System.out.println("3 carte dello stesso colore");
-                punti = punti + 5;
+                System.out.println("3 carte dello stesso colore");
+                punti = punti + 10;
                 break;
             case 4:
-                if (out) System.out.println("4 carte dello stesso colore");
+                System.out.println("4 carte dello stesso colore");
                 punti = punti + 30;
                 break;
             case 5:
-                if (out) System.out.println("5 carte dello stesso colore");
+                System.out.println("5 carte dello stesso colore");
                 punti = punti + 80;
                 break;
             default:
-                if (out) System.out.println("non hai fatto colore");
+                System.out.println("non hai fatto colore");
         }
         return punti;
     }
@@ -396,29 +377,66 @@ public class Partita {
     }
 
     public int numUguali(int[] carteNum) {
-        Map<Integer, Integer> mappa = new HashMap<>();  //capisco quale sia il numero che compare più volte e utilizzo quello per valutare la coppia\tris\poker\manita
-        //inserisco come valore il numero di volte in cui viene ripetuto la stessa chiave
-        for (int chiave : carteNum) {
-            mappa.put(chiave, mappa.getOrDefault(chiave, 0) + 1);
+        int punti = 0;
+        // Conta quante volte ogni numero appare nel vettore
+        Map<Integer, Integer> conteggioNumeri = new HashMap<>();
+        for (int numero : carteNum) {
+            conteggioNumeri.put(numero, conteggioNumeri.getOrDefault(numero, 0) + 1);
         }
-        //troviamo il numero che viene ripetutuo più volte
-        int numVoltePiuRipetuto = 0;
-        for (int chiave : mappa.keySet()) {
-            int valore = mappa.get(chiave);
-            if (valore > numVoltePiuRipetuto) {
-                numVoltePiuRipetuto = valore;
+        System.out.println(conteggioNumeri);
+
+        // Trova e rimuovi tutte le voci con valore 1 che devono essere ignorate per la valutazione in quanto si comincia a valutare dalla coppia in su
+        Iterator<Map.Entry<Integer, Integer>> iterator = conteggioNumeri.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, Integer> entry = iterator.next();
+            if (entry.getValue() == 1) {
+                iterator.remove();
             }
         }
 
-        return numVoltePiuRipetuto;
+        System.out.println(conteggioNumeri);
+        System.out.println("Size "+conteggioNumeri.size());
+
+        //inserisco i valori in una collezione per sapere se ho doppia coppie o tris e coppia
+        Collection<Integer> valori = conteggioNumeri.values();
+        System.out.println(valori);
+        //converto in array così riesco a prendere le posizioni singole della collezione ed effettuare dei confronti
+        Integer[] array = valori.toArray(new Integer[0]);
+        // Verifica il tipo di mano
+        switch (conteggioNumeri.size()) {
+            case 1:
+                if (array[0] == 2) {
+                    punti = punti + 5;
+                } else if (array[0] == 3) {
+                    punti = punti + 15;
+                } else if (array[0] == 4) {
+                    punti = punti + 40;
+                } else if (array[0] == 5) {
+                    punti = punti + 80;
+                }
+                break;
+            case 2:
+                if ((array[0] == 2 && array[1] == 3) || (array[0] == 3 && array[1] == 2)) {
+                    punti = punti + 30;
+                } else if (array[0] == 2 && array[1] == 2) {
+                    punti = punti + 15;
+                }
+                break;
+        }
+        return punti;
     }
 
     public int verificaScala(int[] carteNum) {
         int cont = 1;
         int contMax = 0;
         for (int i = 1; i < 5; i++) {
-            if (carteNum[i] == carteNum[i - 1]+1) { //va tolto il +1 prob, dopo faccio i controlli
-                cont++;
+            if (carteNum[i] == carteNum[i - 1]+1 || carteNum[i] == carteNum[i - 1]) {
+                if(carteNum[i] == carteNum[i - 1]){
+
+                }
+                else{
+                    cont++;
+                }
                 if (cont > contMax) {
                     contMax = cont;
                 }
