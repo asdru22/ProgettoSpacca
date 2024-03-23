@@ -161,6 +161,19 @@ public class HomeController implements Initializable {
         stage.show();
     }
 
+    public void showRegole() throws IOException {
+
+        // Carica la nuova finestra
+        Parent root = FXMLLoader.load(getClass().getResource("RegoleView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        // Imposta la nuova finestra
+        //stage.setTitle(OPZ.traduci("regole"));
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE || keyEvent.getCode() == KeyCode.M) {
             menuBar.show();
@@ -281,7 +294,8 @@ public class HomeController implements Initializable {
         OPZ.premiBottone();
     }
 
-    public void apriRegole(ActionEvent actionEvent) {
+    public void apriRegole(ActionEvent actionEvent)throws IOException {
+        showRegole();
         OPZ.premiBottone();
     }
 
