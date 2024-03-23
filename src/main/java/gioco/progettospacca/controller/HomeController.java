@@ -51,7 +51,7 @@ public class HomeController implements Initializable {
     @FXML
     Menu menuBar;
     @FXML
-    Pane pane_suoni;
+    AnchorPane anchorPane_suoni;
     @FXML
     private ToggleButton tglbtn_suono;
     @FXML
@@ -198,7 +198,7 @@ public class HomeController implements Initializable {
 
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_chiudiPaneSuoni.isFocused()) {
-            pane_suoni.setVisible(false);
+            anchorPane_suoni.setVisible(false);
             btn_giocaPartita.requestFocus();
         }
         if (keyEvent.getCode() == KeyCode.UP) {
@@ -229,7 +229,7 @@ public class HomeController implements Initializable {
                 btn_creaTorneo.requestFocus();
             }
         }
-        if (pane_suoni.isVisible()) {
+        if (anchorPane_suoni.isVisible()) {
             if (keyEvent.getCode() == KeyCode.DOWN) {
                 if (tglbtn_suono.isFocused()) {
                     OPZ.premiFreccia();
@@ -326,7 +326,7 @@ public class HomeController implements Initializable {
     }
 
     public void apriSuoni(ActionEvent actionEvent) {
-        pane_suoni.setVisible(true);
+        anchorPane_suoni.setVisible(true);
         tglbtn_suono.requestFocus();
         anchorPane.setDisable(true);
     }
@@ -343,7 +343,7 @@ public class HomeController implements Initializable {
     }
 
     public void chiudiPaneSuoni(MouseEvent mouseEvent) {
-        pane_suoni.setVisible(false);
+        anchorPane_suoni.setVisible(false);
         btn_giocaPartita.requestFocus();
         anchorPane.setDisable(false);
 

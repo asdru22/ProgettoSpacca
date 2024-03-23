@@ -12,12 +12,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.ModificaGiocatoreController">
    <children>
       <AnchorPane prefHeight="622.0" prefWidth="907.0">
          <children>
-            <ImageView fitHeight="631.0" fitWidth="915.0" layoutX="-4.0">
+            <ImageView fitHeight="631.0" fitWidth="915.0" layoutX="-2.0">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
@@ -28,10 +27,11 @@
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
-                  <RowConstraints maxHeight="110.59998168945313" minHeight="10.0" prefHeight="110.59998168945313" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="70.60001220703126" minHeight="10.0" prefHeight="40.20001831054688" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="128.00000610351563" minHeight="10.0" prefHeight="36.79999389648438" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="144.00000610351566" minHeight="10.0" prefHeight="144.00000610351566" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="120.59999389648438" minHeight="10.0" prefHeight="115.80000610351563" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="74.60001831054687" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="128.00000610351563" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="206.3999755859375" minHeight="10.0" prefHeight="110.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="144.00000610351566" minHeight="30.0" prefHeight="43.20002441406251" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <TextField fx:id="txt_vecchioNome" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -44,7 +44,7 @@
                         <Font name="Candara" size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btn_confermaCambioNome" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="140.0" text="Conferma" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button fx:id="btn_confermaCambioNome" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#modificaNome" prefHeight="35.0" prefWidth="140.0" text="Conferma" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
@@ -62,6 +62,11 @@
                   <Label fx:id="lbl_caNome" text="Cambia nome Utente" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                      <font>
                         <Font name="Candara Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lbl_output" alignment="CENTER" prefHeight="20.0" prefWidth="250.0" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <font>
+                        <Font name="Candara" size="15.0" />
                      </font>
                   </Label>
                </children>

@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import gioco.progettospacca.classi.Utili;
 
 import java.io.IOException;
 import java.net.URL;
@@ -32,8 +33,10 @@ public class ModificaGiocatoreController implements Initializable {
     private Label lbl_veNome;
     @FXML
     private Label lbl_nuNome;
+    @FXML
+    private Label lbl_output;
 
-    public void giocaPartita(MouseEvent mouseEvent) throws IOException {
+    public void modificaNome(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         EventoCambioNome();
     }
@@ -41,7 +44,14 @@ public class ModificaGiocatoreController implements Initializable {
         String vecchio = String.valueOf((txt_vecchioNome.getText()));
         String nuovo = String.valueOf((txt_nuovoNome.getText()));
 
-        //dall'array di giocatori esistenti andare a prendere quello col nome vecchio scritto e cambiarlo col nome nuovo
+        try {
+            Utili.cambiaNomeGiocatore(vecchio, nuovo);
+            lbl_output.setText("Operazione avvenuta correttamente");
+
+        }catch(Exception e)
+        {
+            lbl_output.setText("Operazione fallita");
+        }
 
     }
     public void BackToHome() throws IOException {
