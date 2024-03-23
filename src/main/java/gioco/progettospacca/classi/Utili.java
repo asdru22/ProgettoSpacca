@@ -2,6 +2,7 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
@@ -181,24 +182,75 @@ public class Utili {
         }
     }
 
-    public static void cambiaNomeGiocatore(String vecchio, String nuovo) {
+    public static String cambiaNomeGiocatore(String vecchio, String nuovo) {
         if (esisteGiocatore(vecchio) && !esisteGiocatore(nuovo)) {
             Giocatore g = Giocatore.carica(vecchio);
             eliminaGiocatore(vecchio);
             g.setNome(nuovo);
             g.salva();
-        } else
-            System.err.println("Impossibile eseguire l'operazione, assicurarsi che esista un giocatore col nome vecchio e che non esista un giocatore col nome nuovo.");
+            // cambia i nomi salvati nelle partite
+            ArrayList<Integer> idPartite = elencaPartite(true);
+            assert(!idPartite.isEmpty());
+            for (Integer id : idPartite) {
+                Partita p = Partita.carica(id);
+                ArrayList<String> nome = p.getNomiGiocatori();
+                if (nome.contains(vecchio)) { // se esiste quel giocatore nella partita
+                    for (Giocatore gioc : p.getGiocatori()) {
+                        if (Objects.equals(gioc.getNome(), vecchio)) {
+                            gioc.setNome(nuovo);
+                            p.salva();
+                            break;
+                        }
+                    }
+                }
+            }
+            ArrayList<Integer> idTornei = elencaPartite(false);
+            assert(!idTornei.isEmpty());
+            for (Integer id : idTornei) {
+                Torneo t = Torneo.carica(id);
+                ArrayList<String> nome = t.getNomiGiocatori();
+                if (nome.contains(vecchio)) { // se esiste quel giocatore nella partita
+                    for (Giocatore gioc : t.getGiocatori()) {
+                        if (Objects.equals(gioc.getNome(), vecchio)) {
+                            gioc.setNome(nuovo);
+                            t.salva();
+                            break;
+                        }
+                    }
+                }
+            }
+            return OPZ.traduci("cambia_nome_successo");
+        } else return OPZ.traduci("cambia_nome_fallito");
+    }
+
+    private static ArrayList<Integer> elencaPartite(boolean partite) {
+        // true per partite, false per tornei
+        File folder;
+        if (partite) folder = new File("salvataggi/partite");
+        else folder = new File("salvataggi/tornei");
+        ArrayList<Integer> out = new ArrayList<>();
+        if (folder.isDirectory()) {
+            File[] cartella = folder.listFiles();
+            Gson gson = new Gson();
+            assert cartella != null;
+            for (File file : cartella) {
+                if (file.isFile()) {
+                    String s = file.getName().substring(0, file.getName().length() - 5);
+                    if (partite) out.add(gson.fromJson(Utili.leggiFileJson("partite", s), Partita.class).getId());
+                    else out.add(gson.fromJson(Utili.leggiFileJson("tornei", s), Torneo.class).getId());
+                }
+            }
+        }
+        return out;
     }
 
     public static String adminEliminaPartita(int id) {
         if (esistePartita(id)) {
             Partita p = Partita.carica(id);
-            if(p.getIdTorneo()==0){
+            if (p.getIdTorneo() == 0) {
                 eliminaPartita(id);
                 return OPZ.traduci("partita_eliminata");
-            }
-            else return OPZ.traduci("partita_in_torneo");
+            } else return OPZ.traduci("partita_in_torneo");
         } else return OPZ.traduci("partita_non_trovata");
     }
 }

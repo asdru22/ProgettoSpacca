@@ -3,6 +3,7 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 
 import java.io.FileNotFoundException;
+import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -62,6 +63,13 @@ public class Partita {
 
     public Giocatore[] getGiocatori() {
         return giocatori;
+    }
+    public ArrayList<String> getNomiGiocatori(){
+        ArrayList<String> r = new ArrayList<>();
+        for (Giocatore giocatore : giocatori) {
+            r.add(giocatore.getNome());
+        }
+        return r;
     }
 
     public Giocatore getVincitore() {

@@ -40,19 +40,11 @@ public class ModificaGiocatoreController implements Initializable {
         OPZ.premiBottone();
         EventoCambioNome();
     }
-    public void EventoCambioNome() throws IOException {
+    public void EventoCambioNome() {
         String vecchio = String.valueOf((txt_vecchioNome.getText()));
         String nuovo = String.valueOf((txt_nuovoNome.getText()));
-
-        try {
-            Utili.cambiaNomeGiocatore(vecchio, nuovo);
-            lbl_output.setText("Operazione avvenuta correttamente");
-
-        }catch(Exception e)
-        {
-            lbl_output.setText("Operazione fallita");
-        }
-
+        String out = Utili.cambiaNomeGiocatore(vecchio, nuovo);
+        lbl_output.setText(out);
     }
     public void BackToHome() throws IOException {
         OPZ.premiBottone();

@@ -116,4 +116,19 @@ public class Torneo {
             System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
         }
     }
+
+    public ArrayList<String> getNomiGiocatori(){
+        ArrayList<String> r = new ArrayList<>();
+        for (Giocatore giocatore : giocatori) {
+            r.add(giocatore.getNome());
+        }
+        return r;
+    }
+    public ArrayList<Giocatore> getGiocatori() {
+        return giocatori;
+    }
+
+    public Integer getId() {
+        return id;
+    }
 }
