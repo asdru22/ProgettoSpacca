@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gioco.progettospacca.controller.PartiteSalvateController"
-            prefHeight="400.0" prefWidth="600.0">
 
-</AnchorPane>
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartiteSalvateController">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="631.0" fitWidth="915.0">
+               <image>
+                  <Image url="@../Sfondo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl_titoloPartite" layoutX="155.0" layoutY="88.0" text="Partite">
+               <font>
+                  <Font name="Candara Bold Italic" size="37.0" />
+               </font>
+            </Label>
+            <ListView fx:id="list_listaPartite" layoutX="126.0" layoutY="208.0" prefHeight="270.0" prefWidth="270.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</Pane>
