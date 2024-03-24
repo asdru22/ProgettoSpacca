@@ -1,6 +1,7 @@
 package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
+import javafx.scene.control.TextField;
 
 import java.io.FileNotFoundException;
 import java.util.Collections;
@@ -131,4 +132,40 @@ public class Torneo {
     public Integer getId() {
         return id;
     }
+
+    public static void controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt){
+        Giocatore temp;
+        int giocatori = 0;
+        ArrayList<Giocatore> g = new ArrayList<>();
+        int id = Utili.intCasuale(10000, 99999);
+
+        txt.setText(String.valueOf(id));
+
+        for(ValoriTorneo v: vt){
+            temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected());
+            if (temp != null) {
+                g.add(temp);
+                giocatori +=1;
+            }
+        }
+        // bot se ci sono giocatori mancanti
+        if (giocatori<max){
+         aggiungiBot(max-giocatori,g);
+        }
+        Torneo t = new Torneo(g,id);
+        t.salva();
+
+    }
+    private static void aggiungiBot(int giocatori_mancanti,ArrayList<Giocatore> giocatori){
+        int bot_esistenti = 0;
+        for (Giocatore g : giocatori) {
+            if (g.isBot()) bot_esistenti += 1;
+        }
+        for (int i = 0; i < giocatori_mancanti; i++) {
+            bot_esistenti += 1;
+            giocatori.add(new Giocatore("bot" + bot_esistenti, true));
+        }
+        System.out.println("Aggiunti " + giocatori_mancanti + " bot per raggiungere il numero di giocatori richiesti");
+    }
 }
+

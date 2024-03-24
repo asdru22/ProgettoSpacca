@@ -2,7 +2,6 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
@@ -151,6 +150,21 @@ public class Utili {
                 g = new Giocatore(nome, bot);
             }
             g.aggiungiPartita(id);
+            g.salva();
+            return g;
+        } else {
+            return null;
+        }
+    }
+    public static Giocatore controllaNomeTorneo(String nome, boolean bot) {
+        if (!Objects.equals(nome, "")) {
+            boolean esiste = esisteGiocatore(nome);
+            Giocatore g;
+            if (esiste) {
+                g = Giocatore.carica(nome);
+            } else {
+                g = new Giocatore(nome, bot);
+            }
             g.salva();
             return g;
         } else {
