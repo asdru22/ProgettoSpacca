@@ -13,7 +13,7 @@
 
 <Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
-      <ImageView fitHeight="626.0" fitWidth="917.0" layoutX="-1.4">
+      <ImageView fitHeight="624.0" fitWidth="907.0">
          <image>
             <Image url="@../campoGioco.png" />
          </image>

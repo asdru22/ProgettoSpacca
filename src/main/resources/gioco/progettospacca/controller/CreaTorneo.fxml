@@ -25,11 +25,6 @@
                   <Font name="Candara Bold" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="btn_continua" alignment="CENTER" layoutX="384.0" layoutY="487.0" minHeight="40.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" text="Continua" textAlignment="CENTER">
-               <font>
-                  <Font name="Candara" size="19.0" />
-               </font>
-            </Button>
             <GridPane layoutX="116.0" layoutY="235.0" prefHeight="210.0" prefWidth="674.0">
               <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" />
@@ -44,9 +39,9 @@
                   <RowConstraints maxHeight="92.00000610351563" minHeight="10.0" prefHeight="39.199987792968756" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_4players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.rowIndex="3" />
-                  <Button fx:id="btn_8players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button fx:id="btn_16players" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_4players" mnemonicParsing="false" onMouseClicked="#creaTorneo4giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_8players" mnemonicParsing="false" onMouseClicked="#creaTorneo8giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_16players" mnemonicParsing="false" onMouseClicked="#creaTorneo16giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Label text="4" GridPane.rowIndex="4">
                      <font>
                         <Font name="Candara Bold Italic" size="24.0" />
@@ -62,21 +57,6 @@
                         <Font name="Candara Bold Italic" size="24.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                     <image>
-                        <Image url="@../spunta.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                     <image>
-                        <Image url="@../spunta.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
-                     <image>
-                        <Image url="@../spunta.png" />
-                     </image>
-                  </ImageView>
 
                </children>
             </GridPane>
