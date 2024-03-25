@@ -62,7 +62,7 @@ public class GiocaController implements Initializable {
         System.out.println(txt_cod1.getText());
         if (!Objects.equals(txt_cod1.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod1);
-            if (Utili.esistePartita(codice)) {
+            if (Utili.esistePartita(codice,true)) {
                 // vai al controllo giocatori / codice
                 partitaEsiste(codice);
             } else {

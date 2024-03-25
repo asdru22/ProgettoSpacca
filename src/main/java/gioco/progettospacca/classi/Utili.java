@@ -122,8 +122,12 @@ public class Utili {
         return trovato;
     }
 
-    public static boolean esistePartita(int id) {
-        File folder = new File("salvataggi/partite");
+    public static boolean esistePartita(int id,boolean partita) {
+        // true per partite, false per torneo
+        File folder = null;
+        if(partita) folder = new File("salvataggi/partite");
+        if(!partita) folder = new File("salvataggi/tornei");
+
         File[] file_partite = folder.listFiles();
         assert file_partite != null; // controllo che il file esista
         boolean trovato = false;
@@ -199,6 +203,9 @@ public class Utili {
     public static String cambiaNomeGiocatore(String vecchio, String nuovo) {
         if (esisteGiocatore(vecchio) && !esisteGiocatore(nuovo)) {
             Giocatore g = Giocatore.carica(vecchio);
+            if(g.isBot()){
+                return OPZ.traduci("bot_non_rinominabile");
+            }
             eliminaGiocatore(vecchio);
             g.setNome(nuovo);
             g.salva();
@@ -259,12 +266,18 @@ public class Utili {
     }
 
     public static String adminEliminaPartita(int id) {
-        if (esistePartita(id)) {
+        if (esistePartita(id,true)) {
             Partita p = Partita.carica(id);
             if (p.getIdTorneo() == 0) {
                 eliminaPartita(id);
                 return OPZ.traduci("partita_eliminata");
             } else return OPZ.traduci("partita_in_torneo");
         } else return OPZ.traduci("partita_non_trovata");
+    }
+    public static String adminEliminaTorneo(int id) {
+        if (esistePartita(id,false)) {
+            eliminaTorneo(id);
+            return OPZ.traduci("torneo_eliminato");
+        } else return OPZ.traduci("torneo_non_trovato");
     }
 }
