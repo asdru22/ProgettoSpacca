@@ -296,9 +296,9 @@ public class Partita {
                 if (array[0] == 2) {    //coppia
                     punti = punti + 5;
                 } else if (array[0] == 3) {     //tris
-                    punti = punti + 15;
+                    punti = punti + 25;
                 } else if (array[0] == 4) {     //poker
-                    punti = punti + 40;
+                    punti = punti + 50;
                 } else if (array[0] == 5) {     //manita
                     punti = punti + 80;
                 }

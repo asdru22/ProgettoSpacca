@@ -40,12 +40,5 @@ public class Carta {
         return "Seme: " + seme + ", Numero: " + numero;
     }
 
-    public static ImageView makeImageView(String path) {
-        try {
-            // solleva errore se il path è null
-            return new ImageView(new Image(Objects.requireNonNull(Carta.class.getResourceAsStream(path))));
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException("Immagine non trovata: " + path, e);
-        }
-    }
+
 }

@@ -188,7 +188,7 @@ public class HomeController implements Initializable {
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE || keyEvent.getCode() == KeyCode.M) {
-            menuBar.show();
+            menuImpostazioni.show();
         }
 
         if (keyEvent.getCode() == KeyCode.ENTER && btn_giocaPartita.isFocused()) {
