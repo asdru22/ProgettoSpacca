@@ -3,13 +3,18 @@ package gioco.progettospacca.controller;
 import gioco.progettospacca.classi.Torneo;
 import gioco.progettospacca.classi.ValoriTorneo;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -62,4 +67,21 @@ public class Torneo16giocatoriController implements Initializable {
     public void cliccaCreaTorneo(MouseEvent mouseEvent) {
         creaTorneo();
     }
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
+        Parent root = FXMLLoader.load(getClass().getResource("CreaTorneo.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+
 }
