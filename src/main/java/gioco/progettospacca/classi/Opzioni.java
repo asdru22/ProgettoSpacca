@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 
 public class Opzioni {
-    private Locale lingua = Locale.ITALIAN;
+    private Locale lingua = Locale.ENGLISH;
     private boolean sfxPausa = false;
     private boolean musicaPausa = false;
 
