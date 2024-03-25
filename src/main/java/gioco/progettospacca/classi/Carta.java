@@ -7,9 +7,7 @@ import java.util.Objects;
 public class Carta {
     private Seme seme;
     private int numero;
-
     private String image;
-
     private boolean cliccata = false;
 
     public Carta(Seme seme, int numero, String image) {

@@ -64,7 +64,8 @@ public class Partita {
     public Giocatore[] getGiocatori() {
         return giocatori;
     }
-    public ArrayList<String> getNomiGiocatori(){
+
+    public ArrayList<String> getNomiGiocatori() {
         ArrayList<String> r = new ArrayList<>();
         for (Giocatore giocatore : giocatori) {
             r.add(giocatore.getNome());
@@ -103,8 +104,7 @@ public class Partita {
         // Se il giocatore non è stato trovato, restituisci -1
         return -1;
     }
-
-
+    
     @Override
     public String toString() {
         if (vincitore == null) {
@@ -162,19 +162,6 @@ public class Partita {
         return iniziata;
     }
 
-    //test
-    public void riprendi() { //eseguito solo fino alla fine del turno corrente
-        giocatore_salvato = (giocatore_salvato + 1) % giocatori.length;
-        toccaA = giocatori[giocatore_salvato];
-        for (; giocatore_salvato < giocatori.length; giocatore_salvato++) { // per ogni mano
-            azioniGiocatore();
-        }
-        mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-        turno_salvato += 1;
-        //cicloPrincipale();
-    }
-
-
     public void finePartita() {
         int max = 0;
         vincitore = giocatori[0];
@@ -209,113 +196,6 @@ public class Partita {
 
     public void elimina() {
         Utili.eliminaPartita(id);
-    }
-
-    private void azioniGiocatore() {
-        boolean out = true;
-
-        toccaA = giocatori[giocatore_salvato]; // sempre in fondo
-        if (out) System.out.print(giocatore_salvato + " ");
-        if (out) System.out.println("> Giocatore: " + toccaA.getNome() + " turno: " + turno_salvato);
-
-        toccaA.pesca(5, this.mazzo); // sempre all'inizio
-        // giocatore fa roba
-        Scanner scan = new Scanner(System.in);
-        int azione;
-        if (out) System.out.println("carte in mano:" + Arrays.toString(toccaA.getMano()));
-        if (out) System.out.println("premi 1 per scartare, premi 2 per stare");
-
-        if (out) System.out.println("nome " + toccaA.getNome() + " " + toccaA.getClass());
-        if (toccaA.isBot()) {
-            azione = Utili.intCasuale(1, 2);
-        } else {
-            azione = scan.nextInt();
-        }
-        int num = 0;
-        int pos = 0;
-        switch (azione) {
-            case 1:
-                if (out) System.out.println("quante carte vuoi scartare?");
-                do {
-                    if (toccaA.isBot()) {
-                        num = Utili.intCasuale(1, 3);
-                    } else {
-                        num = scan.nextInt();
-                    }
-                    switch (num) {
-                        case 1:
-                            if (out) System.out.println("scegli la posizione della carta che vuoi scartare, da 1 a 5");
-                            ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-                            do {
-                                if (!toccaA.isBot()) {
-                                    pos = scan.nextInt();
-                                } else {
-                                    Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
-                                    //System.out.println(numeri);
-                                }
-                                if (pos >= 1 && pos <= 5) toccaA.scarta(pos - 1);
-                                else if (out) System.out.println("devi scegliere un numero tra 0 e 4");
-                            } while (pos < 1 || pos > 5);
-                            break;
-                        case 2:
-                            if (out) System.out.println("scegli le 2 posizioni delle carte da scartare:");
-                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-                            int i = 1;
-                            do {
-                                if (!toccaA.isBot()) {
-                                    pos = scan.nextInt();
-                                } else {
-                                    Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
-                                    //System.out.println(numeri);
-                                }
-                                if (pos >= 1 && pos <= 5) {
-                                    toccaA.settaCarteNulle(pos - 1);
-                                    toccaA.scarta(pos);
-                                    i++;
-                                }
-                            } while ((pos < 1 || pos > 5) || i < 3);
-                            break;
-                        case 3:
-                            if (out) System.out.println("scegli le 3 posizioni delle carte da scartare:");
-                            numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
-                            int j = 1;
-                            do {
-                                if (!(toccaA.isBot())) {
-                                    pos = scan.nextInt();
-                                } else {
-                                    Collections.shuffle(numeri);
-                                    pos = numeri.remove(0);
-                                    //System.out.println(numeri);
-                                }
-                                if (pos >= 1 && pos <= 5) {
-                                    toccaA.settaCarteNulle(pos - 1);
-                                    toccaA.scarta(pos);
-                                    j++;
-                                }
-                            } while ((pos < 1 || pos > 5) || j < 4);
-                            break;
-                        default:
-                            if (out) System.out.println("il numero non è corretto");
-                    }
-                } while (num < 1 || num > 3);
-                if (out) System.out.println("carte in mano dopo lo scarto:" + Arrays.toString(toccaA.getMano()) + "\n");
-                toccaA.togliCarteNulle();
-                toccaA.pesca(num, this.mazzo);
-                if (out)
-                    System.out.println("carte in mano dopo aver pescato:" + Arrays.toString(toccaA.getMano()) + "\n");
-
-                toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
-                if (out) System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
-                break;
-
-            case 2:
-                if (out) System.out.println("mantiene le stesse carte");
-                toccaA.aggiungiPunti(valutaCarte(toccaA.getMano()));
-                if (out) System.out.println("punti della mano: " + toccaA.getPunti() + "\n");
-                break;
-        }
     }
 
     public int valutaCarte(Carta[] mano) {
@@ -438,11 +318,10 @@ public class Partita {
         int cont = 1;
         int contMax = 0;
         for (int i = 1; i < 5; i++) {
-            if (carteNum[i] == carteNum[i - 1]+1 || carteNum[i] == carteNum[i - 1]) {
-                if(carteNum[i] == carteNum[i - 1]){
+            if (carteNum[i] == carteNum[i - 1] + 1 || carteNum[i] == carteNum[i - 1]) {
+                if (carteNum[i] == carteNum[i - 1]) {
 
-                }
-                else{
+                } else {
                     cont++;
                 }
                 if (cont > contMax) {

@@ -91,7 +91,7 @@ public class Torneo {
             partita_corrente = partite.get(partita_salvata);
             // controllo per riprendi partita
             if (partita_corrente.isIniziata()) {
-                partita_corrente.riprendi();
+                //partita_corrente.riprendi();
             } else {
                 partita_corrente.inizio();
             }

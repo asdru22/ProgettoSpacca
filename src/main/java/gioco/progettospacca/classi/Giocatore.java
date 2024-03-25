@@ -62,10 +62,6 @@ public class Giocatore {
         this.partite.remove((Object) id);
     }
 
-    public void aggiungiPunti(int punti) {
-        this.punti = this.punti + punti;
-    }
-
     public void pesca(int n, Mazzo m) { //n sono le carte da pescare
         if (this.mano.length == 5) {
             for (int i = 0; i < n; i++) {
@@ -128,19 +124,6 @@ public class Giocatore {
         return new Gson().fromJson(Utili.leggiFileJson("giocatori", nome), Giocatore.class);
     }
 
-    public void aggiungiSalvataggio() {
-        File folder = new File("src/main/java/gioco/progettospacca/salvataggi/giocatori");
-        File[] file_giocatori = folder.listFiles();
-        boolean trovato = false;
-        for (File file : file_giocatori) {
-            if (file.isFile()) {
-                String s = file.getName().substring(0, file.getName().length() - 5);
-                if (s.equals(nome)) trovato = true;
-            }
-        }
-        if (!trovato) this.salva();
-    }
-
     @Override
     public String toString() {
         return nome + " ";
@@ -164,10 +147,6 @@ public class Giocatore {
 
     public void resetMazzo() {
         Arrays.fill(this.mano, null);
-    }
-
-    public void elimina() {
-        Utili.eliminaGiocatore(this.getNome());
     }
 
     public void setMano(Carta[] mano) {
