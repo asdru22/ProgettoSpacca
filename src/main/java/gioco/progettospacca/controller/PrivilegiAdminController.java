@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -18,7 +19,8 @@ import java.util.ResourceBundle;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PrivilegiAdminController implements Initializable {
-
+    @FXML
+    Label lbl_titlePrivilegi;
     @FXML
     private Button btn_back;
     @FXML
@@ -53,7 +55,7 @@ public class PrivilegiAdminController implements Initializable {
         EventoPartiteSalvate();
     }
 
-    private void EventoPartiteSalvate() throws IOException{
+    private void EventoPartiteSalvate() throws IOException {
 
         // Carica la nuova radice della scena
         Parent root = FXMLLoader.load(getClass().getResource("PartiteSalvateView.fxml"));
@@ -77,7 +79,8 @@ public class PrivilegiAdminController implements Initializable {
         OPZ.premiBottone();
         EventoModificaGiocatore();
     }
-    private void EventoModificaGiocatore()throws IOException {
+
+    private void EventoModificaGiocatore() throws IOException {
 
         // Carica la nuova radice della scena
         Parent root = FXMLLoader.load(getClass().getResource("ModificaGiocatoreView.fxml"));
@@ -96,6 +99,7 @@ public class PrivilegiAdminController implements Initializable {
         // Imposta il titolo della finestra
         //currentStage.setTitle(OPZ.traduci("Modifica giocatore"));
     }
+
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
@@ -132,15 +136,18 @@ public class PrivilegiAdminController implements Initializable {
         }
         pulisci();
     }
+
     private void pulisci() {
         btn_partiteSalvate.setFocusTraversable(false);
         btn_modificaGiocatore.setFocusTraversable(false);
         btn_back.setFocusTraversable(false);
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_partiteSalvate.setText(OPZ.traduci("partite_salvate"));
         btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
+        lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
 
     }
 

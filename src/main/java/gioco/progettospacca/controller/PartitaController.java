@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.*;
+
 import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
@@ -13,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -24,7 +24,6 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -453,15 +452,7 @@ public class PartitaController implements Initializable {
         mano[2].setCliccata(false);
         mano[3].setCliccata(false);
         mano[4].setCliccata(false);
-/*
-        carta1.getChildren().add(Carta.createImageView(mano[0].getImage()));
-        carta2.getChildren().add(Carta.createImageView(mano[1].getImage()));
-        carta3.getChildren().add(Carta.createImageView(mano[2].getImage()));
-        carta4.getChildren().add(Carta.createImageView(mano[3].getImage()));
-        carta5.getChildren().add(Carta.createImageView(mano[4].getImage()));
-        anch_mazzo.getChildren().add(Carta.createImageView(percorsoMazzo));
-        anch_seme.getChildren().add(Carta.createImageView(p.getSeme().getImage()));
- */
+
         imageView1 = Carta.makeImageView(mano[0].getImage());
         carta1.getChildren().add(imageView1);
         imageView2 = Carta.makeImageView(mano[1].getImage());

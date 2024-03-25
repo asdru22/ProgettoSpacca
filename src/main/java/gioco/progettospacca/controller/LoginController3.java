@@ -75,7 +75,7 @@ public class LoginController3 implements Initializable {
             currentScene.setRoot(root);
 
             // Imposta il titolo della finestra
-            currentStage.setTitle(OPZ.traduci("privilegi_admin"));
+            currentStage.setTitle(OPZ.traduci("privilegi_amministratore"));
         } else {
             System.out.println(user);
             System.out.println(psw);

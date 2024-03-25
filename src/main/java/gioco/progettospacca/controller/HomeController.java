@@ -1,7 +1,5 @@
 package gioco.progettospacca.controller;
 
-
-import gioco.progettospacca.classi.Carta;
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,15 +9,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,6 +23,10 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class HomeController implements Initializable {
 
+    @FXML
+    Menu menuImpostazioni;
+    @FXML
+    Menu menuClassifica;
     @FXML
     MenuItem btn_privilegi;
     @FXML
@@ -277,37 +276,37 @@ public class HomeController implements Initializable {
         btn_creaTorneo.setFocusTraversable(false);
     }
 
-    public void giocaPartita(MouseEvent mouseEvent) throws IOException {
+    public void giocaPartita() throws IOException {
         OPZ.premiBottone();
         EventoGiocaPartita();
     }
 
-    public void creaPartita(MouseEvent mouseEvent) throws IOException {
+    public void creaPartita() throws IOException {
         OPZ.premiBottone();
         EventoCreaPartita();
     }
 
-    public void creaTorneo(MouseEvent mouseEvent) throws IOException {
+    public void creaTorneo() throws IOException {
         OPZ.premiBottone();
         EventoCreaTorneo();
     }
 
-    public void giocaTorneo(MouseEvent mouseEvent) throws IOException {
+    public void giocaTorneo() throws IOException {
         OPZ.premiBottone();
         EventoGiocaTorneo();
     }
 
-    public void apriMenu(ActionEvent ActionEvent) throws IOException {
+    public void apriMenu() throws IOException {
         showLeaderboard();
         OPZ.premiBottone();
     }
 
-    public void cambiaLingua(ActionEvent ActionEvent) throws IOException {
+    public void cambiaLingua() throws IOException {
         showCambiaLingua();
         OPZ.premiBottone();
     }
 
-    public void apriRegole(ActionEvent actionEvent)throws IOException {
+    public void apriRegole()throws IOException {
         showRegole();
         OPZ.premiBottone();
     }
@@ -317,11 +316,13 @@ public class HomeController implements Initializable {
         btn_classifica.setText(OPZ.traduci("classifica"));
         btn_regole.setText(OPZ.traduci("regole"));
         btn_cambiaLingua.setText(OPZ.traduci("cambia_lingua"));
-        btn_privilegi.setText(OPZ.traduci("privilegi"));
+        btn_privilegi.setText(OPZ.traduci("privilegi_amministratore"));
 
         btn_suoni.setText(OPZ.traduci("suoni"));
         lbl_suoni.setText(OPZ.traduci("suoni"));
 
+        menuImpostazioni.setText(OPZ.traduci("impostazioni"));
+        menuClassifica.setText(OPZ.traduci("classifica"));
 
         btn_creaPartita.setText(OPZ.traduci("crea_partita"));
         btn_giocaPartita.setText(OPZ.traduci("gioca_partita"));
@@ -334,34 +335,33 @@ public class HomeController implements Initializable {
         Utili.gestisciMusica(tglbtn_musica);
     }
 
-    public void suonoMenu(ActionEvent actionEvent) {
+    public void suonoMenu() {
         OPZ.premiBottone();
     }
 
-    public void apriSuoni(ActionEvent actionEvent) {
+    public void apriSuoni() {
         anchorPane_suoni.setVisible(true);
         tglbtn_suono.requestFocus();
         anchorPane.setDisable(true);
     }
 
-    public void setSuono(MouseEvent mouseEvent) {
+    public void setSuono() {
         Utili.gestisciSuoni(tglbtn_suono);
         OPZ.premiBottone();
-
     }
 
-    public void setMusica(MouseEvent mouseEvent) {
+    public void setMusica() {
         Utili.gestisciMusica(tglbtn_musica);
         OPZ.premiBottone();
     }
 
-    public void chiudiPaneSuoni(MouseEvent mouseEvent) {
+    public void chiudiPaneSuoni() {
         anchorPane_suoni.setVisible(false);
         btn_giocaPartita.requestFocus();
         anchorPane.setDisable(false);
-
+        OPZ.premiBottone();
     }
-    public void apriLogin(ActionEvent event) throws IOException {
+    public void apriLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginAdminViewPrivilegi.fxml"));
 
         // Ottieni la finestra corrente
