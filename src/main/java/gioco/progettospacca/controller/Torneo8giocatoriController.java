@@ -29,6 +29,7 @@ public class Torneo8giocatoriController implements Initializable {
     Button btn_home;
     @FXML
     TextField txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_gioc5,txt_gioc6,txt_gioc7,txt_gioc8,txt_codice;
+    @FXML
     CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4,chk_gioc5,chk_gioc6,chk_gioc7,chk_gioc8;
 
     @Override
