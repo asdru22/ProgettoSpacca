@@ -37,13 +37,34 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Label fx:id="lbl_pos4" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" />
-                        <Label fx:id="lbl_pos5" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label fx:id="lbl_pos6" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label fx:id="lbl_pos7" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label fx:id="lbl_pos8" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label fx:id="lbl_pos9" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                        <Label fx:id="lbl_pos10" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label fx:id="lbl_pos4" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos5" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos6" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos7" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos8" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos9" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
+                        <Label fx:id="lbl_pos10" prefHeight="18.0" prefWidth="130.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                           <font>
+                              <Font name="Candara" size="12.0" />
+                           </font></Label>
                         <ImageView fitHeight="30.0" fitWidth="30.0" GridPane.halignment="RIGHT">
                            <image>
                               <Image url="@../playerimg.png" />

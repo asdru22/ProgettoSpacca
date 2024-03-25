@@ -130,6 +130,19 @@ public class HomeController implements Initializable {
     }
 
     public void EventoGiocaTorneo() throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GiocaTorneoView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_giocaTorneo.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("gioca_torneo"));
     }
 
     public void showCambiaLingua() throws IOException {
