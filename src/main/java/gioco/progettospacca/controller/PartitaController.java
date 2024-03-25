@@ -163,7 +163,7 @@ public class PartitaController implements Initializable {
             pause.setOnFinished(event -> {
                 btn_stai.setDisable(true);
                 btn_scarta.setDisable(true);
-                int azione = 2;
+                int azione = Utili.intCasuale(1,2);
 
                 switch (azione) {
                     case 1:
