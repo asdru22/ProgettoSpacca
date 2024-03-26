@@ -34,7 +34,7 @@ import static gioco.progettospacca.controller.Main.CODICE_GLOBALE;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 27307;
+    public static final int CODICE_TEMP = 76396;
     @FXML
     public Label lbl_pausa;
 
@@ -390,6 +390,7 @@ public class PartitaController implements Initializable {
         carta3.setOnMouseClicked(event -> carta3Click(event));
         carta4.setOnMouseClicked(event -> carta4Click(event));
         carta5.setOnMouseClicked(event -> carta5Click(event));
+
     }
 
     //per selezionare la carta da scartare per giocatori reali

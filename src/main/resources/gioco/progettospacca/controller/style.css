@@ -14,10 +14,12 @@
     -fx-font-size: 16px;
 }
 
+
 .button:focused{
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
     -fx-font-size: 16px;
 }
+
 
 
 
@@ -36,7 +38,10 @@
 -fx-font-size: 16px;
 }
 
-
+.toggle-button:focused{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-font-size: 16px;
+}
 
 
 .text-field
@@ -132,5 +137,9 @@
     -fx-background-color: #4aa0d9;
 }
 
+
+.anchor-pane-carta > .image-view:hover {
+    -fx-effect: dropshadow(gaussian, blue, 10, 0, 0, 0);
+}
 
 
