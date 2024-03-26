@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-import static gioco.progettospacca.controller.Main.CODICE_GLOBALE;
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class GiocaController implements Initializable {
@@ -93,7 +93,7 @@ public class GiocaController implements Initializable {
         }
 
         if (inizia_partita && (n >= 2)) {
-            CODICE_GLOBALE = Utili.leggiInt(txt_cod1);
+            CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod1);
             System.out.println("PARTITA INIZIATA");
             OPZ.premiBottone();
             OPZ.playMusica("gioco.mp3");

@@ -30,7 +30,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-import static gioco.progettospacca.controller.Main.CODICE_GLOBALE;
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {

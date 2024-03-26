@@ -8,11 +8,11 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
+    private boolean iniziato = false;
     private int round_salvato = 0;
     private int numero_round = 0;
     private int partita_salvata = 0;
     private int numero_partite = 0;
-
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Partita> partite = new ArrayList<>();
     private final int id;
@@ -20,6 +20,10 @@ public class Torneo {
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
         this.giocatori = giocatori;
         this.id = id;
+    }
+
+    public boolean isIniziato() {
+        return iniziato;
     }
 
     public static Torneo carica(int id) {
@@ -60,14 +64,14 @@ public class Torneo {
     }
 
     private void inizia() throws FileNotFoundException {
-        salva();
+        iniziato = true;
         numero_round = (int) (Math.log(giocatori.size()) / Math.log(2)); // caso con 4 giocatori, n_round = 2
         System.out.println("Numero round: " + numero_round + ", numero giocatori:" + giocatori.size());
+        salva();
         riprendiRound();
     }
 
     private void riprendiRound() throws FileNotFoundException {
-
         for (int j = round_salvato; j < numero_round; j++) {
             round_salvato = j;
             creaPartite(); // crea
