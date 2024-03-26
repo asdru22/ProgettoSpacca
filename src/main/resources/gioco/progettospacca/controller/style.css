@@ -143,3 +143,10 @@
 }
 
 
+.carta:focused {
+    -fx-effect: dropshadow(gaussian, blue, 10, 0, 0, 0);
+}
+
+
+
+

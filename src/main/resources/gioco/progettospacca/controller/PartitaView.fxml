@@ -20,25 +20,25 @@
       </ImageView>
         <AnchorPane fx:id="anchorPane" layoutY="1.0" prefHeight="624.0" prefWidth="907.0">
             <children>
-                <Button fx:id="btn_scarta" focusTraversable="false" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
+                <Button fx:id="btn_scarta" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" onKeyPressed="#keyScelta" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
                     <font>
                         <Font name="Candara Bold Italic" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_stai" focusTraversable="false" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
+                <Button fx:id="btn_stai" layoutX="802.0" layoutY="414.0" mnemonicParsing="false" onKeyPressed="#keyScelta" prefHeight="52.0" prefWidth="84.0" text="Stai" visible="false">
                     <font>
                         <Font name="Candara Bold Italic" size="15.0" />
                     </font>
                 </Button>
 
-                <AnchorPane styleClass="anchor-pane-carta" fx:id="carta1" layoutX="140.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane styleClass="anchor-pane-carta" fx:id="carta2" layoutX="270.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane styleClass="anchor-pane-carta" fx:id="carta3" layoutX="400.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane styleClass="anchor-pane-carta" fx:id="carta4" layoutX="530.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
-                <AnchorPane styleClass="anchor-pane-carta" fx:id="carta5" layoutX="660.0" layoutY="365.0" prefHeight="150.0" prefWidth="100.0" />
+                <AnchorPane fx:id="carta1" focusTraversable="true" layoutX="140.0" layoutY="365.0" onKeyPressed="#keyPartita" prefHeight="150.0" prefWidth="100.0" styleClass="anchor-pane-carta" />
+                <AnchorPane fx:id="carta2" layoutX="270.0" layoutY="365.0" onKeyPressed="#keyPartita" prefHeight="150.0" prefWidth="100.0" styleClass="anchor-pane-carta" />
+                <AnchorPane fx:id="carta3" layoutX="400.0" layoutY="365.0" onKeyPressed="#keyPartita" prefHeight="150.0" prefWidth="100.0" styleClass="anchor-pane-carta" />
+                <AnchorPane fx:id="carta4" layoutX="530.0" layoutY="365.0" onKeyPressed="#keyPartita" prefHeight="150.0" prefWidth="100.0" styleClass="anchor-pane-carta" />
+                <AnchorPane fx:id="carta5" layoutX="660.0" layoutY="365.0" onKeyPressed="#keyPartita" prefHeight="150.0" prefWidth="100.0" styleClass="anchor-pane-carta" />
                 <AnchorPane fx:id="anch_seme" layoutX="335.0" layoutY="60.0" prefHeight="150.0" prefWidth="100.0" />
                 <AnchorPane fx:id="anch_mazzo" layoutX="465.0" layoutY="60.0" prefHeight="150.0" prefWidth="100.0" />
-                <Button fx:id="btn_conferma" layoutX="404.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#cambiaCarteSelezionate" prefHeight="35.0" prefWidth="100.0" text="Conferma" visible="false">
+                <Button fx:id="btn_conferma" focusTraversable="false" layoutX="404.0" layoutY="269.0" mnemonicParsing="false" onKeyPressed="#keyPartita" onMouseClicked="#cambiaCarteSelezionate" prefHeight="35.0" prefWidth="100.0" text="Conferma" visible="false">
                     <font>
                         <Font name="Candara" size="16.0" />
                     </font>
@@ -70,7 +70,7 @@
                                 <Font name="Candara Bold" size="23.0" />
                             </font>
                         </Label>
-                        <Button fx:id="btn_gioca" alignment="CENTER" layoutX="368.0" layoutY="329.0" minHeight="40.0" minWidth="167.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="40.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER">
+                        <Button fx:id="btn_gioca" alignment="CENTER" focusTraversable="false" layoutX="368.0" layoutY="329.0" minHeight="40.0" minWidth="167.0" mnemonicParsing="false" onMouseClicked="#procedi" prefHeight="40.0" prefWidth="167.0" text="Gioca" textAlignment="CENTER" visible="false">
                             <font>
                                 <Font name="Candara" size="19.0" />
                             </font>
@@ -98,7 +98,7 @@
                           <Insets top="-2.0" />
                       </opaqueInsets>
                   </Label>
-                  <Button fx:id="btn_prossimaMano" alignment="CENTER" layoutX="81.0" layoutY="227.0" mnemonicParsing="false" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER">
+                  <Button fx:id="btn_prossimaMano" alignment="CENTER" focusTraversable="false" layoutX="81.0" layoutY="227.0" mnemonicParsing="false" onKeyPressed="#keyPartita" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="167.0" text="Prossimo turno" textAlignment="CENTER" visible="false">
                       <font>
                           <Font name="Candara" size="14.0" />
                       </font>
@@ -162,23 +162,23 @@
                   <Image url="@../darkScore.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_regole" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" prefHeight="52.0" prefWidth="167.0" text="Regole">
+            <Button fx:id="btn_regole" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" prefHeight="52.0" prefWidth="167.0" text="Regole">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn_esci" focusTraversable="false" layoutX="76.0" layoutY="367.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#salvaEdEsci" prefHeight="52.0" prefWidth="232.0" text="Salva ed esci">
+            <Button fx:id="btn_esci" focusTraversable="false" layoutX="76.0" layoutY="367.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#salvaEdEsci" prefHeight="52.0" prefWidth="232.0" text="Salva ed esci">
                <font>
                   <Font name="Candara" size="17.0" />
                </font>
             </Button>
             <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
-            <ToggleButton fx:id="tglbtn_suono" layoutX="109.0" layoutY="209.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
+            <ToggleButton fx:id="tglbtn_suono" layoutX="109.0" layoutY="209.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtn_musica" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyEventTastini" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
+            <ToggleButton fx:id="tglbtn_musica" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
@@ -191,6 +191,31 @@
             <Label fx:id="lbl_pausa" alignment="CENTER" focusTraversable="false" layoutX="91.0" layoutY="22.0" prefHeight="62.0" prefWidth="202.0" text="PAUSA" textAlignment="CENTER">
                <font>
                   <Font name="Candara Bold" size="43.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="pane_finePartita" layoutX="176.0" layoutY="22.0" prefHeight="567.0" prefWidth="557.0" visible="false">
+         <children>
+            <Button layoutX="178.0" layoutY="363.0" mnemonicParsing="false" onKeyPressed="#finePartita" onMouseClicked="#finePartita" prefHeight="52.0" prefWidth="202.0" text="Torna alla home" />
+            <Label fx:id="lbl_vincitore" alignment="CENTER" layoutX="152.0" layoutY="54.0" prefHeight="52.0" prefWidth="254.0">
+               <font>
+                  <Font size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_classificaFinale" alignment="CENTER" layoutX="178.0" layoutY="162.0" lineSpacing="8.0" prefHeight="182.0" prefWidth="202.0" textAlignment="CENTER">
+               <font>
+                  <Font name="Candara" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_vincitoreFisso" alignment="CENTER" layoutX="173.0" layoutY="14.0" prefHeight="40.0" prefWidth="202.0" text="vincitore">
+               <font>
+                  <Font size="27.0" />
+               </font>
+            </Label>
+            <Label fx:id="lbl_classificaFisso" alignment="CENTER" layoutX="178.0" layoutY="105.0" prefHeight="39.0" prefWidth="202.0" text="classifica finale">
+               <font>
+                  <Font size="24.0" />
                </font>
             </Label>
          </children>

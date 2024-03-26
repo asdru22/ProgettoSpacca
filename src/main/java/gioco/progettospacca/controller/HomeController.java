@@ -1,10 +1,12 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Utili;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
@@ -14,6 +16,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -333,6 +336,11 @@ public class HomeController implements Initializable {
         tglbtn_musica.setSelected(OPZ.getMusica());
         Utili.gestisciSuoni(tglbtn_suono);
         Utili.gestisciMusica(tglbtn_musica);
+        PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+        pause.play();
+        pause.setOnFinished(event ->{
+
+        });
     }
 
     public void suonoMenu() {
