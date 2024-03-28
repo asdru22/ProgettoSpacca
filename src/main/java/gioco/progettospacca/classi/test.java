@@ -12,7 +12,7 @@ public class test {
         System.out.println(g.size());
 
        Torneo t = new Torneo(g,5);
-        System.out.println(t.getNumeroRound());
+        System.out.println(t.getRound());
 
 
         System.out.println((int) (Math.log(4) / Math.log(2))); // caso con 4 giocatori, n_round = 2

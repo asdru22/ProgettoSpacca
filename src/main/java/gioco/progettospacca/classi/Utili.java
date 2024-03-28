@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
@@ -125,11 +126,11 @@ public class Utili {
         return trovato;
     }
 
-    public static boolean esistePartita(int id,boolean partita) {
+    public static boolean esistePartita(int id, boolean partita) {
         // true per partite, false per torneo
         File folder = null;
-        if(partita) folder = new File("salvataggi/partite");
-        if(!partita) folder = new File("salvataggi/tornei");
+        if (partita) folder = new File("salvataggi/partite");
+        if (!partita) folder = new File("salvataggi/tornei");
 
         File[] file_partite = folder.listFiles();
         assert file_partite != null; // controllo che il file esista
@@ -163,6 +164,7 @@ public class Utili {
             return null;
         }
     }
+
     public static Giocatore controllaNomeTorneo(String nome, boolean bot) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
@@ -206,7 +208,7 @@ public class Utili {
     public static String cambiaNomeGiocatore(String vecchio, String nuovo) {
         if (esisteGiocatore(vecchio) && !esisteGiocatore(nuovo)) {
             Giocatore g = Giocatore.carica(vecchio);
-            if(g.isBot()){
+            if (g.isBot()) {
                 return OPZ.traduci("bot_non_rinominabile");
             }
             eliminaGiocatore(vecchio);
@@ -214,7 +216,7 @@ public class Utili {
             g.salva();
             // cambia i nomi salvati nelle partite
             ArrayList<Integer> idPartite = elencaPartite(true);
-            assert(!idPartite.isEmpty());
+            assert (!idPartite.isEmpty());
             for (Integer id : idPartite) {
                 Partita p = Partita.carica(id);
                 ArrayList<String> nome = p.getNomiGiocatori();
@@ -229,7 +231,7 @@ public class Utili {
                 }
             }
             ArrayList<Integer> idTornei = elencaPartite(false);
-            assert(!idTornei.isEmpty());
+            assert (!idTornei.isEmpty());
             for (Integer id : idTornei) {
                 Torneo t = Torneo.carica(id);
                 ArrayList<String> nome = t.getNomiGiocatori();
@@ -269,7 +271,7 @@ public class Utili {
     }
 
     public static String adminEliminaPartita(int id) {
-        if (esistePartita(id,true)) {
+        if (esistePartita(id, true)) {
             Partita p = Partita.carica(id);
             if (p.getIdTorneo() == 0) {
                 eliminaPartita(id);
@@ -277,10 +279,22 @@ public class Utili {
             } else return OPZ.traduci("partita_in_torneo");
         } else return OPZ.traduci("partita_non_trovata");
     }
+
     public static String adminEliminaTorneo(int id) {
-        if (esistePartita(id,false)) {
+        if (esistePartita(id, false)) {
             eliminaTorneo(id);
             return OPZ.traduci("torneo_eliminato");
         } else return OPZ.traduci("torneo_non_trovato");
+    }
+
+    public static void bottoneTorneo(Button b, int codice) {
+        Partita p = Partita.carica(codice);
+        if (p.getVincitore() == null) {
+            b.setDisable(false);
+            b.setText(p.getGiocatori()[0].getNome() + " - " + p.getGiocatori()[1].getNome());
+        } else {
+            b.setDisable(true);
+            b.setText("Vincitore: " + p.getVincitore().getNome());
+        }
     }
 }

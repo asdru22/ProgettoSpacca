@@ -181,9 +181,22 @@ public class Partita {
         if (id_torneo == 0) {
             elimina();
         } else {
-            salva();
-            System.out.println("partita salvata");
+            finePartitaTorneo();
         }
+    }
+
+    private void finePartitaTorneo() {
+        salva();
+        System.out.println("partita salvata");
+        Torneo t = Torneo.carica(id_torneo);
+        t.getGiocatori().add(vincitore);
+        if(t.tuttiVincitori()){
+            // prossimo round
+            System.out.println("Prossimo Round");
+            t.aumentaRound();
+            t.creaPartite();
+        }
+        t.salva();
     }
 
     public void elimina() {
