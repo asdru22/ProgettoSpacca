@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import gioco.progettospacca.classi.Torneo;
@@ -76,8 +77,11 @@ public class GiocaTorneoController implements Initializable {
     }
 
     public void EventoGiocaTorneo() throws IOException {
-
-        Parent root = FXMLLoader.load(getClass().getResource("TorneoView.fxml"));
+        int giocatori = Torneo.carica(CODICE_GLOBALE_TORNEO).getGiocatoriIniziali();
+        Parent root = null;
+        if(giocatori==4) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView4.fxml")));
+        if(giocatori==8) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView8.fxml")));
+        if(giocatori==16) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView16.fxml")));
 
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_entraTorneo.getScene().getWindow();

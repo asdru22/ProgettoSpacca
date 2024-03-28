@@ -8,7 +8,6 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
-    private boolean iniziato = false;
     private int round_salvato = 0;
     private int numero_round = 0;
     private int partita_salvata = 0;
@@ -16,19 +15,31 @@ public class Torneo {
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Partita> partite = new ArrayList<>();
     private final int id;
+    private final int giocatoriIniziali;
+    private ArrayList<Integer> copiaPartite;
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
         this.giocatori = giocatori;
         this.id = id;
-    }
+        this.giocatoriIniziali = giocatori.size();
+        System.out.println("GIOCAOTIR: "+giocatoriIniziali);
+        creaPartite();
+        copiaPartite = copiaIdPartite();
+        numero_round = (int) (Math.log(giocatoriIniziali) / Math.log(2)); // caso con 4 giocatori, n_round = 2
 
-    public boolean isIniziato() {
-        return iniziato;
     }
 
     public static Torneo carica(int id) {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("tornei", Integer.toString(id)), Torneo.class);
+    }
+
+    public ArrayList<Integer> copiaIdPartite() {
+        ArrayList<Integer> r = new ArrayList<>();
+        for (Partita p : partite) {
+            r.add(p.getId());
+        }
+        return r;
     }
 
     public void salva() {
@@ -45,7 +56,7 @@ public class Torneo {
         for (Giocatore g : giocatori) {
             if (g.isBot()) bot_esistenti += 1;
         }
-        int n_bot = giocatori_scelti-giocatori.size();
+        int n_bot = giocatori_scelti - giocatori.size();
         for (int i = 0; i < n_bot; i++) {
             bot_esistenti += 1;
             giocatori.add(new Giocatore("bot" + bot_esistenti, true));
@@ -59,16 +70,11 @@ public class Torneo {
         Utili.eliminaTorneo(id);
     }
 
-    private void riprendi() throws FileNotFoundException {
-        riprendiRound();
-    }
 
-    private void inizia() throws FileNotFoundException {
-        iniziato = true;
+    private void inizia() {
         numero_round = (int) (Math.log(giocatori.size()) / Math.log(2)); // caso con 4 giocatori, n_round = 2
         System.out.println("Numero round: " + numero_round + ", numero giocatori:" + giocatori.size());
         salva();
-        riprendiRound();
     }
 
     private void riprendiRound() throws FileNotFoundException {
@@ -122,13 +128,14 @@ public class Torneo {
         }
     }
 
-    public ArrayList<String> getNomiGiocatori(){
+    public ArrayList<String> getNomiGiocatori() {
         ArrayList<String> r = new ArrayList<>();
         for (Giocatore giocatore : giocatori) {
             r.add(giocatore.getNome());
         }
         return r;
     }
+
     public ArrayList<Giocatore> getGiocatori() {
         return giocatori;
     }
@@ -137,7 +144,7 @@ public class Torneo {
         return id;
     }
 
-    public static void controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt){
+    public static void controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt) {
         Giocatore temp;
         int giocatori = 0;
         ArrayList<Giocatore> g = new ArrayList<>();
@@ -145,23 +152,24 @@ public class Torneo {
 
         txt.setText(String.valueOf(id));
 
-        for(ValoriTorneo v: vt){
+        for (ValoriTorneo v : vt) {
             temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected());
             if (temp != null) {
                 g.add(temp);
-                giocatori +=1;
+                giocatori += 1;
             }
         }
         // bot se ci sono giocatori mancanti
-        if (giocatori<max){
-         aggiungiBot(max-giocatori,g);
+        if (giocatori < max) {
+            aggiungiBot(max - giocatori, g);
         }
-        Torneo t = new Torneo(g,id);
+        Torneo t = new Torneo(g, id);
         t.creaPartite();
         t.salva();
 
     }
-    private static void aggiungiBot(int giocatori_mancanti,ArrayList<Giocatore> giocatori){
+
+    private static void aggiungiBot(int giocatori_mancanti, ArrayList<Giocatore> giocatori) {
         int bot_esistenti = 0;
         for (Giocatore g : giocatori) {
             if (g.isBot()) bot_esistenti += 1;
@@ -171,6 +179,18 @@ public class Torneo {
             giocatori.add(new Giocatore("bot" + bot_esistenti, true));
         }
         System.out.println("Aggiunti " + giocatori_mancanti + " bot per raggiungere il numero di giocatori richiesti");
+    }
+
+    public int getGiocatoriIniziali() {
+        return giocatoriIniziali;
+    }
+
+    public ArrayList<Integer> getCopiaPartite() {
+        return copiaPartite;
+    }
+
+    public int getNumeroRound() {
+        return numero_round;
     }
 }
 

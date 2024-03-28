@@ -6,10 +6,12 @@ import java.io.FileNotFoundException;
 import java.lang.reflect.Array;
 import java.util.*;
 
+import static gioco.progettospacca.controller.Main.OPZ;
+
 
 public class Partita {
     private boolean iniziata = false;
-    private static int NUMERO_TURNI = 3;
+    private static int NUMERO_TURNI = 1;
     private static int numero_bot;
     private final int id;
     private int turno_salvato = 0;
@@ -104,7 +106,7 @@ public class Partita {
         // Se il giocatore non è stato trovato, restituisci -1
         return -1;
     }
-    
+
     @Override
     public String toString() {
         if (vincitore == null) {
@@ -115,23 +117,6 @@ public class Partita {
 
     public int getIdTorneo() {
         return id_torneo;
-    }
-
-    public void cicloPrincipale() throws FileNotFoundException {
-        int scelta = 0;
-        for (int i = turno_salvato; i < NUMERO_TURNI; i++) { // per ogni turno
-            turno_salvato = i;
-            //seme_che_comanda = Utili.semeCasuale();
-            for (int j = giocatore_salvato; j < giocatori.length; j++) { // per ogni mano
-                giocatore_salvato = j;
-                System.out.println(">>> turno: " + turno_salvato + "/" + NUMERO_TURNI + ", giocatore: " + (giocatore_salvato + 1) + "/" + giocatori.length);
-                //azioniGiocatore();
-
-                mazzo = new Mazzo(Mazzo.creaMazzoIniziale());
-
-            }
-        }
-        finePartita();
     }
 
     public Carta getSeme() {
@@ -163,6 +148,7 @@ public class Partita {
     }
 
     public void finePartita() {
+        OPZ.vittoria();
         int max = 0;
         vincitore = giocatori[0];
         int temp;
@@ -191,7 +177,13 @@ public class Partita {
 
 
         Utili.getLeaderboard();
-        elimina();  //viene eliminato il salvataggio solo se viene conclusa la partita
+
+        if (id_torneo == 0) {
+            elimina();
+        } else {
+            salva();
+            System.out.println("partita salvata");
+        }
     }
 
     public void elimina() {
