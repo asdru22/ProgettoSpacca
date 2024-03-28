@@ -1,5 +1,7 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Partita;
+import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,17 +9,34 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.fxml.Initializable;
 
-import java.awt.*;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import gioco.progettospacca.classi.Torneo;
+
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
+import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_TORNEO;
 import static gioco.progettospacca.controller.Main.OPZ;
 
-public class GiocaTorneoController {
+public class GiocaTorneoController implements Initializable {
     @FXML
     private Button btn_entraTorneo;
+    @FXML
+    TextField txt_codTorneo;
+    @FXML
+    Label lbl_titleCodTorneo;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_entraTorneo.setText(OPZ.traduci("entra"));
+        lbl_titleCodTorneo.setText(OPZ.traduci("inserisci_codice_torneo"));
+    }
 
     public void BackToHome(ActionEvent actionEvent) throws IOException {
         OPZ.premiBottone();
@@ -29,13 +48,21 @@ public class GiocaTorneoController {
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.show();
     }
+
     public void giocaTorneo(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
+        CODICE_GLOBALE_TORNEO = Utili.leggiInt(txt_codTorneo);
+        // debug
+        Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
+        for(Partita p: t.getPartite()){
+            System.out.println("Partita: "+p.getId());
+        }
+        //
         EventoGiocaTorneo();
+
     }
 
-    public void EventoGiocaTorneo() throws IOException
-    {
+    public void EventoGiocaTorneo() throws IOException {
 
         Parent root = FXMLLoader.load(getClass().getResource("TorneoView.fxml"));
 

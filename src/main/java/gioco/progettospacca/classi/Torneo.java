@@ -157,6 +157,7 @@ public class Torneo {
          aggiungiBot(max-giocatori,g);
         }
         Torneo t = new Torneo(g,id);
+        t.creaPartite();
         t.salva();
 
     }
