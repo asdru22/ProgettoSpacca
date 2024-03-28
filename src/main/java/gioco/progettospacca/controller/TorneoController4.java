@@ -21,22 +21,6 @@ import static gioco.progettospacca.controller.Main.*;
 public class TorneoController4 implements Initializable {
     @FXML
     BottoneTorneo btn_semi1,btn_semi2,btn_finale;
-    public void inizio() throws IOException {
-
-        Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
-        CODICE_GLOBALE_PARTITA = t.getPartite().get(0).getId();
-        OPZ.premiBottone();
-        OPZ.playMusica("gioco.mp3");
-
-        Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_finale.getScene().getWindow();
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
-
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

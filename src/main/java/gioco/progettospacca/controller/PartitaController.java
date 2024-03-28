@@ -36,7 +36,7 @@ import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_GLOBALE_PARTITA = 39768;
+    public static final int CODICE_TEMP = 39768;
     @FXML
     Label lbl_pausa;
     @FXML
@@ -1153,7 +1153,7 @@ public class PartitaController implements Initializable {
         });
 
         inizializzaTraduzioni();
-
+        System.out.println(CODICE_GLOBALE_PARTITA);
         p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();

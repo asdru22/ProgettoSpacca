@@ -66,12 +66,7 @@ public class GiocaTorneoController implements Initializable {
     public void giocaTorneo(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         CODICE_GLOBALE_TORNEO = Utili.leggiInt(txt_codTorneo);
-        // debug
-        Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
-        for(Partita p: t.getPartite()){
-            System.out.println("Partita: "+p.getId());
-        }
-        //
+
         EventoGiocaTorneo();
 
     }

@@ -24,49 +24,76 @@ public class BottoneTorneo extends Button {
     public int getPartita() {
         return partita;
     }
+
     public void setPartita(int partita) {
         this.partita = partita;
     }
-    public void inizializza(Torneo t){
-        System.out.println("partita. "+partita);
-        int giocatoriIniziali = t.getGiocatoriIniziali();
-        if(giocatoriIniziali==4){
-            if(isSemi()){
-                this.aggiungiPartita(t);
-            }
 
+    public void inizializza(Torneo t) {
+        int giocatoriIniziali = t.getGiocatoriIniziali();
+
+        if (giocatoriIniziali == 4) {
+            partita4(t);
         }
-        if(isFinale()){
+
+        if (giocatoriIniziali == 8) {
+            partita8(t);
+        }
+
+        if (giocatoriIniziali == 16) {
+            partita16(t);
+        }
+
+        if (isFinale()) {
             this.setText(OPZ.traduci("finale"));
 
         }
     }
 
+    private void partita4(Torneo t) {
+        if (isSemi()) {
+            this.aggiungiPartita(t);
+        }
+    }
+    private void partita8(Torneo t) {
+        if (isQuarti()) {
+            this.aggiungiPartita(t);
+        }
+    }
+    private void partita16(Torneo t) {
+        if (isOttavi()){
+            this.aggiungiPartita(t);
+        }
+    }
+
     private void aggiungiPartita(Torneo t) {
-        if(partita==null){
-            partita = t.getCopiaPartite().remove(0);
-            Partita p = Partita.carica(partita);
-            giocatori[0] = p.getGiocatori()[0].getNome();
-            giocatori[1] = p.getGiocatori()[1].getNome();
-            this.setText(giocatori[0] +" - "+giocatori[1]);
+        partita = t.getCopiaPartite().remove(0);
+        Partita p = Partita.carica(partita);
+        giocatori[0] = p.getGiocatori()[0].getNome();
+        giocatori[1] = p.getGiocatori()[1].getNome();
+
+        if (p.getVincitore() == null) {
+            this.setText(giocatori[0] + " - " + giocatori[1]);
         } else {
-            Partita p = Partita.carica(partita);
-            if(p.getVincitore()!=null) this.setDisable(true);
-            this.setText("Vincitore: "+p.getVincitore().getNome());
+            this.setDisable(true);
+            this.setText("Vincitore: " + p.getVincitore().getNome());
         }
 
     }
 
-    public boolean isFinale(){
+    public boolean isFinale() {
         return Objects.equals(this.getId(), "finale");
     }
-    public boolean isSemi(){
+
+    public boolean isSemi() {
         return this.getId().contains("semi");
     }
-    public boolean isQuarti(){
+
+    public boolean isQuarti() {
         return this.getId().contains("quarto");
     }
-    public boolean isOttavo(){
+
+    public boolean isOttavi() {
         return this.getId().contains("ottavo");
     }
 }

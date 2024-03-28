@@ -13,7 +13,7 @@ public class Torneo {
     private int partita_salvata = 0;
     private int numero_partite = 0;
     private ArrayList<Giocatore> giocatori;
-    private ArrayList<Partita> partite = new ArrayList<>();
+    private ArrayList<Integer> partite = new ArrayList<>();
     private final int id;
     private final int giocatoriIniziali;
     private ArrayList<Integer> copiaPartite;
@@ -36,8 +36,8 @@ public class Torneo {
 
     public ArrayList<Integer> copiaIdPartite() {
         ArrayList<Integer> r = new ArrayList<>();
-        for (Partita p : partite) {
-            r.add(p.getId());
+        for (int p : partite) {
+            r.add(p);
         }
         return r;
     }
@@ -46,50 +46,14 @@ public class Torneo {
         Utili.salva("tornei", Integer.toString(id), this);
     }
 
-    public ArrayList<Partita> getPartite() {
+    public ArrayList<Integer> getPartite() {
         return partite;
     }
-
-    public void iniziaMain(int giocatori_scelti) throws FileNotFoundException {
-        // aggiunge bot se il numero di giocatori partecipanti non è 4,8 o 16
-        int bot_esistenti = 0;
-        for (Giocatore g : giocatori) {
-            if (g.isBot()) bot_esistenti += 1;
-        }
-        int n_bot = giocatori_scelti - giocatori.size();
-        for (int i = 0; i < n_bot; i++) {
-            bot_esistenti += 1;
-            giocatori.add(new Giocatore("bot" + bot_esistenti, true));
-        }
-        System.out.println("Aggiunti " + n_bot + " bot per raggiungere il numero di giocatori richiesti (" + giocatori.size() + ")");
-        inizia();
-    }
-
 
     public void elimina() {
         Utili.eliminaTorneo(id);
     }
 
-
-    private void inizia() {
-        numero_round = (int) (Math.log(giocatori.size()) / Math.log(2)); // caso con 4 giocatori, n_round = 2
-        System.out.println("Numero round: " + numero_round + ", numero giocatori:" + giocatori.size());
-        salva();
-    }
-
-    private void riprendiRound() throws FileNotFoundException {
-        for (int j = round_salvato; j < numero_round; j++) {
-            round_salvato = j;
-            creaPartite(); // crea
-            riprendiPartita(); // esegui
-            // fine round
-        }
-        Giocatore vincitore = giocatori.get(0);
-        // fine torneo
-        System.out.println(vincitore.getNome() + " ha vinto il torneo!");
-        vincitore.setPartiteVinte(vincitore.getPartiteVinte() + numero_round);
-        elimina();
-    }
 
     private void riprendiPartita() throws FileNotFoundException {
         Partita partita_corrente;
@@ -98,7 +62,7 @@ public class Torneo {
             partita_salvata = i;
             System.out.println(">>> Partita: " + (partita_salvata + 1) + "/" + numero_partite + ", Round: " + (round_salvato + 1) + "/" + numero_round);
 
-            partita_corrente = partite.get(partita_salvata);
+            partita_corrente = Partita.carica(partite.get(partita_salvata));
             // controllo per riprendi partita
             if (partita_corrente.isIniziata()) {
                 //partita_corrente.riprendi();
@@ -116,14 +80,15 @@ public class Torneo {
         // numero partite dati i giocatori
         numero_partite = giocatori.size() / 2;
         Giocatore[] coppia = new Giocatore[2];
-        Collections.shuffle(giocatori);
+        ArrayList<Giocatore> c = new ArrayList<Giocatore>(giocatori);
+        Collections.shuffle(c);
         for (int i = 0; i < numero_partite; i++) {
 
-            coppia[0] = giocatori.get(0);
-            giocatori.remove(0);
-            coppia[1] = giocatori.get(0);
-            giocatori.remove(0);
-            partite.add(new Partita(coppia, id));
+            coppia[0] = c.get(0);
+            c.remove(0);
+            coppia[1] = c.get(0);
+            c.remove(0);
+            partite.add(new Partita(coppia, id).getId());
             System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
         }
     }
