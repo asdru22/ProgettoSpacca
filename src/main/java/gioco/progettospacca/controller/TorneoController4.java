@@ -14,7 +14,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.*;
@@ -32,8 +31,10 @@ public class TorneoController4 implements Initializable {
         Utili.bottoneTorneo(btn_semi2,partite.get(1));
         if(t.getRound()==1)
             Utili.bottoneTorneo(btn_finale,partite.get(2));
-        else
+        else {
             btn_finale.setDisable(true);
+            btn_finale.setText(OPZ.traduci("finale"));
+        }
     }
 
     public void giocaPartita(Button b) throws IOException {

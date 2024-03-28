@@ -29,6 +29,17 @@ public class Torneo {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("tornei", Integer.toString(id)), Torneo.class);
     }
+    public void skip(){
+        // PER TESTARE TORNO
+        System.out.println("SETTANDO VINCITORE TEMP PARTITE");
+        for(int i = 0;i<partite.size()-1;i++){
+            Partita p = Partita.carica(partite.get(i));
+            p.setVincitoreTemp();
+            giocatori.add(p.getVincitore());
+            p.salva();
+        }
+        salva();
+    }
 
     public void salva() {
         Utili.salva("tornei", Integer.toString(id), this);
@@ -44,6 +55,7 @@ public class Torneo {
 
     public void creaPartite() {
         // numero partite dati i giocatori
+        System.out.println("Numoer giocatori"+giocatori.size());
         numero_partite = giocatori.size() / 2;
         if(giocatori.size() == 1){
             fineTorneo(giocatori.get(0));
@@ -108,6 +120,8 @@ public class Torneo {
         }
         Torneo t = new Torneo(g, id);
         t.creaPartite();
+        // scommentare per andare direttamente all'ultima partita del primo round
+        // t.skip();
 
     }
 

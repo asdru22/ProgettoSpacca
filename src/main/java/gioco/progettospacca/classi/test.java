@@ -4,18 +4,13 @@ import java.util.*;
 
 public class test {
     public static void main(String[] args) {
-        ArrayList<Giocatore> g = new ArrayList<>();
-        g.add(new Giocatore("bot1"));
-        g.add(new Giocatore("bot2"));
-        g.add(new Giocatore("bot3"));
-        g.add(new Giocatore("bot4"));
-        System.out.println(g.size());
+        Torneo t = Torneo.carica(72517);
+        for(int i = 0;i<t.getPartite().size()-1;i++){
+            Partita p = Partita.carica(t.getPartite().get(i));
+            p.setVincitoreTemp();
+            p.salva();
+        }
 
-       Torneo t = new Torneo(g,5);
-        System.out.println(t.getRound());
-
-
-        System.out.println((int) (Math.log(4) / Math.log(2))); // caso con 4 giocatori, n_round = 2
 
 
     }

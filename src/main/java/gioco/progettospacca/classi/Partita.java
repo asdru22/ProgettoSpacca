@@ -358,6 +358,10 @@ public class Partita {
     public int getNumeroTurni() {
         return NUMERO_TURNI;
     }
+
+    public void setVincitoreTemp() {
+        vincitore = giocatori[0];
+    }
 }
 
 

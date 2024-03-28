@@ -288,13 +288,15 @@ public class Utili {
     }
 
     public static void bottoneTorneo(Button b, int codice) {
+        System.out.println("inizializzato bottone"+b.getId()+",codiec: "+codice);
+
         Partita p = Partita.carica(codice);
         if (p.getVincitore() == null) {
             b.setDisable(false);
             b.setText(p.getGiocatori()[0].getNome() + " - " + p.getGiocatori()[1].getNome());
         } else {
             b.setDisable(true);
-            b.setText("Vincitore: " + p.getVincitore().getNome());
+            b.setText(OPZ.traduci("vincitore")+": "+ p.getVincitore().getNome());
         }
     }
 }
