@@ -73,6 +73,7 @@ public class HomeController implements Initializable {
 
         // Ottieni la scena corrente
         Scene currentScene = currentStage.getScene();
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);

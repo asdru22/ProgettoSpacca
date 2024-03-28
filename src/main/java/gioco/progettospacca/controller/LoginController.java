@@ -77,6 +77,7 @@ public class LoginController implements Initializable {
 
             // Imposta il titolo della finestra
             currentStage.setTitle(OPZ.traduci("login"));
+            currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
         } else {
             System.out.println(user);
             System.out.println(psw);
