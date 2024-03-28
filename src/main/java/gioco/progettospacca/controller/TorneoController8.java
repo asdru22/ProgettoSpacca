@@ -27,14 +27,19 @@ public class TorneoController8 implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
-        System.out.println("round: "+t.getRound());
-
-        Utili.bottoneTorneo(btn_quarti1, partite.get(0));
-        Utili.bottoneTorneo(btn_quarti2, partite.get(1));
-        Utili.bottoneTorneo(btn_quarti3, partite.get(2));
-        Utili.bottoneTorneo(btn_quarti4, partite.get(3));
-
-        if (t.getRound() == 1) {
+        System.out.println("round: " + t.getRound());
+        if (t.getRound() == 0) {
+            Utili.bottoneTorneo(btn_quarti1, partite.get(0));
+            Utili.bottoneTorneo(btn_quarti2, partite.get(1));
+            Utili.bottoneTorneo(btn_quarti3, partite.get(2));
+            Utili.bottoneTorneo(btn_quarti4, partite.get(3));
+            btn_finale.setDisable(true);
+            btn_finale.setText(OPZ.traduci("finale"));
+            btn_semi1.setDisable(true);
+            btn_semi1.setText(OPZ.traduci("semifinale"));
+            btn_semi2.setDisable(true);
+            btn_semi2.setText(OPZ.traduci("semifinale"));
+        } else if (t.getRound() == 1) {
             Utili.bottoneTorneo(btn_semi1, partite.get(4));
             Utili.bottoneTorneo(btn_semi2, partite.get(5));
             btn_finale.setDisable(true);

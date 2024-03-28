@@ -7,7 +7,7 @@ import java.io.File;
 
 public class PartiteSalvateController {
     @FXML
-    private ListView list_listaPartite;
+    ListView list_listaPartite;
     /*
     File folder = new File("src/main/java/gioco/progettospacca/salvataggi/partite");
     File[] file_partite = folder.listFiles();

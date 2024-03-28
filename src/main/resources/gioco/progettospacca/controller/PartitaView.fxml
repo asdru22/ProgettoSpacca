@@ -103,7 +103,7 @@
                           <Font name="Candara" size="14.0" />
                       </font>
                   </Button>
-                  <Label alignment="CENTER" focusTraversable="false" layoutX="41.0" layoutY="42.0" prefHeight="52.0" prefWidth="248.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
+                  <Label fx:id="lbl_punteggio_fatto" alignment="CENTER" focusTraversable="false" layoutX="41.0" layoutY="42.0" prefHeight="52.0" prefWidth="248.0" text="Punteggio fatto:" textAlignment="CENTER" textFill="WHITE">
                       <font>
                           <Font name="Candara Bold" size="17.0" />
                       </font>
@@ -208,7 +208,7 @@
                   <Image url="@../trofeo.png" />
                </image>
             </ImageView>
-            <Button layoutX="353.0" layoutY="486.0" mnemonicParsing="false" onKeyPressed="#finePartita" onMouseClicked="#finePartita" prefHeight="52.0" prefWidth="202.0" text="Torna alla home">
+            <Button fx:id="btn_home" layoutX="353.0" layoutY="486.0" mnemonicParsing="false" onKeyPressed="#finePartita" onMouseClicked="#finePartita" prefHeight="52.0" prefWidth="202.0" text="Torna alla home">
                <font>
                   <Font name="Candara" size="18.0" />
                </font></Button>

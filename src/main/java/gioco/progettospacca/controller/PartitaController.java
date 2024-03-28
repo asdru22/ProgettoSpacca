@@ -36,7 +36,15 @@ import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 39768;
+    public static final int CODICE_TEMP = 30544;
+    @FXML
+    Label lbl_classificaFisso;
+    @FXML
+    Label lbl_vincitoreFisso;
+    @FXML
+    Label lbl_punteggio_fatto;
+    @FXML
+    Button btn_home;
     @FXML
     Label lbl_pausa;
     @FXML
@@ -140,6 +148,21 @@ public class PartitaController implements Initializable {
         tglbtn_musica.setSelected(OPZ.getMusica());
         Utili.gestisciSuoni(tglbtn_suono);
         Utili.gestisciMusica(tglbtn_musica);
+        btn_scarta.setText(OPZ.traduci("scarta"));
+        btn_stai.setText(OPZ.traduci("stai"));
+        btn_gioca.setText(OPZ.traduci("gioca"));
+        btn_conferma.setText(OPZ.traduci("conferma"));
+        lbl_punteggio.setText(OPZ.traduci("punteggio_fatto"));
+        btn_prossimaMano.setText(OPZ.traduci("prossimo_turno"));
+        lbl_vincitore.setText(OPZ.traduci("vincitore"));
+        lbl_classificaFinale.setText(OPZ.traduci("classifica_finale"));
+        btn_home.setText(OPZ.traduci("torna_alla_home"));
+        lbl_punteggio_fatto.setText(OPZ.traduci("punteggio_fatto"));
+        lbl_classificaFisso.setText(OPZ.traduci("classifica_finale"));
+        lbl_vincitoreFisso.setText(OPZ.traduci("vincitore"));
+        btn_regole.setText(OPZ.traduci("regole"));
+
+
     }
 
 
@@ -876,14 +899,14 @@ public class PartitaController implements Initializable {
             pulisciSchermata();
             anchPane_toccaA.setVisible(true);
             btn_gioca.setVisible(true);
-            lbl_toccaA.setText("Turno: " + p.getToccaA());
-            lbl_turno.setText("Turno: " + (p.getTurnoSalvato()));
+            lbl_toccaA.setText(OPZ.traduci("turno")+": " + p.getToccaA());
+            lbl_turno.setText(OPZ.traduci("round")+": "+p.getTurnoSalvato());
         } else {          //bot
             pulisciSchermata();
             anchPane_toccaA.setVisible(true);
             btn_gioca.setDisable(true);
-            lbl_toccaA.setText("Turno: " + p.getToccaA());
-            lbl_turno.setText("Turno: " + (p.getTurnoSalvato()));
+            lbl_toccaA.setText(OPZ.traduci("turno")+": " + p.getToccaA());
+            lbl_turno.setText(OPZ.traduci("round")+": "+p.getTurnoSalvato());
 
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.play();
@@ -1154,7 +1177,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_GLOBALE_PARTITA);
+        p = Partita.carica(CODICE_TEMP);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
@@ -1330,16 +1353,6 @@ public class PartitaController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-        /*
-        if (keyEvent.getCode() == KeyCode.ENTER && pane_finePartita.isVisible()) {
-            try {
-                salvaEdEsci();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        */
-
     }
 
     public void keyScelta(KeyEvent keyEvent) {

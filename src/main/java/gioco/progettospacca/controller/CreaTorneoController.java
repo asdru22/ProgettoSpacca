@@ -3,26 +3,32 @@ package gioco.progettospacca.controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.OPZ;
 
-public class CreaTorneoController {
-
+public class CreaTorneoController implements Initializable {
+    @FXML
+    Label lbl_npart;
     @FXML
     private Button btn_4players;
     @FXML
     private Button btn_8players;
     @FXML
     private Button btn_16players;
+
     public void BackToHome(ActionEvent actionEvent) throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
@@ -38,10 +44,12 @@ public class CreaTorneoController {
         OPZ.premiBottone();
         EventoCreaTorneo4Giocatori();
     }
+
     public void creaTorneo8giocatori(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         EventoCreaTorneo8Giocatori();
     }
+
     public void creaTorneo16giocatori(MouseEvent mouseEvent) throws IOException {
         OPZ.premiBottone();
         EventoCreaTorneo16Giocatori();
@@ -62,6 +70,7 @@ public class CreaTorneoController {
         // Imposta il titolo della finestra
         //currentStage.setTitle(OPZ.traduci("Crea torneo (4 giocatori)"));
     }
+
     public void EventoCreaTorneo8Giocatori() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Torneo8giocatoriView.fxml"));
 
@@ -77,6 +86,7 @@ public class CreaTorneoController {
         // Imposta il titolo della finestra
         //currentStage.setTitle(OPZ.traduci("Crea torneo (8 giocatori)"));
     }
+
     public void EventoCreaTorneo16Giocatori() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Torneo16giocatoriView.fxml"));
 
@@ -93,4 +103,8 @@ public class CreaTorneoController {
         //currentStage.setTitle(OPZ.traduci("Crea torneo (16 giocatori)"));
     }
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_npart.setText(OPZ.traduci("inserisci_partecipanti"));
+    }
 }
