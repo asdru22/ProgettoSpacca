@@ -95,8 +95,10 @@ public class HomeController implements Initializable {
 
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
 
+
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("gioca_partita"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
     public void EventoCreaPartita() throws IOException {
@@ -113,6 +115,7 @@ public class HomeController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("login"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
     public void EventoCreaTorneo() throws IOException {
@@ -129,6 +132,7 @@ public class HomeController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("login"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
     public void EventoGiocaTorneo() throws IOException {
@@ -145,6 +149,7 @@ public class HomeController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("gioca_torneo"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
     public void showCambiaLingua() throws IOException {
@@ -183,6 +188,7 @@ public class HomeController implements Initializable {
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
         // Imposta la nuova finestra
         //stage.setTitle(OPZ.traduci("regole"));
         stage.setScene(scene);
@@ -316,6 +322,58 @@ public class HomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn_giocaPartita.setOnMouseEntered(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+            btn_giocaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_giocaPartita.setOnMouseExited(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_giocaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_creaPartita.setOnMouseEntered(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_creaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_creaPartita.setOnMouseExited(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_creaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_giocaTorneo.setOnMouseEntered(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_giocaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_giocaTorneo.setOnMouseExited(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_giocaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_creaTorneo.setOnMouseEntered(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_creaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_creaTorneo.setOnMouseExited(e -> {
+            if (btn_giocaPartita.getScene() != null) {
+                btn_creaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+
+
         btn_classifica.setText(OPZ.traduci("classifica"));
         btn_regole.setText(OPZ.traduci("regole"));
         btn_cambiaLingua.setText(OPZ.traduci("cambia_lingua"));

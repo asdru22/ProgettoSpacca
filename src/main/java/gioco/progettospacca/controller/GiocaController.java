@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -44,6 +45,8 @@ public class GiocaController implements Initializable {
     private Label lbl_codice;
     @FXML
     private Button btn_entra;
+    @FXML
+    private Button btn_back;
 
     public void BackToHome(ActionEvent actionEvent) throws IOException {
         OPZ.premiBottone();
@@ -53,6 +56,7 @@ public class GiocaController implements Initializable {
         stage.setTitle(OPZ.traduci("spacca"));
         stage.setScene(scene);
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
         stage.show();
     }
 
@@ -115,6 +119,33 @@ public class GiocaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+
+        btn_entra.setOnMouseEntered(e -> {
+            if (btn_entra.getScene() != null) {
+                btn_entra.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_entra.setOnMouseExited(e -> {
+            if (btn_entra.getScene() != null) {
+            btn_entra.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
         lbl_nomi.setText(OPZ.traduci("nomi"));
         lbl_codice.setText(OPZ.traduci("inserisci_codice"));
         btn_entra.setText(OPZ.traduci("entra"));

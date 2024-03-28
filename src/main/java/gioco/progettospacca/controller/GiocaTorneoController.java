@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -34,6 +35,18 @@ public class GiocaTorneoController implements Initializable {
     Label lbl_titleCodTorneo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_entraTorneo.setOnMouseEntered(e -> {
+            if (btn_entraTorneo.getScene() != null) {
+                btn_entraTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_entraTorneo.setOnMouseExited(e -> {
+            if (btn_entraTorneo.getScene() != null) {
+                btn_entraTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         btn_entraTorneo.setText(OPZ.traduci("entra"));
         lbl_titleCodTorneo.setText(OPZ.traduci("inserisci_codice_torneo"));
     }

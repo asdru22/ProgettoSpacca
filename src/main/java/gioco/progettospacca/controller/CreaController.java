@@ -6,6 +6,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -318,6 +319,31 @@ public class CreaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn_crea.setOnMouseEntered(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_crea.setOnMouseExited(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_backHome.setOnMouseEntered(e -> {
+            if (btn_backHome.getScene() != null) {
+                btn_backHome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_backHome.setOnMouseExited(e -> {
+            if (btn_backHome.getScene() != null) {
+                btn_backHome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         btn_crea.setText(OPZ.traduci("crea_partita"));
         btn_backHome.setText(OPZ.traduci("torna_alla_home"));
         lbl_nomi_giocatori.setText(OPZ.traduci("nomi_giocatori"));
