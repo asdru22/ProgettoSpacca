@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +22,6 @@ import java.util.ResourceBundle;
 
 import gioco.progettospacca.classi.Torneo;
 
-import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_TORNEO;
 import static gioco.progettospacca.controller.Main.OPZ;
 

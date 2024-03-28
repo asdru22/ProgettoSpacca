@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Torneo {
 
     private int round_salvato = 0;
-    private int numero_round = 0;
     private int numero_partite = 0;
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Integer> partite = new ArrayList<>();
@@ -22,7 +21,6 @@ public class Torneo {
         this.id = id;
         this.giocatoriIniziali = giocatori.size();
         creaPartite();
-        numero_round = (int) (Math.log(giocatoriIniziali) / Math.log(2)); // caso con 4 giocatori, n_round = 2
     }
 
     public static Torneo carica(int id) {

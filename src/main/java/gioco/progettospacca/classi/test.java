@@ -1,6 +1,5 @@
 package gioco.progettospacca.classi;
 
-import java.util.*;
 
 public class test {
     public static void main(String[] args) {

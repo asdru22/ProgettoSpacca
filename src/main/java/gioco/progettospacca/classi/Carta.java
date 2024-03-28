@@ -1,9 +1,5 @@
 package gioco.progettospacca.classi;
 
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import java.util.Objects;
-
 public class Carta {
     private Seme seme;
     private int numero;

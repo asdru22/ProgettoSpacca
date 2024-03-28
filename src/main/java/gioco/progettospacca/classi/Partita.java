@@ -93,20 +93,6 @@ public class Partita {
         return new Gson().fromJson(Utili.leggiFileJson("partite", Integer.toString(id)), Partita.class);
     }
 
-    public int trovaPosizione(Giocatore[] giocatori, Giocatore giocatoreDaCercare) {
-        int i = 0;
-        for (Giocatore giocatore : giocatori) {
-            if (giocatore.equals(giocatoreDaCercare)) {
-                // Il giocatore è stato trovato, restituisci la posizione
-                return i;
-            }
-            i++;
-        }
-
-        // Se il giocatore non è stato trovato, restituisci -1
-        return -1;
-    }
-
     @Override
     public String toString() {
         if (vincitore == null) {

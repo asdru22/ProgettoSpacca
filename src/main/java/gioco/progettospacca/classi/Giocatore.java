@@ -82,19 +82,6 @@ public class Giocatore {
         this.mano = manoList.toArray(new Carta[0]);
     }
 
-    public void togliCarteNulle() {
-        List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
-        Iterator<Carta> iterator = manoList.iterator();
-        while (iterator.hasNext()) {
-            Carta elemento = iterator.next();
-            if (elemento == null) {
-                // Rimuove l'elemento null usando il metodo remove dell'iteratore
-                iterator.remove();
-            }
-        }
-        this.mano = manoList.toArray(new Carta[0]);
-    }
-
     public void scarta(int pos) {
         //System.out.println("Posizione prima della rimozione: " + pos);
 
