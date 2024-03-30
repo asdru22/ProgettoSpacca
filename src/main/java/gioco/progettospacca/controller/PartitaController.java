@@ -36,7 +36,7 @@ import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 30544;
+    public static final int CODICE_TEMP = 14187;
     @FXML
     Label lbl_classificaFisso;
     @FXML

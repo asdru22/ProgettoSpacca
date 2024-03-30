@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -150,6 +151,30 @@ public class LoginController3 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_login.setOnMouseEntered(e -> {
+            if (btn_login.getScene() != null) {
+                btn_login.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_login.setOnMouseExited(e -> {
+            if (btn_login.getScene() != null) {
+                btn_login.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         lbl_password.setText(OPZ.traduci("password"));
         lbl_username.setText(OPZ.traduci("username"));
         lbl_titolo.setText(OPZ.traduci("login_amministratore"));

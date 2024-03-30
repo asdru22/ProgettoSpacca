@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.ValoriTorneo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,6 +37,30 @@ public class Torneo4giocatoriController implements Initializable {
     CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_crea.setOnMouseEntered(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_crea.setOnMouseExited(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_home.setOnMouseEntered(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_home.setOnMouseExited(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         lbl_nomi_giocatori.setText(OPZ.traduci("nomi_giocatori"));
         btn_crea.setText(OPZ.traduci("crea_torneo"));
         lbl_codice.setText(OPZ.traduci("codice_torneo"));
@@ -57,7 +82,7 @@ public class Torneo4giocatoriController implements Initializable {
 
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
-        Parent root = FXMLLoader.load(getClass().getResource("CreaTorneo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_home.getScene().getWindow();
@@ -70,5 +95,6 @@ public class Torneo4giocatoriController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 }

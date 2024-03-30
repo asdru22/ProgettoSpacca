@@ -87,6 +87,7 @@ public class GiocaTorneoController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("gioca_torneo"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
 
     }

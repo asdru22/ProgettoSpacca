@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.ValoriTorneo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,6 +39,30 @@ public class Torneo16giocatoriController implements Initializable {
             chk_gioc9,chk_gioc10,chk_gioc11,chk_gioc12,chk_gioc13,chk_gioc14,chk_gioc15,chk_gioc16;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_crea.setOnMouseEntered(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_crea.setOnMouseExited(e -> {
+            if (btn_crea.getScene() != null) {
+                btn_crea.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_home.setOnMouseEntered(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_home.setOnMouseExited(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         lbl_nomi_giocatori.setText(OPZ.traduci("nomi_giocatori"));
         btn_crea.setText(OPZ.traduci("crea_torneo"));
         lbl_codice.setText(OPZ.traduci("codice_torneo"));
@@ -69,7 +94,7 @@ public class Torneo16giocatoriController implements Initializable {
     }
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
-        Parent root = FXMLLoader.load(getClass().getResource("CreaTorneo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_home.getScene().getWindow();

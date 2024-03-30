@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -35,6 +36,54 @@ public class TorneoController4 implements Initializable {
             btn_finale.setDisable(true);
             btn_finale.setText(OPZ.traduci("finale"));
         }
+        btn_semi1.setOnMouseEntered(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi1.setOnMouseExited(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_semi2.setOnMouseEntered(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi2.setOnMouseExited(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        if(btn_finale.isDisabled()) {
+            {
+                btn_finale.setOnMouseEntered(e -> {
+                    if (btn_finale.getScene() != null) {
+                        btn_finale.getScene().setCursor(Cursor.NONE);
+                    }
+                });
+            }
+        }else
+        {
+            btn_finale.setOnMouseEntered(e -> {
+                if (btn_finale.getScene() != null) {
+                    btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+                }
+            });
+
+            // Reimposta il cursore predefinito quando il mouse esce dal bottone
+            btn_finale.setOnMouseExited(e -> {
+                if (btn_finale.getScene() != null) {
+                    btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+                }
+            });
+        }
+
     }
 
     public void giocaPartita(Button b) throws IOException {
