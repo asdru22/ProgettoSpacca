@@ -18,7 +18,7 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="256.0" fitWidth="254.0" layoutX="331.0" layoutY="295.0" opacity="0.13">
+            <ImageView fitHeight="256.0" fitWidth="254.0" layoutX="330.0" layoutY="295.0" opacity="0.13">
                <image>
                   <Image url="@../tournament.png" />
                </image>

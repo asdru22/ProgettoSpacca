@@ -22,7 +22,25 @@ import static gioco.progettospacca.controller.Main.*;
 
 public class TorneoController4 implements Initializable {
     @FXML
-    Button btn_semi1, btn_semi2, btn_finale;
+    Button btn_semi1, btn_semi2, btn_finale, btn_home;
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,6 +101,19 @@ public class TorneoController4 implements Initializable {
                 }
             });
         }
+
+        btn_finale.setOnMouseEntered(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_finale.setOnMouseExited(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
 
     }
 
