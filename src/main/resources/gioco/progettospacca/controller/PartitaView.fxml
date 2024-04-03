@@ -11,14 +11,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="624.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
+<Pane prefHeight="631.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
-      <ImageView fitHeight="624.0" fitWidth="907.0">
+      <ImageView fitHeight="631.0" fitWidth="915.0">
          <image>
             <Image url="@../campoGioco.png" />
          </image>
       </ImageView>
-        <AnchorPane fx:id="anchorPane" layoutY="1.0" prefHeight="624.0" prefWidth="907.0">
+        <AnchorPane fx:id="anchorPane" layoutY="1.0" prefHeight="631.0" prefWidth="915.0">
             <children>
                 <Button fx:id="btn_scarta" layoutX="23.0" layoutY="414.0" mnemonicParsing="false" onKeyPressed="#keyScelta" prefHeight="52.0" prefWidth="84.0" text="Scarta" visible="false">
                     <font>

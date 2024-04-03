@@ -21,7 +21,7 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="37.0" text="❮" />
             <GridPane layoutX="214.0" layoutY="101.0" prefHeight="441.0" prefWidth="478.0">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -42,12 +42,12 @@
                         <Font name="Candara" size="25.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_gioc1" maxWidth="200.0" GridPane.rowIndex="1" />
-                  <TextField fx:id="txt_gioc2" maxWidth="200.0" GridPane.rowIndex="2" />
-                  <TextField fx:id="txt_gioc3" maxWidth="200.0" GridPane.rowIndex="3" />
-                  <TextField fx:id="txt_gioc4" maxWidth="200.0" GridPane.rowIndex="4" />
-                  <TextField fx:id="txt_gioc5" maxWidth="200.0" GridPane.rowIndex="5" />
-                  <Button fx:id="btn_entra" mnemonicParsing="false" onAction="#entraInPartita" prefHeight="51.0" prefWidth="150.0" text="Entra" GridPane.rowIndex="6">
+                  <TextField fx:id="txt_gioc1" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_gioc2" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_gioc3" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_gioc4" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_gioc5" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="5" />
+                  <Button fx:id="btn_entra" focusTraversable="false" mnemonicParsing="false" onAction="#entraInPartita" onKeyPressed="#keyEvent" prefHeight="51.0" prefWidth="150.0" text="Entra" GridPane.rowIndex="6">
                      <font>
                         <Font name="Candara" size="25.0" />
                      </font>
@@ -57,11 +57,11 @@
                         <Font name="Candara" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_cod1" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="txt_cod2" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="txt_cod3" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField fx:id="txt_cod4" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <TextField fx:id="txt_cod5" maxWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <TextField fx:id="txt_cod1" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_cod2" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_cod3" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_cod4" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_cod5" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
             <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="692.0" layoutY="251.0">

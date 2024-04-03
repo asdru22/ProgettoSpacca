@@ -53,12 +53,19 @@ public class GiocaTorneoController implements Initializable {
     public void BackToHome(ActionEvent actionEvent) throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle(OPZ.traduci("spacca"));
-        stage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        stage.show();
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_entraTorneo.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
     public void giocaTorneo(MouseEvent mouseEvent) throws IOException {

@@ -13,7 +13,7 @@
    <children>
       <AnchorPane>
          <children>
-            <ImageView fitHeight="631.0" fitWidth="915.0" layoutX="-4.0">
+            <ImageView fitHeight="631.0" fitWidth="915.0">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>

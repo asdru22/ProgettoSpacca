@@ -11,7 +11,7 @@
 
 <Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaTorneoController">
    <children>
-      <AnchorPane prefHeight="631.0" prefWidth="915.0">
+      <AnchorPane>
          <children>
             <ImageView fitHeight="631.0" fitWidth="915.0">
                <image>
@@ -38,8 +38,8 @@
                   <Font name="Candara Bold" size="25.0" />
                </font>
             </Label>
+            <Button fx:id="btn_home" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
          </children>
       </AnchorPane>
-      <Button fx:id="btn_home" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
    </children>
 </Pane>

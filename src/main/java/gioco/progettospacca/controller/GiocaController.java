@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -40,6 +42,14 @@ public class GiocaController implements Initializable {
     @FXML
     private TextField txt_cod1;
     @FXML
+    private TextField txt_cod2;
+    @FXML
+    private TextField txt_cod3;
+    @FXML
+    private TextField txt_cod4;
+    @FXML
+    private TextField txt_cod5;
+    @FXML
     private Label lbl_nomi;
     @FXML
     private Label lbl_codice;
@@ -48,16 +58,21 @@ public class GiocaController implements Initializable {
     @FXML
     private Button btn_back;
 
-    public void BackToHome(ActionEvent actionEvent) throws IOException {
+    public void BackToHome() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.setTitle(OPZ.traduci("spacca"));
-        stage.setScene(scene);
-        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
-        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
-        stage.show();
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_back.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
 
@@ -116,6 +131,101 @@ public class GiocaController implements Initializable {
         }
 
     }
+    public void keyEvent(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.DOWN) {
+            txt_gioc1.setFocusTraversable(false);
+            if (txt_gioc1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc5.requestFocus();
+            }else if(txt_gioc5.isFocused()){
+                btn_entra.requestFocus();
+            }else if (btn_entra.isFocused()) {
+                System.out.println("sei già in basso");
+            }
+
+            if(txt_cod1.isFocused()){
+                txt_cod2.requestFocus();
+            } else if (txt_cod2.isFocused()) {
+                txt_cod3.requestFocus();
+            } else if (txt_cod3.isFocused()) {
+                txt_cod4.requestFocus();
+            } else if (txt_cod4.isFocused()) {
+                txt_cod5.requestFocus();
+            } else if (txt_cod5.isFocused()) {
+                btn_entra.requestFocus();
+            } else if (btn_entra.isFocused()) {
+                System.out.println("sei già in basso");
+            }
+
+        }
+        if(keyEvent.getCode() == KeyCode.UP) {
+            txt_gioc1.setFocusTraversable(false);
+            if(btn_entra.isFocused()){
+                txt_gioc5.requestFocus();
+            }else if (txt_gioc5.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc1.requestFocus();
+            } else if (txt_gioc1.isFocused()) {
+                System.out.println("sei già in alto");
+            }
+
+            if(btn_entra.isFocused()){
+                txt_cod5.requestFocus();
+            } else if (txt_cod5.isFocused()) {
+                txt_cod4.requestFocus();
+            } else if (txt_cod4.isFocused()) {
+                txt_cod3.requestFocus();
+            } else if (txt_cod3.isFocused()) {
+                txt_cod2.requestFocus();
+            } else if (txt_cod2.isFocused()) {
+                txt_cod1.requestFocus();
+            } else if (txt_cod1.isFocused()) {
+                System.out.println("sei già in alto");
+            }
+        }
+
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            if(txt_gioc1.isFocused()){
+                txt_cod1.requestFocus();
+            } else if (txt_cod1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_cod2.requestFocus();
+            } else if (txt_cod2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_cod3.requestFocus();
+            } else if (txt_cod3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_cod4.requestFocus();
+            } else if (txt_cod4.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                txt_cod5.requestFocus();
+            } else if (txt_cod5.isFocused()) {
+                btn_entra.requestFocus();
+            }
+        }
+
+        if(keyEvent.getCode() == KeyCode.ESCAPE){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -150,5 +260,6 @@ public class GiocaController implements Initializable {
         lbl_codice.setText(OPZ.traduci("inserisci_codice"));
         btn_entra.setText(OPZ.traduci("entra"));
     }
+
 }
 
