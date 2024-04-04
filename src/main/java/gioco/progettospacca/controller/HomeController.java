@@ -222,6 +222,7 @@ public class HomeController implements Initializable {
         if (keyEvent.getCode() == KeyCode.ENTER && btn_chiudiPaneSuoni.isFocused()) {
             anchorPane_suoni.setVisible(false);
             btn_giocaPartita.requestFocus();
+            anchorPane.setDisable(false);
         }
         if (keyEvent.getCode() == KeyCode.UP) {
             if (btn_giocaPartita.isFocused()) {

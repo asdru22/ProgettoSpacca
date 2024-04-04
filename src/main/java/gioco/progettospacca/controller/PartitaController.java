@@ -76,7 +76,8 @@ public class PartitaController implements Initializable {
     private Label lbl_turno;
     @FXML
     private Label lbl_scegliCarteDaScartare;
-
+    @FXML
+    private Label lbl_PerFocus;
     @FXML
     private AnchorPane anchPane_toccaA;
     @FXML
@@ -415,12 +416,14 @@ public class PartitaController implements Initializable {
             rimuoviEventiCarte();
         } else {
             lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("Devi scegliere almeno una carta");
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
             fadeTransition.play();
             fadeTransition.setOnFinished(event -> {
                 lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
             });
 
         }
@@ -474,14 +477,17 @@ public class PartitaController implements Initializable {
             p.setCont(cont + 1);
             toccaA.setPunti(punti);
             rimuoviEventiCarte();
+            lbl_PerFocus.setFocusTraversable(true);
         } else {
             lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("Devi scegliere almeno una carta");
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
             fadeTransition.play();
             fadeTransition.setOnFinished(event -> {
                 lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
             });
 
         }
@@ -529,95 +535,246 @@ public class PartitaController implements Initializable {
         translateTransition.play();
     }
 
+    private int numCarteSelezionate = 0;
     private void carta1Click(MouseEvent event) {
         if (mano[0].getCliccata()) {
             mano[0].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta1, mano[0]);
+        }else if(numCarteSelezionate<3) {
             mano[0].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta1, mano[0]);
         }
-        spostaCarta(carta1, mano[0]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta1Click() {
         if (mano[0].getCliccata()) {
             mano[0].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta1, mano[0]);
+        }else if(numCarteSelezionate<3) {
             mano[0].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta1, mano[0]);
         }
-        spostaCarta(carta1, mano[0]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta2Click(MouseEvent event) {
         if (mano[1].getCliccata()) {
             mano[1].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta2, mano[1]);
+        }else if(numCarteSelezionate<3) {
             mano[1].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta2, mano[1]);
         }
-        spostaCarta(carta2, mano[1]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta2Click() {
         if (mano[1].getCliccata()) {
             mano[1].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta2, mano[1]);
+        }else if(numCarteSelezionate<3) {
             mano[1].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta2, mano[1]);
         }
-        spostaCarta(carta2, mano[1]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta3Click(MouseEvent event) {
         if (mano[2].getCliccata()) {
             mano[2].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta3, mano[2]);
+        }else if(numCarteSelezionate<3) {
             mano[2].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta3, mano[2]);
         }
-        spostaCarta(carta3, mano[2]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta3Click() {
         if (mano[2].getCliccata()) {
             mano[2].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta3, mano[2]);
+        }else if(numCarteSelezionate<3) {
             mano[2].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta3, mano[2]);
         }
-        spostaCarta(carta3, mano[2]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta4Click(MouseEvent event) {
         if (mano[3].getCliccata()) {
             mano[3].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta4, mano[3]);
+        }else if(numCarteSelezionate<3) {
             mano[3].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta4, mano[3]);
         }
-        spostaCarta(carta4, mano[3]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta4Click() {
         if (mano[3].getCliccata()) {
             mano[3].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta4, mano[3]);
+        }else if(numCarteSelezionate<3) {
             mano[3].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta4, mano[3]);
         }
-        spostaCarta(carta4, mano[3]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
 
     private void carta5Click(MouseEvent event) {
         if (mano[4].getCliccata()) {
             mano[4].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta5, mano[4]);
+        }else if(numCarteSelezionate<3) {
             mano[4].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta5, mano[4]);
         }
-        spostaCarta(carta5, mano[4]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
     private void carta5Click() {
         if (mano[4].getCliccata()) {
             mano[4].setCliccata(false);
-        } else {
+            numCarteSelezionate--;
+            spostaCarta(carta5, mano[4]);
+        }else if(numCarteSelezionate<3) {
             mano[4].setCliccata(true);
+            numCarteSelezionate++;
+            spostaCarta(carta5, mano[4]);
         }
-        spostaCarta(carta5, mano[4]);
+        else{
+            lbl_attenzione.setVisible(true);
+            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
+            fadeTransition.setFromValue(1.0); // Opacità iniziale
+            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+            fadeTransition.play();
+            fadeTransition.setOnFinished(event1 -> {
+                lbl_attenzione.setVisible(false);
+                lbl_attenzione.setText("");
+            });
+        }
     }
 
 
@@ -1340,6 +1497,7 @@ public class PartitaController implements Initializable {
             carta1.requestFocus();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_prossimaMano.isVisible()) {
+            System.out.println("ciao");
             try {
                 newScene();
             } catch (IOException e) {
