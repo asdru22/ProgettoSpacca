@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController16">
+   <children>
+      <Button fx:id="btn_semi1" layoutX="143.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" text="S1" />
+      <Button fx:id="btn_semi2" layoutX="410.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" text="S2" />
+      <Button fx:id="btn_finale" layoutX="289.0" layoutY="174.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" text="F" />
+      <Button fx:id="btn_quarti1" layoutX="111.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti1" text="Q1" />
+      <Button fx:id="btn_quarti2" layoutX="111.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti2" text="Q2" />
+      <Button fx:id="btn_quarti3" layoutX="440.0" layoutY="126.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti3" text="Q3" />
+      <Button fx:id="btn_quarti4" layoutX="440.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti4" text="Q4" />
+      <Button fx:id="btn_ottavi1" layoutX="79.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi1" text="O1" />
+      <Button fx:id="btn_ottavi2" layoutX="79.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi2" text="O2" />
+      <Button fx:id="btn_ottavi3" layoutX="79.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi3" text="O3" />
+      <Button fx:id="btn_ottavi4" layoutX="79.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi4" text="O4" />
+      <Button fx:id="btn_ottavi5" layoutX="472.0" layoutY="100.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi5" text="O5" />
+      <Button fx:id="btn_ottavi6" layoutX="472.0" layoutY="151.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi6" text="O6" />
+      <Button fx:id="btn_ottavi7" layoutX="472.0" layoutY="199.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi7" text="O7" />
+      <Button fx:id="btn_ottavi8" layoutX="472.0" layoutY="248.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi8" text="O8" />
+
+   </children>
+</AnchorPane>

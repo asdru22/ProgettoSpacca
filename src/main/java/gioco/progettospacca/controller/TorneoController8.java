@@ -39,6 +39,7 @@ public class TorneoController8 implements Initializable {
             btn_semi1.setText(OPZ.traduci("semifinale"));
             btn_semi2.setDisable(true);
             btn_semi2.setText(OPZ.traduci("semifinale"));
+
         } else if (t.getRound() == 1) {
             Utili.bottoneTorneo(btn_semi1, partite.get(4));
             Utili.bottoneTorneo(btn_semi2, partite.get(5));
