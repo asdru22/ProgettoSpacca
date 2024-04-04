@@ -30,8 +30,14 @@ public class Torneo {
     public void skip(){
         // PER TESTARE TORNO
         System.out.println("SETTANDO VINCITORE TEMP PARTITE");
-        for(int i = 0;i<partite.size()-1;i++){
-            Partita p = Partita.carica(partite.get(i));
+        Partita p;
+        int start=0,end=0;
+        if(round_salvato==0){start = 0;end = 7;}
+        if(round_salvato==1){start = 8;end = 11;}
+        if(round_salvato==2){start = 12;end = 13;}
+
+        for(int i = start;i<end;i++){
+            p = Partita.carica(partite.get(i));
             p.setVincitoreTemp();
             giocatori.add(p.getVincitore());
             p.salva();
@@ -147,6 +153,7 @@ public class Torneo {
         Partita p;
         for(int n: partite){
             p = Partita.carica(n);
+            System.out.println(p.getId()+"> "+p.getVincitore());
             if(p.getVincitore()==null) return false;
         }
         return true;

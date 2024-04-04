@@ -3,14 +3,8 @@ package gioco.progettospacca.classi;
 
 public class test {
     public static void main(String[] args) {
-        Torneo t = Torneo.carica(72517);
-        for(int i = 0;i<t.getPartite().size()-1;i++){
-            Partita p = Partita.carica(t.getPartite().get(i));
-            p.setVincitoreTemp();
-            p.salva();
-        }
-
-
-
+        Torneo t = Torneo.carica(76048);
+        t.skip();
+        System.out.println(t.getGiocatori().size());
     }
 }
