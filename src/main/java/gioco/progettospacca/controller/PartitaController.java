@@ -118,14 +118,9 @@ public class PartitaController implements Initializable {
     private ImageView imageView5;
     private ImageView imageViewMazzo;
     private ImageView imageViewSeme;
-
-
     private Map<String, AnchorPane> cartaPaneMap = new HashMap<>();
     private Map<String, ImageView> cartaMap = new HashMap<>();
-
-
     private Partita p;
-    private static int NUMERO_TURNI = 2;
     private Carta[] mano;
     private Mazzo mazzo;
     private Giocatore[] giocatori = null;
@@ -416,7 +411,7 @@ public class PartitaController implements Initializable {
             rimuoviEventiCarte();
         } else {
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("Devi scegliere almeno una carta");
+            lbl_attenzione.setText(OPZ.traduci("scegli_almeno_una_carta"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -429,7 +424,7 @@ public class PartitaController implements Initializable {
         }
     }
 
-    public void cambiaCarteSelezionate() throws FileNotFoundException {
+    public void cambiaCarteSelezionate() {
 
         ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         boolean almenoUnaTrue = false;
@@ -480,7 +475,7 @@ public class PartitaController implements Initializable {
             lbl_PerFocus.setFocusTraversable(true);
         } else {
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("Devi scegliere almeno una carta");
+            lbl_attenzione.setText(OPZ.traduci("scegli_almeno_una_carta"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -548,7 +543,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -572,7 +567,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -596,7 +591,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -620,7 +615,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -644,7 +639,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -668,7 +663,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -692,7 +687,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -716,7 +711,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -741,7 +736,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -765,7 +760,7 @@ public class PartitaController implements Initializable {
         }
         else{
             lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText("non puoi selezionare più di 3 carte da scartare");
+            lbl_attenzione.setText(OPZ.traduci("max_3_carte"));
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
             fadeTransition.setFromValue(1.0); // Opacità iniziale
             fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
@@ -1124,7 +1119,7 @@ public class PartitaController implements Initializable {
     }
 
     private void newScene() throws IOException {
-        if (cont == p.getNumeroTurni() * p.getGiocatori().length - 1) {
+        if (cont >= p.getNumeroTurni() * p.getGiocatori().length - 1) {
             String s = "";
             for (int i = 0; i < p.getGiocatori().length; i++) {
                 s = s + p.getGiocatori()[i].getNome() + ":  " + p.getGiocatori()[i].getPunti() + "\n";
@@ -1334,7 +1329,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_TEMP);
+        p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();

@@ -10,9 +10,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 
 public class Partita {
-    private boolean iniziata = false;
-    private static int NUMERO_TURNI = 1;
-    private static int numero_bot;
+    private final int NUMERO_TURNI = OPZ.getTurniPartita();
     private final int id;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
@@ -39,20 +37,8 @@ public class Partita {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
 
-    public boolean getPrimoTurnoScena() {
-        return this.primoTurnoScena;
-    }
-
-    public void setPrimoTurnoScena(boolean b) {
-        this.primoTurnoScena = b;
-    }
-
     public Giocatore getToccaA() {
         return toccaA;
-    }
-
-    public int getBot() {
-        return numero_bot;
     }
 
     public void setToccaA(Giocatore toccaA) {
@@ -123,14 +109,6 @@ public class Partita {
 
     public void setGiocatoreSalvato(int val) {
         this.giocatore_salvato = val;
-    }
-
-    public void inizio() {
-        iniziata = true;
-    }
-
-    public boolean isIniziata() {
-        return iniziata;
     }
 
     public void finePartita() {

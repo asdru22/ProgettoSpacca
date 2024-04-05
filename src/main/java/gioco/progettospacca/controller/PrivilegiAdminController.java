@@ -1,12 +1,16 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Opzioni;
+import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -27,6 +31,10 @@ public class PrivilegiAdminController implements Initializable {
     private Button btn_partiteSalvate;
     @FXML
     private Button btn_modificaGiocatore;
+    @FXML
+    private Button btn_cambiaTurni;
+    @FXML
+    private TextField txt_nturni;
 
 
     public void BackToHome() throws IOException {
@@ -145,10 +153,69 @@ public class PrivilegiAdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_modificaGiocatore.setOnMouseEntered(e -> {
+            if (btn_modificaGiocatore.getScene() != null) {
+                btn_modificaGiocatore.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_modificaGiocatore.setOnMouseExited(e -> {
+            if (btn_modificaGiocatore.getScene() != null) {
+                btn_modificaGiocatore.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_partiteSalvate.setOnMouseEntered(e -> {
+            if (btn_partiteSalvate.getScene() != null) {
+                btn_partiteSalvate.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_partiteSalvate.setOnMouseExited(e -> {
+            if (btn_partiteSalvate.getScene() != null) {
+                btn_partiteSalvate.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_cambiaTurni.setOnMouseEntered(e -> {
+            if (btn_cambiaTurni.getScene() != null) {
+                btn_cambiaTurni.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_cambiaTurni.setOnMouseExited(e -> {
+            if (btn_cambiaTurni.getScene() != null) {
+                btn_cambiaTurni.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
         btn_partiteSalvate.setText(OPZ.traduci("partite_salvate"));
         btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
         lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
+        btn_cambiaTurni.setText(OPZ.traduci("cambia_n_turni"));
 
     }
 
+    public void cambiaNumeroTurni(MouseEvent mouseEvent) {
+        int n = Utili.leggiInt(txt_nturni);
+        if(n>=1){
+            OPZ.setTurniPartita(n);
+        }
+    }
 }
