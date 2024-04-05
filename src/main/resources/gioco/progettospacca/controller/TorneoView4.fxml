@@ -17,29 +17,29 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="570.0" fitWidth="860.0" layoutX="28.0" layoutY="31.0">
-               <image>
-                  <Image url="@../torneo4Bracket.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="915.0" layoutX="1.0" layoutY="481.0">
+            <ImageView fitHeight="149.0" fitWidth="915.0" layoutX="1.0" layoutY="482.0">
                <image>
                   <Image url="@../backrTorneoTrofeo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_semi1" layoutX="101.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="55.0" prefWidth="130.0" text="S1">
+            <ImageView fitHeight="528.0" fitWidth="860.0" layoutX="28.0" layoutY="50.0">
+               <image>
+                  <Image url="@../torneo4Bracket.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_semi1" layoutX="101.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="50.0" prefWidth="130.0" text="S1">
                <font>
-                  <Font name="Candara" size="22.0" />
+                  <Font name="Candara" size="15.0" />
                </font>
             </Button>
-            <Button fx:id="btn_semi2" layoutX="684.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="55.0" prefWidth="130.0" text="S2">
+            <Button fx:id="btn_semi2" layoutX="684.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="50.0" prefWidth="130.0" text="S2">
                <font>
-                  <Font name="Candara" size="22.0" />
+                  <Font name="Candara" size="15.0" />
                </font>
             </Button>
             <Button fx:id="btn_finale" layoutX="373.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="64.0" prefWidth="172.0" text="F">
                <font>
-                  <Font name="Candara" size="26.0" />
+                  <Font name="Candara" size="20.0" />
                </font>
             </Button>
             <Label layoutX="111.0" layoutY="207.0" text="Semifinale">
@@ -67,9 +67,9 @@
                   <Font name="Candara Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="343.0" layoutY="64.0" text="Torneo 4 giocatori">
+            <Label layoutX="297.0" layoutY="49.0" text="Torneo 4 giocatori">
                <font>
-                  <Font name="Candara Bold" size="29.0" />
+                  <Font name="Candara Bold" size="41.0" />
                </font>
             </Label>
             <Button fx:id="btn_home" layoutX="34.0" layoutY="34.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">

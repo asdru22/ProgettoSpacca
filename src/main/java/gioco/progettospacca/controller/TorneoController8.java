@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,10 +22,96 @@ import static gioco.progettospacca.controller.Main.*;
 
 public class TorneoController8 implements Initializable {
     @FXML
-    Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2, btn_finale;
+    Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2, btn_finale,btn_home;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn_quarti1.setOnMouseEntered(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti1.setOnMouseExited(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti2.setOnMouseEntered(e -> {
+            if (btn_quarti2.getScene() != null) {
+                btn_quarti2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti2.setOnMouseExited(e -> {
+            if (btn_quarti2.getScene() != null) {
+                btn_quarti2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti3.setOnMouseEntered(e -> {
+            if (btn_quarti3.getScene() != null) {
+                btn_quarti3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti3.setOnMouseExited(e -> {
+            if (btn_quarti3.getScene() != null) {
+                btn_quarti3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti4.setOnMouseEntered(e -> {
+            if (btn_quarti4.getScene() != null) {
+                btn_quarti4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti4.setOnMouseExited(e -> {
+            if (btn_quarti4.getScene() != null) {
+                btn_quarti4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_semi1.setOnMouseEntered(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi1.setOnMouseExited(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_semi2.setOnMouseEntered(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi2.setOnMouseExited(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_finale.setOnMouseEntered(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_finale.setOnMouseExited(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
         System.out.println("round: " + t.getRound());
@@ -116,6 +203,24 @@ public class TorneoController8 implements Initializable {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(6);
         giocaPartita(b);
+    }
+
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
 }
