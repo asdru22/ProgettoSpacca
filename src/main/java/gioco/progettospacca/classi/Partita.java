@@ -20,7 +20,7 @@ public class Partita {
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Carta seme_che_comanda;
-    private Seme semeComandante = seme_che_comanda.getSeme();
+    private Seme semeComandante;
     private int cont = 0; //cpntatore turni totali
     private boolean primoTurnoScena = true;
 
@@ -32,8 +32,9 @@ public class Partita {
         this.mazzo = new Mazzo();
         this.id_torneo = id_torneo;
         toccaA = giocatori[0];
-        this.salva();
         this.seme_che_comanda = this.mazzo.getMazzoArrayList().get(0);
+        semeComandante = seme_che_comanda.getSeme();
+        this.salva();
     }
 
     public Partita(Giocatore[] giocatori, int id_torneo) {

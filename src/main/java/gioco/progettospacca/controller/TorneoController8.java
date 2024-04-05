@@ -112,6 +112,8 @@ public class TorneoController8 implements Initializable {
                 btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });
+
+
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
         System.out.println("round: " + t.getRound());

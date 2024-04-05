@@ -16,9 +16,9 @@ public class Torneo {
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
         this.giocatori = giocatori;
+        Collections.shuffle(giocatori);
         this.id = id;
         this.giocatoriIniziali = giocatori.size();
-        creaPartite();
     }
 
     public static Torneo carica(int id) {
@@ -74,8 +74,8 @@ public class Torneo {
             fineTorneo(giocatori.get(0));
         } else {
             Giocatore[] coppia = new Giocatore[2];
-            Collections.shuffle(giocatori);
-            for (int i = 0; i < giocatori.size() / 2; i++) {
+            int numPartite =  giocatori.size() / 2;
+            for (int i = 0; i < numPartite; i++) {
                 coppia[0] = giocatori.get(0);
                 giocatori.remove(0);
                 coppia[1] = giocatori.get(0);
