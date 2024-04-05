@@ -1,5 +1,7 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Opzioni;
+import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -106,10 +108,6 @@ public class PrivilegiAdminController implements Initializable {
         //currentStage.setTitle(OPZ.traduci("Modifica giocatore"));
     }
 
-    private void EventoCambiaTurni()throws IOException
-    {
-
-    }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
@@ -210,7 +208,14 @@ public class PrivilegiAdminController implements Initializable {
         btn_partiteSalvate.setText(OPZ.traduci("partite_salvate"));
         btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
         lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
+        btn_cambiaTurni.setText(OPZ.traduci("cambia_n_turni"));
 
     }
 
+    public void cambiaNumeroTurni(MouseEvent mouseEvent) {
+        int n = Utili.leggiInt(txt_nturni);
+        if(n>=1){
+            OPZ.setTurniPartita(n);
+        }
+    }
 }
