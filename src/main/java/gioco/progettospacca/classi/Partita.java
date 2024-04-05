@@ -20,8 +20,11 @@ public class Partita {
     private Giocatore toccaA;
     private Mazzo mazzo;
     private Carta seme_che_comanda;
+    private Seme semeComandante = seme_che_comanda.getSeme();
     private int cont = 0; //cpntatore turni totali
     private boolean primoTurnoScena = true;
+
+    private Seme semeCatenaColore;
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -200,20 +203,91 @@ public class Partita {
         switch (verificaColore(carteSeme)) {
             case 3:
                 //System.out.println("3 carte dello stesso colore");
-                punti = punti + 10;
+                punti = (int) ((punti + 10)*ModificaPuntiSemeCheComanda());
                 break;
             case 4:
                 //System.out.println("4 carte dello stesso colore");
-                punti = punti + 30;
+                punti = (int) ((punti + 30)*ModificaPuntiSemeCheComanda());
                 break;
             case 5:
                 //System.out.println("5 carte dello stesso colore");
-                punti = punti + 80;
+                punti = (int) ((punti + 80)*ModificaPuntiSemeCheComanda());
                 break;
             default:
                 //System.out.println("non hai fatto colore");
         }
         return punti;
+    }
+    //per valutare la sequenza colore in modo differente in base al tipo di seme che comanda, restituirà un moltiplicatore
+    //(se il seme che comanda è fuoco e la mia sequenza colore è di tipo acqua allora il valore dei punti verrà raddoppiato, se la sequenza fosse di tipo erba allora verrà dimezzata)
+    private double ModificaPuntiSemeCheComanda(){
+        double moltiplicatore = 1;
+        if(this.semeCatenaColore == Seme.Acqua){
+            if(this.semeComandante == Seme.Acqua){
+                moltiplicatore = 1;
+            } else if (this.semeComandante == Seme.Terra) {
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Erba) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Elettro) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Fuoco) {
+                moltiplicatore = 2;
+            }
+        }
+        if(this.semeCatenaColore == Seme.Fuoco){
+            if(this.semeComandante == Seme.Acqua){
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Terra) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Erba) {
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Elettro) {
+                moltiplicatore = 1;
+            } else if (this.semeComandante == Seme.Fuoco) {
+                moltiplicatore = 1;
+            }
+        }
+        if(this.semeCatenaColore == Seme.Erba){
+            if(this.semeComandante == Seme.Acqua){
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Terra) {
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Erba) {
+                moltiplicatore = 1;
+            } else if (this.semeComandante == Seme.Elettro) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Fuoco) {
+                moltiplicatore = 0.5;
+            }
+        }
+        if(this.semeCatenaColore == Seme.Elettro){
+            if(this.semeComandante == Seme.Acqua){
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Terra) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Erba) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Elettro) {
+                moltiplicatore = 1;
+            } else if (this.semeComandante == Seme.Fuoco) {
+                moltiplicatore = 1;
+            }
+        }
+        if(this.semeCatenaColore == Seme.Terra){
+            if(this.semeComandante == Seme.Acqua){
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Terra) {
+                moltiplicatore = 1;
+            } else if (this.semeComandante == Seme.Erba) {
+                moltiplicatore = 0.5;
+            } else if (this.semeComandante == Seme.Elettro) {
+                moltiplicatore = 2;
+            } else if (this.semeComandante == Seme.Fuoco) {
+                moltiplicatore = 2;
+            }
+        }
+        return moltiplicatore;
     }
 
     public int verificaColore(Seme[] carteSeme) {
@@ -227,6 +301,8 @@ public class Partita {
             int valore = mappa.get(chiave);
             if (valore > numColorePiuVolteRipetuto) {
                 numColorePiuVolteRipetuto = valore;
+                this.semeCatenaColore = chiave;
+                System.out.println(this.semeCatenaColore);
             }
         }
         return numColorePiuVolteRipetuto;
