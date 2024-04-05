@@ -8,6 +8,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.*;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -15,9 +16,9 @@ public class Opzioni {
     private Locale lingua = Locale.ENGLISH;
     private boolean sfxPausa = false;
     private boolean musicaPausa = false;
-
     private static MediaPlayer musica;
     private static MediaPlayer sfx;
+    private int turniPartita = 5;
 
     public Opzioni() {
     }
@@ -57,7 +58,7 @@ public class Opzioni {
 
     private static Opzioni inizializza() {
         // crea cartelle salvataggi per la prima esecuzione in assoluto
-        File d_salvataggi = new File("salvataggi");
+        File d_salvataggi = new File("salvataggi") ;
         d_salvataggi.mkdir();
 
         File d_giocatori = new File("salvataggi/giocatori");
@@ -80,7 +81,7 @@ public class Opzioni {
             musica.stop();
         }
         // carica il path come path apposta delle risorse
-        String pathRisorse = Main.class.getResource("/gioco/progettospacca/suoni/" + nome).toString();
+        String pathRisorse = Objects.requireNonNull(Main.class.getResource("/gioco/progettospacca/suoni/" + nome)).toString();
         musica = new MediaPlayer(new Media(pathRisorse));
         musica.setCycleCount(MediaPlayer.INDEFINITE);
         if (!musicaPausa) {
@@ -102,7 +103,7 @@ public class Opzioni {
     }
 
     public void playSfx(String nome) {
-        String pathRisorse = Main.class.getResource("/gioco/progettospacca/suoni/" + nome).toString();
+        String pathRisorse = Objects.requireNonNull(Main.class.getResource("/gioco/progettospacca/suoni/" + nome)).toString();
         sfx = new MediaPlayer(new Media(pathRisorse));
         sfx.setCycleCount(1);
         if (!sfxPausa) {
@@ -159,5 +160,13 @@ public class Opzioni {
 
     public boolean getMusica() {
         return musicaPausa;
+    }
+
+    public int getTurniPartita() {
+        return turniPartita;
+    }
+    public void setTurniPartita(int n){
+        turniPartita = n;
+        salva();
     }
 }

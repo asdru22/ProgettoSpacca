@@ -3,18 +3,16 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 import javafx.scene.control.TextField;
 
-import java.io.FileNotFoundException;
 import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
-
     private int round_salvato = 0;
-    private int numero_partite = 0;
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Integer> partite = new ArrayList<>();
     private final int id;
     private final int giocatoriIniziali;
+    private boolean salvabile = true;
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
         this.giocatori = giocatori;
@@ -27,16 +25,26 @@ public class Torneo {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("tornei", Integer.toString(id)), Torneo.class);
     }
-    public void skip(){
+
+    public void skip() {
         // PER TESTARE TORNO
         System.out.println("SETTANDO VINCITORE TEMP PARTITE");
         Partita p;
-        int start=0,end=0;
-        if(round_salvato==0){start = 0;end = 7;}
-        if(round_salvato==1){start = 8;end = 11;}
-        if(round_salvato==2){start = 12;end = 13;}
+        int start = 0, end = 0;
+        if (round_salvato == 0) {
+            start = 0;
+            end = 7;
+        }
+        if (round_salvato == 1) {
+            start = 8;
+            end = 11;
+        }
+        if (round_salvato == 2) {
+            start = 12;
+            end = 13;
+        }
 
-        for(int i = start;i<end;i++){
+        for (int i = start; i < end; i++) {
             p = Partita.carica(partite.get(i));
             p.setVincitoreTemp();
             giocatori.add(p.getVincitore());
@@ -46,7 +54,9 @@ public class Torneo {
     }
 
     public void salva() {
-        Utili.salva("tornei", Integer.toString(id), this);
+        if (salvabile) {
+            Utili.salva("tornei", Integer.toString(id), this);
+        }
     }
 
     public ArrayList<Integer> getPartite() {
@@ -59,30 +69,29 @@ public class Torneo {
 
     public void creaPartite() {
         // numero partite dati i giocatori
-        System.out.println("Numoer giocatori"+giocatori.size());
-        numero_partite = giocatori.size() / 2;
-        if(giocatori.size() == 1){
+        System.out.println("Numoer giocatori" + giocatori.size());
+        if (giocatori.size() == 1) {
             fineTorneo(giocatori.get(0));
-            return;
+        } else {
+            Giocatore[] coppia = new Giocatore[2];
+            Collections.shuffle(giocatori);
+            for (int i = 0; i < giocatori.size() / 2; i++) {
+                coppia[0] = giocatori.get(0);
+                giocatori.remove(0);
+                coppia[1] = giocatori.get(0);
+                giocatori.remove(0);
+                partite.add(new Partita(coppia, id).getId());
+                System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
+            }
+            salva();
         }
-        Giocatore[] coppia = new Giocatore[2];
-        Collections.shuffle(giocatori);
-        for (int i = 0; i < numero_partite; i++) {
-
-            coppia[0] = giocatori.get(0);
-            giocatori.remove(0);
-            coppia[1] = giocatori.get(0);
-            giocatori.remove(0);
-            partite.add(new Partita(coppia, id).getId());
-            System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
-        }
-        salva();
     }
 
     private void fineTorneo(Giocatore vincitore) {
-        for(int n: partite){
+        for (int n : partite) {
             Partita.carica(n).elimina();
         }
+        salvabile = false;
         elimina();
         //vincitore.setPartiteVinte(vincitore.getPartiteVinte()+numero_round);
     }
@@ -124,9 +133,6 @@ public class Torneo {
         }
         Torneo t = new Torneo(g, id);
         t.creaPartite();
-        // scommentare per andare direttamente all'ultima partita del primo round
-        // t.skip();
-
     }
 
     private static void aggiungiBot(int giocatori_mancanti, ArrayList<Giocatore> giocatori) {
@@ -149,18 +155,18 @@ public class Torneo {
         return round_salvato;
     }
 
-    public boolean tuttiVincitori(){
+    public boolean tuttiVincitori() {
         Partita p;
-        for(int n: partite){
+        for (int n : partite) {
             p = Partita.carica(n);
-            System.out.println(p.getId()+"> "+p.getVincitore());
-            if(p.getVincitore()==null) return false;
+            System.out.println(p.getId() + "> " + p.getVincitore());
+            if (p.getVincitore() == null) return false;
         }
         return true;
     }
 
     public void aumentaRound() {
-        round_salvato+=1;
+        round_salvato += 1;
     }
 }
 

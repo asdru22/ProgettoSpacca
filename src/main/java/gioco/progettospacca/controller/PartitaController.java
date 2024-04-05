@@ -118,14 +118,9 @@ public class PartitaController implements Initializable {
     private ImageView imageView5;
     private ImageView imageViewMazzo;
     private ImageView imageViewSeme;
-
-
     private Map<String, AnchorPane> cartaPaneMap = new HashMap<>();
     private Map<String, ImageView> cartaMap = new HashMap<>();
-
-
     private Partita p;
-    private static int NUMERO_TURNI = 2;
     private Carta[] mano;
     private Mazzo mazzo;
     private Giocatore[] giocatori = null;
@@ -1124,7 +1119,7 @@ public class PartitaController implements Initializable {
     }
 
     private void newScene() throws IOException {
-        if (cont == p.getNumeroTurni() * p.getGiocatori().length - 1) {
+        if (cont >= p.getNumeroTurni() * p.getGiocatori().length - 1) {
             String s = "";
             for (int i = 0; i < p.getGiocatori().length; i++) {
                 s = s + p.getGiocatori()[i].getNome() + ":  " + p.getGiocatori()[i].getPunti() + "\n";
@@ -1334,7 +1329,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_TEMP);
+        p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
