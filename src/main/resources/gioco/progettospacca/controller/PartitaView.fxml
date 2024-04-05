@@ -77,7 +77,7 @@
                         </Button>
                     </children>
                 </AnchorPane>
-                <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="-2.0" layoutY="321.0" prefHeight="23.0" prefWidth="907.0" text="devi scegliere almeno una carta" visible="false">
+                <Label fx:id="lbl_attenzione" alignment="CENTER" focusTraversable="false" layoutX="-2.0" layoutY="321.0" prefHeight="23.0" prefWidth="907.0" visible="false">
                <font>
                   <Font name="Candara Light" size="15.0" />
                </font></Label>
