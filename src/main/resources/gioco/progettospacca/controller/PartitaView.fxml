@@ -198,8 +198,8 @@
       </Pane>
       <Pane fx:id="pane_finePartita" prefHeight="624.0" prefWidth="907.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="624.0" stroke="#085b8e" strokeType="INSIDE" width="907.0" />
-            <ImageView fitHeight="576.0" fitWidth="907.0" layoutY="24.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="631.0" stroke="#085b8e" strokeType="INSIDE" width="915.0" />
+            <ImageView fitHeight="576.0" fitWidth="915.0" layoutY="24.0">
                <image>
                   <Image url="@../sfondoVittoria.png" />
                </image>
@@ -235,15 +235,15 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane_finePartitaTorneo" layoutX="10.0" layoutY="10.0" prefHeight="624.0" prefWidth="907.0" visible="false">
+      <Pane fx:id="pane_finePartitaTorneo" layoutX="2.0" layoutY="-3.0" prefHeight="637.0" prefWidth="915.0" visible="false">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="624.0" stroke="#085b8e" strokeType="INSIDE" width="907.0" />
-            <ImageView fitHeight="576.0" fitWidth="907.0" layoutY="24.0">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="637.0" stroke="#085b8e" strokeType="INSIDE" width="915.0" />
+            <ImageView fitHeight="576.0" fitWidth="915.0" layoutY="24.0">
                <image>
                   <Image url="@../sfondoVittoria.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="90.0" layoutY="124.0">
+            <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="308.0" layoutY="124.0">
                <image>
                   <Image url="@../trofeo.png" />
                </image>
@@ -253,24 +253,14 @@
                   <Font name="Candara" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="lbl_vincitore1" alignment="CENTER" layoutX="153.0" layoutY="155.0" prefHeight="40.0" prefWidth="174.0">
+            <Label fx:id="lbl_vincitore1" alignment="CENTER" layoutX="371.0" layoutY="153.0" prefHeight="40.0" prefWidth="174.0">
                <font>
                   <Font name="Candara" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_classificaFinale1" alignment="CENTER" layoutX="555.0" layoutY="175.0" lineSpacing="8.0" prefHeight="182.0" prefWidth="202.0" textAlignment="CENTER">
-               <font>
-                  <Font name="Candara" size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbl_vincitoreFisso1" alignment="CENTER" layoutX="139.0" layoutY="104.0" prefHeight="40.0" prefWidth="202.0" text="Vincitore">
+            <Label fx:id="lbl_vincitoreFisso1" alignment="CENTER" layoutX="357.0" layoutY="104.0" prefHeight="40.0" prefWidth="202.0" text="Vincitore">
                <font>
                   <Font name="Candara Bold Italic" size="29.0" />
-               </font>
-            </Label>
-            <Label fx:id="lbl_classificaFisso1" alignment="CENTER" layoutX="555.0" layoutY="105.0" prefHeight="39.0" prefWidth="202.0" text="Classifica finale">
-               <font>
-                  <Font name="Candara" size="23.0" />
                </font>
             </Label>
          </children>
