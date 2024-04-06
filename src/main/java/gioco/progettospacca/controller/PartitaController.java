@@ -36,7 +36,7 @@ import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 33573;
+    public static final int CODICE_TEMP = 82755;
     @FXML
     Label lbl_classificaFisso;
     @FXML
@@ -93,7 +93,11 @@ public class PartitaController implements Initializable {
     @FXML
     private Pane pane_finePartita;
     @FXML
+    private Pane pane_finePartitaTorneo;
+    @FXML
     private Button btn_esci;
+    @FXML
+    private Button btn_tabellone;
     @FXML
     private ToggleButton tglbtn_suono;
     @FXML
@@ -1127,7 +1131,12 @@ public class PartitaController implements Initializable {
             p.finePartita();
             lbl_classificaFinale.setText(s);
             lbl_vincitore.setText(""+p.getVincitore());
-            pane_finePartita.setVisible(true);
+            if(p.getIdTorneo()==0) {
+                pane_finePartita.setVisible(true);
+            }
+            else{
+                pane_finePartitaTorneo.setVisible(true);
+            }
             anchPane_score.setDisable(true);
             anchPane_manoSuccesiva.setDisable(true);
         } else {
@@ -1153,6 +1162,21 @@ public class PartitaController implements Initializable {
     public void salvaEdEsci() throws IOException {
         BackToHome();
         OPZ.playMusica("lobby.wav");
+    }
+    public void tornaAlTabellone(MouseEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("GiocaTorneoView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -1555,4 +1579,5 @@ public class PartitaController implements Initializable {
     public void setMusica(MouseEvent mouseEvent) {
         Utili.gestisciMusica(tglbtn_musica);
     }
+
 }
