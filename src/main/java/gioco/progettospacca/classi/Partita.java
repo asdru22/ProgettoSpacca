@@ -171,6 +171,9 @@ public class Partita {
             System.out.println("Prossimo Round");
             t.aumentaRound();
             t.creaPartite();
+            if(t.getGiocatori().size()==1){
+                t.setFinito();
+            }
         }
         t.salva();
     }

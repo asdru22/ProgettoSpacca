@@ -1168,13 +1168,19 @@ public class PartitaController implements Initializable {
         Parent root = null;
         Torneo t = Torneo.carica(p.getIdTorneo());
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
-        if(p.getPartitaTorneoNumGiocatori()==4){
-            root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));
-        } else if (p.getPartitaTorneoNumGiocatori()==8) {
-            root = FXMLLoader.load(getClass().getResource("TorneoView8.fxml"));
-        } else if (p.getPartitaTorneoNumGiocatori()==16) {
-            root = FXMLLoader.load(getClass().getResource("TorneoView16.fxml"));
+        if(t.isFinito()){
+            root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+            t.fineTorneo();
+        } else {
+            if(p.getPartitaTorneoNumGiocatori()==4){
+                root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));
+            } else if (p.getPartitaTorneoNumGiocatori()==8) {
+                root = FXMLLoader.load(getClass().getResource("TorneoView8.fxml"));
+            } else if (p.getPartitaTorneoNumGiocatori()==16) {
+                root = FXMLLoader.load(getClass().getResource("TorneoView16.fxml"));
+            }
         }
+
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
 

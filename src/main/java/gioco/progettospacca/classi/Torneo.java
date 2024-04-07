@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Torneo {
     private int round_salvato = 0;
+    private boolean finito = false;
     private ArrayList<Giocatore> giocatori;
     private ArrayList<Integer> partite = new ArrayList<>();
     private final int id;
@@ -70,9 +71,7 @@ public class Torneo {
     public void creaPartite() {
         // numero partite dati i giocatori
         System.out.println("Numero giocatori" + giocatori.size());
-        if (giocatori.size() == 1) {
-            fineTorneo(giocatori.get(0));
-        } else {
+        if (giocatori.size() > 1) {
             Giocatore[] coppia = new Giocatore[2];
             int numPartite =  giocatori.size() / 2;
             for (int i = 0; i < numPartite; i++) {
@@ -83,11 +82,11 @@ public class Torneo {
                 partite.add(new Partita(coppia, id).getId());
                 System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
             }
-            salva();
         }
+        salva();
     }
 
-    private void fineTorneo(Giocatore vincitore) {
+    public void fineTorneo() {
         for (int n : partite) {
             Partita.carica(n).elimina();
         }
@@ -167,6 +166,14 @@ public class Torneo {
 
     public void aumentaRound() {
         round_salvato += 1;
+    }
+
+    public boolean isFinito() {
+        return finito;
+    }
+
+    public void setFinito() {
+        finito = true;
     }
 }
 
