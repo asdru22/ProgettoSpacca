@@ -23,7 +23,7 @@ public class Partita {
     private Seme semeComandante;
     private int cont = 0; //cpntatore turni totali
     private boolean primoTurnoScena = true;
-
+    private int partitaTorneoNumGiocatori = 0; //se 0 è una prtita a se, se è diverso mi dice di quale tipo di torneo fa parte (se da 4 , da 8 o da 16 giocatori)
     private Seme semeCatenaColore;
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
@@ -39,6 +39,14 @@ public class Partita {
 
     public Partita(Giocatore[] giocatori, int id_torneo) {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
+    }
+
+    public int getPartitaTorneoNumGiocatori(){
+        return this.partitaTorneoNumGiocatori;
+    }
+
+    public void setPartitaTorneoNumGiocatori(int partitaTorneoNumGiocatori) {
+        this.partitaTorneoNumGiocatori = partitaTorneoNumGiocatori;
     }
 
     public Giocatore getToccaA() {

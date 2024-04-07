@@ -69,7 +69,7 @@ public class Torneo {
 
     public void creaPartite() {
         // numero partite dati i giocatori
-        System.out.println("Numoer giocatori" + giocatori.size());
+        System.out.println("Numero giocatori" + giocatori.size());
         if (giocatori.size() == 1) {
             fineTorneo(giocatori.get(0));
         } else {

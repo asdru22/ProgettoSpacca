@@ -1139,6 +1139,7 @@ public class PartitaController implements Initializable {
             }
             anchPane_score.setDisable(true);
             anchPane_manoSuccesiva.setDisable(true);
+            anchorPane.setDisable(true);
         } else {
 
             p.salva();
@@ -1164,8 +1165,16 @@ public class PartitaController implements Initializable {
         OPZ.playMusica("lobby.wav");
     }
     public void tornaAlTabellone(MouseEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("GiocaTorneoView.fxml"));
-
+        Parent root = null;
+        Torneo t = Torneo.carica(p.getIdTorneo());
+        p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
+        if(p.getPartitaTorneoNumGiocatori()==4){
+            root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));
+        } else if (p.getPartitaTorneoNumGiocatori()==8) {
+            root = FXMLLoader.load(getClass().getResource("TorneoView8.fxml"));
+        } else if (p.getPartitaTorneoNumGiocatori()==16) {
+            root = FXMLLoader.load(getClass().getResource("TorneoView16.fxml"));
+        }
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
 
