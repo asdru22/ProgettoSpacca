@@ -27,19 +27,19 @@
                   <Image url="@../torneo4Bracket.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_semi1" layoutX="101.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="50.0" prefWidth="130.0" text="S1">
+            <Button styleClass="button-torneo" fx:id="btn_semi1" layoutX="97.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="40.0" prefWidth="138.0" text="S1">
                <font>
-                  <Font name="Candara" size="15.0" />
+                  <Font name="Candara" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="btn_semi2" layoutX="684.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="50.0" prefWidth="130.0" text="S2">
+            <Button styleClass="button-torneo" fx:id="btn_semi2" layoutX="680.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="40.0" prefWidth="138.0" text="S2">
                <font>
-                  <Font name="Candara" size="15.0" />
+                  <Font name="Candara" size="11.0" />
                </font>
             </Button>
-            <Button fx:id="btn_finale" layoutX="373.0" layoutY="250.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="64.0" prefWidth="172.0" text="F">
+            <Button styleClass="button-torneo-finale" fx:id="btn_finale" layoutX="372.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="50.0" prefWidth="172.0" text="F">
                <font>
-                  <Font name="Candara" size="20.0" />
+                  <Font name="Candara" size="11.0" />
                </font>
             </Button>
             <Label layoutX="111.0" layoutY="207.0" text="Semifinale">

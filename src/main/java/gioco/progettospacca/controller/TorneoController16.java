@@ -5,6 +5,7 @@ import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,6 +25,189 @@ public class TorneoController16 implements Initializable {
     btn_ottavi1,btn_ottavi2,btn_ottavi3,btn_ottavi4,btn_ottavi5,btn_ottavi6,btn_ottavi7,btn_ottavi8, btn_finale;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn_ottavi1.setOnMouseEntered(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi1.setOnMouseExited(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi2.setOnMouseEntered(e -> {
+            if (btn_ottavi2.getScene() != null) {
+                btn_ottavi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi2.setOnMouseExited(e -> {
+            if (btn_ottavi2.getScene() != null) {
+                btn_ottavi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi3.setOnMouseEntered(e -> {
+            if (btn_ottavi3.getScene() != null) {
+                btn_ottavi3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi3.setOnMouseExited(e -> {
+            if (btn_ottavi3.getScene() != null) {
+                btn_ottavi3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi4.setOnMouseEntered(e -> {
+            if (btn_ottavi4.getScene() != null) {
+                btn_ottavi4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi4.setOnMouseExited(e -> {
+            if (btn_ottavi4.getScene() != null) {
+                btn_ottavi4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi5.setOnMouseEntered(e -> {
+            if (btn_ottavi5.getScene() != null) {
+                btn_ottavi5.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi5.setOnMouseExited(e -> {
+            if (btn_ottavi5.getScene() != null) {
+                btn_ottavi5.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi6.setOnMouseEntered(e -> {
+            if (btn_ottavi6.getScene() != null) {
+                btn_ottavi6.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi6.setOnMouseExited(e -> {
+            if (btn_ottavi6.getScene() != null) {
+                btn_ottavi6.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi7.setOnMouseEntered(e -> {
+            if (btn_ottavi7.getScene() != null) {
+                btn_ottavi7.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi7.setOnMouseExited(e -> {
+            if (btn_ottavi7.getScene() != null) {
+                btn_ottavi7.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_ottavi8.setOnMouseEntered(e -> {
+            if (btn_ottavi8.getScene() != null) {
+                btn_ottavi8.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ottavi8.setOnMouseExited(e -> {
+            if (btn_ottavi8.getScene() != null) {
+                btn_ottavi8.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+
+        btn_quarti1.setOnMouseEntered(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti1.setOnMouseExited(e -> {
+            if (btn_quarti1.getScene() != null) {
+                btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti2.setOnMouseEntered(e -> {
+            if (btn_quarti2.getScene() != null) {
+                btn_quarti2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti2.setOnMouseExited(e -> {
+            if (btn_quarti2.getScene() != null) {
+                btn_quarti2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti3.setOnMouseEntered(e -> {
+            if (btn_quarti3.getScene() != null) {
+                btn_quarti3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti3.setOnMouseExited(e -> {
+            if (btn_quarti3.getScene() != null) {
+                btn_quarti3.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_quarti4.setOnMouseEntered(e -> {
+            if (btn_quarti4.getScene() != null) {
+                btn_quarti4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_quarti4.setOnMouseExited(e -> {
+            if (btn_quarti4.getScene() != null) {
+                btn_quarti4.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_semi1.setOnMouseEntered(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi1.setOnMouseExited(e -> {
+            if (btn_semi1.getScene() != null) {
+                btn_semi1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_semi2.setOnMouseEntered(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_semi2.setOnMouseExited(e -> {
+            if (btn_semi2.getScene() != null) {
+                btn_semi2.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+        btn_finale.setOnMouseEntered(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_finale.setOnMouseExited(e -> {
+            if (btn_finale.getScene() != null) {
+                btn_finale.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
         System.out.println("round: " + t.getRound());

@@ -21,6 +21,45 @@
 }
 
 
+.button-torneo{
+    -fx-text-fill: white;
+    -fx-font-family: "Candara";
+    -fx-font-size: 10px;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 8, 0.0 , 0 , 1 );
+}
+.button-torneo:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-font-size: 11px;
+}
+
+
+.button-torneo:focused{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-font-size: 11px;
+}
+
+.button-torneo-finale
+{
+    -fx-text-fill: white;
+    -fx-font-family: "Candara";
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.8) , 8, 0.0 , 0 , 1 );
+}
+.button-torneo-finale:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-font-size: 14px;
+}
+
+
+.button-torneo-finale:focused{
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+    -fx-font-size: 14px;
+}
+
 
 
 
