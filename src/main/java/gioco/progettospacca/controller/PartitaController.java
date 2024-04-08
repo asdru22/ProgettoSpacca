@@ -139,6 +139,7 @@ public class PartitaController implements Initializable {
     private int cont;
     String percorsoMazzo = "/gioco/progettospacca/Retro.png";
     boolean pausa = false;
+    Torneo t = null;
 
 
     private void inizializzaTraduzioni() {
@@ -1039,6 +1040,7 @@ public class PartitaController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+        //t.fineTorneo();
     }
     //metodo chiamato dal bottone del pane fineTorneo
     public void BackToHome(MouseEvent event) throws IOException {
@@ -1175,13 +1177,12 @@ public class PartitaController implements Initializable {
     }
     public void tornaAlTabellone(MouseEvent event) throws IOException {
         Parent root = null;
-        Torneo t = Torneo.carica(p.getIdTorneo());
+        t = Torneo.carica(p.getIdTorneo());
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
         if(t.isFinito()){
-            System.out.println("ciao");
             pane_fineTorneo.setVisible(true);
-            pane_fineTorneo.setDisable(true);
-            //t.fineTorneo();
+            pane_finePartitaTorneo.setDisable(true);
+            t.fineTorneo();
         } else {
             if(p.getPartitaTorneoNumGiocatori()==4){
                 root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));
@@ -1190,19 +1191,18 @@ public class PartitaController implements Initializable {
             } else if (p.getPartitaTorneoNumGiocatori()==16) {
                 root = FXMLLoader.load(getClass().getResource("TorneoView16.fxml"));
             }
+            // Ottieni la finestra corrente
+            Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
+
+            // Ottieni la scena corrente
+            Scene currentScene = currentStage.getScene();
+
+            // Imposta la nuova radice della scena
+            currentScene.setRoot(root);
+
+            // Imposta il titolo della finestra
+            currentStage.setTitle(OPZ.traduci("spacca"));
         }
-
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_scarta.getScene().getWindow();
-
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
-
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
-
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
