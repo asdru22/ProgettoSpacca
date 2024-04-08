@@ -1170,7 +1170,7 @@ public class PartitaController implements Initializable {
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
         if(t.isFinito()){
             root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-            t.fineTorneo();
+            //t.fineTorneo();
         } else {
             if(p.getPartitaTorneoNumGiocatori()==4){
                 root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));
@@ -1368,7 +1368,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_TEMP);
+        p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();

@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Opzioni;
+import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -209,13 +210,17 @@ public class PrivilegiAdminController implements Initializable {
         btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
         lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
         btn_cambiaTurni.setText(OPZ.traduci("cambia_n_turni"));
-
+        txt_nturni.setText(OPZ.getTurniPartita()+"");
     }
 
     public void cambiaNumeroTurni(MouseEvent mouseEvent) {
         int n = Utili.leggiInt(txt_nturni);
         if(n>=1){
             OPZ.setTurniPartita(n);
+            for(int id : Utili.elencaPartite(true,true)){
+                Partita p = Partita.carica(id);
+                p.setNumeroTurni(n);
+            }
         }
     }
 }

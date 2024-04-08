@@ -10,7 +10,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 
 public class Partita {
-    private final int NUMERO_TURNI = OPZ.getTurniPartita();
+    private int NUMERO_TURNI = OPZ.getTurniPartita();
     private final int id;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
@@ -98,6 +98,9 @@ public class Partita {
         }
         return "> Id Partita: " + id + ", Giocatori: " + Arrays.toString(giocatori) + ", Vincitore: " + vincitore.toString();
     }
+
+    public void setNumeroTurni(int n){
+        this.NUMERO_TURNI = n;}
 
     public int getIdTorneo() {
         return id_torneo;

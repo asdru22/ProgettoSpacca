@@ -212,7 +212,7 @@ public class Utili {
             g.setNome(nuovo);
             g.salva();
             // cambia i nomi salvati nelle partite
-            ArrayList<Integer> idPartite = elencaPartite(true);
+            ArrayList<Integer> idPartite = elencaPartite(true,true);
             assert (!idPartite.isEmpty());
             for (Integer id : idPartite) {
                 Partita p = Partita.carica(id);
@@ -227,7 +227,7 @@ public class Utili {
                     }
                 }
             }
-            ArrayList<Integer> idTornei = elencaPartite(false);
+            ArrayList<Integer> idTornei = elencaPartite(false,false);
             assert (!idTornei.isEmpty());
             for (Integer id : idTornei) {
                 Torneo t = Torneo.carica(id);
@@ -246,7 +246,7 @@ public class Utili {
         } else return OPZ.traduci("cambia_nome_fallito");
     }
 
-    private static ArrayList<Integer> elencaPartite(boolean partite) {
+    public static ArrayList<Integer> elencaPartite(boolean partite,boolean includiTorneo) {
         // true per partite, false per tornei
         File folder;
         if (partite) folder = new File("salvataggi/partite");
@@ -261,7 +261,7 @@ public class Utili {
                     String s = file.getName().substring(0, file.getName().length() - 5);
                     if (partite){
                         int n = gson.fromJson(Utili.leggiFileJson("partite", s), Partita.class).getId();
-                        if(Partita.carica(n).getId()==0) out.add(n);
+                        if(Partita.carica(n).getId()==0||includiTorneo) out.add(n);
                     }
                     else out.add(gson.fromJson(Utili.leggiFileJson("tornei", s), Torneo.class).getId());
                 }
