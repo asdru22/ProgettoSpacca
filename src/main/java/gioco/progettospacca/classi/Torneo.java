@@ -65,6 +65,9 @@ public class Torneo {
     }
 
     public void elimina() {
+        for (int n : partite) {
+            Partita.carica(n).elimina();
+        }
         Utili.eliminaTorneo(id);
     }
 
