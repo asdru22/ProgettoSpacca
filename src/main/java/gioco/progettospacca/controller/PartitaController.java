@@ -95,6 +95,8 @@ public class PartitaController implements Initializable {
     @FXML
     private Pane pane_finePartitaTorneo;
     @FXML
+    private Pane pane_fineTorneo;
+    @FXML
     private Button btn_esci;
     @FXML
     private Button btn_tabellone;
@@ -114,6 +116,8 @@ public class PartitaController implements Initializable {
     private Button btn_stai;
     @FXML
     private Button btn_conferma;
+    @FXML
+    private Button btn_backhome;
 
     private ImageView imageView1;
     private ImageView imageView2;
@@ -1036,6 +1040,11 @@ public class PartitaController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
+    //metodo chiamato dal bottone del pane fineTorneo
+    public void BackToHome(MouseEvent event) throws IOException {
+        BackToHome();
+    }
+
 
     public void fineMano() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), anchPane_manoSuccesiva);
@@ -1169,7 +1178,9 @@ public class PartitaController implements Initializable {
         Torneo t = Torneo.carica(p.getIdTorneo());
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
         if(t.isFinito()){
-            root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+            System.out.println("ciao");
+            pane_fineTorneo.setVisible(true);
+            pane_fineTorneo.setDisable(true);
             //t.fineTorneo();
         } else {
             if(p.getPartitaTorneoNumGiocatori()==4){
