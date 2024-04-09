@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 82755;
+    public static final int CODICE_TEMP = 84073;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -193,6 +193,16 @@ public class PartitaController implements Initializable {
         semeAnimazione();
         pescataAnimazione();
         comparsaSchermata();
+
+        PauseTransition pause77 = new PauseTransition(Duration.seconds(1.5));
+        pause77.play();
+        pause77.setOnFinished(event -> {
+                    if (mano[0].getSeme() == Seme.Neutro) {
+                        mano[0].setCliccata(true);
+                        cambiaCarteSelezionate();
+                    }
+                });
+
         btn_stai.setDisable(true);
         btn_scarta.setDisable(true);
 
@@ -821,7 +831,6 @@ public class PartitaController implements Initializable {
         cartaMap.put("carta3", imageView4);
         cartaMap.put("carta4", imageView5);
 
-
     }
 
     public void nuoveCartePescateAnimazione() throws FileNotFoundException {
@@ -874,7 +883,6 @@ public class PartitaController implements Initializable {
             }
         }
     }
-
     //animazione quando le nuove carte pescate arrivano in mano
     public void giroCarte(int i) throws FileNotFoundException {
         double startFromX = anch_mazzo.getLayoutX();
@@ -902,7 +910,7 @@ public class PartitaController implements Initializable {
             fineMano();
         });
     }
-
+    //quando si girano le carte dopo aver pescato la mano iniziale
     public void giroCarte2(int i) throws FileNotFoundException {
         String cartaName = "carta" + i;
         AnchorPane currentCarta = cartaPaneMap.get(cartaName);
@@ -913,9 +921,6 @@ public class PartitaController implements Initializable {
         if (carta != null) {
             ImageView cartaImageView = makeImageView(carta.getImage());
             currentCarta.getChildren().add(cartaImageView);
-        } else {
-            // Gestisci il caso in cui la carta è nulla
-            // Ad esempio, puoi aggiungere un'immagine di default o fare altre operazioni necessarie
         }
     }
 
@@ -957,7 +962,7 @@ public class PartitaController implements Initializable {
             }
         }
     }
-
+    //animazione de seme che comanda all'inizio del turno
     public void semeAnimazione() {
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
@@ -982,7 +987,7 @@ public class PartitaController implements Initializable {
         transition.play();
 
     }
-
+    //la pescata all'inizio del turno della mano
     public void pescataAnimazione() {
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
@@ -1386,7 +1391,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_GLOBALE_PARTITA);
+        p = Partita.carica(CODICE_TEMP);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
