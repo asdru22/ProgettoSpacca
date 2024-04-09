@@ -253,7 +253,7 @@
                   <Font name="Candara" size="18.0" />
                </font>
             </Button>
-            <Label fx:id="lbl_vincitore1" alignment="CENTER" layoutX="371.0" layoutY="153.0" prefHeight="40.0" prefWidth="174.0">
+            <Label fx:id="lbl_vincitorePartitaTorneo" alignment="CENTER" layoutX="371.0" layoutY="153.0" prefHeight="40.0" prefWidth="174.0">
                <font>
                   <Font name="Candara" size="16.0" />
                </font>
@@ -288,7 +288,7 @@
                   <Image url="@../TrofeoTorneo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_vincitore11" alignment="CENTER" layoutX="255.0" layoutY="191.0" prefHeight="40.0" prefWidth="406.0" text="Marco">
+            <Label fx:id="lbl_vincitoreTorneo" alignment="CENTER" layoutX="255.0" layoutY="191.0" prefHeight="40.0" prefWidth="406.0" text="Marco">
                <font>
                   <Font name="Candara" size="47.0" />
                </font>

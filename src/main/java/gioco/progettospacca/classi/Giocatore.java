@@ -147,4 +147,8 @@ public class Giocatore {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public void aumentaVittorie() {
+        partite_vinte+=1;
+    }
 }

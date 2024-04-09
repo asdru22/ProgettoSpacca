@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.ArrayList;
 
 public class Torneo {
+    private Giocatore vincitore;
     private int round_salvato = 0;
     private boolean finito = false;
     private ArrayList<Giocatore> giocatori;
@@ -25,33 +26,6 @@ public class Torneo {
     public static Torneo carica(int id) {
         Gson gson = new Gson();
         return gson.fromJson(Utili.leggiFileJson("tornei", Integer.toString(id)), Torneo.class);
-    }
-
-    public void skip() {
-        // PER TESTARE TORNO
-        System.out.println("SETTANDO VINCITORE TEMP PARTITE");
-        Partita p;
-        int start = 0, end = 0;
-        if (round_salvato == 0) {
-            start = 0;
-            end = 7;
-        }
-        if (round_salvato == 1) {
-            start = 8;
-            end = 11;
-        }
-        if (round_salvato == 2) {
-            start = 12;
-            end = 13;
-        }
-
-        for (int i = start; i < end; i++) {
-            p = Partita.carica(partite.get(i));
-            p.setVincitoreTemp();
-            giocatori.add(p.getVincitore());
-            p.salva();
-        }
-        salva();
     }
 
     public void salva() {
@@ -90,9 +64,6 @@ public class Torneo {
     }
 
     public void fineTorneo() {
-        for (int n : partite) {
-            Partita.carica(n).elimina();
-        }
         salvabile = false;
         elimina();
         //vincitore.setPartiteVinte(vincitore.getPartiteVinte()+numero_round);
@@ -177,6 +148,12 @@ public class Torneo {
 
     public void setFinito() {
         finito = true;
+    }
+    public void setVincitore(Giocatore g){
+        this.vincitore = g;
+    }
+    public Giocatore getVincitore(){
+        return vincitore;
     }
 }
 

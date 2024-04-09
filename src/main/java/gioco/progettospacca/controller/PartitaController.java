@@ -31,12 +31,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.*;
 
-
-import static gioco.progettospacca.controller.Main.CODICE_GLOBALE_PARTITA;
-import static gioco.progettospacca.controller.Main.OPZ;
+import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
     public static final int CODICE_TEMP = 82755;
+    @FXML
+    Label lbl_vincitorePartitaTorneo;
+    @FXML
+    Label lbl_vincitoreFisso1;
     @FXML
     Label lbl_classificaFisso;
     @FXML
@@ -118,7 +120,10 @@ public class PartitaController implements Initializable {
     private Button btn_conferma;
     @FXML
     private Button btn_backhome;
-
+    @FXML
+    Label lbl_vincitoreFisso11;
+    @FXML
+    Label lbl_vincitoreTorneo;
     private ImageView imageView1;
     private ImageView imageView2;
     private ImageView imageView3;
@@ -166,7 +171,9 @@ public class PartitaController implements Initializable {
         lbl_classificaFisso.setText(OPZ.traduci("classifica_finale"));
         lbl_vincitoreFisso.setText(OPZ.traduci("vincitore"));
         btn_regole.setText(OPZ.traduci("regole"));
-
+        btn_backhome.setText(OPZ.traduci("torna_al_tabellone"));
+        lbl_vincitoreFisso11.setText(OPZ.traduci("vincitore_torneo"));
+        lbl_vincitoreFisso1.setText(OPZ.traduci("vincitore"));
 
     }
 
@@ -894,8 +901,6 @@ public class PartitaController implements Initializable {
         pause.setOnFinished(event2 -> {
             fineMano();
         });
-
-
     }
 
     public void giroCarte2(int i) throws FileNotFoundException {
@@ -1040,11 +1045,13 @@ public class PartitaController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
-        //t.fineTorneo();
+        OPZ.playMusica("lobby.wav");
+
     }
     //metodo chiamato dal bottone del pane fineTorneo
     public void BackToHome(MouseEvent event) throws IOException {
         BackToHome();
+        Torneo.carica(CODICE_GLOBALE_TORNEO).fineTorneo();
     }
 
 
@@ -1147,6 +1154,7 @@ public class PartitaController implements Initializable {
             }
             else{
                 pane_finePartitaTorneo.setVisible(true);
+                lbl_vincitorePartitaTorneo.setText(p.getVincitore().getNome());
             }
             anchPane_score.setDisable(true);
             anchPane_manoSuccesiva.setDisable(true);
@@ -1173,7 +1181,6 @@ public class PartitaController implements Initializable {
 
     public void salvaEdEsci() throws IOException {
         BackToHome();
-        OPZ.playMusica("lobby.wav");
     }
     public void tornaAlTabellone(MouseEvent event) throws IOException {
         Parent root = null;
@@ -1182,7 +1189,7 @@ public class PartitaController implements Initializable {
         if(t.isFinito()){
             pane_fineTorneo.setVisible(true);
             pane_finePartitaTorneo.setDisable(true);
-            t.fineTorneo();
+            lbl_vincitoreTorneo.setText(t.getVincitore().getNome());
         } else {
             if(p.getPartitaTorneoNumGiocatori()==4){
                 root = FXMLLoader.load(getClass().getResource("TorneoView4.fxml"));

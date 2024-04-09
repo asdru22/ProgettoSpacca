@@ -147,8 +147,9 @@ public class Partita {
         }
 
         System.out.println(vincitore.getNome() + " ha vinto!");
-
-        vincitore.setPartiteVinte(vincitore.getPartiteVinte() + 1);
+        System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
+        vincitore.aumentaVittorie();
+        System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
         vincitore.rimuoviPartita(this.id);
         vincitore.resetPunti();
         vincitore.resetMazzo();
@@ -176,6 +177,7 @@ public class Partita {
             t.creaPartite();
             if(t.getGiocatori().size()==1){
                 t.setFinito();
+                t.setVincitore(vincitore);
             }
         }
         t.salva();
@@ -412,10 +414,6 @@ public class Partita {
 
     public int getNumeroTurni() {
         return NUMERO_TURNI;
-    }
-
-    public void setVincitoreTemp() {
-        vincitore = giocatori[0];
     }
 }
 
