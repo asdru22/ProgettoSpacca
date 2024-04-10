@@ -9,6 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -22,11 +23,14 @@ import static gioco.progettospacca.controller.Main.*;
 
 public class TorneoController8 implements Initializable {
     @FXML
-    Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2, btn_finale,btn_home;
-
+    Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2, btn_finale, btn_home;
+    @FXML
+    Label lbl_titolo;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_titolo.setText(OPZ.traduci("torneo_8"));
+
 
         btn_quarti1.setOnMouseEntered(e -> {
             if (btn_quarti1.getScene() != null) {

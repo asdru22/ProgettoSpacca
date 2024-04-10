@@ -9,6 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,6 +24,8 @@ import static gioco.progettospacca.controller.Main.*;
 public class TorneoController4 implements Initializable {
     @FXML
     Button btn_semi1, btn_semi2, btn_finale, btn_home;
+    @FXML
+    Label lbl_semi1,lbl_semi2,lbl_finale,lbl_titolo;
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
@@ -44,6 +47,12 @@ public class TorneoController4 implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_semi1.setText(OPZ.traduci("semifinale"));
+        lbl_semi2.setText(OPZ.traduci("semifinale"));
+        lbl_finale.setText(OPZ.traduci("finale"));
+        lbl_titolo.setText(OPZ.traduci("torneo_4"));
+
+
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
         Utili.bottoneTorneo(btn_semi1,partite.get(0));

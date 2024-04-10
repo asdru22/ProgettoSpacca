@@ -9,6 +9,7 @@ import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -23,8 +24,11 @@ public class TorneoController16 implements Initializable {
     @FXML
     Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2,
     btn_ottavi1,btn_ottavi2,btn_ottavi3,btn_ottavi4,btn_ottavi5,btn_ottavi6,btn_ottavi7,btn_ottavi8, btn_finale;
+    @FXML
+    Label lbl_titolo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lbl_titolo.setText(OPZ.traduci("torneo_16"));
 
         btn_ottavi1.setOnMouseEntered(e -> {
             if (btn_quarti1.getScene() != null) {

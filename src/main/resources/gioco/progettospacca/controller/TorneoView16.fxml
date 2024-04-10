@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController16">
+<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController16">
    <children>
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -33,7 +32,7 @@
             <Button fx:id="btn_ottavi6" layoutX="793.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi6" text="O6" />
             <Button fx:id="btn_ottavi7" layoutX="793.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi7" text="O7" />
             <Button fx:id="btn_ottavi8" layoutX="793.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi8" text="O8" />
-            <Label layoutX="287.0" layoutY="62.0" text="Torneo 16 giocatori">
+            <Label fx:id="lbl_titolo" layoutX="287.0" layoutY="62.0" text="Torneo 16 giocatori">
                <font>
                   <Font name="Candara Bold" size="41.0" />
                </font>

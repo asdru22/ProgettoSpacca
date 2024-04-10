@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController4">
+<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController4">
    <children>
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -27,27 +27,27 @@
                   <Image url="@../torneo4Bracket.png" />
                </image>
             </ImageView>
-            <Button styleClass="button-torneo" fx:id="btn_semi1" layoutX="97.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="40.0" prefWidth="138.0" text="S1">
+            <Button fx:id="btn_semi1" layoutX="97.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="40.0" prefWidth="138.0" styleClass="button-torneo" text="S1">
                <font>
                   <Font name="Candara" size="11.0" />
                </font>
             </Button>
-            <Button styleClass="button-torneo" fx:id="btn_semi2" layoutX="680.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="40.0" prefWidth="138.0" text="S2">
+            <Button fx:id="btn_semi2" layoutX="680.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="40.0" prefWidth="138.0" styleClass="button-torneo" text="S2">
                <font>
                   <Font name="Candara" size="11.0" />
                </font>
             </Button>
-            <Button styleClass="button-torneo-finale" fx:id="btn_finale" layoutX="372.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="50.0" prefWidth="172.0" text="F">
+            <Button fx:id="btn_finale" layoutX="372.0" layoutY="257.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="50.0" prefWidth="172.0" styleClass="button-torneo-finale" text="F">
                <font>
                   <Font name="Candara" size="11.0" />
                </font>
             </Button>
-            <Label layoutX="111.0" layoutY="207.0" text="Semifinale">
+            <Label fx:id="lbl_semi1" layoutX="111.0" layoutY="207.0" text="Semifinale">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="694.0" layoutY="207.0" text="Semifinale">
+            <Label fx:id="lbl_semi2" layoutX="694.0" layoutY="207.0" text="Semifinale">
                <font>
                   <Font name="Candara" size="25.0" />
                </font>
@@ -62,12 +62,12 @@
                   <Image url="@../Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="419.0" layoutY="331.0" text="FINALE">
+            <Label fx:id="lbl_finale" layoutX="419.0" layoutY="331.0" text="FINALE">
                <font>
                   <Font name="Candara Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label layoutX="297.0" layoutY="49.0" text="Torneo 4 giocatori">
+            <Label fx:id="lbl_titolo" layoutX="297.0" layoutY="49.0" text="Torneo 4 giocatori">
                <font>
                   <Font name="Candara Bold" size="41.0" />
                </font>
