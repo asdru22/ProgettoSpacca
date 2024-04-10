@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController16">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController16">
    <children>
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -17,22 +17,72 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_semi1" layoutX="287.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" text="S1" />
-            <Button fx:id="btn_semi2" layoutX="595.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" text="S2" />
-            <Button fx:id="btn_finale" layoutX="445.0" layoutY="303.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" text="F" />
-            <Button fx:id="btn_quarti1" layoutX="189.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti1" text="Q1" />
-            <Button fx:id="btn_quarti2" layoutX="189.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti2" text="Q2" />
-            <Button fx:id="btn_quarti3" layoutX="698.0" layoutY="223.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti3" text="Q3" />
-            <Button fx:id="btn_quarti4" layoutX="698.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti4" text="Q4" />
-            <Button fx:id="btn_ottavi1" layoutX="79.0" layoutY="177.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi1" text="O1" />
-            <Button fx:id="btn_ottavi2" layoutX="79.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi2" text="O2" />
-            <Button fx:id="btn_ottavi3" layoutX="79.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi3" text="O3" />
-            <Button fx:id="btn_ottavi4" layoutX="79.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi4" text="O4" />
-            <Button fx:id="btn_ottavi5" layoutX="793.0" layoutY="177.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi5" text="O5" />
-            <Button fx:id="btn_ottavi6" layoutX="793.0" layoutY="274.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi6" text="O6" />
-            <Button fx:id="btn_ottavi7" layoutX="793.0" layoutY="341.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi7" text="O7" />
-            <Button fx:id="btn_ottavi8" layoutX="793.0" layoutY="440.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi8" text="O8" />
-            <Label fx:id="lbl_titolo" layoutX="287.0" layoutY="62.0" text="Torneo 16 giocatori">
+            <ImageView fitHeight="631.0" fitWidth="915.0">
+               <image>
+                  <Image url="@../torneo16Bracket.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_semi1" layoutX="210.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi1" prefHeight="35.0" prefWidth="130.0" styleClass="button-torneo" text="S1">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font></Button>
+            <Button fx:id="btn_semi2" layoutX="574.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#cliccaSemi2" prefHeight="35.0" prefWidth="130.0" styleClass="button-torneo" text="S2">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font></Button>
+            <Button fx:id="btn_finale" layoutX="381.0" layoutY="295.0" mnemonicParsing="false" onMouseClicked="#cliccaFinale" prefHeight="43.0" prefWidth="154.0" styleClass="button-torneo-finale" text="F">
+               <font>
+                  <Font name="Candara" size="13.0" />
+               </font></Button>
+            <Button fx:id="btn_quarti1" layoutX="193.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti1" prefHeight="30.0" prefWidth="130.0" styleClass="button-torneo" text="Q1">
+               <font>
+                  <Font name="Candara" size="11.0" />
+               </font></Button>
+            <Button fx:id="btn_quarti2" layoutX="193.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti2" prefHeight="30.0" prefWidth="130.0" styleClass="button-torneo" text="Q2">
+               <font>
+                  <Font name="Candara" size="11.0" />
+               </font></Button>
+            <Button fx:id="btn_quarti3" layoutX="592.0" layoutY="169.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti3" prefHeight="30.0" prefWidth="130.0" styleClass="button-torneo" text="Q3">
+               <font>
+                  <Font name="Candara" size="11.0" />
+               </font></Button>
+            <Button fx:id="btn_quarti4" layoutX="592.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#cliccaQuarti4" prefHeight="30.0" prefWidth="130.0" styleClass="button-torneo" text="Q4">
+               <font>
+                  <Font name="Candara" size="11.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi1" layoutX="37.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi1" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O1">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi2" layoutX="37.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi2" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O2">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi3" layoutX="37.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi3" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O3">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi4" layoutX="37.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi4" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O4">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi5" layoutX="768.0" layoutY="124.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi5" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O5">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi6" layoutX="768.0" layoutY="205.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi6" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O6">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi7" layoutX="768.0" layoutY="393.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi7" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O7">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Button fx:id="btn_ottavi8" layoutX="768.0" layoutY="482.0" mnemonicParsing="false" onMouseClicked="#cliccaOttavi8" prefHeight="28.0" prefWidth="112.0" styleClass="button-torneo" text="O8">
+               <font>
+                  <Font name="Candara" size="10.0" />
+               </font></Button>
+            <Label fx:id="lbl_titolo" layoutX="288.0" layoutY="52.0" text="Torneo 16 giocatori">
                <font>
                   <Font name="Candara Bold" size="41.0" />
                </font>
@@ -47,6 +97,11 @@
                   <Image url="@../TrofeoTorneo.png" />
                </image>
             </ImageView>
+            <Button fx:id="btn_home" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">
+               <font>
+                  <Font name="Candara" size="12.0" />
+               </font>
+            </Button>
       
          </children>
       </AnchorPane>

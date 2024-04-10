@@ -23,13 +23,44 @@ import static gioco.progettospacca.controller.Main.*;
 public class TorneoController16 implements Initializable {
     @FXML
     Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2,
-    btn_ottavi1,btn_ottavi2,btn_ottavi3,btn_ottavi4,btn_ottavi5,btn_ottavi6,btn_ottavi7,btn_ottavi8, btn_finale;
+    btn_ottavi1,btn_ottavi2,btn_ottavi3,btn_ottavi4,btn_ottavi5,btn_ottavi6,btn_ottavi7,btn_ottavi8, btn_finale, btn_home;
     @FXML
     Label lbl_titolo;
+
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lbl_titolo.setText(OPZ.traduci("torneo_16"));
 
+
+        btn_home.setOnMouseEntered(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_home.setOnMouseExited(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         btn_ottavi1.setOnMouseEntered(e -> {
             if (btn_quarti1.getScene() != null) {
                 btn_quarti1.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
