@@ -79,6 +79,8 @@ public class CreaController implements Initializable {
     @FXML
     private CheckBox chk_gioc5;
 
+    private int checkBoxSelezionati;
+
     public void EventoCreaCodicePartita() {
         OPZ.premiBottone();
         try {
@@ -124,64 +126,43 @@ public class CreaController implements Initializable {
 
     }
 
-    public void checkBox1(MouseEvent mouseEvent) {
+    public void checkBox(TextField text, CheckBox check){
         OPZ.premiBottone();
-        if (chk_gioc1.isSelected()) {
-            txt_gioc1.setDisable(true);
-            txt_gioc1.setText("bot1");
+        if (check.isSelected()) {
+            text.setDisable(true);
+            checkBoxSelezionati+=1;
+            text.setText("bot"+checkBoxSelezionati);
         } else {
-            txt_gioc1.setDisable(false);
-            txt_gioc1.setText("");
+            text.setDisable(false);
+            text.setText("");
+            checkBoxSelezionati-=1;
+
         }
+    }
+
+    public void checkBox1(MouseEvent mouseEvent) {
+        checkBox(txt_gioc1,chk_gioc1);
         txt_gioc2.requestFocus();
     }
 
 
     public void checkBox2(MouseEvent mouseEvent) {
-        OPZ.premiBottone();
-        if (chk_gioc2.isSelected()) {
-            txt_gioc2.setDisable(true);
-            txt_gioc2.setText("bot2");
-        } else {
-            txt_gioc2.setDisable(false);
-            txt_gioc2.setText("");
-        }
+        checkBox(txt_gioc2,chk_gioc2);
         txt_gioc3.requestFocus();
     }
 
     public void checkBox3(MouseEvent mouseEvent) {
-        OPZ.premiBottone();
-        if (chk_gioc3.isSelected()) {
-            txt_gioc3.setDisable(true);
-            txt_gioc3.setText("bot3");
-        } else {
-            txt_gioc3.setDisable(false);
-            txt_gioc3.setText("");
-        }
+        checkBox(txt_gioc3,chk_gioc3);
         txt_gioc4.requestFocus();
     }
 
     public void checkBox4(MouseEvent mouseEvent) {
-        OPZ.premiBottone();
-        if (chk_gioc4.isSelected()) {
-            txt_gioc4.setDisable(true);
-            txt_gioc4.setText("bot4");
-        } else {
-            txt_gioc4.setDisable(false);
-            txt_gioc4.setText("");
-        }
+        checkBox(txt_gioc4,chk_gioc4);
         txt_gioc5.requestFocus();
     }
 
     public void checkBox5(MouseEvent mouseEvent) {
-        OPZ.premiBottone();
-        if (chk_gioc5.isSelected()) {
-            txt_gioc5.setDisable(true);
-            txt_gioc5.setText("bot5");
-        } else {
-            txt_gioc5.setDisable(false);
-            txt_gioc5.setText("");
-        }
+        checkBox(txt_gioc5,chk_gioc5);
         btn_crea.requestFocus();
     }
 
