@@ -81,6 +81,15 @@
                <font>
                   <Font name="Candara Light" size="15.0" />
                </font></Label>
+            <Pane fx:id="pane_imprevisto" layoutX="194.0" layoutY="220.0" prefHeight="119.0" prefWidth="519.0">
+               <children>
+                  <Label fx:id="lbl_imprevisto" alignment="TOP_LEFT" focusTraversable="false" layoutY="1.0" prefHeight="119.0" prefWidth="519.0" text="tutti i punti saranno raddoppiati per questo turno">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             </children>
         </AnchorPane>
           <AnchorPane fx:id="anchPane_manoSuccesiva" layoutX="936.0" layoutY="14.0" prefHeight="302.0" prefWidth="307.0">

@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 84073;
+    public static final int CODICE_TEMP = 37654;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -89,6 +89,8 @@ public class PartitaController implements Initializable {
     @FXML
     private Label lbl_attenzione;
     @FXML
+    private Label lbl_imprevisto;
+    @FXML
     private AnchorPane anchPane_score;
     @FXML
     private Pane pane_pausa;
@@ -98,6 +100,8 @@ public class PartitaController implements Initializable {
     private Pane pane_finePartitaTorneo;
     @FXML
     private Pane pane_fineTorneo;
+    @FXML
+    private Pane pane_imprevisto;
     @FXML
     private Button btn_esci;
     @FXML
@@ -194,14 +198,13 @@ public class PartitaController implements Initializable {
         pescataAnimazione();
         comparsaSchermata();
 
-        PauseTransition pause77 = new PauseTransition(Duration.seconds(1.5));
-        pause77.play();
-        pause77.setOnFinished(event -> {
-                    if (mano[0].getSeme() == Seme.Neutro) {
-                        mano[0].setCliccata(true);
-                        cambiaCarteSelezionate();
-                    }
-                });
+        p.setImprevisti();
+
+        PauseTransition pauseImprevisto = new PauseTransition(Duration.seconds(1.5));
+        pauseImprevisto.play();
+        pauseImprevisto.setOnFinished(event -> {
+
+        });
 
         btn_stai.setDisable(true);
         btn_scarta.setDisable(true);

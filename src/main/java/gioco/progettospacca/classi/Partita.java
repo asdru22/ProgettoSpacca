@@ -25,6 +25,7 @@ public class Partita {
     private boolean primoTurnoScena = true;
     private int partitaTorneoNumGiocatori = 0; //se 0 è una prtita a se, se è diverso mi dice di quale tipo di torneo fa parte (se da 4 , da 8 o da 16 giocatori)
     private Seme semeCatenaColore;
+    private int moltiplicatoreImprevisti = 1;
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -233,6 +234,9 @@ public class Partita {
             default:
                 //System.out.println("non hai fatto colore");
         }
+
+        punti = punti*this.moltiplicatoreImprevisti;
+
         return punti;
     }
     //per valutare la sequenza colore in modo differente in base al tipo di seme che comanda, restituirà un moltiplicatore
@@ -412,6 +416,13 @@ public class Partita {
         this.cont = i;
     }
 
+    public void setImprevisti(){
+        for(Carta carta : toccaA.getMano()){
+            if(carta.getImage() == "/gioco/progettospacca/carte/imprevisti/1.png"){
+                this.moltiplicatoreImprevisti = 2;
+            }
+        }
+    }
     public int getNumeroTurni() {
         return NUMERO_TURNI;
     }
