@@ -217,7 +217,6 @@ public class Partita {
             default:
                 //System.out.println("nessuna scala");
         }
-        System.out.println(punti);
         switch (verificaColore(carteSeme)) {
             case 3:
                 //System.out.println("3 carte dello stesso colore");
@@ -324,7 +323,6 @@ public class Partita {
             if (valore > numColorePiuVolteRipetuto) {
                 numColorePiuVolteRipetuto = valore;
                 this.semeCatenaColore = chiave;
-                System.out.println(this.semeCatenaColore);
             }
         }
         return numColorePiuVolteRipetuto;

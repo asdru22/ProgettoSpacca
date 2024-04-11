@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 62649;
+    public static final int CODICE_TEMP = 37654;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -152,6 +152,7 @@ public class PartitaController implements Initializable {
     Torneo t = null;
     private int imprevistoNum = 6;
 
+    private int ceGia1Imprevisto = 0;
 
     private void inizializzaTraduzioni() {
 
@@ -190,10 +191,23 @@ public class PartitaController implements Initializable {
         mazzo = p.getMazzo();
         System.out.println("Tocca a " + p.getToccaA());
 
+
         toccaA.pesca(5, mazzo);
 
         mano = toccaA.getMano();
         toccaA.setMano(mano);
+
+        for(int i =0; i<5 ; i++){     //controllo per non far comparire 2 carte imprevisti nella stessa mano
+            if(mano[i].getSeme()== Seme.Neutro){
+                ceGia1Imprevisto++;
+            }
+            if(ceGia1Imprevisto>1){
+                toccaA.pesca(5, mazzo);
+                ceGia1Imprevisto=0;
+                i=-1;
+            }
+        }
+
 
         mostraCarte(mano);
         semeAnimazione();
@@ -251,7 +265,7 @@ public class PartitaController implements Initializable {
             pause.setOnFinished(event -> {
                 btn_stai.setDisable(true);
                 btn_scarta.setDisable(true);
-                int azione = 2;
+                int azione = Utili.intCasuale(1,2);
 
                 switch (azione) {
                     case 1:
@@ -285,7 +299,13 @@ public class PartitaController implements Initializable {
                         int num = 0;
                         int pos = 0;
                         num = Utili.intCasuale(1, 3);
-                        System.out.println("carte scartate dal bot: "+num);
+                        Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
+                        while (iterator.hasNext()) {
+                            Carta carta = iterator.next();
+                            if (carta.getSeme() == Seme.Neutro) {
+                                iterator.remove();
+                            }
+                        }
                         switch (num) {
                             case 1:
                                 ArrayList<Integer> numeri = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5));
@@ -421,6 +441,13 @@ public class PartitaController implements Initializable {
     }
     //cambia carta imprevisto con una carta da gioco
     public void cambiaSingolaCarta(int pos){
+        Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
+        while (iterator.hasNext()) {
+            Carta carta = iterator.next();
+            if (carta.getSeme() == Seme.Neutro) {
+                iterator.remove();
+            }
+        }
         toccaA.settaCarteNulle(pos - 1);
         toccaA.scarta(pos);
 
@@ -435,6 +462,26 @@ public class PartitaController implements Initializable {
 
     //tasto conferma carte da scartare
     public void cambiaCarteSelezionate(MouseEvent mouseEvent) throws FileNotFoundException {
+        /*//debug
+        System.out.println("mazzo");
+        for(Carta carta:  mazzo.getMazzoArrayList()){
+            System.out.println(carta);
+        }
+         */
+        Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
+        while (iterator.hasNext()) {
+            Carta carta = iterator.next();
+            if (carta.getSeme() == Seme.Neutro) {
+                iterator.remove();
+            }
+        }
+        /*//debug
+        System.out.println("mazzo senza imprevisti");
+        for(Carta carta:  mazzo.getMazzoArrayList()){
+            System.out.println(carta);
+        }
+        */
+
         ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         boolean almenoUnaTrue = false;
         for (Carta carta : manoList) {
@@ -500,7 +547,13 @@ public class PartitaController implements Initializable {
 
     }
     public void cambiaCarteSelezionate() {
-
+        Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
+        while (iterator.hasNext()) {
+            Carta carta = iterator.next();
+            if (carta.getSeme() == Seme.Neutro) {
+                iterator.remove();
+            }
+        }
         ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         boolean almenoUnaTrue = false;
         for (Carta carta : manoList) {
@@ -633,7 +686,6 @@ public class PartitaController implements Initializable {
                 lbl_attenzione.setText("");
             });
         }
-        System.out.println(mano[0].getCliccata());
     }
 
     private void carta1Click() {
@@ -1097,7 +1149,6 @@ public class PartitaController implements Initializable {
 
         for (int i = 0; i < 5; i++) {
             if (toccaA.getMano()[i].getCliccata() == true ) {
-                System.out.println(toccaA.getMano()[i]);
                 String cartaName = "carta" + i;
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
 
