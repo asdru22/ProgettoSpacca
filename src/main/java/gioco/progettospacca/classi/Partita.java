@@ -199,7 +199,6 @@ public class Partita {
         int punti = 0;
         //valutiamo se ha coppie,tris,poker,manita, full, doppia coppia in mano
         punti = punti + numUguali(carteNum);
-
         //ora verifichiamo se ci sono scale
         switch (verificaScala(carteNum)) {
             case 3:
@@ -217,7 +216,7 @@ public class Partita {
             default:
                 //System.out.println("nessuna scala");
         }
-
+        System.out.println(punti);
         switch (verificaColore(carteSeme)) {
             case 3:
                 //System.out.println("3 carte dello stesso colore");
@@ -236,6 +235,7 @@ public class Partita {
         }
 
         punti = punti*this.moltiplicatoreImprevisti;
+        moltiplicatoreImprevisti = 1;
 
         return punti;
     }
