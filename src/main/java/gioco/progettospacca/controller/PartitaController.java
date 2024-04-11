@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 54885;
+    public static final int CODICE_TEMP = 62649;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -145,7 +145,6 @@ public class PartitaController implements Initializable {
     private Giocatore[] giocatori = null;
     private int turno_salvato = 0;
     private int giocatore_salvato = 0;
-    private Seme seme_che_comanda = null;
     private Giocatore toccaA;
     private int cont;
     String percorsoMazzo = "/gioco/progettospacca/Retro.png";
@@ -285,11 +284,7 @@ public class PartitaController implements Initializable {
                     case 2:
                         int num = 0;
                         int pos = 0;
-                        if(imprevistoNum<=5) {
-                            num = Utili.intCasuale(1, 2);
-                        }else {
-                            num = Utili.intCasuale(1, 3);
-                        }
+                        num = Utili.intCasuale(1, 3);
                         System.out.println("carte scartate dal bot: "+num);
                         switch (num) {
                             case 1:
@@ -435,10 +430,6 @@ public class PartitaController implements Initializable {
 
         toccaA.setMano(manoList.toArray(toccaA.getMano()));
 
-        for(int i = 0; i<5 ;i++){
-            System.out.println(toccaA.getMano()[i].getCliccata());
-        }
-
 
     }
 
@@ -453,13 +444,16 @@ public class PartitaController implements Initializable {
             }
         }
         if (almenoUnaTrue) {
-            scartataAnimazione(); //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.25));
+            pause.play();
+            pause.setOnFinished(event2 -> {
+                scartataAnimazione();
+            });
+             //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
             // la fine dell'animazione, quindi cambia le carte animatamente corrette poi eseguo lo scarto effettivo in questo metodo poi una volta terminata
             // l'animazione dello scarto, parte l'animazione della pescata con le carte già modificate in quanto il codice di questo metodo ha
             // eseguito subito dopo l'animazione dello scarto
 
-            //debug
-            //System.out.println("ciao");
             int pos = 1;
             for (Carta carta : manoList) {
                 if (carta.getCliccata()) {
@@ -502,8 +496,8 @@ public class PartitaController implements Initializable {
                 lbl_attenzione.setVisible(false);
                 lbl_attenzione.setText("");
             });
-
         }
+
     }
     public void cambiaCarteSelezionate() {
 
@@ -516,7 +510,11 @@ public class PartitaController implements Initializable {
             }
         }
         if (almenoUnaTrue) {
-            scartataAnimazione(); //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
+            PauseTransition pause = new PauseTransition(Duration.seconds(0.25));
+            pause.play();
+            pause.setOnFinished(event2 -> {
+                scartataAnimazione();
+            }); //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
             // la fine dell'animazione, quindi cambia le carte animatamente corrette poi eseguo lo scarto effettivo in questo metodo poi una volta terminata
             // l'animazione dello scarto, parte l'animazione della pescata con le carte già modificate in quanto il codice di questo metodo ha
             // eseguito subito dopo l'animazione dello scarto
@@ -635,6 +633,7 @@ public class PartitaController implements Initializable {
                 lbl_attenzione.setText("");
             });
         }
+        System.out.println(mano[0].getCliccata());
     }
 
     private void carta1Click() {
@@ -659,6 +658,7 @@ public class PartitaController implements Initializable {
                 lbl_attenzione.setText("");
             });
         }
+
     }
 
     private void carta2Click(MouseEvent event) {
@@ -1094,20 +1094,9 @@ public class PartitaController implements Initializable {
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
-            if (imprevistoNum == 1) {
-                toccaA.getMano()[0].setCliccata(true);
-            } else if (imprevistoNum == 2) {
-                toccaA.getMano()[1].setCliccata(true);
-            } else if (imprevistoNum == 3) {
-                toccaA.getMano()[2].setCliccata(true);
-            } else if (imprevistoNum == 4) {
-                toccaA.getMano()[3].setCliccata(true);
-            } else if (imprevistoNum == 5) {
-                toccaA.getMano()[4].setCliccata(true);
-            }
 
         for (int i = 0; i < 5; i++) {
-            if (toccaA.getMano()[i].getCliccata() == true) {
+            if (toccaA.getMano()[i].getCliccata() == true ) {
                 System.out.println(toccaA.getMano()[i]);
                 String cartaName = "carta" + i;
                 AnchorPane currentCarta = cartaPaneMap.get(cartaName);
@@ -1591,7 +1580,13 @@ public class PartitaController implements Initializable {
         schermataToccaA();
 
         p.newMazzo();
-        p.setSeme(p.getMazzo().getMazzoArrayList().remove(0));
+        //controllo per far si che il seme che comanda non può essere un imprevisto
+        int i = 0;
+        while(p.getMazzo().getMazzoArrayList().get(i).getSeme() == Seme.Neutro){
+            i++;
+        }
+        p.setSeme(p.getMazzo().getMazzoArrayList().remove(i));
+        p.setSemeComandante();
 
 
     }

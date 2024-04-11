@@ -33,8 +33,6 @@ public class Partita {
         this.mazzo = new Mazzo();
         this.id_torneo = id_torneo;
         toccaA = giocatori[0];
-        this.seme_che_comanda = this.mazzo.getMazzoArrayList().get(0);
-        semeComandante = seme_che_comanda.getSeme();
         this.salva();
     }
 
@@ -42,6 +40,9 @@ public class Partita {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
 
+    public void setSemeComandante(){
+        this.semeComandante = seme_che_comanda.getSeme();
+    }
     public int getPartitaTorneoNumGiocatori(){
         return this.partitaTorneoNumGiocatori;
     }
