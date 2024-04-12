@@ -1279,7 +1279,7 @@ public class PartitaController implements Initializable {
 
     public void fineMano() {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), anchPane_manoSuccesiva);
-        translateTransition.setByX(-300);
+        translateTransition.setByX(-255);
         translateTransition.play();
         btn_prossimaMano.setVisible(true);
 
