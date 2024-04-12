@@ -81,16 +81,31 @@
                <font>
                   <Font name="Candara Light" size="15.0" />
                </font></Label>
-            <Pane fx:id="pane_imprevisto" layoutX="194.0" layoutY="220.0" prefHeight="212.0" prefWidth="519.0" visible="false">
+            <Pane fx:id="pane_imprevisto" layoutX="152.0" layoutY="126.0" prefHeight="379.0" prefWidth="602.0" visible="false">
                <children>
-                  <Label fx:id="lbl_imprevisto" alignment="CENTER" focusTraversable="false" layoutY="68.0" prefHeight="144.0" prefWidth="519.0" wrapText="true">
+                  <ImageView fitHeight="387.0" fitWidth="571.0" layoutX="25.0">
+                     <image>
+                        <Image url="@../darkScore.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="309.0" fitWidth="310.0" layoutX="146.0" layoutY="56.0" opacity="0.36">
+                     <image>
+                        <Image url="@../Logo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="292.0" fitWidth="498.0" layoutX="54.0" layoutY="37.0">
+                     <image>
+                        <Image url="@../imprevistoBackr.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lbl_titoloImprevisto" alignment="CENTER" focusTraversable="false" layoutX="42.0" layoutY="76.0" prefHeight="40.0" prefWidth="519.0" text="Hai pescato una carta imprevisto!" textFill="WHITE">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="Candara Bold Italic" size="25.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbl_titoloImprevisto" alignment="CENTER" focusTraversable="false" prefHeight="40.0" prefWidth="519.0" text="Hai pescato una carta imprevisto!!">
+                  <Label fx:id="lbl_imprevisto" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" layoutX="139.0" layoutY="156.0" prefHeight="91.0" prefWidth="328.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font size="30.0" />
+                        <Font name="Candara Bold" size="20.0" />
                      </font>
                   </Label>
                </children>

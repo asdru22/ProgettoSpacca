@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 37654;
+    public static final int CODICE_TEMP = 63312;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -223,6 +223,7 @@ public class PartitaController implements Initializable {
                 int finalI = i;
                 pauseImprevisto.setOnFinished(event -> {
                     pane_imprevisto.setVisible(true);
+                    pane_imprevisto.toFront();
                     lbl_imprevisto.setText("tutti i punti saranno raddoppiati per questo turno");
                     cambiaSingolaCarta(finalI+1);
                     btn_stai.setDisable(true);
