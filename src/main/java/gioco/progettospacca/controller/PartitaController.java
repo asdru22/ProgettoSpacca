@@ -34,7 +34,9 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 63312;
+    public static final int CODICE_TEMP = 79285;
+    @FXML
+    Label lbl_titoloImprevisto;
     @FXML
     Label lbl_vincitorePartitaTorneo;
     @FXML
@@ -181,7 +183,7 @@ public class PartitaController implements Initializable {
         btn_backhome.setText(OPZ.traduci("torna_al_tabellone"));
         lbl_vincitoreFisso11.setText(OPZ.traduci("vincitore_torneo"));
         lbl_vincitoreFisso1.setText(OPZ.traduci("vincitore"));
-
+        lbl_titoloImprevisto.setText(OPZ.traduci("pescato_imprevisto"));
     }
 
 
@@ -224,7 +226,7 @@ public class PartitaController implements Initializable {
                 pauseImprevisto.setOnFinished(event -> {
                     pane_imprevisto.setVisible(true);
                     pane_imprevisto.toFront();
-                    lbl_imprevisto.setText("tutti i punti saranno raddoppiati per questo turno");
+                    lbl_imprevisto.setText(OPZ.traduci("punti_raddoppiati"));
                     cambiaSingolaCarta(finalI+1);
                     btn_stai.setDisable(true);
                     btn_scarta.setDisable(true);
@@ -1296,13 +1298,13 @@ public class PartitaController implements Initializable {
             anchPane_toccaA.setVisible(true);
             btn_gioca.setVisible(true);
             lbl_toccaA.setText(OPZ.traduci("turno")+": " + p.getToccaA());
-            lbl_turno.setText(OPZ.traduci("round")+": "+p.getTurnoSalvato());
+            lbl_turno.setText(OPZ.traduci("round")+": "+(p.getTurnoSalvato()+1));
         } else {          //bot
             pulisciSchermata();
             anchPane_toccaA.setVisible(true);
             btn_gioca.setDisable(true);
             lbl_toccaA.setText(OPZ.traduci("turno")+": " + p.getToccaA());
-            lbl_turno.setText(OPZ.traduci("round")+": "+p.getTurnoSalvato());
+            lbl_turno.setText(OPZ.traduci("round")+": "+(p.getTurnoSalvato()+1));
 
             PauseTransition pause = new PauseTransition(Duration.seconds(2));
             pause.play();
@@ -1608,7 +1610,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_TEMP);
+        p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
