@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 79285;
+    public static final int CODICE_TEMP = 37654;
     @FXML
     Label lbl_titoloImprevisto;
     @FXML
@@ -1610,7 +1610,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_GLOBALE_PARTITA);
+        p = Partita.carica(CODICE_TEMP);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
@@ -1780,7 +1780,7 @@ public class PartitaController implements Initializable {
             carta1.requestFocus();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_prossimaMano.isVisible()) {
-            System.out.println("ciao");
+            System.out.println("fine turno");
             try {
                 newScene();
             } catch (IOException e) {
@@ -1788,6 +1788,7 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_gioca.isVisible()) {
+            System.out.println("procedi");
             try {
                 procedi();
             } catch (IOException e) {

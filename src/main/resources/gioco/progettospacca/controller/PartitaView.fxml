@@ -128,7 +128,7 @@
                           <Insets top="-2.0" />
                       </opaqueInsets>
                   </Label>
-                  <Button fx:id="btn_prossimaMano" alignment="CENTER" focusTraversable="false" layoutX="57.0" layoutY="236.0" mnemonicParsing="false" onKeyPressed="#keyPartita" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="158.0" text="Prossimo turno" textAlignment="CENTER">
+                  <Button fx:id="btn_prossimaMano" alignment="CENTER" focusTraversable="false" layoutX="57.0" layoutY="236.0" mnemonicParsing="false" onKeyPressed="#keyPartita" onMouseClicked="#prossimaMano" prefHeight="39.0" prefWidth="158.0" text="Prossimo turno" textAlignment="CENTER" visible="false">
                       <font>
                           <Font name="Candara Bold" size="12.0" />
                       </font>
