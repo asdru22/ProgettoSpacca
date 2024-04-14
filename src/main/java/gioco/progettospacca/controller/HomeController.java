@@ -178,6 +178,8 @@ public class HomeController implements Initializable {
 
         // Imposta la nuova finestra
         stage.setTitle(OPZ.traduci("classifica"));
+        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
     }
@@ -325,6 +327,8 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+
+
         btn_giocaPartita.setOnMouseEntered(e -> {
             if (btn_giocaPartita.getScene() != null) {
             btn_giocaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
@@ -345,31 +349,31 @@ public class HomeController implements Initializable {
 
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_creaPartita.setOnMouseExited(e -> {
-            if (btn_giocaPartita.getScene() != null) {
+            if (btn_creaPartita.getScene() != null) {
                 btn_creaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });
         btn_giocaTorneo.setOnMouseEntered(e -> {
-            if (btn_giocaPartita.getScene() != null) {
+            if (btn_giocaTorneo.getScene() != null) {
                 btn_giocaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
             }
         });
 
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_giocaTorneo.setOnMouseExited(e -> {
-            if (btn_giocaPartita.getScene() != null) {
+            if (btn_giocaTorneo.getScene() != null) {
                 btn_giocaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });
         btn_creaTorneo.setOnMouseEntered(e -> {
-            if (btn_giocaPartita.getScene() != null) {
+            if (btn_creaTorneo.getScene() != null) {
                 btn_creaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
             }
         });
 
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_creaTorneo.setOnMouseExited(e -> {
-            if (btn_giocaPartita.getScene() != null) {
+            if (btn_creaTorneo.getScene() != null) {
                 btn_creaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });

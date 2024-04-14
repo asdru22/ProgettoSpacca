@@ -27,13 +27,25 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class GiocaTorneoController implements Initializable {
     @FXML
-    private Button btn_entraTorneo;
+    private Button btn_entraTorneo, btn_home;
     @FXML
     TextField txt_codTorneo;
     @FXML
     Label lbl_titleCodTorneo;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        btn_home.setOnMouseEntered(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_home.setOnMouseExited(e -> {
+            if (btn_home.getScene() != null) {
+                btn_home.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
         btn_entraTorneo.setOnMouseEntered(e -> {
             if (btn_entraTorneo.getScene() != null) {
                 btn_entraTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));

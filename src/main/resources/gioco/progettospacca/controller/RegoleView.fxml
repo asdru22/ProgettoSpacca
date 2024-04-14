@@ -16,9 +16,14 @@
                <content>
                   <AnchorPane prefHeight="900.0" prefWidth="900.0">
                      <children>
-                        <ImageView fitHeight="893.0" fitWidth="905.0" layoutY="1.0">
+                        <ImageView fitHeight="893.0" fitWidth="909.0" layoutX="-4.0" layoutY="-3.0">
                            <image>
                               <Image url="@../sfondoRegole.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="95.0" fitWidth="88.0" layoutX="581.0" layoutY="451.0">
+                           <image>
+                              <Image url="@../erba.png" />
                            </image>
                         </ImageView>
                         <ImageView fitHeight="549.0" fitWidth="549.0" layoutX="176.0" layoutY="-115.0" opacity="0.24">
@@ -36,7 +41,36 @@
                               <Font name="Candara Bold Italic" size="30.0" />
                            </font>
                         </Label>
-                        <Label layoutX="437.0" layoutY="817.0" text="Ciao" />
+                        <Label alignment="CENTER" layoutX="175.0" layoutY="333.0" prefHeight="94.0" prefWidth="553.0" text="Benvenuti nel regolamento di &quot;Spacca&quot;, un gioco di carte che unisce l'abilità strategica tipica del poker al magico mondo degli elementi naturali:" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Candara" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="63.0" layoutY="523.0" prefHeight="99.0" prefWidth="774.0" text="Fuoco                          Acqua                          Terra                          Erba                          Elettro">
+                           <font>
+                              <Font name="Candara Bold" size="22.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="93.0" fitWidth="92.0" layoutX="758.0" layoutY="462.0">
+                           <image>
+                              <Image url="@../elettro.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="230.0" layoutY="454.0">
+                           <image>
+                              <Image url="@../acqua.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="89.0" fitWidth="89.0" layoutX="52.0" layoutY="455.0">
+                           <image>
+                              <Image url="@../fuoco.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="126.0" fitWidth="139.0" layoutX="381.0" layoutY="446.0">
+                           <image>
+                              <Image url="@../terra.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>
