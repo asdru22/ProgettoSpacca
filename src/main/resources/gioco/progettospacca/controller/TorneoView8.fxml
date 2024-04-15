@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController8">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController8">
    <children>
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -62,7 +62,7 @@
                   <Font name="Candara Bold" size="41.0" />
                </font>
             </Label>
-            <Button fx:id="btn_home" layoutX="44.0" layoutY="44.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">
+            <Button fx:id="btn_home" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>

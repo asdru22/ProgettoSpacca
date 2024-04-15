@@ -57,8 +57,8 @@
                   </Button>
                </children>
             </GridPane>
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
          </children>
       </AnchorPane>
-      <Button fx:id="btn_back" focusTraversable="false" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
    </children>
 </Pane>

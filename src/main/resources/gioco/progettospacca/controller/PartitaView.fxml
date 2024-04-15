@@ -303,12 +303,17 @@
                   <Image url="@../SfondoVittoriaTorneo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_vincitoreFisso11" alignment="CENTER" layoutX="259.0" layoutY="61.0" prefHeight="70.0" prefWidth="397.0" text="Vincitore del torneo">
+            <ImageView fitHeight="643.0" fitWidth="915.0" layoutY="-3.0">
+               <image>
+                  <Image url="@../goldTorneo.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lbl_vincitoreFisso11" alignment="CENTER" layoutX="260.0" layoutY="85.0" prefHeight="70.0" prefWidth="397.0" text="Vincitore del torneo" textFill="WHITE">
                <font>
-                  <Font name="Candara Bold Italic" size="39.0" />
+                  <Font name="Candara Italic" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="btn_backhome" layoutX="760.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="119.0" text="Torna alla home">
+            <Button fx:id="btn_backhome" layoutX="693.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="186.0" text="Torna alla home">
                <font>
                   <Font name="Candara" size="14.0" />
                </font>
@@ -318,9 +323,9 @@
                   <Image url="@../TrofeoTorneo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_vincitoreTorneo" alignment="CENTER" layoutX="255.0" layoutY="191.0" prefHeight="40.0" prefWidth="406.0" text="Marco">
+            <Label fx:id="lbl_vincitoreTorneo" alignment="CENTER" layoutX="209.0" layoutY="251.0" prefHeight="68.0" prefWidth="498.0" textFill="WHITE">
                <font>
-                  <Font name="Candara" size="47.0" />
+                  <Font name="Candara Bold Italic" size="57.0" />
                </font>
             </Label>
          </children>

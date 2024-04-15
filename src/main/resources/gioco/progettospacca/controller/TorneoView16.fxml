@@ -97,7 +97,7 @@
                   <Image url="@../TrofeoTorneo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_home" layoutX="37.0" layoutY="32.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">
+            <Button fx:id="btn_home" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮">
                <font>
                   <Font name="Candara" size="12.0" />
                </font>

@@ -21,7 +21,7 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_home" layoutX="35.0" layoutY="29.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Button fx:id="btn_home" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
             <GridPane layoutX="226.0" layoutY="124.0" prefHeight="354.0" prefWidth="462.0">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
