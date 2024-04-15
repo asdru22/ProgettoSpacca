@@ -104,7 +104,7 @@
                               <Font name="Candara Bold Italic" size="30.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="175.0" layoutY="333.0" prefHeight="94.0" prefWidth="553.0" text="Benvenuti nel regolamento di &quot;Spacca&quot;, un gioco di carte che unisce l'abilità strategica tipica del poker al magico mondo degli elementi naturali:" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole" alignment="CENTER" layoutX="175.0" layoutY="333.0" prefHeight="94.0" prefWidth="553.0" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="Candara" size="16.0" />
                            </font>
