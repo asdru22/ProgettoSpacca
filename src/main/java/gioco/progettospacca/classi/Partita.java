@@ -419,6 +419,19 @@ public class Partita {
         for(Carta carta : toccaA.getMano()){
             if(carta.getImage() == "/gioco/progettospacca/carte/imprevisti/1.png"){
                 this.moltiplicatoreImprevisti = 2;
+                break;
+            } else if (carta.getImage() == "/gioco/progettospacca/carte/imprevisti/2.png") {
+                int somma = 0;
+                for(int i = 0; i<giocatori.length; i++){
+                    if(giocatori[i] != toccaA){
+                        if(giocatori[i].getPunti()>=15) {
+                            giocatori[i].setPunti(-15);
+                        }
+                        somma = somma + 15;
+                    }
+                }
+                toccaA.setPunti(somma);
+                break;
             }
         }
     }

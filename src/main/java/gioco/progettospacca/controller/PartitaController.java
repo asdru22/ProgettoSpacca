@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 19084 ;
+    public static final int CODICE_TEMP = 18642 ;
     @FXML
     Label lbl_titoloImprevisto;
     @FXML
@@ -152,6 +152,7 @@ public class PartitaController implements Initializable {
     String percorsoMazzo = "/gioco/progettospacca/Retro.png";
     boolean pausa = false;
     Torneo t = null;
+    //inizialmente 6 cioè nessuna carta imprevisto, se compare prende la posizione della carta in mano
     private int imprevistoNum = 6;
 
     private int ceGia1Imprevisto = 0;
@@ -225,8 +226,32 @@ public class PartitaController implements Initializable {
                 int finalI = i;
                 pauseImprevisto.setOnFinished(event -> {
                     pane_imprevisto.setVisible(true);
-                    pane_imprevisto.toFront();
                     lbl_imprevisto.setText(OPZ.traduci("punti_raddoppiati"));
+                    cambiaSingolaCarta(finalI+1);
+                    btn_stai.setDisable(true);
+                    btn_scarta.setDisable(true);
+
+                    PauseTransition pauseImprevisto2 = new PauseTransition(Duration.seconds(3));
+                    pauseImprevisto2.play();
+                    pauseImprevisto2.setOnFinished(event2 -> {
+                        pane_imprevisto.setVisible(false);
+                        animazioneImprevisto(finalI);
+                    });
+                });
+                break;
+            } else if (mano[i].getImage() == "/gioco/progettospacca/carte/imprevisti/2.png") {
+                imprevistoNum = i+1;
+                PauseTransition pauseImprevisto = new PauseTransition(Duration.seconds(2));
+                pauseImprevisto.play();
+                int finalI = i;
+                pauseImprevisto.setOnFinished(event -> {
+                    String s = "";
+                    for (int j = 0; j < p.getGiocatori().length; j++) {
+                        s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+                    }
+                    lbl_classifica.setText(s);
+                    pane_imprevisto.setVisible(true);
+                    lbl_imprevisto.setText("Tutti i giocatori ti devono 15 punti ciascuno:\npunti gudagnati: "+(15*(giocatori.length-1)));
                     cambiaSingolaCarta(finalI+1);
                     btn_stai.setDisable(true);
                     btn_scarta.setDisable(true);
@@ -261,6 +286,7 @@ public class PartitaController implements Initializable {
         } else {//bot
             double tempo = 1.5;
             if(imprevistoNum<=5){
+                System.out.println("ciao");
                 tempo = 8;
             }
             PauseTransition pause = new PauseTransition(Duration.seconds(tempo));
