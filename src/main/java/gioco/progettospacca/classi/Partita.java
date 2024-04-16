@@ -429,8 +429,8 @@ public class Partita {
                             giocatori[i].setPunti(-15);
                             sommaRubata = sommaRubata+15;
                         }else{
-                            giocatori[i].setPunti(giocatori[i].getPunti());
                             sommaRubata = sommaRubata+giocatori[i].getPunti();
+                            giocatori[i].setPunti(-giocatori[i].getPunti());
                         }
                     }
                 }
