@@ -215,7 +215,6 @@ public class PartitaController implements Initializable {
         mostraCarte(mano);
         semeAnimazione();
         pescataAnimazione();
-
         p.setImprevisti();  //per tenere traccia dell'effetto dell'imprevisto anche dopo che l'ho tolto dalla mano
 
         for(int i = 0; i<5; i++) {
@@ -251,7 +250,7 @@ public class PartitaController implements Initializable {
                     }
                     lbl_classifica.setText(s);
                     pane_imprevisto.setVisible(true);
-                    lbl_imprevisto.setText("Tutti i giocatori ti devono 15 punti ciascuno:\npunti gudagnati: "+(15*(giocatori.length-1)));
+                    lbl_imprevisto.setText("Tutti i giocatori ti devono 15 punti ciascuno:\npunti gudagnati: "+(p.getSommaRubata()));
                     cambiaSingolaCarta(finalI+1);
                     btn_stai.setDisable(true);
                     btn_scarta.setDisable(true);
@@ -286,7 +285,6 @@ public class PartitaController implements Initializable {
         } else {//bot
             double tempo = 1.5;
             if(imprevistoNum<=5){
-                System.out.println("ciao");
                 tempo = 8;
             }
             PauseTransition pause = new PauseTransition(Duration.seconds(tempo));
@@ -316,6 +314,11 @@ public class PartitaController implements Initializable {
                             pause3.play();
                             pause3.setOnFinished(event3 -> {
                                 try {
+                                    String s = "";
+                                    for (int j = 0; j < p.getGiocatori().length; j++) {
+                                        s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+                                    }
+                                    lbl_classifica.setText(s);
                                     newScene();
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
@@ -408,6 +411,11 @@ public class PartitaController implements Initializable {
                             pause3.play();
                             pause3.setOnFinished(event3 -> {
                                 try {
+                                    String s = "";
+                                    for (int j = 0; j < p.getGiocatori().length; j++) {
+                                        s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+                                    }
+                                    lbl_classifica.setText(s);
                                     newScene();
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
@@ -448,6 +456,11 @@ public class PartitaController implements Initializable {
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.play();
         pause.setOnFinished(event2 -> {
+            String s = "";
+            for (int j = 0; j < p.getGiocatori().length; j++) {
+                s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+            }
+            lbl_classifica.setText(s);
             fineMano();
         });
 
@@ -464,6 +477,11 @@ public class PartitaController implements Initializable {
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.play();
         pause.setOnFinished(event2 -> {
+            String s = "";
+            for (int j = 0; j < p.getGiocatori().length; j++) {
+                s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+            }
+            lbl_classifica.setText(s);
             fineMano();
         });
 
@@ -1131,6 +1149,11 @@ public class PartitaController implements Initializable {
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.play();
         pause.setOnFinished(event2 -> {
+            String s = "";
+            for (int j = 0; j < p.getGiocatori().length; j++) {
+                s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
+            }
+            lbl_classifica.setText(s);
             fineMano();
         });
     }

@@ -25,7 +25,8 @@ public class Partita {
     private boolean primoTurnoScena = true;
     private int partitaTorneoNumGiocatori = 0; //se 0 è una prtita a se, se è diverso mi dice di quale tipo di torneo fa parte (se da 4 , da 8 o da 16 giocatori)
     private Seme semeCatenaColore;
-    private int moltiplicatoreImprevisti = 1;
+    private int moltiplicatoreImprevisti = 1; //per il primo imprevisto
+    private int sommaRubata = 0; //per il secondo imprevisto
 
     public Partita(int id, Giocatore[] giocatori, int id_torneo) {
         this.id = id;
@@ -421,22 +422,28 @@ public class Partita {
                 this.moltiplicatoreImprevisti = 2;
                 break;
             } else if (carta.getImage() == "/gioco/progettospacca/carte/imprevisti/2.png") {
-                int somma = 0;
+                sommaRubata = 0;
                 for(int i = 0; i<giocatori.length; i++){
                     if(giocatori[i] != toccaA){
                         if(giocatori[i].getPunti()>=15) {
                             giocatori[i].setPunti(-15);
+                            sommaRubata = sommaRubata+15;
+                        }else{
+                            giocatori[i].setPunti(giocatori[i].getPunti());
+                            sommaRubata = sommaRubata+giocatori[i].getPunti();
                         }
-                        somma = somma + 15;
                     }
                 }
-                toccaA.setPunti(somma);
+                toccaA.setPunti(sommaRubata);
                 break;
             }
         }
     }
     public int getNumeroTurni() {
         return NUMERO_TURNI;
+    }
+    public int getSommaRubata(){
+        return sommaRubata;
     }
 }
 
