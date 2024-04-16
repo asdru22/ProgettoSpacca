@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Opzioni;
+import gioco.progettospacca.classi.Utili;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,13 +20,6 @@ public class Main extends Application {
 
     public static String USERNAME = "a";
     public static String PASSWORD = "s";
-    static {
-        try {
-            OPZ = Opzioni.carica();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -46,6 +40,12 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+        try {
+            OPZ = Opzioni.carica();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        Utili.cancellaTorneiInSospeso();
         launch(args);
     }
 }

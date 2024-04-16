@@ -87,6 +87,8 @@ public class PartitaController implements Initializable {
     @FXML
     private AnchorPane anch_mazzo;
     @FXML
+    Button btn_tabellone;
+    @FXML
     private AnchorPane anch_seme;
     @FXML
     private AnchorPane anch_imprevisto;
@@ -108,8 +110,6 @@ public class PartitaController implements Initializable {
     private Pane pane_imprevisto;
     @FXML
     private Button btn_esci;
-    @FXML
-    private Button btn_tabellone;
     @FXML
     private ToggleButton tglbtn_suono;
     @FXML
@@ -181,10 +181,12 @@ public class PartitaController implements Initializable {
         lbl_classificaFisso.setText(OPZ.traduci("classifica_finale"));
         lbl_vincitoreFisso.setText(OPZ.traduci("vincitore"));
         btn_regole.setText(OPZ.traduci("regole"));
-        btn_backhome.setText(OPZ.traduci("torna_al_tabellone"));
+        btn_backhome.setText(OPZ.traduci("torna_alla_home"));
         lbl_vincitoreFisso11.setText(OPZ.traduci("vincitore_torneo"));
         lbl_vincitoreFisso1.setText(OPZ.traduci("vincitore"));
         lbl_titoloImprevisto.setText(OPZ.traduci("pescato_imprevisto"));
+        btn_tabellone.setText(OPZ.traduci("torna_al_tabellone"));
+
     }
 
 
@@ -250,7 +252,7 @@ public class PartitaController implements Initializable {
                     }
                     lbl_classifica.setText(s);
                     pane_imprevisto.setVisible(true);
-                    lbl_imprevisto.setText("Tutti i giocatori ti devono 15 punti ciascuno:\npunti gudagnati: "+(p.getSommaRubata()));
+                    lbl_imprevisto.setText(OPZ.traduci("ruba_punti")+(p.getSommaRubata()));
                     cambiaSingolaCarta(finalI+1);
                     btn_stai.setDisable(true);
                     btn_scarta.setDisable(true);
@@ -1659,7 +1661,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_TEMP);
+        p = Partita.carica(CODICE_GLOBALE_PARTITA);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();

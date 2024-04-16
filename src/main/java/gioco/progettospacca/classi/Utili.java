@@ -11,7 +11,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static gioco.progettospacca.controller.Main.OPZ;
@@ -145,15 +147,20 @@ public class Utili {
         return trovato;
     }
 
-    public static Giocatore controllaNome(String nome, int id, boolean bot) {
+    public static Giocatore controllaNome(String nome, int id, boolean bot, List<Giocatore> lista) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
+
             if (esiste) {
                 g = Giocatore.carica(nome);
             } else {
                 g = new Giocatore(nome, bot);
             }
+
+            if(lista.contains(g)) return null;
+
+
             g.aggiungiPartita(id);
             g.salva();
             return g;
@@ -247,7 +254,8 @@ public class Utili {
     }
 
     public static ArrayList<Integer> elencaPartite(boolean partite,boolean includiTorneo) {
-        // true per partite, false per tornei
+        // partite true per partite, false per tornei
+        // includi torneo true per includere le partite che fanno parte del torneo
         File folder;
         if (partite) folder = new File("salvataggi/partite");
         else folder = new File("salvataggi/tornei");
@@ -297,6 +305,13 @@ public class Utili {
         } else {
             b.setDisable(true);
             b.setText(OPZ.traduci("vincitore")+": "+ p.getVincitore().getNome());
+        }
+    }
+    public static void cancellaTorneiInSospeso(){
+        ArrayList<Integer> lista = elencaPartite(false,false);
+        for(int n : lista ){
+            Torneo t = Torneo.carica(n);
+            if(t.isFinito()) t.elimina();
         }
     }
 }
