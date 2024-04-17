@@ -4,6 +4,7 @@ module gioco.progettospacca {
     requires com.google.gson;
     requires java.desktop;
     requires javafx.media;
+    requires java.mail;
     opens gioco.progettospacca to javafx.fxml;
     exports gioco.progettospacca.controller;
     exports gioco.progettospacca.classi;
