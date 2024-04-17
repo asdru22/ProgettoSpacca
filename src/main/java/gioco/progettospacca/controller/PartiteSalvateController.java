@@ -39,19 +39,34 @@ public class PartiteSalvateController implements Initializable {
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
+        aggiornaLista(cmb_partite,true);
+        aggiornaLista(cmb_tornei,false);
 
-        ArrayList<Integer> lista = Utili.elencaPartiteNormali();
-        ObservableList<Integer> items = FXCollections.observableArrayList(lista);
-        cmb_partite.setItems(items);
     }
 
+    public void aggiornaLista(ComboBox cb, boolean partita){
+        ArrayList<Integer> lista;
+        if(partita) lista = Utili.elencaPartiteNormali();
+        else lista = Utili.elencaTornei();
+        ObservableList<Integer> items = FXCollections.observableArrayList(lista);
+        cb.setItems(items);
+        if (!items.isEmpty()) {
+            cb.setValue(items.get(0));
+        }
+    }
 
     public void EventoEliminaPartita(MouseEvent event) {
-
+        int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
+        Utili.adminEliminaPartita(i);
+        System.out.println("eliminata partita con codice "+i);
+        aggiornaLista(cmb_partite,true);
     }
 
     public void EventoEliminaTorneo(MouseEvent event) {
-
+        int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
+        Utili.adminEliminaTorneo(i);
+        System.out.println("eliminato torneo con codice "+i);
+        aggiornaLista(cmb_tornei,false);
     }
 
 
