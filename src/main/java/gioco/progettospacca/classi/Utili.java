@@ -269,7 +269,7 @@ public class Utili {
                     String s = file.getName().substring(0, file.getName().length() - 5);
                     if (partite){
                         int n = gson.fromJson(Utili.leggiFileJson("partite", s), Partita.class).getId();
-                        if(Partita.carica(n).getId()==0||includiTorneo) out.add(n);
+                        if(Partita.carica(n).getIdTorneo()==0||includiTorneo) out.add(n);
                     }
                     else out.add(gson.fromJson(Utili.leggiFileJson("tornei", s), Torneo.class).getId());
                 }

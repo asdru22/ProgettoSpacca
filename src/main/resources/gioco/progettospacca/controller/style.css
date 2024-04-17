@@ -194,6 +194,29 @@
 
 
 
+.combo-box {
+    -fx-background-color: #0a7dc4 ;
+    -fx-border-color: #0a7dc4 ;
+    -fx-border-width: 2.0;
+    -fx-font-size: 12.0pt;
+    -fx-font-family: "Candara";
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.combo-box .list-cell {
+    -fx-background-color: #0a7dc4 ;
+    -fx-text-fill: white;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #0a7dc4 ;
+    -fx-text-fill: white;
+}
+
+.combo-box .arrow {
+    -fx-background-color: #0a7dc4 ;
+}
 
 
 

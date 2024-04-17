@@ -11,6 +11,7 @@ GSON: Lettura/scrittura/caricamento file Json
 ### Siti web usati
 [GitHub](https://github.com/): Workspace condiviso  
 [Freesound](https://freesound.org/): Audio ed effetti sonori
+[Canva](https://www.canva.com/it_it/): Editor di immagini
 ## Partita
 1. Cliccare crea partita
 2. Fare login con username `admin` e password `spacca`
@@ -28,7 +29,13 @@ GSON: Lettura/scrittura/caricamento file Json
 6. Cliccare gioca torneo e inserire il codice del torneo
 7. Cliccare la partita da giocare
 ## Privilegi Amministratore
-Eseguendo l'accesso da amministratore, oltre che creare partite e tornei, è possibile modificare i nomi dei giocatori e cancellare partite e tornei in sospeso.
+Eseguendo l'accesso da amministratore, oltre che creare partite e tornei, è possibile modificare i nomi dei giocatori, cancellare partite e tornei in sospeso e cambiare il numero dei turni delle partite.
 ## Opzioni
-Dal menù impostazioni si può cambiare lingua, e attivare o disattivare effetti sonori e musica.
+Dal menù impostazioni si può
+- cambiare lingua
+- attivare o disattivare effetti sonori e musica
+- uscire da una partita salvando i progressi
 ## Suddivisione del lavoro
+- Nanni: Tutte le classi nella cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi) ad eccezione di qualche metodo in `Partita.java`. Vari collegamenti con le opzioni, salvataggi e metodi della classe Utili all'interno dei [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller)
+- Manieri: Grafica e design (FXML), collegamenti tra le scene e classi [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller) associate, creazione di tutte le immagini.
+- Silvestri: [PartitaController.java](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller/PartitaController.java): Implementazione partita vera e propria

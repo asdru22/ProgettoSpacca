@@ -21,43 +21,60 @@
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <GridPane layoutX="139.0" layoutY="76.0" prefHeight="462.0" prefWidth="637.0">
+            <GridPane layoutX="34.0" layoutY="121.0" prefHeight="318.0" prefWidth="846.0">
               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="277.4000244140625" minWidth="10.0" prefWidth="275.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="277.4000244140625" minWidth="10.0" prefWidth="275.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.4000244140625" minWidth="10.0" prefWidth="80.5999755859375" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="207.4000244140625" minWidth="40.0" prefWidth="80.5999755859375" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="278.5999450683594" minWidth="10.0" prefWidth="275.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="278.5999450683594" minWidth="10.0" prefWidth="275.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="225.00000610351563" minHeight="0.0" prefHeight="124.80001525878906" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="225.00000610351563" minHeight="10.0" prefHeight="84.79998474121093" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="462.8" minHeight="10.0" prefHeight="121.6" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_eliminaPartita" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaPartita" prefHeight="34.0" prefWidth="162.0" text="Elimina partita" GridPane.rowIndex="2">
+                  <Button fx:id="btn_eliminaPartita" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaPartita" prefHeight="34.0" prefWidth="162.0" text="Elimina partita" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara Bold" size="15.0" />
                      </font>
                   </Button>
-                  <Label fx:id="lbl_titoloPartite" text="Partite">
+                  <Label fx:id="lbl_titoloPartite" text="Partite" GridPane.columnSpan="2">
                      <font>
                         <Font name="Candara Bold Italic" size="37.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lbl_titoloTornei" text="Tornei" GridPane.columnIndex="2">
+                  <Label fx:id="lbl_titoloTornei" text="Tornei" GridPane.columnIndex="3" GridPane.columnSpan="2">
                      <font>
                         <Font name="Candara Bold Italic" size="37.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btn_eliminaTorneo" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaTorneo" prefHeight="34.0" prefWidth="162.0" text="Elimina torneo" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <Button fx:id="btn_eliminaTorneo" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaTorneo" prefHeight="34.0" prefWidth="162.0" text="Elimina torneo" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara Bold" size="15.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="cmb_partite" prefWidth="150.0" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cmb_tornei" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <ComboBox fx:id="cmb_partite" prefHeight="26.0" prefWidth="120.0" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cmb_tornei" prefWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <Label text="Seleziona la partita che vuoi eliminare" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Candara" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label text="Seleziona il torneo che vuoi eliminare" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Candara" size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Label fx:id="lbl_output" layoutX="428.0" layoutY="482.0" text="Label">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

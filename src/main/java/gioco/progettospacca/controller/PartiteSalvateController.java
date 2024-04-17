@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -39,19 +40,73 @@ public class PartiteSalvateController implements Initializable {
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
+        aggiornaLista(cmb_partite,true);
+        aggiornaLista(cmb_tornei,false);
 
-        ArrayList<Integer> lista = Utili.elencaPartiteNormali();
-        ObservableList<Integer> items = FXCollections.observableArrayList(lista);
-        cmb_partite.setItems(items);
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_eliminaPartita.setOnMouseEntered(e -> {
+            if (btn_eliminaPartita.getScene() != null) {
+                btn_eliminaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_eliminaPartita.setOnMouseExited(e -> {
+            if (btn_eliminaPartita.getScene() != null) {
+                btn_eliminaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_eliminaTorneo.setOnMouseEntered(e -> {
+            if (btn_eliminaTorneo.getScene() != null) {
+                btn_eliminaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_eliminaTorneo.setOnMouseExited(e -> {
+            if (btn_eliminaTorneo.getScene() != null) {
+                btn_eliminaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
     }
 
+    public void aggiornaLista(ComboBox cb, boolean partita){
+        ArrayList<Integer> lista;
+        if(partita) lista = Utili.elencaPartiteNormali();
+        else lista = Utili.elencaTornei();
+        ObservableList<Integer> items = FXCollections.observableArrayList(lista);
+        cb.setItems(items);
+        if (!items.isEmpty()) {
+            cb.setValue(items.get(0));
+        }
+    }
 
     public void EventoEliminaPartita(MouseEvent event) {
-
+        int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
+        Utili.adminEliminaPartita(i);
+        System.out.println("eliminata partita con codice "+i);
+        aggiornaLista(cmb_partite,true);
     }
 
     public void EventoEliminaTorneo(MouseEvent event) {
-
+        int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
+        Utili.adminEliminaTorneo(i);
+        System.out.println("eliminato torneo con codice "+i);
+        aggiornaLista(cmb_tornei,false);
     }
 
 
@@ -74,14 +129,4 @@ public class PartiteSalvateController implements Initializable {
     }
 
 
-    /*
-    File folder = new File("src/main/java/gioco/progettospacca/salvataggi/partite");
-    File[] file_partite = folder.listFiles();
-    for( File file : file_partite)
-    {
-        if (file.isFile()) {
-            String s = file.getName().substring(0, file.getName().length() - 5);
-        }
-    }
-    */
 }
