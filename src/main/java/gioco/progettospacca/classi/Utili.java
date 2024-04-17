@@ -277,6 +277,13 @@ public class Utili {
         }
         return out;
     }
+    public static void elencaPartiteNormali(){
+        elencaPartite(true, false);
+    }
+
+    public static void elencaTornei(){
+        elencaPartite(false,false);
+    }
 
     public static String adminEliminaPartita(int id) {
         if (esistePartita(id, true)) {
