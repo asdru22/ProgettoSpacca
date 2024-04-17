@@ -32,3 +32,6 @@ Eseguendo l'accesso da amministratore, oltre che creare partite e tornei, è pos
 ## Opzioni
 Dal menù impostazioni si può cambiare lingua, e attivare o disattivare effetti sonori e musica.
 ## Suddivisione del lavoro
+Nanni: Tutte le classi nella cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi) ad eccezione di qualche metodo in `Partita.java`. Vari collegamenti con le opzioni, salvataggi e metodi della classe Utili all'interno dei [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller),
+Manieri: Grafica e design (FXML), collegamenti tra le scene e classi [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller) associate, creazione di tutte le immagini.
+Silvestri: [PartitaController.java](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller/PartitaController.java): Implementazione partita vera e propria
