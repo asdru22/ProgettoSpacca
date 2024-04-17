@@ -89,14 +89,4 @@ public class PartiteSalvateController implements Initializable {
     }
 
 
-    /*
-    File folder = new File("src/main/java/gioco/progettospacca/salvataggi/partite");
-    File[] file_partite = folder.listFiles();
-    for( File file : file_partite)
-    {
-        if (file.isFile()) {
-            String s = file.getName().substring(0, file.getName().length() - 5);
-        }
-    }
-    */
 }
