@@ -1,42 +1,49 @@
 package gioco.progettospacca.classi;
 
+import javax.mail.*;
+import javax.mail.internet.*;
+import java.util.Properties;
 
-import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import java.util.ArrayList;
 
-public class test extends Application {
-
-    @Override
-    public void start(Stage primaryStage) {
-        // Create an ArrayList of integers
-        ArrayList<Integer> integerList = Utili.elencaPartite(true,true);
-
-        // Convert the ArrayList to an ObservableList
-        ObservableList<Integer> items = FXCollections.observableArrayList(integerList);
-
-        // Create the ComboBox and set its items
-        ComboBox<Integer> comboBox = new ComboBox<>(items);
-
-        // Create a layout and add the ComboBox to it
-        VBox root = new VBox(comboBox);
-
-        // Create a scene and set the layout as its root
-        Scene scene = new Scene(root, 200, 100);
-
-        // Set the scene to the stage and show the stage
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Dropdown Example");
-        primaryStage.show();
-    }
-
+public class test{
     public static void main(String[] args) {
-        launch(args);
+        String host = "smtp.gmail.com";
+        String port = "587";
+        String username = "spacca000@gmail.com";
+        String password = "xzsq bbdr xghx xljh";
+
+        // Proprietà per la sessione di posta
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
+
+        // Creazione dell'oggetto Session
+        Session session = Session.getInstance(props, new Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+        for(int i = 0; i<1 ; i++) {
+            try {
+                // Creazione del messaggio
+                Message message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(username)); // Indirizzo email mittente
+                message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("asdru22corp@gmail.com")); // Indirizzo email destinatario
+                message.setSubject("oggetto");
+                message.setText("corpo");
+
+                // Invio del messaggio
+                Transport.send(message);
+
+                System.out.println("Messaggio inviato con successo!");
+
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
+
 
