@@ -2,12 +2,15 @@ package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Torneo;
 import gioco.progettospacca.classi.Utili;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
@@ -16,6 +19,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.OPZ;
@@ -25,8 +29,9 @@ public class PartiteSalvateController implements Initializable {
     Button btn_eliminaPartita,btn_eliminaTorneo,btn_back;
     @FXML
     Label lbl_titoloPartite, lbl_titoloTornei;
+
     @FXML
-    ListView list_partite,list_tornei;
+    ComboBox cmb_partite,cmb_tornei;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -34,15 +39,19 @@ public class PartiteSalvateController implements Initializable {
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
+
+        ArrayList<Integer> lista = Utili.elencaPartiteNormali();
+        ObservableList<Integer> items = FXCollections.observableArrayList(lista);
+        cmb_partite.setItems(items);
     }
 
 
     public void EventoEliminaPartita(MouseEvent event) {
-        //Utili.eliminaPartita(idSelected);
+
     }
 
     public void EventoEliminaTorneo(MouseEvent event) {
-        //Utili.eliminaTorneo(idSelected);
+
     }
 
 

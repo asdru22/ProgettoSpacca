@@ -277,12 +277,12 @@ public class Utili {
         }
         return out;
     }
-    public static void elencaPartiteNormali(){
-        elencaPartite(true, false);
+    public static ArrayList<Integer> elencaPartiteNormali(){
+        return elencaPartite(true, false);
     }
 
-    public static void elencaTornei(){
-        elencaPartite(false,false);
+    public static ArrayList<Integer> elencaTornei(){
+        return elencaPartite(false,false);
     }
 
     public static String adminEliminaPartita(int id) {

@@ -45,7 +45,7 @@ public class Main extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        Utili.cancellaTorneiInSospeso();
+        //Utili.cancellaTorneiInSospeso();
         launch(args);
     }
 }
