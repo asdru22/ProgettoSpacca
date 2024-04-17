@@ -79,6 +79,7 @@ public class PrivilegiAdminController implements Initializable {
         currentScene.setRoot(root);
 
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
         // Imposta il titolo della finestra
         //currentStage.setTitle(OPZ.traduci("Partite salvate"));
@@ -104,6 +105,7 @@ public class PrivilegiAdminController implements Initializable {
         currentScene.setRoot(root);
 
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
         // Imposta il titolo della finestra
         //currentStage.setTitle(OPZ.traduci("Modifica giocatore"));

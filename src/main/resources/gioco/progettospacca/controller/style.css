@@ -192,13 +192,13 @@
 }
 
 
-/*
+
 
 .combo-box {
     -fx-background-color: #0a7dc4 ;
     -fx-border-color: #0a7dc4 ;
     -fx-border-width: 2.0;
-    -fx-font-size: 14.0pt;
+    -fx-font-size: 12.0pt;
     -fx-font-family: "Candara";
     -fx-text-fill: white;
     -fx-font-weight: bold;
@@ -218,6 +218,5 @@
     -fx-background-color: #0a7dc4 ;
 }
 
-*/
 
 

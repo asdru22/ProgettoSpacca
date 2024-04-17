@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -41,6 +42,45 @@ public class PartiteSalvateController implements Initializable {
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
         aggiornaLista(cmb_partite,true);
         aggiornaLista(cmb_tornei,false);
+
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_eliminaPartita.setOnMouseEntered(e -> {
+            if (btn_eliminaPartita.getScene() != null) {
+                btn_eliminaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_eliminaPartita.setOnMouseExited(e -> {
+            if (btn_eliminaPartita.getScene() != null) {
+                btn_eliminaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_eliminaTorneo.setOnMouseEntered(e -> {
+            if (btn_eliminaTorneo.getScene() != null) {
+                btn_eliminaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_eliminaTorneo.setOnMouseExited(e -> {
+            if (btn_eliminaTorneo.getScene() != null) {
+                btn_eliminaTorneo.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
 
     }
 
