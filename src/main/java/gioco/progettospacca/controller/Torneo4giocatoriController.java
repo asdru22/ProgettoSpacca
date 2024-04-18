@@ -41,22 +41,22 @@ public class Torneo4giocatoriController implements Initializable {
 
 
     public void checkBox1(MouseEvent mouseEvent) {
-        checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
         txt_gioc2.requestFocus();
     }
 
     public void checkBox2(MouseEvent mouseEvent) {
-        checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
         txt_gioc3.requestFocus();
     }
 
     public void checkBox3(MouseEvent mouseEvent) {
-        checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
         txt_gioc4.requestFocus();
     }
 
     public void checkBox4(MouseEvent mouseEvent) {
-        checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
         btn_crea.requestFocus();
     }
 

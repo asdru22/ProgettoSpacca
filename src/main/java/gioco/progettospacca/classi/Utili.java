@@ -170,7 +170,7 @@ public class Utili {
         }
     }
 
-    public static Giocatore controllaNomeTorneo(String nome, boolean bot) {
+    public static Giocatore controllaNomeTorneo(String nome, boolean bot, List<Giocatore> lista) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
@@ -179,6 +179,8 @@ public class Utili {
             } else {
                 g = new Giocatore(nome, bot);
             }
+
+            if(lista.contains(g)) return null;
             g.salva();
             return g;
         } else {
@@ -322,17 +324,17 @@ public class Utili {
             if(t.isFinito()) t.elimina();
         }
     }
-    public static void checkBox(TextField text, CheckBox check,int c){
+    public static int checkBox(TextField text, CheckBox check,int c){
         OPZ.premiBottone();
         if (check.isSelected()) {
             text.setDisable(true);
-            c+=1;
+            c=c+1;
             text.setText("bot"+c);
         } else {
             text.setDisable(false);
             text.setText("");
-            c-=1;
-
+            c=c-1;
         }
+        return c;
     }
 }

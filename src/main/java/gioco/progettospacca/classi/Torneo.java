@@ -5,6 +5,7 @@ import javafx.scene.control.TextField;
 
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Torneo {
     private Giocatore vincitore;
@@ -94,7 +95,7 @@ public class Torneo {
         txt.setText(String.valueOf(id));
 
         for (ValoriTorneo v : vt) {
-            temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected());
+            temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected(),g);
             if (temp != null) {
                 g.add(temp);
                 giocatori += 1;
