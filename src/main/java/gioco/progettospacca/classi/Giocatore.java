@@ -13,6 +13,7 @@ public class Giocatore {
     private int partite_vinte = 0;
     private ArrayList<Integer> partite = new ArrayList<>();
     private int punti = 0;
+    private String email = null;
 
     public Giocatore(String nome, boolean bot) {
         this.nome = nome;
@@ -142,6 +143,12 @@ public class Giocatore {
 
     public void setPunti(int punti) {
         this.punti = this.punti + punti;
+    }
+    public void setEmail(String email){
+        this.email = email;
+    }
+    public String getEmail(){
+        return this.email;
     }
 
     public void setNome(String nome) {

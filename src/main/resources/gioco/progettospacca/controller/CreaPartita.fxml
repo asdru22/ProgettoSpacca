@@ -101,17 +101,17 @@
                         <Font name="Candara" size="13.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="chk_gioc1" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <CheckBox fx:id="chk_gioc2" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <CheckBox fx:id="chk_gioc3" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <CheckBox fx:id="chk_gioc4" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <CheckBox fx:id="chk_gioc5" onKeyPressed="#keyEvent" onMouseClicked="#checkBox5" prefHeight="18.0" prefWidth="17.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
-                  <TextField fx:id="txt_email1" maxWidth="220.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                  <TextField fx:id="txt_email2" maxWidth="220.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                  <TextField fx:id="txt_email3" maxWidth="220.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                  <TextField fx:id="txt_email4" maxWidth="220.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                  <TextField fx:id="txt_email5" maxWidth="220.0" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                  <Button fx:id="btn_crea" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaCodicePartita" prefHeight="38.0" prefWidth="130.0" stylesheets="@style.css" text="Crea Partita" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.rowSpan="2">
+                  <CheckBox fx:id="chk_gioc1" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="chk_gioc2" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="chk_gioc3" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="chk_gioc4" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <CheckBox fx:id="chk_gioc5" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox5" prefHeight="18.0" prefWidth="17.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <TextField fx:id="txt_email1" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_email2" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                  <TextField fx:id="txt_email3" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <TextField fx:id="txt_email4" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <TextField fx:id="txt_email5" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                  <Button fx:id="btn_crea" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaCodicePartita" prefHeight="38.0" prefWidth="130.0" stylesheets="@style.css" text="Crea Partita" GridPane.columnIndex="6" GridPane.rowIndex="1" GridPane.rowSpan="2">
                      <font>
                         <Font name="Candara" size="15.0" />
                      </font>
@@ -121,12 +121,12 @@
                         <Font name="Candara" size="15.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_code" alignment="CENTER" editable="false" minHeight="17.0" onKeyPressed="#keyEvent" prefHeight="24.0" prefWidth="102.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+                  <TextField fx:id="txt_code" alignment="CENTER" editable="false" focusTraversable="false" minHeight="17.0" onKeyPressed="#keyEvent" prefHeight="24.0" prefWidth="102.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                      <font>
                         <Font name="Candara" size="12.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btn_backHome" minHeight="30.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="30.0" prefWidth="196.0" text="Torna alla home" GridPane.columnIndex="6" GridPane.rowIndex="4">
+                  <Button fx:id="btn_backHome" focusTraversable="false" minHeight="30.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="30.0" prefWidth="196.0" text="Torna alla home" GridPane.columnIndex="6" GridPane.rowIndex="4">
                      <font>
                         <Font size="15.0" />
                      </font>

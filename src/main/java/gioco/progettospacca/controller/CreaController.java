@@ -68,7 +68,16 @@ public class CreaController implements Initializable {
     private TextField txt_gioc4;
     @FXML
     private TextField txt_gioc5;
-
+    @FXML
+    private TextField txt_email1;
+    @FXML
+    private TextField txt_email2;
+    @FXML
+    private TextField txt_email3;
+    @FXML
+    private TextField txt_email4;
+    @FXML
+    private TextField txt_email5;
     @FXML
     private CheckBox chk_gioc1;
     @FXML
@@ -79,7 +88,6 @@ public class CreaController implements Initializable {
     private CheckBox chk_gioc4;
     @FXML
     private CheckBox chk_gioc5;
-
     private int checkBoxSelezionati;
 
     public void EventoCreaCodicePartita() {
@@ -118,7 +126,26 @@ public class CreaController implements Initializable {
             }
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
-
+            if(!txt_email1.getText().isEmpty()){
+                giocatori[0].setEmail(txt_email1.getText());
+            }
+            if (!txt_email2.getText().isEmpty()) {
+                giocatori[1].setEmail(txt_email2.getText());
+            }
+            if (!txt_email3.getText().isEmpty()) {
+                giocatori[2].setEmail(txt_email3.getText());
+            }
+            if (!txt_email4.getText().isEmpty()) {
+                giocatori[3].setEmail(txt_email4.getText());
+            }
+            if (!txt_email5.getText().isEmpty()) {
+                giocatori[4].setEmail(txt_email5.getText());
+            }
+            /*
+            for(int i =0; i<giocatori.length; i++) {
+                System.out.println(giocatori[i].getEmail());
+            }
+            */
             Partita p = new Partita(id, giocatori, 0);
 
         } catch (Exception e) {
@@ -155,6 +182,7 @@ public class CreaController implements Initializable {
 
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
+        txt_gioc1.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.ENTER && btn_crea.isFocused()) {
             EventoCreaCodicePartita();
         }
@@ -179,9 +207,7 @@ public class CreaController implements Initializable {
         }
 
         if (keyEvent.getCode() == KeyCode.DOWN) {
-            if (txt_gioc5.isFocused()) {
-                System.out.println("sei già nell'ultima casella");
-            } else if (txt_gioc1.isFocused()) {
+            if (txt_gioc1.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
@@ -193,25 +219,10 @@ public class CreaController implements Initializable {
             } else if (txt_gioc4.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc5.requestFocus();
-            }
-
-            if (chk_gioc5.isFocused()) {
-                System.out.println("sei già nell' ultima casella");
-            } else if (chk_gioc1.isFocused()) {
+            } else if(txt_gioc5.isFocused()){
                 OPZ.premiFreccia();
-                txt_gioc2.requestFocus();
-            } else if (chk_gioc2.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc3.requestFocus();
-            } else if (chk_gioc3.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc4.requestFocus();
-            } else if (chk_gioc4.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc5.requestFocus();
-            }
-
-            if (btn_backHome.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (btn_backHome.isFocused()) {
                 System.out.println("sei già in basso");
             } else if (txt_code.isFocused()) {
                 OPZ.premiFreccia();
@@ -237,26 +248,9 @@ public class CreaController implements Initializable {
             } else if (txt_gioc2.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc1.requestFocus();
-            }
-
-            if (chk_gioc1.isFocused()) {
-                System.out.println("sei già nella prima casella");
-            } else if (chk_gioc5.isFocused()) {
+            }else if (btn_crea.isFocused()) {
                 OPZ.premiFreccia();
-                txt_gioc4.requestFocus();
-            } else if (chk_gioc4.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc3.requestFocus();
-            } else if (chk_gioc3.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc2.requestFocus();
-            } else if (chk_gioc2.isFocused()) {
-                OPZ.premiFreccia();
-                chk_gioc1.requestFocus();
-            }
-
-            if (btn_crea.isFocused()) {
-                System.out.println("sei già in alto");
+                txt_gioc5.requestFocus();
             } else if (txt_code.isFocused()) {
                 OPZ.premiFreccia();
                 btn_crea.requestFocus();
@@ -265,24 +259,6 @@ public class CreaController implements Initializable {
                 txt_code.requestFocus();
             }
         }
-        pulisci();
-    }
-
-
-    private void pulisci() {
-        chk_gioc1.setFocusTraversable(false);
-        chk_gioc2.setFocusTraversable(false);
-        chk_gioc3.setFocusTraversable(false);
-        chk_gioc4.setFocusTraversable(false);
-        chk_gioc5.setFocusTraversable(false);
-        txt_gioc1.setFocusTraversable(false);
-        txt_gioc2.setFocusTraversable(false);
-        txt_gioc3.setFocusTraversable(false);
-        txt_gioc4.setFocusTraversable(false);
-        txt_gioc5.setFocusTraversable(false);
-        txt_code.setFocusTraversable(false);
-        btn_backHome.setFocusTraversable(false);
-        btn_crea.setFocusTraversable(false);
     }
 
     @Override

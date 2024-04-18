@@ -221,21 +221,21 @@ public class Partita {
         switch (verificaColore(carteSeme)) {
             case 3:
                 //System.out.println("3 carte dello stesso colore");
-                punti = (int) ((punti + 10)*ModificaPuntiSemeCheComanda());
+                punti = ((punti + 10));
                 break;
             case 4:
                 //System.out.println("4 carte dello stesso colore");
-                punti = (int) ((punti + 30)*ModificaPuntiSemeCheComanda());
+                punti = ((punti + 30));
                 break;
             case 5:
                 //System.out.println("5 carte dello stesso colore");
-                punti = (int) ((punti + 80)*ModificaPuntiSemeCheComanda());
+                punti = ((punti + 80));
                 break;
             default:
                 //System.out.println("non hai fatto colore");
         }
-
-        punti = punti*this.moltiplicatoreImprevisti;
+        System.out.println("moltiplicatore scala che comanda: "+ModificaPuntiSemeCheComanda());
+        punti = (int) (punti*this.moltiplicatoreImprevisti*ModificaPuntiSemeCheComanda());
         moltiplicatoreImprevisti = 1;
 
         return punti;
@@ -323,7 +323,12 @@ public class Partita {
             int valore = mappa.get(chiave);
             if (valore > numColorePiuVolteRipetuto) {
                 numColorePiuVolteRipetuto = valore;
-                this.semeCatenaColore = chiave;
+                if (valore>2){
+                    this.semeCatenaColore = chiave;
+                }
+                else {
+                    this.semeCatenaColore = null;
+                }
             }
         }
         return numColorePiuVolteRipetuto;

@@ -34,7 +34,7 @@ import java.util.*;
 import static gioco.progettospacca.controller.Main.*;
 
 public class PartitaController implements Initializable {
-    public static final int CODICE_TEMP = 84981 ;
+    public static final int CODICE_TEMP = 81597 ;
     @FXML
     Label lbl_titoloImprevisto;
     @FXML
@@ -510,91 +510,6 @@ public class PartitaController implements Initializable {
     }
 
     //tasto conferma carte da scartare
-    public void cambiaCarteSelezionate(MouseEvent mouseEvent) throws FileNotFoundException {
-        /*//debug
-        System.out.println("mazzo");
-        for(Carta carta:  mazzo.getMazzoArrayList()){
-            System.out.println(carta);
-        }
-         */
-        Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
-        while (iterator.hasNext()) {
-            Carta carta = iterator.next();
-            if (carta.getSeme() == Seme.Neutro) {
-                iterator.remove();
-            }
-        }
-        /*//debug
-        System.out.println("mazzo senza imprevisti");
-        for(Carta carta:  mazzo.getMazzoArrayList()){
-            System.out.println(carta);
-        }
-        */
-
-        ArrayList<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
-        boolean almenoUnaTrue = false;
-        for (Carta carta : manoList) {
-            if (carta.getCliccata()) {
-                almenoUnaTrue = true;
-                break;
-            }
-        }
-        if (almenoUnaTrue) {
-            PauseTransition pause = new PauseTransition(Duration.seconds(0.25));
-            pause.play();
-            pause.setOnFinished(event2 -> {
-                scartataAnimazione();
-            });
-             //lo metto subito perchè appena inizia una transizione il codice va avanti e non aspetta
-            // la fine dell'animazione, quindi cambia le carte animatamente corrette poi eseguo lo scarto effettivo in questo metodo poi una volta terminata
-            // l'animazione dello scarto, parte l'animazione della pescata con le carte già modificate in quanto il codice di questo metodo ha
-            // eseguito subito dopo l'animazione dello scarto
-
-            int pos = 1;
-            for (Carta carta : manoList) {
-                if (carta.getCliccata()) {
-                    toccaA.settaCarteNulle(pos - 1);
-                    toccaA.scarta(pos);
-                }
-                pos++;
-            }
-
-            manoList = new ArrayList<>(Arrays.asList(toccaA.getMano()));
-
-            for (int i = 0; i < manoList.size(); i++) {
-                Carta carta = manoList.get(i);
-                if (carta == null) {
-                    manoList.remove(i);  // Rimuovi l'elemento null
-                    manoList.add(i, p.getMazzo().getMazzoArrayList().remove(0));// Inserisci la nuova carta dal mazzo
-                    manoList.get(i).setCliccata(true);
-                }
-            }
-
-            toccaA.setMano(manoList.toArray(toccaA.getMano()));
-
-            lbl_scegliCarteDaScartare.setVisible(false);
-            btn_conferma.setVisible(false);
-
-            mano = p.getToccaA().getMano();
-            int punti = p.valutaCarte(toccaA.getMano());
-            lbl_punteggio.setText(String.valueOf(punti));
-            p.setCont(cont + 1);
-            toccaA.setPunti(punti);
-            rimuoviEventiCarte();
-        } else {
-            lbl_attenzione.setVisible(true);
-            lbl_attenzione.setText(OPZ.traduci("scegli_almeno_una_carta"));
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl_attenzione);
-            fadeTransition.setFromValue(1.0); // Opacità iniziale
-            fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
-            fadeTransition.play();
-            fadeTransition.setOnFinished(event -> {
-                lbl_attenzione.setVisible(false);
-                lbl_attenzione.setText("");
-            });
-        }
-
-    }
     public void cambiaCarteSelezionate() {
         Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
         while (iterator.hasNext()) {
@@ -1661,7 +1576,7 @@ public class PartitaController implements Initializable {
 
         inizializzaTraduzioni();
         System.out.println(CODICE_GLOBALE_PARTITA);
-        p = Partita.carica(CODICE_GLOBALE_PARTITA);
+        p = Partita.carica(CODICE_TEMP);
         mostraClassifica();
         cont = p.getCont();
         giocatori = p.getGiocatori();
