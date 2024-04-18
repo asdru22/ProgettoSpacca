@@ -17,6 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.classi.Utili.checkBox;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Torneo8giocatoriController implements Initializable {
@@ -32,6 +33,44 @@ public class Torneo8giocatoriController implements Initializable {
     TextField txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_gioc5,txt_gioc6,txt_gioc7,txt_gioc8,txt_codice;
     @FXML
     CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4,chk_gioc5,chk_gioc6,chk_gioc7,chk_gioc8;
+
+    private int checkBoxSelezionati = 0;
+
+
+    public void checkBox1(MouseEvent mouseEvent) {
+        checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        txt_gioc2.requestFocus();
+    }
+    public void checkBox2(MouseEvent mouseEvent) {
+        checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        txt_gioc3.requestFocus();
+    }
+    public void checkBox3(MouseEvent mouseEvent) {
+        checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        txt_gioc4.requestFocus();
+    }
+    public void checkBox4(MouseEvent mouseEvent) {
+        checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        txt_gioc5.requestFocus();
+    }
+    public void checkBox5(MouseEvent mouseEvent) {
+        checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
+        txt_gioc6.requestFocus();
+    }
+    public void checkBox6(MouseEvent mouseEvent) {
+        checkBox(txt_gioc6,chk_gioc6,checkBoxSelezionati);
+        txt_gioc7.requestFocus();
+    }
+    public void checkBox7(MouseEvent mouseEvent) {
+        checkBox(txt_gioc7,chk_gioc7,checkBoxSelezionati);
+        txt_gioc8.requestFocus();
+    }
+
+    public void checkBox8(MouseEvent mouseEvent) {
+        checkBox(txt_gioc8,chk_gioc8,checkBoxSelezionati);
+        btn_crea.requestFocus();
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

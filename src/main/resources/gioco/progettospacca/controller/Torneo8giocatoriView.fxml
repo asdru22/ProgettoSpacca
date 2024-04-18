@@ -111,10 +111,10 @@
                                 <Font name="Candara" size="12.0" />
                             </font>
                         </Label>
-                        <CheckBox fx:id="chk_gioc1" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chk_gioc2" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox fx:id="chk_gioc3" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <CheckBox fx:id="chk_gioc4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <CheckBox fx:id="chk_gioc1" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#checkBox1"/>
+                        <CheckBox fx:id="chk_gioc2" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" onMouseClicked="#checkBox2"/>
+                        <CheckBox fx:id="chk_gioc3" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3" onMouseClicked="#checkBox3"/>
+                        <CheckBox fx:id="chk_gioc4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4" onMouseClicked="#checkBox4"/>
                         <ImageView fitHeight="38.0" fitWidth="37.0" GridPane.rowIndex="5">
                             <image>
                                 <Image url="@../playerimg.png" />
@@ -155,10 +155,10 @@
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <CheckBox fx:id="chk_gioc5" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                        <CheckBox fx:id="chk_gioc6" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                        <CheckBox fx:id="chk_gioc7" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                        <CheckBox fx:id="chk_gioc8" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                        <CheckBox fx:id="chk_gioc5" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="5" onMouseClicked="#checkBox5"/>
+                        <CheckBox fx:id="chk_gioc6" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="6" onMouseClicked="#checkBox6"/>
+                        <CheckBox fx:id="chk_gioc7" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="7" onMouseClicked="#checkBox7"/>
+                        <CheckBox fx:id="chk_gioc8" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="8" onMouseClicked="#checkBox8"/>
                     </children>
                 </GridPane>
             </children>

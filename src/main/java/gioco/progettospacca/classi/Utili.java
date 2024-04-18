@@ -3,6 +3,7 @@ package gioco.progettospacca.classi;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 
@@ -319,6 +320,19 @@ public class Utili {
         for(int n : lista ){
             Torneo t = Torneo.carica(n);
             if(t.isFinito()) t.elimina();
+        }
+    }
+    public static void checkBox(TextField text, CheckBox check,int c){
+        OPZ.premiBottone();
+        if (check.isSelected()) {
+            text.setDisable(true);
+            c+=1;
+            text.setText("bot"+c);
+        } else {
+            text.setDisable(false);
+            text.setText("");
+            c-=1;
+
         }
     }
 }

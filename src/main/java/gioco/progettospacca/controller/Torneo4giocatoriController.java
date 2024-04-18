@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.classi.Utili.checkBox;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Torneo4giocatoriController implements Initializable {
@@ -35,6 +36,30 @@ public class Torneo4giocatoriController implements Initializable {
     TextField txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_codice;
     @FXML
     CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4;
+
+    private int checkBoxSelezionati = 0;
+
+
+    public void checkBox1(MouseEvent mouseEvent) {
+        checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        txt_gioc2.requestFocus();
+    }
+
+    public void checkBox2(MouseEvent mouseEvent) {
+        checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        txt_gioc3.requestFocus();
+    }
+
+    public void checkBox3(MouseEvent mouseEvent) {
+        checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        txt_gioc4.requestFocus();
+    }
+
+    public void checkBox4(MouseEvent mouseEvent) {
+        checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        btn_crea.requestFocus();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_crea.setOnMouseEntered(e -> {

@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+import static gioco.progettospacca.classi.Utili.checkBox;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class CreaController implements Initializable {
@@ -126,43 +127,29 @@ public class CreaController implements Initializable {
 
     }
 
-    public void checkBox(TextField text, CheckBox check){
-        OPZ.premiBottone();
-        if (check.isSelected()) {
-            text.setDisable(true);
-            checkBoxSelezionati+=1;
-            text.setText("bot"+checkBoxSelezionati);
-        } else {
-            text.setDisable(false);
-            text.setText("");
-            checkBoxSelezionati-=1;
-
-        }
-    }
-
     public void checkBox1(MouseEvent mouseEvent) {
-        checkBox(txt_gioc1,chk_gioc1);
+        checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
         txt_gioc2.requestFocus();
     }
 
 
     public void checkBox2(MouseEvent mouseEvent) {
-        checkBox(txt_gioc2,chk_gioc2);
+        checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
         txt_gioc3.requestFocus();
     }
 
     public void checkBox3(MouseEvent mouseEvent) {
-        checkBox(txt_gioc3,chk_gioc3);
+        checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
         txt_gioc4.requestFocus();
     }
 
     public void checkBox4(MouseEvent mouseEvent) {
-        checkBox(txt_gioc4,chk_gioc4);
+        checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
         txt_gioc5.requestFocus();
     }
 
     public void checkBox5(MouseEvent mouseEvent) {
-        checkBox(txt_gioc5,chk_gioc5);
+        checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
         btn_crea.requestFocus();
     }
 
