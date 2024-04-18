@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Giocatore;
+import gioco.progettospacca.classi.MailThread;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
@@ -126,6 +127,8 @@ public class CreaController implements Initializable {
             }
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
+
+            //per invio mail relativi alla creazione della partita
             if(!txt_email1.getText().isEmpty()){
                 giocatori[0].setEmail(txt_email1.getText());
             }
@@ -141,11 +144,14 @@ public class CreaController implements Initializable {
             if (!txt_email5.getText().isEmpty()) {
                 giocatori[4].setEmail(txt_email5.getText());
             }
-            /*
+            //creo un thread per ogni mail da inviare
             for(int i =0; i<giocatori.length; i++) {
-                System.out.println(giocatori[i].getEmail());
+                if(!giocatori[i].getEmail().isEmpty() && giocatori[i].getEmail()!=""){
+                    MailThread thread = new MailThread(giocatori[i].getEmail(),"Iscrizione partita spacca", "iscritto alla partita: "+txt_code.getText());
+                    thread.start();
+                }
             }
-            */
+
             Partita p = new Partita(id, giocatori, 0);
 
         } catch (Exception e) {
