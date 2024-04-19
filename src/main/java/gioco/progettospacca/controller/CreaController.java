@@ -91,14 +91,12 @@ public class CreaController implements Initializable {
     private CheckBox chk_gioc5;
     private int checkBoxSelezionati;
 
-    public void EventoCreaCodicePartita() {
+    public String EventoCreaCodicePartita() {
         OPZ.premiBottone();
         try {
             Giocatore temp;
 
             int id = Utili.intCasuale(10000, 99999);
-
-            txt_code.setText(String.valueOf(id));
 
             List<Giocatore> g = new ArrayList<>();
 
@@ -125,6 +123,10 @@ public class CreaController implements Initializable {
             if (temp != null) {
                 g.add(temp);
             }
+            System.out.println("giocatori:"+g.size());
+            if(g.size()<2) return OPZ.traduci("giocatori_insufficenti");
+
+            txt_code.setText(String.valueOf(id));
 
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
@@ -157,7 +159,7 @@ public class CreaController implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        return OPZ.traduci("partita_creata");
     }
 
     public void checkBox1(MouseEvent mouseEvent) {
