@@ -4,6 +4,7 @@ import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.MailThread;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -89,9 +91,24 @@ public class CreaController implements Initializable {
     private CheckBox chk_gioc4;
     @FXML
     private CheckBox chk_gioc5;
+    @FXML
+    private Label lbl_errore;
     private int checkBoxSelezionati;
 
-    public String EventoCreaCodicePartita() {
+    public static void fadeBottone(Label lbl){
+        lbl.setVisible(true);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
+        fadeTransition.setFromValue(1.0); // Opacità iniziale
+        fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            lbl.setVisible(false);
+            lbl.setText("");
+        });
+
+    }
+
+    public void EventoCreaCodicePartita() {
         OPZ.premiBottone();
         try {
             Giocatore temp;
@@ -100,31 +117,37 @@ public class CreaController implements Initializable {
 
             List<Giocatore> g = new ArrayList<>();
 
-            temp = Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g);
-            if (temp != null) {
-                g.add(temp);
-            }
-            temp = Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g);
+            temp = Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g,lbl_errore);
             if (temp != null) {
                 g.add(temp);
             }
 
-            temp = Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g);
+            temp = Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g,lbl_errore);
             if (temp != null) {
                 g.add(temp);
             }
 
-            temp = Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g);
+            temp = Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g,lbl_errore);
             if (temp != null) {
                 g.add(temp);
             }
 
-            temp = Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g);
+            temp = Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g,lbl_errore);
             if (temp != null) {
                 g.add(temp);
             }
+
+            temp = Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g,lbl_errore);
+            if (temp != null) {
+                g.add(temp);
+            }
+
             System.out.println("giocatori:"+g.size());
-            if(g.size()<2) return OPZ.traduci("giocatori_insufficenti");
+            if(g.size()<2) {
+                fadeBottone(lbl_errore);
+                lbl_errore.setText(OPZ.traduci("giocatori_insufficenti"));
+                return;
+            }
 
             txt_code.setText(String.valueOf(id));
 
@@ -159,7 +182,8 @@ public class CreaController implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
-        return OPZ.traduci("partita_creata");
+        lbl_errore.setText(OPZ.traduci("partita_creata"));
+        fadeBottone(lbl_errore);
     }
 
     public void checkBox1(MouseEvent mouseEvent) {
