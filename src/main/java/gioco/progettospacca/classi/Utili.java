@@ -2,10 +2,7 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import static gioco.progettospacca.controller.CreaController.fadeBottone;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
@@ -148,7 +146,7 @@ public class Utili {
         return trovato;
     }
 
-    public static Giocatore controllaNome(String nome, int id, boolean bot, List<Giocatore> lista) {
+    public static Giocatore controllaNome(String nome, int id, boolean bot, List<Giocatore> lista, Label lbl) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
@@ -159,7 +157,11 @@ public class Utili {
                 g = new Giocatore(nome, bot);
             }
 
-            if(lista.contains(g)) return null;
+            if(lista.contains(g)){
+                lbl.setText(OPZ.traduci("nome_invalido"));
+                fadeBottone(lbl);
+                return null;
+            }
 
 
             g.aggiungiPartita(id);
