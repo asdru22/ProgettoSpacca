@@ -39,9 +39,9 @@
                   <RowConstraints maxHeight="92.00000610351563" minHeight="10.0" prefHeight="39.199987792968756" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_4players" mnemonicParsing="false" onMouseClicked="#creaTorneo4giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.rowIndex="3" />
-                  <Button fx:id="btn_8players" mnemonicParsing="false" onMouseClicked="#creaTorneo8giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Button fx:id="btn_16players" mnemonicParsing="false" onMouseClicked="#creaTorneo16giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_4players" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaTorneo4Giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_8players" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaTorneo8Giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="btn_16players" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoCreaTorneo16Giocatori" prefHeight="150.0" prefWidth="150.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                   <Label text="4" GridPane.rowIndex="4">
                      <font>
                         <Font name="Candara Bold Italic" size="24.0" />
@@ -79,7 +79,7 @@
                   </ImageView>
                </children>
             </AnchorPane>
-            <Button fx:id="btn_back" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
          </children>
       </AnchorPane>
    </children>

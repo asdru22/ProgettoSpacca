@@ -7,6 +7,7 @@ import java.util.Properties;
 /*
 Ho deciso di utilizzare un thread separato per l'invio delle mail proprio per non far bloccare
 l'applicazione in attesa del completamento dell'operazione. Questo grazie alle lezioni di sistemi operativi del secondo anno(anno corrente)
+per ultilzzare la libreria ho aggiunto le dipendeze maven nel file pom.xml
  */
 public class MailThread extends Thread{
     private String host = "smtp.gmail.com";
@@ -19,8 +20,8 @@ public class MailThread extends Thread{
     private String corpo;
     private Session sessione;
 
-    public MailThread(String receiver, String oggetto, String corpo){
-        this.destinatario = receiver;
+    public MailThread(String destinatario, String oggetto, String corpo){
+        this.destinatario = destinatario;
         this.oggetto = oggetto;
         this.corpo = corpo;
 

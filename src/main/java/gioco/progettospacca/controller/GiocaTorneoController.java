@@ -11,10 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.fxml.Initializable;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -62,7 +65,7 @@ public class GiocaTorneoController implements Initializable {
         lbl_titleCodTorneo.setText(OPZ.traduci("inserisci_codice_torneo"));
     }
 
-    public void BackToHome(ActionEvent actionEvent) throws IOException {
+    public void BackToHome() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
@@ -108,6 +111,43 @@ public class GiocaTorneoController implements Initializable {
         currentStage.setTitle(OPZ.traduci("gioca_torneo"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
+
+    }
+
+    public void keyEvent(KeyEvent keyEvent){
+        txt_codTorneo.setFocusTraversable(false);
+        if (keyEvent.getCode() == KeyCode.UP) {
+            if(txt_codTorneo.isFocused()){
+                btn_home.requestFocus();
+            } else if (btn_home.isFocused()) {
+                System.out.println("sei già in alto");
+            } else if (btn_entraTorneo.isFocused()) {
+                txt_codTorneo.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.DOWN) {
+            if(txt_codTorneo.isFocused()){
+                btn_entraTorneo.requestFocus();
+            } else if (btn_home.isFocused()) {
+                txt_codTorneo.requestFocus();
+            } else if (btn_entraTorneo.isFocused()) {
+                System.out.println("sei già in basso");
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && btn_home.isFocused()){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && btn_entraTorneo.isFocused()){
+            try {
+                EventoGiocaTorneo();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 
