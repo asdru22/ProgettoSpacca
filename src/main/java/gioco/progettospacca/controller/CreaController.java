@@ -117,35 +117,16 @@ public class CreaController implements Initializable {
 
             List<Giocatore> g = new ArrayList<>();
 
-            temp = Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g,lbl_errore);
-            if (temp != null) {
-                g.add(temp);
-            }
-
-            temp = Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g,lbl_errore);
-            if (temp != null) {
-                g.add(temp);
-            }
-
-            temp = Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g,lbl_errore);
-            if (temp != null) {
-                g.add(temp);
-            }
-
-            temp = Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g,lbl_errore);
-            if (temp != null) {
-                g.add(temp);
-            }
-
-            temp = Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g,lbl_errore);
-            if (temp != null) {
-                g.add(temp);
-            }
+             Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g,lbl_errore);
+             Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g,lbl_errore);
+             Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g,lbl_errore);
+             Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g,lbl_errore);
+             Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g,lbl_errore);
 
             System.out.println("giocatori:"+g.size());
             if(g.size()<2) {
                 fadeBottone(lbl_errore);
-                lbl_errore.setText(OPZ.traduci("giocatori_insufficenti"));
+                lbl_errore.setText(OPZ.traduci("errore_crea_partita"));
                 return;
             }
 

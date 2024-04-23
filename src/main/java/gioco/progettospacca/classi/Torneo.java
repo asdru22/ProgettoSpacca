@@ -116,7 +116,9 @@ public class Torneo {
         }
         for (int i = 0; i < giocatori_mancanti; i++) {
             bot_esistenti += 1;
-            giocatori.add(new Giocatore("bot" + bot_esistenti, true));
+            Giocatore b = new Giocatore("bot" + bot_esistenti, true);
+            giocatori.add(b);
+            b.salva();
         }
         System.out.println("Aggiunti " + giocatori_mancanti + " bot per raggiungere il numero di giocatori richiesti");
     }

@@ -146,29 +146,23 @@ public class Utili {
         return trovato;
     }
 
-    public static Giocatore controllaNome(String nome, int id, boolean bot, List<Giocatore> lista, Label lbl) {
+    public static void controllaNome(String nome, int id, boolean bot, List<Giocatore> lista, Label lbl) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
 
             if (esiste) {
                 g = Giocatore.carica(nome);
+                System.out.println("Giocatore "+nome+" esiste");
             } else {
                 g = new Giocatore(nome, bot);
             }
 
-            if(lista.contains(g)){
-                lbl.setText(OPZ.traduci("nome_invalido"));
-                fadeBottone(lbl);
-                return null;
+            if (!lista.contains(g)) {
+                g.aggiungiPartita(id);
+                g.salva();
+                lista.add(g);
             }
-
-
-            g.aggiungiPartita(id);
-            g.salva();
-            return g;
-        } else {
-            return null;
         }
     }
 
