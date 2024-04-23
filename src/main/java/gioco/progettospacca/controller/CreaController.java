@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -18,16 +17,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static gioco.progettospacca.classi.Utili.checkBox;
@@ -117,11 +112,11 @@ public class CreaController implements Initializable {
 
             List<Giocatore> g = new ArrayList<>();
 
-             Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g,lbl_errore);
-             Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g,lbl_errore);
-             Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g,lbl_errore);
-             Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g,lbl_errore);
-             Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g,lbl_errore);
+             Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g);
+             Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g);
+             Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g);
+             Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g);
+             Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g);
 
             System.out.println("giocatori:"+g.size());
             if(g.size()<2) {

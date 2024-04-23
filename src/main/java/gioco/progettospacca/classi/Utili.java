@@ -9,12 +9,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static gioco.progettospacca.controller.CreaController.fadeBottone;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
@@ -80,10 +78,6 @@ public class Utili {
         return min + (int) (Math.random() * ((max - min) + 1));
     }
 
-    public static Seme semeCasuale() {
-        Seme[] s = Seme.values();
-        return s[intCasuale(0, 4)];
-    }
 
     public static void elimina(String id, String cartella) {
 
@@ -146,14 +140,14 @@ public class Utili {
         return trovato;
     }
 
-    public static void controllaNome(String nome, int id, boolean bot, List<Giocatore> lista, Label lbl) {
+    public static void controllaNome(String nome, int id, boolean bot, List<Giocatore> lista) {
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
 
             if (esiste) {
                 g = Giocatore.carica(nome);
-                System.out.println("Giocatore "+nome+" esiste");
+                System.out.println("Giocatore " + nome + " esiste");
             } else {
                 g = new Giocatore(nome, bot);
             }
@@ -176,7 +170,7 @@ public class Utili {
                 g = new Giocatore(nome, bot);
             }
 
-            if(lista.contains(g)) return null;
+            if (lista.contains(g)) return null;
             g.salva();
             return g;
         } else {
@@ -218,7 +212,7 @@ public class Utili {
             g.setNome(nuovo);
             g.salva();
             // cambia i nomi salvati nelle partite
-            ArrayList<Integer> idPartite = elencaPartite(true,true);
+            ArrayList<Integer> idPartite = elencaPartite(true, true);
             assert (!idPartite.isEmpty());
             for (Integer id : idPartite) {
                 Partita p = Partita.carica(id);
@@ -233,7 +227,7 @@ public class Utili {
                     }
                 }
             }
-            ArrayList<Integer> idTornei = elencaPartite(false,false);
+            ArrayList<Integer> idTornei = elencaPartite(false, false);
             assert (!idTornei.isEmpty());
             for (Integer id : idTornei) {
                 Torneo t = Torneo.carica(id);
@@ -252,7 +246,7 @@ public class Utili {
         } else return OPZ.traduci("cambia_nome_fallito");
     }
 
-    public static ArrayList<Integer> elencaPartite(boolean partite,boolean includiTorneo) {
+    public static ArrayList<Integer> elencaPartite(boolean partite, boolean includiTorneo) {
         // partite true per partite, false per tornei
         // includi torneo true per includere le partite che fanno parte del torneo
         File folder;
@@ -266,22 +260,22 @@ public class Utili {
             for (File file : cartella) {
                 if (file.isFile()) {
                     String s = file.getName().substring(0, file.getName().length() - 5);
-                    if (partite){
+                    if (partite) {
                         int n = gson.fromJson(Utili.leggiFileJson("partite", s), Partita.class).getId();
-                        if(Partita.carica(n).getIdTorneo()==0||includiTorneo) out.add(n);
-                    }
-                    else out.add(gson.fromJson(Utili.leggiFileJson("tornei", s), Torneo.class).getId());
+                        if (Partita.carica(n).getIdTorneo() == 0 || includiTorneo) out.add(n);
+                    } else out.add(gson.fromJson(Utili.leggiFileJson("tornei", s), Torneo.class).getId());
                 }
             }
         }
         return out;
     }
-    public static ArrayList<Integer> elencaPartiteNormali(){
+
+    public static ArrayList<Integer> elencaPartiteNormali() {
         return elencaPartite(true, false);
     }
 
-    public static ArrayList<Integer> elencaTornei(){
-        return elencaPartite(false,false);
+    public static ArrayList<Integer> elencaTornei() {
+        return elencaPartite(false, false);
     }
 
     public static String adminEliminaPartita(int id) {
@@ -302,7 +296,7 @@ public class Utili {
     }
 
     public static void bottoneTorneo(Button b, int codice) {
-        System.out.println("inizializzato bottone"+b.getId()+",codiec: "+codice);
+        System.out.println("inizializzato bottone" + b.getId() + ",codiec: " + codice);
 
         Partita p = Partita.carica(codice);
         if (p.getVincitore() == null) {
@@ -310,28 +304,28 @@ public class Utili {
             b.setText(p.getGiocatori()[0].getNome() + " - " + p.getGiocatori()[1].getNome());
         } else {
             b.setDisable(true);
-            b.setText(OPZ.traduci("vincitore")+": "+ p.getVincitore().getNome());
+            b.setText(OPZ.traduci("vincitore") + ": " + p.getVincitore().getNome());
         }
     }
-    public static void cancellaTorneiInSospeso(){
-        ArrayList<Integer> lista = elencaPartite(false,false);
-        for(int n : lista ){
+
+    public static void cancellaTorneiInSospeso() {
+        ArrayList<Integer> lista = elencaPartite(false, false);
+        for (int n : lista) {
             Torneo t = Torneo.carica(n);
-            if(t.isFinito()) t.elimina();
+            if (t.isFinito()) t.elimina();
         }
     }
-    public static int checkBox(TextField text, CheckBox check,int c){
+
+    public static int checkBox(TextField text, CheckBox check, int c) {
         OPZ.premiBottone();
         if (check.isSelected() && !text.isDisable()) {
             text.setDisable(true);
-            c=c+1;
-            text.setText("bot"+c);
-        }else {
-            System.out.println("sono entrato qua");
+            c = c + 1;
+            text.setText("bot" + c);
+        } else {
             text.setDisable(false);
             text.setText("");
             c = c - 1;
-
         }
         return c;
     }

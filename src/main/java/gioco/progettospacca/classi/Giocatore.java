@@ -6,6 +6,8 @@ import java.io.File;
 import java.util.*;
 import java.util.*;
 
+import static gioco.progettospacca.controller.Main.OPZ;
+
 public class Giocatore {
     private String nome;
     private Carta[] mano = new Carta[5];
@@ -158,5 +160,8 @@ public class Giocatore {
 
     public void aumentaVittorie() {
         partite_vinte+=1;
+    }
+    public String getCodici(){
+        return OPZ.traduci("partite")+":\n" + getPartite();
     }
 }
