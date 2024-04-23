@@ -41,22 +41,22 @@
                         <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <TextField fx:id="txt_gioc4" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <TextField fx:id="txt_gioc4" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="4">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc3" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="txt_gioc3" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc2" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <TextField fx:id="txt_gioc2" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="2">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc1" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <TextField fx:id="txt_gioc1" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
@@ -86,7 +86,7 @@
                                 <Image url="@../playerimg.png" />
                             </image>
                         </ImageView>
-                        <Button fx:id="btn_crea" mnemonicParsing="false" onMouseClicked="#cliccaCreaTorneo" text="Crea torneo" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+                        <Button fx:id="btn_crea" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#cliccaCreaTorneo" text="Crea torneo" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
@@ -96,12 +96,12 @@
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txt_codice" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <TextField fx:id="txt_codice" focusTraversable="false" onKeyPressed="#keyEvent" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="TOP">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <Button fx:id="btn_home" mnemonicParsing="false" onAction="#BackToHome" text="Torna alla home" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                        <Button fx:id="btn_home" focusTraversable="false" mnemonicParsing="false" onAction="#BackToHome" onKeyPressed="#keyEvent" text="Torna alla home" GridPane.columnIndex="3" GridPane.rowIndex="6" GridPane.valignment="TOP">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
@@ -111,10 +111,10 @@
                                 <Font name="Candara" size="12.0" />
                             </font>
                         </Label>
-                        <CheckBox fx:id="chk_gioc1" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" onMouseClicked="#checkBox1"/>
-                        <CheckBox fx:id="chk_gioc2" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" onMouseClicked="#checkBox2"/>
-                        <CheckBox fx:id="chk_gioc3" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3" onMouseClicked="#checkBox3"/>
-                        <CheckBox fx:id="chk_gioc4" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="4" onMouseClicked="#checkBox4"/>
+                        <CheckBox fx:id="chk_gioc1" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chk_gioc2" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="chk_gioc3" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <CheckBox fx:id="chk_gioc4" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                         <ImageView fitHeight="38.0" fitWidth="37.0" GridPane.rowIndex="5">
                             <image>
                                 <Image url="@../playerimg.png" />
@@ -135,30 +135,30 @@
                                 <Image url="@../playerimg.png" />
                             </image>
                         </ImageView>
-                        <TextField fx:id="txt_gioc5" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                        <TextField fx:id="txt_gioc5" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="5">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc6" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                        <TextField fx:id="txt_gioc6" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="6">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc7" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                        <TextField fx:id="txt_gioc7" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="7">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="txt_gioc8" maxWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <TextField fx:id="txt_gioc8" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="8">
                             <font>
                                 <Font name="Candara" size="16.0" />
                             </font>
                         </TextField>
-                        <CheckBox fx:id="chk_gioc5" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="5" onMouseClicked="#checkBox5"/>
-                        <CheckBox fx:id="chk_gioc6" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="6" onMouseClicked="#checkBox6"/>
-                        <CheckBox fx:id="chk_gioc7" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="7" onMouseClicked="#checkBox7"/>
-                        <CheckBox fx:id="chk_gioc8" mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="8" onMouseClicked="#checkBox8"/>
+                        <CheckBox fx:id="chk_gioc5" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox5" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                        <CheckBox fx:id="chk_gioc6" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox6" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                        <CheckBox fx:id="chk_gioc7" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox7" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                        <CheckBox fx:id="chk_gioc8" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox8" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                     </children>
                 </GridPane>
             </children>

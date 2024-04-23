@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -40,76 +42,76 @@ public class Torneo16giocatoriController implements Initializable {
             chk_gioc9,chk_gioc10,chk_gioc11,chk_gioc12,chk_gioc13,chk_gioc14,chk_gioc15,chk_gioc16;
 
     private int checkBoxSelezionati = 0;
-    public void checkBox1(MouseEvent mouseEvent) {
+    public void checkBox1() {
         checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
         txt_gioc2.requestFocus();
     }
-    public void checkBox2(MouseEvent mouseEvent) {
+    public void checkBox2() {
         checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
         txt_gioc3.requestFocus();
     }
-    public void checkBox3(MouseEvent mouseEvent) {
+    public void checkBox3() {
         checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
         txt_gioc4.requestFocus();
     }
-    public void checkBox4(MouseEvent mouseEvent) {
+    public void checkBox4() {
         checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
         txt_gioc5.requestFocus();
     }
-    public void checkBox5(MouseEvent mouseEvent) {
+    public void checkBox5() {
         checkBoxSelezionati = checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
         txt_gioc6.requestFocus();
     }
-    public void checkBox6(MouseEvent mouseEvent) {
+    public void checkBox6() {
         checkBoxSelezionati = checkBox(txt_gioc6,chk_gioc6,checkBoxSelezionati);
         txt_gioc7.requestFocus();
     }
-    public void checkBox7(MouseEvent mouseEvent) {
+    public void checkBox7() {
         checkBoxSelezionati = checkBox(txt_gioc7,chk_gioc7,checkBoxSelezionati);
         txt_gioc8.requestFocus();
     }
 
-    public void checkBox8(MouseEvent mouseEvent) {
+    public void checkBox8() {
         checkBoxSelezionati = checkBox(txt_gioc8,chk_gioc8,checkBoxSelezionati);
         txt_gioc9.requestFocus();
     }
 
-    public void checkBox9(MouseEvent mouseEvent) {
+    public void checkBox9() {
         checkBoxSelezionati = checkBox(txt_gioc9,chk_gioc9,checkBoxSelezionati);
         txt_gioc10.requestFocus();
     }
 
-    public void checkBox10(MouseEvent mouseEvent) {
+    public void checkBox10() {
         checkBoxSelezionati = checkBox(txt_gioc10,chk_gioc10,checkBoxSelezionati);
         txt_gioc11.requestFocus();
     }
 
-    public void checkBox11(MouseEvent mouseEvent) {
+    public void checkBox11() {
         checkBoxSelezionati = checkBox(txt_gioc11,chk_gioc11,checkBoxSelezionati);
         txt_gioc12.requestFocus();
     }
 
-    public void checkBox12(MouseEvent mouseEvent) {
+    public void checkBox12() {
         checkBoxSelezionati = checkBox(txt_gioc12,chk_gioc12,checkBoxSelezionati);
         txt_gioc13.requestFocus();
     }
 
-    public void checkBox13(MouseEvent mouseEvent) {
+    public void checkBox13() {
         checkBoxSelezionati = checkBox(txt_gioc13,chk_gioc13,checkBoxSelezionati);
         txt_gioc14.requestFocus();
     }
 
-    public void checkBox14(MouseEvent mouseEvent) {
+    public void checkBox14() {
         checkBoxSelezionati = checkBox(txt_gioc14,chk_gioc14,checkBoxSelezionati);
         txt_gioc15.requestFocus();
     }
 
-    public void checkBox15(MouseEvent mouseEvent) {
+    public void checkBox15() {
         checkBoxSelezionati = checkBox(txt_gioc15,chk_gioc15,checkBoxSelezionati);
         txt_gioc16.requestFocus();
     }
 
-    public void checkBox16(MouseEvent mouseEvent) {
+    public void checkBox16() {
         checkBoxSelezionati = checkBox(txt_gioc16,chk_gioc16,checkBoxSelezionati);
         btn_crea.requestFocus();
     }
@@ -166,7 +168,7 @@ public class Torneo16giocatoriController implements Initializable {
         Torneo.controlloLabel(tf,16,txt_codice);
     }
 
-    public void cliccaCreaTorneo(MouseEvent mouseEvent) {
+    public void cliccaCreaTorneo() {
         creaTorneo();
     }
     public void BackToHome() throws IOException {
@@ -184,6 +186,248 @@ public class Torneo16giocatoriController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+
+    public void keyEvent(KeyEvent keyEvent) {
+        txt_gioc1.setFocusTraversable(false);
+        if (keyEvent.getCode() == KeyCode.DOWN) {
+            if(txt_gioc1.isFocused()){
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                txt_gioc6.requestFocus();
+            } else if (txt_gioc6.isFocused()) {
+                txt_gioc7.requestFocus();
+            } else if (txt_gioc7.isFocused()) {
+                txt_gioc8.requestFocus();
+            } else if (txt_gioc8.isFocused()) {
+                txt_gioc9.requestFocus();
+            }else if (txt_gioc9.isFocused()) {
+                txt_gioc10.requestFocus();
+            } else if (txt_gioc10.isFocused()) {
+                txt_gioc11.requestFocus();
+            } else if (txt_gioc11.isFocused()) {
+                txt_gioc12.requestFocus();
+            } else if (txt_gioc12.isFocused()) {
+                txt_gioc13.requestFocus();
+            } else if (txt_gioc13.isFocused()) {
+                txt_gioc14.requestFocus();
+            } else if (txt_gioc14.isFocused()) {
+                txt_gioc15.requestFocus();
+            } else if (txt_gioc15.isFocused()) {
+                txt_gioc16.requestFocus();
+            } else if (txt_gioc16.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (btn_crea.isFocused()) {
+                txt_codice.requestFocus();
+            } else if (txt_codice.isFocused()) {
+                btn_home.requestFocus();
+            } else if (btn_home.isFocused()) {
+                System.out.println("sei gia in basso");
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.UP) {
+            if(txt_gioc1.isFocused()){
+                System.out.println("sei gia in alto");
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc1.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc6.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (txt_gioc7.isFocused()) {
+                txt_gioc6.requestFocus();
+            } else if (txt_gioc8.isFocused()) {
+                txt_gioc7.requestFocus();
+            }else if (txt_gioc9.isFocused()) {
+                txt_gioc8.requestFocus();
+            } else if (txt_gioc10.isFocused()) {
+                txt_gioc9.requestFocus();
+            } else if (txt_gioc11.isFocused()) {
+                txt_gioc10.requestFocus();
+            } else if (txt_gioc12.isFocused()) {
+                txt_gioc11.requestFocus();
+            } else if (txt_gioc13.isFocused()) {
+                txt_gioc12.requestFocus();
+            } else if (txt_gioc14.isFocused()) {
+                txt_gioc13.requestFocus();
+            } else if (txt_gioc15.isFocused()) {
+                txt_gioc14.requestFocus();
+            } else if (txt_gioc16.isFocused()) {
+                txt_gioc15.requestFocus();
+            } else if (btn_crea.isFocused()) {
+                txt_gioc16.requestFocus();
+            } else if (txt_codice.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (btn_home.isFocused()) {
+                txt_codice.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (txt_gioc1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                txt_gioc6.requestFocus();
+            } else if (txt_gioc6.isFocused()) {
+                txt_gioc7.requestFocus();
+            } else if (txt_gioc7.isFocused()) {
+                txt_gioc8.requestFocus();
+            } else if (txt_gioc8.isFocused()) {
+                txt_gioc9.requestFocus();
+            } else if (txt_gioc9.isFocused()) {
+                txt_gioc10.requestFocus();
+            } else if (txt_gioc10.isFocused()) {
+                txt_gioc11.requestFocus();
+            } else if (txt_gioc11.isFocused()) {
+                txt_gioc12.requestFocus();
+            } else if (txt_gioc12.isFocused()) {
+                txt_gioc13.requestFocus();
+            } else if (txt_gioc13.isFocused()) {
+                txt_gioc14.requestFocus();
+            } else if (txt_gioc14.isFocused()) {
+                txt_gioc15.requestFocus();
+            } else if (txt_gioc15.isFocused()) {
+                txt_gioc16.requestFocus();
+            } else if (txt_gioc16.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (btn_crea.isFocused()) {
+                cliccaCreaTorneo();
+                txt_codice.requestFocus();
+            } else if (btn_home.isFocused()) {
+                try {
+                    BackToHome();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.TAB ){
+            if(txt_gioc1.isFocused()){
+                chk_gioc1.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                chk_gioc2.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                chk_gioc3.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                chk_gioc4.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                chk_gioc5.requestFocus();
+            } else if (txt_gioc6.isFocused()) {
+                chk_gioc6.requestFocus();
+            } else if (txt_gioc7.isFocused()) {
+                chk_gioc7.requestFocus();
+            } else if (txt_gioc8.isFocused()) {
+                chk_gioc8.requestFocus();
+            } else if (txt_gioc9.isFocused()) {
+                chk_gioc9.requestFocus();
+            } else if (txt_gioc10.isFocused()) {
+                chk_gioc10.requestFocus();
+            } else if (txt_gioc11.isFocused()) {
+                chk_gioc11.requestFocus();
+            } else if (txt_gioc12.isFocused()) {
+                chk_gioc12.requestFocus();
+            } else if (txt_gioc13.isFocused()) {
+                chk_gioc13.requestFocus();
+            } else if (txt_gioc14.isFocused()) {
+                chk_gioc14.requestFocus();
+            } else if (txt_gioc15.isFocused()) {
+                chk_gioc15.requestFocus();
+            } else if (txt_gioc16.isFocused()) {
+                chk_gioc16.requestFocus();
+            } else if (chk_gioc1.isFocused()) {
+                txt_gioc1.requestFocus();
+            } else if (chk_gioc2.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (chk_gioc3.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (chk_gioc4.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (chk_gioc5.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (chk_gioc6.isFocused()) {
+                txt_gioc6.requestFocus();
+            } else if (chk_gioc7.isFocused()) {
+                txt_gioc7.requestFocus();
+            } else if (chk_gioc8.isFocused()) {
+                txt_gioc8.requestFocus();
+            }else if (chk_gioc9.isFocused()) {
+                txt_gioc9.requestFocus();
+            } else if (chk_gioc10.isFocused()) {
+                txt_gioc10.requestFocus();
+            } else if (chk_gioc11.isFocused()) {
+                txt_gioc11.requestFocus();
+            } else if (chk_gioc12.isFocused()) {
+                txt_gioc12.requestFocus();
+            } else if (chk_gioc13.isFocused()) {
+                txt_gioc13.requestFocus();
+            } else if (chk_gioc14.isFocused()) {
+                txt_gioc14.requestFocus();
+            } else if (chk_gioc15.isFocused()) {
+                txt_gioc15.requestFocus();
+            } else if (chk_gioc16.isFocused()) {
+                txt_gioc16.requestFocus();
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+    public void keyReleased(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (chk_gioc1.isFocused()) {
+                checkBox1();
+            } else if (chk_gioc2.isFocused()) {
+                checkBox2();
+            } else if (chk_gioc3.isFocused()) {
+                checkBox3();
+            } else if (chk_gioc4.isFocused()) {
+                checkBox4();
+            } else if (chk_gioc5.isFocused()) {
+                checkBox5();
+            } else if (chk_gioc6.isFocused()) {
+                checkBox6();
+            } else if (chk_gioc7.isFocused()) {
+                checkBox7();
+            } else if (chk_gioc8.isFocused()) {
+                checkBox8();
+            } else if (chk_gioc9.isFocused()) {
+                checkBox9();
+            } else if (chk_gioc10.isFocused()) {
+                checkBox10();
+            } else if (chk_gioc11.isFocused()) {
+                checkBox11();
+            } else if (chk_gioc12.isFocused()) {
+                checkBox12();
+            } else if (chk_gioc13.isFocused()) {
+                checkBox13();
+            } else if (chk_gioc14.isFocused()) {
+                checkBox14();
+            } else if (chk_gioc15.isFocused()) {
+                checkBox15();
+            } else if (chk_gioc16.isFocused()) {
+                checkBox16();
+            }
+        }
     }
 
 }

@@ -328,14 +328,16 @@ public class Utili {
     }
     public static int checkBox(TextField text, CheckBox check,int c){
         OPZ.premiBottone();
-        if (check.isSelected() || check.isFocused()) {
+        if (check.isSelected() && !text.isDisable()) {
             text.setDisable(true);
             c=c+1;
             text.setText("bot"+c);
-        } else {
+        }else {
+            System.out.println("sono entrato qua");
             text.setDisable(false);
             text.setText("");
-            c=c-1;
+            c = c - 1;
+
         }
         return c;
     }

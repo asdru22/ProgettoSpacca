@@ -34,22 +34,6 @@ import static gioco.progettospacca.classi.Utili.checkBox;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class CreaController implements Initializable {
-    public void BackToHome() throws IOException {
-        OPZ.premiBottone();
-        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
-
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_backHome.getScene().getWindow();
-
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
-
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
-
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
-    }
 
     @FXML
     private Label lbl_nomi_giocatori;
@@ -93,8 +77,24 @@ public class CreaController implements Initializable {
     private CheckBox chk_gioc5;
     @FXML
     private Label lbl_errore;
-    private int checkBoxSelezionati;
+    private int checkBoxSelezionati = 0;
 
+    public void BackToHome() throws IOException {
+        OPZ.premiBottone();
+        Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_backHome.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+    }
     public static void fadeBottone(Label lbl){
         lbl.setVisible(true);
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
@@ -186,57 +186,75 @@ public class CreaController implements Initializable {
         fadeBottone(lbl_errore);
     }
 
-    public void checkBox1(MouseEvent mouseEvent) {
-        checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+    public void checkBox1() {
+        checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        txt_email1.setDisable(!txt_email1.isDisable());
+        txt_email1.setText("");
         txt_gioc2.requestFocus();
     }
 
 
-    public void checkBox2(MouseEvent mouseEvent) {
-        checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+    public void checkBox2() {
+        checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        txt_email2.setDisable(!txt_email2.isDisable());
+        txt_email2.setText("");
         txt_gioc3.requestFocus();
     }
 
-    public void checkBox3(MouseEvent mouseEvent) {
-        checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+    public void checkBox3() {
+        checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        txt_email3.setDisable(!txt_email3.isDisable());
+        txt_email3.setText("");
         txt_gioc4.requestFocus();
     }
 
-    public void checkBox4(MouseEvent mouseEvent) {
-        checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+    public void checkBox4() {
+        checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        txt_email4.setDisable(!txt_email4.isDisable());
+        txt_email4.setText("");
         txt_gioc5.requestFocus();
     }
 
-    public void checkBox5(MouseEvent mouseEvent) {
-        checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
+    public void checkBox5() {
+        checkBoxSelezionati = checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
+        txt_email5.setDisable(!txt_email5.isDisable());
+        txt_email5.setText("");
         btn_crea.requestFocus();
     }
 
 
-    public void keyEvent(KeyEvent keyEvent) throws IOException {
+    public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
-        if (keyEvent.getCode() == KeyCode.ENTER && btn_crea.isFocused()) {
-            EventoCreaCodicePartita();
-        }
-        if ((keyEvent.getCode() == KeyCode.ENTER && btn_backHome.isFocused()) || keyEvent.getCode() == KeyCode.ESCAPE) {
-            BackToHome();
-        }
 
-        if ((txt_gioc1.isFocused() || txt_gioc2.isFocused() || txt_gioc3.isFocused() || txt_gioc4.isFocused() || txt_gioc5.isFocused())) {
-            if (keyEvent.getCode() == KeyCode.ENTER) {
-                if (txt_gioc5.isFocused()) {
-                    btn_crea.requestFocus();
-                } else if (txt_gioc1.isFocused()) {
-                    txt_gioc2.requestFocus();
-                } else if (txt_gioc2.isFocused()) {
-                    txt_gioc3.requestFocus();
-                } else if (txt_gioc3.isFocused()) {
-                    txt_gioc4.requestFocus();
-                } else if (txt_gioc4.isFocused()) {
-                    txt_gioc5.requestFocus();
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (txt_gioc5.isFocused()) {
+                btn_crea.requestFocus();
+            } else if (txt_gioc1.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_gioc5.requestFocus();
+            } else if (btn_crea.isFocused()) {
+                EventoCreaCodicePartita();
+            } else if (btn_backHome.isFocused()) {
+                try {
+                    BackToHome();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
                 }
             }
         }
+        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
 
         if (keyEvent.getCode() == KeyCode.DOWN) {
             if (txt_gioc1.isFocused()) {
@@ -289,6 +307,45 @@ public class CreaController implements Initializable {
             } else if (btn_backHome.isFocused()) {
                 OPZ.premiFreccia();
                 txt_code.requestFocus();
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.TAB ){
+            if(txt_gioc1.isFocused()){
+                chk_gioc1.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                chk_gioc2.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                chk_gioc3.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                chk_gioc4.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                chk_gioc5.requestFocus();
+            } else if (chk_gioc1.isFocused()) {
+                txt_gioc1.requestFocus();
+            } else if (chk_gioc2.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (chk_gioc3.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (chk_gioc4.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (chk_gioc5.isFocused()) {
+                txt_gioc5.requestFocus();
+            }
+        }
+
+    }
+    public void keyReleased(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER ){
+            if(chk_gioc1.isFocused()){
+                checkBox1();
+            } else if (chk_gioc2.isFocused()) {
+                checkBox2();
+            } else if (chk_gioc3.isFocused()) {
+                checkBox3();
+            } else if (chk_gioc4.isFocused()) {
+                checkBox4();
+            } else if (chk_gioc5.isFocused()) {
+                checkBox5();
             }
         }
     }

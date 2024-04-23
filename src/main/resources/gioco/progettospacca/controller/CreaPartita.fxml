@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaController">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.CreaController">
    <children>
       <AnchorPane fx:id="anchPane" prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -101,11 +101,11 @@
                         <Font name="Candara" size="13.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="chk_gioc1" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <CheckBox fx:id="chk_gioc2" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <CheckBox fx:id="chk_gioc3" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                  <CheckBox fx:id="chk_gioc4" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <CheckBox fx:id="chk_gioc5" focusTraversable="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox5" prefHeight="18.0" prefWidth="17.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+                  <CheckBox fx:id="chk_gioc1" focusTraversable="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox1" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <CheckBox fx:id="chk_gioc2" focusTraversable="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox2" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+                  <CheckBox fx:id="chk_gioc3" focusTraversable="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox3" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="chk_gioc4" focusTraversable="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox4" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+                  <CheckBox fx:id="chk_gioc5" focusTraversable="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox5" prefHeight="18.0" prefWidth="17.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
                   <TextField fx:id="txt_email1" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <TextField fx:id="txt_email2" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                   <TextField fx:id="txt_email3" focusTraversable="false" maxWidth="220.0" onKeyPressed="#keyEvent" prefHeight="30.0" promptText="Opzionale" GridPane.columnIndex="2" GridPane.rowIndex="3" />
@@ -141,7 +141,7 @@
                         <Font name="Candara" size="22.0" />
                      </font>
                   </Label>
-                  <Label fx:id ="lbl_errore" prefHeight="17.0" prefWidth="171.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_errore" prefHeight="17.0" prefWidth="171.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
                </children>
             </GridPane>
          </children>

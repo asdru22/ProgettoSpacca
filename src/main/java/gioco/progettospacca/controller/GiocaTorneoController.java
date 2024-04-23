@@ -148,6 +148,13 @@ public class GiocaTorneoController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
     }
 

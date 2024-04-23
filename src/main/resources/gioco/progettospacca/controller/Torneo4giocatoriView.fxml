@@ -107,10 +107,10 @@
                                 <Font name="Candara" size="12.0" />
                             </font>
                         </Label>
-                        <CheckBox fx:id="chk_gioc1" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <CheckBox fx:id="chk_gioc2" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <CheckBox fx:id="chk_gioc3" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <CheckBox fx:id="chk_gioc4" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#checkBox4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                        <CheckBox fx:id="chk_gioc1" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox1" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <CheckBox fx:id="chk_gioc2" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                        <CheckBox fx:id="chk_gioc3" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                        <CheckBox fx:id="chk_gioc4" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
             </children>

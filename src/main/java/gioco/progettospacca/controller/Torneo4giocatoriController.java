@@ -182,15 +182,6 @@ public class Torneo4giocatoriController implements Initializable {
                 }
 
             }
-            if(chk_gioc1.isFocused()){
-                checkBox1();
-            } else if (chk_gioc2.isFocused()) {
-                checkBox2();
-            } else if (chk_gioc3.isFocused()) {
-                checkBox3();
-            } else if (chk_gioc4.isFocused()) {
-                checkBox4();
-            }
         }
         if(keyEvent.getCode() == KeyCode.TAB ){
             if(txt_gioc1.isFocused()){
@@ -209,6 +200,28 @@ public class Torneo4giocatoriController implements Initializable {
                 txt_gioc3.requestFocus();
             } else if (chk_gioc4.isFocused()) {
                 txt_gioc4.requestFocus();
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+
+    public void keyReleased(KeyEvent keyEvent) {
+        if(keyEvent.getCode() == KeyCode.ENTER ){
+            if(chk_gioc1.isFocused()){
+                checkBox1();
+            } else if (chk_gioc2.isFocused()) {
+                checkBox2();
+            } else if (chk_gioc3.isFocused()) {
+                checkBox3();
+            } else if (chk_gioc4.isFocused()) {
+                checkBox4();
             }
         }
     }
