@@ -328,7 +328,7 @@ public class Utili {
     }
     public static int checkBox(TextField text, CheckBox check,int c){
         OPZ.premiBottone();
-        if (check.isSelected()) {
+        if (check.isSelected() || check.isFocused()) {
             text.setDisable(true);
             c=c+1;
             text.setText("bot"+c);
