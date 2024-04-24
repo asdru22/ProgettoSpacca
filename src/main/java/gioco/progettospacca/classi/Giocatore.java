@@ -78,7 +78,7 @@ public class Giocatore {
             this.mano = manoList.toArray(new Carta[0]);
         }
     }
-
+    //metodo per settare le carte nulle, mi serve per mantenere la posizione della carta scartata e aggiungerci nella posizione corretta la nuova carta pescata
     public void settaCarteNulle(int i) {
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
         manoList.add(i, null);

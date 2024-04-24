@@ -189,7 +189,7 @@ public class Partita {
     public void elimina() {
         Utili.eliminaPartita(id);
     }
-
+    //valutazione complessiva della mano
     public int valutaCarte(Carta[] mano) {
         int[] carteNum = new int[5];
         Seme[] carteSeme = new Seme[5];
@@ -234,7 +234,7 @@ public class Partita {
             default:
                 //System.out.println("non hai fatto colore");
         }
-        System.out.println("moltiplicatore scala che comanda: "+ModificaPuntiSemeCheComanda());
+        //System.out.println("moltiplicatore scala che comanda: "+ModificaPuntiSemeCheComanda());
         punti = (int) (punti*this.moltiplicatoreImprevisti*ModificaPuntiSemeCheComanda());
         moltiplicatoreImprevisti = 1;
 
@@ -311,7 +311,7 @@ public class Partita {
         }
         return moltiplicatore;
     }
-
+    //verifica se possiedo un sequenza di colori d 3 min a 5 max
     public int verificaColore(Seme[] carteSeme) {
         Map<Seme, Integer> mappa = new HashMap<>();
 
@@ -333,9 +333,9 @@ public class Partita {
         }
         return numColorePiuVolteRipetuto;
     }
-
+    //verifica se ho coppia, tris, poker, manita, doppia coppia o full in mano
     public int numUguali(int[] carteNum) {
-        int punti = 0;
+        int punteggio = 0;
         // Conta quante volte ogni numero appare nel vettore
         Map<Integer, Integer> conteggioNumeri = new HashMap<>();
         for (int numero : carteNum) {
@@ -351,13 +351,12 @@ public class Partita {
                 iterator.remove();
             }
         }
-
+        //debug
         //System.out.println(conteggioNumeri);
         //System.out.println("Size "+conteggioNumeri.size());
 
         //inserisco i valori in una collezione per sapere se ho doppia coppie o tris e coppia
         Collection<Integer> valori = conteggioNumeri.values();
-        //System.out.println(valori);
 
         //converto in array così riesco a prendere le posizioni singole della collezione ed effettuare dei confronti
         Integer[] array = valori.toArray(new Integer[0]);
@@ -365,26 +364,26 @@ public class Partita {
         switch (conteggioNumeri.size()) {
             case 1:
                 if (array[0] == 2) {    //coppia
-                    punti = punti + 5;
+                    punteggio = punteggio + 5;
                 } else if (array[0] == 3) {     //tris
-                    punti = punti + 25;
+                    punteggio = punteggio + 25;
                 } else if (array[0] == 4) {     //poker
-                    punti = punti + 50;
+                    punteggio = punteggio + 50;
                 } else if (array[0] == 5) {     //manita
-                    punti = punti + 80;
+                    punteggio = punteggio + 80;
                 }
                 break;
             case 2:
                 if ((array[0] == 2 && array[1] == 3) || (array[0] == 3 && array[1] == 2)) {     //full
-                    punti = punti + 30;
+                    punteggio = punteggio + 30;
                 } else if (array[0] == 2 && array[1] == 2) {    //doppia coppia
-                    punti = punti + 15;
+                    punteggio = punteggio + 15;
                 }
                 break;
         }
-        return punti;
+        return punteggio;
     }
-
+    //per verificare se hai una scala in mano
     public int verificaScala(int[] carteNum) {
         int cont = 1;
         int contMax = 0;
@@ -420,7 +419,7 @@ public class Partita {
     public void setCont(int i) {
         this.cont = i;
     }
-
+    //vado ad impostare gli effetti degli imprevisti in base a quale viene pescato
     public void setImprevisti(){
         for(Carta carta : toccaA.getMano()){
             if(carta.getImage() == "/gioco/progettospacca/carte/imprevisti/1.png"){
@@ -447,6 +446,7 @@ public class Partita {
     public int getNumeroTurni() {
         return NUMERO_TURNI;
     }
+    //serve per l'imprevisto che ruba i punti
     public int getSommaRubata(){
         return sommaRubata;
     }
