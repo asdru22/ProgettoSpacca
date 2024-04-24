@@ -6,6 +6,7 @@ import java.io.File;
 import java.util.*;
 import java.util.*;
 
+import static gioco.progettospacca.classi.Utili.eliminaGiocatore;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Giocatore {
@@ -37,10 +38,6 @@ public class Giocatore {
 
     public int getPartiteVinte() {
         return partite_vinte;
-    }
-
-    public void setPartiteVinte(int partiteVinte) {
-        this.partite_vinte = partiteVinte;
     }
 
     public int getPunti() {
@@ -163,5 +160,13 @@ public class Giocatore {
     }
     public String getCodici(){
         return OPZ.traduci("partite")+":\n" + getPartite();
+    }
+
+    public boolean partiteInSospeso(){
+        return !partite.isEmpty();
+    }
+
+    public void elimina() {
+        Utili.eliminaGiocatore(nome);
     }
 }

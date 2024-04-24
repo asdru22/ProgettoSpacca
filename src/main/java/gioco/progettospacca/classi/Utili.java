@@ -93,13 +93,12 @@ public class Utili {
     public static void eliminaGiocatore(String nome) {
         elimina(nome, "giocatori");
     }
+    public static void eliminaTorneo(String id) {
+        elimina(id, "tornei");
+    }
 
     public static void eliminaPartita(int id) {
         elimina(id + "", "partite");
-    }
-
-    public static void eliminaTorneo(int id) {
-        elimina(id + "", "tornei");
     }
 
     public static boolean esisteGiocatore(String nome) {
@@ -270,6 +269,25 @@ public class Utili {
         return out;
     }
 
+    public static ArrayList<String> elencaGiocatori() {
+        // partite true per partite, false per tornei
+        // includi torneo true per includere le partite che fanno parte del torneo
+        File folder = new File("salvataggi/giocatori");
+        ArrayList<String> out = new ArrayList<>();
+        if (folder.isDirectory()) {
+            File[] cartella = folder.listFiles();
+            Gson gson = new Gson();
+            assert cartella != null;
+            for (File file : cartella) {
+                if (file.isFile()) {
+                    String s = file.getName().substring(0, file.getName().length() - 5);
+                    out.add(gson.fromJson(Utili.leggiFileJson("giocatori", s), Giocatore.class).getNome());
+                }
+            }
+        }
+        return out;
+    }
+
     public static ArrayList<Integer> elencaPartiteNormali() {
         return elencaPartite(true, false);
     }
@@ -290,7 +308,7 @@ public class Utili {
 
     public static String adminEliminaTorneo(int id) {
         if (esistePartita(id, false)) {
-            eliminaTorneo(id);
+            Torneo.carica(id).elimina();
             return OPZ.traduci("torneo_eliminato");
         } else return OPZ.traduci("torneo_non_trovato");
     }
@@ -305,14 +323,6 @@ public class Utili {
         } else {
             b.setDisable(true);
             b.setText(OPZ.traduci("vincitore") + ": " + p.getVincitore().getNome());
-        }
-    }
-
-    public static void cancellaTorneiInSospeso() {
-        ArrayList<Integer> lista = elencaPartite(false, false);
-        for (int n : lista) {
-            Torneo t = Torneo.carica(n);
-            if (t.isFinito()) t.elimina();
         }
     }
 
@@ -331,15 +341,18 @@ public class Utili {
     }
 
     public static String cambiaEmail(String nome, String email) {
-        if (esisteGiocatore(nome)) {
-            Giocatore g = Giocatore.carica(nome);
-            if (g.isBot()) {
-                return OPZ.traduci("bot_non_hanno_mail");
-            } else {
-                System.out.println("email cambiata");
-                g.setEmail(email);
-                return OPZ.traduci("mail_cambiata");
-            }
-        } else return OPZ.traduci("cambia_nome_fallito");
+        Giocatore g = Giocatore.carica(nome);
+        if (g.isBot()) {
+            return OPZ.traduci("bot_non_hanno_mail");
+        } else {
+            g.setEmail(email);
+            return OPZ.traduci("mail_cambiata");
+        }
+    }
+
+    public static void giocatoriMancanti(int n, Label lblBot) {
+        if(n>=1){
+            lblBot.setText(OPZ.traduci("bot_aggiunti")+": "+n);
+        }
     }
 }

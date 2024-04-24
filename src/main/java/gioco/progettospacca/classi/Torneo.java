@@ -43,7 +43,7 @@ public class Torneo {
         for (int n : partite) {
             Partita.carica(n).elimina();
         }
-        Utili.eliminaTorneo(id);
+        Utili.eliminaTorneo(id+"");
     }
 
     public void creaPartite() {
@@ -86,12 +86,12 @@ public class Torneo {
         return id;
     }
 
-    public static void controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt) {
+    public static int controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt) {
         Giocatore temp;
         int giocatori = 0;
         ArrayList<Giocatore> g = new ArrayList<>();
         int id = Utili.intCasuale(10000, 99999);
-
+        int n = 0;
         txt.setText(String.valueOf(id));
 
         for (ValoriTorneo v : vt) {
@@ -103,13 +103,14 @@ public class Torneo {
         }
         // bot se ci sono giocatori mancanti
         if (giocatori < max) {
-            aggiungiBot(max - giocatori, g);
+            n = aggiungiBot(max - giocatori, g);
         }
         Torneo t = new Torneo(g, id);
         t.creaPartite();
+        return n;
     }
 
-    private static void aggiungiBot(int giocatori_mancanti, ArrayList<Giocatore> giocatori) {
+    private static int aggiungiBot(int giocatori_mancanti, ArrayList<Giocatore> giocatori) {
         int bot_esistenti = 0;
         for (Giocatore g : giocatori) {
             if (g.isBot()) bot_esistenti += 1;
@@ -121,6 +122,7 @@ public class Torneo {
             b.salva();
         }
         System.out.println("Aggiunti " + giocatori_mancanti + " bot per raggiungere il numero di giocatori richiesti");
+        return giocatori_mancanti;
     }
 
     public int getGiocatoriIniziali() {

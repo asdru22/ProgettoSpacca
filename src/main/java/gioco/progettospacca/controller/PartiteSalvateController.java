@@ -27,12 +27,11 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartiteSalvateController implements Initializable {
     @FXML
-    Button btn_eliminaPartita,btn_eliminaTorneo,btn_back;
+    Button btn_eliminaPartita, btn_eliminaTorneo, btn_back;
     @FXML
-    Label lbl_titoloPartite, lbl_titoloTornei;
-
+    Label lbl_titoloPartite, lbl_titoloTornei, lbl_output;
     @FXML
-    ComboBox cmb_partite,cmb_tornei;
+    ComboBox cmb_partite, cmb_tornei;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -40,8 +39,8 @@ public class PartiteSalvateController implements Initializable {
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
-        aggiornaLista(cmb_partite,true);
-        aggiornaLista(cmb_tornei,false);
+        aggiornaLista(cmb_partite, true);
+        aggiornaLista(cmb_tornei, false);
 
         btn_back.setOnMouseEntered(e -> {
             if (btn_back.getScene() != null) {
@@ -84,9 +83,9 @@ public class PartiteSalvateController implements Initializable {
 
     }
 
-    public void aggiornaLista(ComboBox cb, boolean partita){
+    public void aggiornaLista(ComboBox cb, boolean partita) {
         ArrayList<Integer> lista;
-        if(partita) lista = Utili.elencaPartiteNormali();
+        if (partita) lista = Utili.elencaPartiteNormali();
         else lista = Utili.elencaTornei();
         ObservableList<Integer> items = FXCollections.observableArrayList(lista);
         cb.setItems(items);
@@ -96,19 +95,26 @@ public class PartiteSalvateController implements Initializable {
     }
 
     public void EventoEliminaPartita(MouseEvent event) {
-        int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
-        Utili.adminEliminaPartita(i);
-        System.out.println("eliminata partita con codice "+i);
-        aggiornaLista(cmb_partite,true);
+        try {
+            int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
+            lbl_output.setText(Utili.adminEliminaPartita(i));
+            System.out.println("eliminata partita con codice " + i);
+            aggiornaLista(cmb_partite, true);
+        } catch (NullPointerException e) {
+            System.err.println("Valore vuoto");
+        }
     }
 
     public void EventoEliminaTorneo(MouseEvent event) {
-        int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
-        Utili.adminEliminaTorneo(i);
-        System.out.println("eliminato torneo con codice "+i);
-        aggiornaLista(cmb_tornei,false);
+        try {
+            int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
+            lbl_output.setText(Utili.adminEliminaTorneo(i));
+            System.out.println("eliminato torneo con codice " + i);
+            aggiornaLista(cmb_tornei, false);
+        } catch (NullPointerException e) {
+            System.err.println("Valore vuoto");
+        }
     }
-
 
 
     public void BackToHome() throws IOException {

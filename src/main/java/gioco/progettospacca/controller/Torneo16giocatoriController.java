@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Torneo;
+import gioco.progettospacca.classi.Utili;
 import gioco.progettospacca.classi.ValoriTorneo;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,7 +32,7 @@ public class Torneo16giocatoriController implements Initializable {
     @FXML
     Button btn_crea;
     @FXML
-    Label lbl_codice;
+    Label lbl_codice, lbl_bot;
     @FXML
     Button btn_home;
     @FXML
@@ -147,7 +148,7 @@ public class Torneo16giocatoriController implements Initializable {
         lbl_codice.setText(OPZ.traduci("codice_torneo"));
         btn_home.setText(OPZ.traduci("torna_alla_home"));
     }
-    public void creaTorneo() {
+    public int creaTorneo() {
         ArrayList<ValoriTorneo> tf = new ArrayList<>();
         tf.add(new ValoriTorneo(txt_gioc1,chk_gioc1));
         tf.add(new ValoriTorneo(txt_gioc2,chk_gioc2));
@@ -165,11 +166,12 @@ public class Torneo16giocatoriController implements Initializable {
         tf.add(new ValoriTorneo(txt_gioc14,chk_gioc14));
         tf.add(new ValoriTorneo(txt_gioc15,chk_gioc15));
         tf.add(new ValoriTorneo(txt_gioc16,chk_gioc16));
-        Torneo.controlloLabel(tf,16,txt_codice);
+        return Torneo.controlloLabel(tf,16,txt_codice);
     }
 
     public void cliccaCreaTorneo() {
-        creaTorneo();
+        int n = creaTorneo();
+        Utili.giocatoriMancanti(n, lbl_bot);
     }
     public void BackToHome() throws IOException {
         OPZ.premiBottone();

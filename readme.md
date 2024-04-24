@@ -35,6 +35,7 @@ Javax.mail: API per invio mail
 ## Privilegi Amministratore
 Eseguendo l'accesso da admin, oltre che creare partite e tornei, è possibile
 - modificare i nomi dei giocatori e le loro mail
+- creare giocatori nuovi
 - cancellare partite e tornei in sospeso
 - cambiare il numero dei turni delle partite
 ## Opzioni
@@ -53,6 +54,8 @@ Quando viene creato un nuovo torneo, si crea un numero di partite uguale alla me
 Le classi Partita, Giocatore e Torneo hanno una funzione `salva` e `carica`. Il metodo carica è statico è quindi può essere chiamato in qualsiasi momento per creare una nuova istanza di quella classe. Il metodo salva converte la classe in un file `.json`. Entrambi i metodi richiedono la creazione di un nuovo oggetto di tipo `Gson`.
 #### Gestione bot
 #### Layout
+#### Modifica dati dei giocatori
+Funzioni nella classe di utilità quali `elencaGiocatori`, `esisteGiocatore` e `eliminaGiocatore` hanno facilitato la gestione dei giocatori. Sono usati controlli per evitare che queste modifiche possano essere fatte a Bot o all'admin.
 ### Funzionalità facoltative
 #### Invio Mail
 #### Suoni e Audio
