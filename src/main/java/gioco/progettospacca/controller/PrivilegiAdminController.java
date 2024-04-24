@@ -209,7 +209,7 @@ public class PrivilegiAdminController implements Initializable {
         });
 
         btn_partiteSalvate.setText(OPZ.traduci("partite_salvate"));
-        btn_modificaGiocatore.setText(OPZ.traduci("modifica_giocatore"));
+        btn_modificaGiocatore.setText(OPZ.traduci("cambia_nome"));
         lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
         btn_cambiaTurni.setText(OPZ.traduci("cambia_n_turni"));
         txt_nturni.setText(OPZ.getTurniPartita()+"");

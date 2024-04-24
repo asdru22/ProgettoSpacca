@@ -329,4 +329,17 @@ public class Utili {
         }
         return c;
     }
+
+    public static String cambiaEmail(String nome, String email) {
+        if (esisteGiocatore(nome)) {
+            Giocatore g = Giocatore.carica(nome);
+            if (g.isBot()) {
+                return OPZ.traduci("bot_non_hanno_mail");
+            } else {
+                System.out.println("email cambiata");
+                g.setEmail(email);
+                return OPZ.traduci("mail_cambiata");
+            }
+        } else return OPZ.traduci("cambia_nome_fallito");
+    }
 }
