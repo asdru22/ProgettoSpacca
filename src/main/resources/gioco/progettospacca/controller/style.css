@@ -1,4 +1,5 @@
 
+/* CSS buttons */
 .button {
     -fx-text-fill: white;
     -fx-font-family: "Candara";
@@ -62,7 +63,7 @@
 
 
 
-
+/* CSS toggle-button */
 .toggle-button{
     -fx-text-fill: white;
     -fx-font-family: "Candara";
@@ -82,7 +83,7 @@
     -fx-font-size: 16px;
 }
 
-
+/* CSS text-field */
 .text-field
 {
     -fx-background-color: #a9a9a9 , #0a7ec4 , white;
@@ -96,12 +97,7 @@
 
 
 
-
-
-
-
-
-
+/* CSS menu-bar */
 .menu-bar {
     -fx-background-color: #0a7dc4 ;
     -fx-opacity: 1;
@@ -118,6 +114,7 @@
 
 }
 
+/* CSS menu-items */
 .menu-item {
     -fx-padding: 1.0em 1.0em 1.0em 1.0em;
     -fx-text-fill: white;
@@ -148,8 +145,7 @@
 }
 
 
-
-
+/* CSS scroll-pane */
 
 .scroll-pane .scroll-bar:vertical {
     -fx-background-color: #135378;
@@ -177,6 +173,8 @@
 }
 
 
+/* CSS anchor-pane carte */
+
 .anchor-pane-carta > .image-view:hover {
     -fx-effect: dropshadow(gaussian, blue, 10, 0, 0, 0);
 }
@@ -187,12 +185,7 @@
 }
 
 
-.button:hover {
-    cursor: url("/gioco/progettospacca/cursoreMano.png"), auto;
-}
-
-
-
+/* CSS combo-box */
 
 .combo-box {
     -fx-background-color: #0a7dc4 ;

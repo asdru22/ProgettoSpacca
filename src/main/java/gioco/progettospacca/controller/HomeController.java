@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +21,7 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static gioco.progettospacca.controller.Main.OPZ;
@@ -179,6 +181,7 @@ public class HomeController implements Initializable {
         // Imposta la nuova finestra
         stage.setTitle(OPZ.traduci("classifica"));
         scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -192,6 +195,7 @@ public class HomeController implements Initializable {
         Stage stage = new Stage();
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
         // Imposta la nuova finestra
         //stage.setTitle(OPZ.traduci("regole"));
         stage.setScene(scene);
