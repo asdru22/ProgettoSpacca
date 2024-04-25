@@ -63,12 +63,14 @@ All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni`
 #### Cambio Lingua
 Sempre nella classe statica `Opzioni` è memorizzata la lingua. `Opzioni` ha un metodo che data una stringa restituisce la traduzione corrispondente nella lingua selezionata usando una `ResourceBundle`.
 #### CSS
+Personalizzazione di pressoché ogni elemento dell'applicazione, dai bottoni, alle textfield, alle combobox, al menu. in style.css vi è di fatto tutta la personalizzazione compresa di dinamismo al passare del mouse di determinati elementi. 
 #### Applicazione interamente utilizzabile da tastiera
 #### Tabellone Torneo
 Ogni torneo ha una variabile che memorizza il round corrente e quello massimo (`=log_2(num_giocatori_iniziali)`). Per esempio nel torneo da 4 giocatori, quando il numero round è uguale a 2 significa che si sta già giocando la finale, e quindi il bottone per giocare le due semifinali non sono più cliccabili (anche perché le due partite sono finite).
 #### Interruzione e ripristino partite di un torneo
 Nella classe torneo sono salvati i codici di tutte le partite giocate. Questo permette di caricare e salvare una partita come se fosse giocata singolarmente. Il tabellone inoltre permette facilmente di riaccedere a una partita iniziata ma non finita.
 #### Cursore
+Il cursore standard è stato sostituito da un'immagine personalizzata in linea con il design dell'applicazione, immagine che cambia al passaggio sopra elementi cliccabili tramite setOnMouseEntered e setOnMouseExited.
 ## Suddivisione del lavoro
 - Nanni: Tutte le classi nella cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi) a eccezione di `MailThread.java`, `Partita.java` e `Giocatore.java`. Vari collegamenti con le partite, opzioni, salvataggi e metodi della classe `Utili.java` all'interno dei [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller), in particolare quelli usati per i tornei e i privilegi admin.
 - Manieri: Grafica e design (FXML), collegamenti tra le scene e classi [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller) associate, creazione di tutte le immagini. Cursore personalizzato.
