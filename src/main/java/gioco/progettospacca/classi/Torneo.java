@@ -5,25 +5,27 @@ import javafx.scene.control.TextField;
 
 import java.util.Collections;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Torneo {
     private Giocatore vincitore;
     private int round_salvato = 0;
     private boolean finito = false;
     private ArrayList<Giocatore> giocatori;
-    private ArrayList<Giocatore> listaGiocatoriIniziali;
+    private ArrayList<String> listaGiocatoriIniziali;
     private ArrayList<Integer> partite = new ArrayList<>();
     private final int id;
     private final int giocatoriIniziali;
     private boolean salvabile = true;
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
+        listaGiocatoriIniziali = new ArrayList<>();
+        for(Giocatore g : giocatori){
+            listaGiocatoriIniziali.add(g.getNome());
+        }
         this.giocatori = giocatori;
         Collections.shuffle(giocatori);
         this.id = id;
         this.giocatoriIniziali = giocatori.size();
-        this.listaGiocatoriIniziali = giocatori;
     }
 
     public static Torneo carica(int id) {
@@ -49,20 +51,20 @@ public class Torneo {
     }
 
     public void creaPartite() {
-        // numero partite dati i giocatori
-        System.out.println("Numero giocatori" + giocatori.size());
         if (giocatori.size() > 1) {
             Giocatore[] coppia = new Giocatore[2];
             int numPartite =  giocatori.size() / 2;
             for (int i = 0; i < numPartite; i++) {
+                System.out.println(i+": "+listaGiocatoriIniziali);
+
                 coppia[0] = giocatori.get(0);
                 giocatori.remove(0);
                 coppia[1] = giocatori.get(0);
                 giocatori.remove(0);
                 partite.add(new Partita(coppia, id).getId());
-                System.out.println("Creata nuova partita con:" + coppia[0].getNome() + " e " + coppia[1].getNome());
             }
         }
+        System.out.println("2: "+listaGiocatoriIniziali);
         salva();
     }
 
@@ -83,11 +85,8 @@ public class Torneo {
     public ArrayList<Giocatore> getGiocatori() {
         return giocatori;
     }
-    public ArrayList<Giocatore> getListaGiocatoriIniziali() {
+    public ArrayList<String> getListaGiocatoriIniziali() {
         return listaGiocatoriIniziali;
-    }
-    public void setListaGiocatoriIniziali(ArrayList<Giocatore> listaGiocatoriIniziali) {
-        this.listaGiocatoriIniziali = listaGiocatoriIniziali;
     }
 
     public Integer getId() {
@@ -113,10 +112,8 @@ public class Torneo {
         if (giocatori < max) {
             n = aggiungiBot(max - giocatori, g);
         }
-        ArrayList<Giocatore> temp2 = new ArrayList<>();
-        temp2 = g;
+        System.out.println(g);
         Torneo t = new Torneo(g, id);
-        t.setListaGiocatoriIniziali(temp2);
         t.salva();
         t.creaPartite();
         return n;

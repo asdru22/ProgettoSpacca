@@ -202,12 +202,13 @@ public class Partita {
             if(t.getGiocatori().size()==1) {
                 t.setFinito();
                 t.setVincitore(vincitore);
-                for(Giocatore g : t.getListaGiocatoriIniziali()){
+                for(String g : t.getListaGiocatoriIniziali()){
                     System.out.println(g);
                 }
-                for (Giocatore g : t.getListaGiocatoriIniziali()) {
-                    if (!g.getEmail().isEmpty() && g.getEmail() != "") {
-                        MailThread thread = new MailThread(g.getEmail(), "Fine torneo", "Torneo con codice "+ t.getId() +" concluso \nVincitore: " + t.getVincitore());
+                for (String g : t.getListaGiocatoriIniziali()) {
+                    Giocatore gioc = Giocatore.carica(g);
+                    if (!gioc.getEmail().isEmpty() && gioc.getEmail() != "") {
+                        MailThread thread = new MailThread(gioc.getEmail(), "Fine torneo", "Torneo con codice "+ t.getId() +" concluso \nVincitore: " + t.getVincitore());
                         thread.start();
                     }
                 }
