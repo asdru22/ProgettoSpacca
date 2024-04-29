@@ -55,7 +55,7 @@ public class Torneo {
             Giocatore[] coppia = new Giocatore[2];
             int numPartite =  giocatori.size() / 2;
             for (int i = 0; i < numPartite; i++) {
-                System.out.println(i+": "+listaGiocatoriIniziali);
+                //System.out.println(i+": "+listaGiocatoriIniziali);
 
                 coppia[0] = giocatori.get(0);
                 giocatori.remove(0);
@@ -64,7 +64,7 @@ public class Torneo {
                 partite.add(new Partita(coppia, id).getId());
             }
         }
-        System.out.println("2: "+listaGiocatoriIniziali);
+        //System.out.println("2: "+listaGiocatoriIniziali);
         salva();
     }
 
@@ -116,6 +116,15 @@ public class Torneo {
         Torneo t = new Torneo(g, id);
         t.salva();
         t.creaPartite();
+        System.out.println("ciao");
+        for(String s : t.getListaGiocatoriIniziali()) {
+            System.out.println("sono entrato");
+            Giocatore gioc = Giocatore.carica(s);
+            if(!gioc.getEmail().isEmpty() && gioc.getEmail()!=""){
+                MailThread thread = new MailThread(gioc.getEmail(),"Iscrizione torneo spacca", "Giocatore: "+gioc.getNome()+"\nCodice torneo: "+ id);
+                thread.start();
+            }
+        }
         return n;
     }
 
@@ -146,7 +155,7 @@ public class Torneo {
         Partita p;
         for (int n : partite) {
             p = Partita.carica(n);
-            System.out.println(p.getId() + "> " + p.getVincitore());
+            //System.out.println(p.getId() + "> " + p.getVincitore());
             if (p.getVincitore() == null) return false;
         }
         return true;

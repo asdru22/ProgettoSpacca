@@ -1,6 +1,7 @@
 package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Giocatore;
+import gioco.progettospacca.classi.MailThread;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -79,6 +80,7 @@ public class ModificaGiocatoreController implements Initializable {
     public void EventoCambioNome() {
         String out = "";
         String vecchio = String.valueOf((cmb_giocatori.getSelectionModel().getSelectedItem()));
+        Giocatore g = Giocatore.carica(vecchio);
         String nuovo = String.valueOf((txt_nuovoNome.getText()));
         String email = String.valueOf((txt_email.getText()));
 
@@ -94,6 +96,13 @@ public class ModificaGiocatoreController implements Initializable {
             }
         }
         lbl_output.setText(out);
+
+        if(!g.getEmail().isEmpty() && g.getEmail()!=""){
+            MailThread thread = new MailThread(g.getEmail(),"Modifiche profilo giocatore spacca", "Nome giocatore modificato\nVecchio nome: "+g.getNome()+"\nNuovo nome: "+nuovo);
+            thread.start();
+        }
+
+
     }
 
     public void BackToHome() throws IOException {

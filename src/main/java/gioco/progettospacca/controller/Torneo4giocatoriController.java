@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.MailThread;
 import gioco.progettospacca.classi.Torneo;
 import gioco.progettospacca.classi.Utili;
 import gioco.progettospacca.classi.ValoriTorneo;

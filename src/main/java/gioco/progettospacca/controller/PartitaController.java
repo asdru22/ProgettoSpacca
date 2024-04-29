@@ -1372,7 +1372,7 @@ public class PartitaController implements Initializable {
     public void salvaEdEsci() throws IOException {
         BackToHome();
     }
-    public void tornaAlTabellone(MouseEvent event) throws IOException {
+    public void tornaAlTabellone() throws IOException {
         Parent root = null;
         t = Torneo.carica(p.getIdTorneo());
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
@@ -1746,7 +1746,6 @@ public class PartitaController implements Initializable {
             carta1.requestFocus();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_prossimaMano.isVisible()) {
-            System.out.println("fine turno");
             try {
                 newScene();
             } catch (IOException e) {
@@ -1754,13 +1753,13 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_gioca.isVisible()) {
-            System.out.println("procedi");
             try {
                 procedi();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
+
     }
 
     public void keyScelta(KeyEvent keyEvent) {
@@ -1788,6 +1787,22 @@ public class PartitaController implements Initializable {
             }
         }
 
+    }
+    public void keyEvent(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ENTER && pane_fineTorneo.isVisible()) {
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER && pane_finePartitaTorneo.isVisible()) {
+            try {
+                tornaAlTabellone();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 

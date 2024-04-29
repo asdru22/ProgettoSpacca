@@ -131,7 +131,7 @@ public class Partita {
 
     private String getClassificaFinalePartita(){
         String s = "";
-        Giocatore [] temp = giocatori;
+        Giocatore [] temp = giocatori.clone();
         Arrays.sort(temp, Comparator.comparingInt(Giocatore::getPunti).reversed());
         for (int j = 0; j < temp.length; j++) {
             s = s +(j+1)+") "+ temp[j].getNome() + ":  " + temp[j].getPunti() + "\n";
@@ -150,16 +150,11 @@ public class Partita {
                 vincitore = g;
             }
         }
-
+        String classifica = getClassificaFinalePartita();
         for (Giocatore g : giocatori) {
-            for(Giocatore k: giocatori){
-                System.out.println(k.getNome());
-            }
-            System.out.println("ciclo: "+g.getNome());
-            if(!g.getEmail().isEmpty() && g.getEmail()!=""){
-                System.out.println(g.getEmail()+ " "+g.getNome());
+            if(!g.getEmail().isEmpty() && g.getEmail()!=""){        //invio la mail di fine partita a tutti i giocatori della partita che hanno mregistrato la mail nel giocatore
                 if(id_torneo == 0) {
-                    MailThread thread = new MailThread(g.getEmail(), "Fine partita", "Partita conclusa \nVincitore: " + vincitore + "\nClassifica finale:\n" + getClassificaFinalePartita());
+                    MailThread thread = new MailThread(g.getEmail(), "Fine partita", "Partita conclusa \nVincitore: " + vincitore + "\nClassifica finale:\n" + classifica);
                     thread.start();
                 }
             }
@@ -202,10 +197,7 @@ public class Partita {
             if(t.getGiocatori().size()==1) {
                 t.setFinito();
                 t.setVincitore(vincitore);
-                for(String g : t.getListaGiocatoriIniziali()){
-                    System.out.println(g);
-                }
-                for (String g : t.getListaGiocatoriIniziali()) {
+                for (String g : t.getListaGiocatoriIniziali()) {        //invia la mail di fine torneo a tutti coloro che hanno registrato una mail nel giocatore e che hanno partecipato al torneo
                     Giocatore gioc = Giocatore.carica(g);
                     if (!gioc.getEmail().isEmpty() && gioc.getEmail() != "") {
                         MailThread thread = new MailThread(gioc.getEmail(), "Fine torneo", "Torneo con codice "+ t.getId() +" concluso \nVincitore: " + t.getVincitore());
@@ -214,6 +206,13 @@ public class Partita {
                 }
             }
         }
+        for (Giocatore g : giocatori) {         //invia la mail con le informazioni riguardanti la partita del torneo solo ai due della partita del torneo nel caso avessero registrato la mail nel giocatore
+            if (!g.getEmail().isEmpty() && g.getEmail() != "") {
+                MailThread thread = new MailThread(g.getEmail(), "Fine partita torneo", "Partita del torneo con codice "+ t.getId() +" conclusa\n"+ giocatori[0] +" VS "+ giocatori[1] +"\nVincitore: " + vincitore);
+                thread.start();
+            }
+        }
+
         t.salva();
     }
 

@@ -278,7 +278,7 @@
                   <Image url="@../trofeo.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_tabellone" layoutX="353.0" layoutY="486.0" mnemonicParsing="false" onMouseClicked="#tornaAlTabellone" prefHeight="52.0" prefWidth="202.0" text="Torna al tabellone">
+            <Button fx:id="btn_tabellone" layoutX="353.0" layoutY="486.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#tornaAlTabellone" prefHeight="52.0" prefWidth="202.0" text="Torna al tabellone">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>
@@ -313,7 +313,7 @@
                   <Font name="Candara Italic" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="btn_backhome" layoutX="693.0" layoutY="558.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="186.0" text="Torna alla home">
+            <Button fx:id="btn_backhome" layoutX="693.0" layoutY="558.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="186.0" text="Torna alla home">
                <font>
                   <Font name="Candara" size="14.0" />
                </font>
