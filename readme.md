@@ -49,7 +49,7 @@ Dal menù impostazioni si può
 ### Funzionalità obbligatorie
 #### Partita
 #### Torneo
-Quando viene creato un nuovo torneo, si crea un numero di partite uguale alla metà dei giocatori inseriti. A ogni coppia di giocatori viene assoicata una di queste partite i cui codici vengono salvati nel torneo. Quando tutte le partite salvate sono finite si passa al round successivo. I vincitori delle partite prrecedenti diventano i giocatori delle nuove partite fino a quando rimane un solo vincitore.
+Quando viene creato un nuovo torneo, si crea un numero di partite uguale alla metà dei giocatori inseriti. A ogni coppia di giocatori viene assoicata una di queste partite i cui codici vengono salvati nel torneo. Quando tutte le partite salvate sono finite si passa al round successivo. I vincitori delle partite del round precedente diventano i giocatori di quelle del round successivo fino a quando rimane un solo vincitore.
 #### Salvataggi
 Le classi Partita, Giocatore e Torneo hanno una funzione `salva` e `carica`. Il metodo carica è statico è quindi può essere chiamato in qualsiasi momento per creare una nuova istanza di quella classe. Il metodo salva converte la classe in un file `.json`. Entrambi i metodi richiedono la creazione di un nuovo oggetto di tipo `Gson`.
 #### Gestione bot
@@ -59,14 +59,14 @@ Funzioni nella classe di utilità quali `elencaGiocatori`, `esisteGiocatore` e `
 ### Funzionalità facoltative
 #### Invio Mail
 #### Suoni e Audio
-All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni` che contiene un `MediaPlayer` per la musica e uno per gli effetti sonori. Dal menù impostazioni si possono pausare/riprendere questi due oggetti per disattivare e riattivare le traccie audio separatamente.
+All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni` che contiene un `MediaPlayer` per la musica e uno per gli effetti sonori. Dal menù impostazioni si possono pausare/riprendere questi due oggetti per disattivare e riattivare le traccie audio degli effetti sonori e della musica separatamente.
 #### Cambio Lingua
 Sempre nella classe statica `Opzioni` è memorizzata la lingua. `Opzioni` ha un metodo che data una stringa restituisce la traduzione corrispondente nella lingua selezionata usando una `ResourceBundle`.
 #### CSS
 Personalizzazione di pressoché ogni elemento dell'applicazione, dai bottoni, alle textfield, alle combobox, al menu. in style.css vi è di fatto tutta la personalizzazione compresa di dinamismo al passare del mouse di determinati elementi. 
 #### Applicazione interamente utilizzabile da tastiera
 #### Tabellone Torneo
-Ogni torneo ha una variabile che memorizza il round corrente e quello massimo (`=log_2(num_giocatori_iniziali)`). Per esempio nel torneo da 4 giocatori, quando il numero round è uguale a 2 significa che si sta già giocando la finale, e quindi il bottone per giocare le due semifinali non sono più cliccabili (anche perché le due partite sono finite).
+Ogni torneo ha una variabile che memorizza il round corrente e quello massimo (`=log_2(num_giocatori_iniziali)`). Per esempio nel torneo da 4 giocatori, quando il numero round è uguale a 2 significa che si sta già giocando la finale, e quindi i bottoni per giocare le due semifinali non sono più cliccabili (dato che le due partite sono finite).
 #### Interruzione e ripristino partite di un torneo
 Nella classe torneo sono salvati i codici di tutte le partite giocate. Questo permette di caricare e salvare una partita come se fosse giocata singolarmente. Il tabellone inoltre permette facilmente di riaccedere a una partita iniziata ma non finita.
 #### Cursore
