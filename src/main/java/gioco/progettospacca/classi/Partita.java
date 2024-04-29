@@ -129,6 +129,15 @@ public class Partita {
         this.giocatore_salvato = val;
     }
 
+    private String getClassificaFinalePartita(){
+        String s = "";
+        Giocatore [] temp = giocatori;
+        Arrays.sort(temp, Comparator.comparingInt(Giocatore::getPunti).reversed());
+        for (int j = 0; j < temp.length; j++) {
+            s = s +(j+1)+") "+ temp[j].getNome() + ":  " + temp[j].getPunti() + "\n";
+        }
+        return s;
+    }
     public void finePartita() {
         OPZ.vittoria();
         int max = 0;
@@ -143,16 +152,28 @@ public class Partita {
         }
 
         for (Giocatore g : giocatori) {
+            for(Giocatore k: giocatori){
+                System.out.println(k.getNome());
+            }
+            System.out.println("ciclo: "+g.getNome());
+            if(!g.getEmail().isEmpty() && g.getEmail()!=""){
+                System.out.println(g.getEmail()+ " "+g.getNome());
+                if(id_torneo == 0) {
+                    MailThread thread = new MailThread(g.getEmail(), "Fine partita", "Partita conclusa \nVincitore: " + vincitore + "\nClassifica finale:\n" + getClassificaFinalePartita());
+                    thread.start();
+                }
+            }
+
             g.rimuoviPartita(this.id);
             g.resetPunti();
             g.resetMazzo();
             g.salva();
         }
 
-        System.out.println(vincitore.getNome() + " ha vinto!");
-        System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
+        //System.out.println(vincitore.getNome() + " ha vinto!");
+        //System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
         vincitore.aumentaVittorie();
-        System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
+        //System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
         vincitore.rimuoviPartita(this.id);
         vincitore.resetPunti();
         vincitore.resetMazzo();
@@ -178,9 +199,18 @@ public class Partita {
             System.out.println("Prossimo Round");
             t.aumentaRound();
             t.creaPartite();
-            if(t.getGiocatori().size()==1){
+            if(t.getGiocatori().size()==1) {
                 t.setFinito();
                 t.setVincitore(vincitore);
+                for(Giocatore g : t.getListaGiocatoriIniziali()){
+                    System.out.println(g);
+                }
+                for (Giocatore g : t.getListaGiocatoriIniziali()) {
+                    if (!g.getEmail().isEmpty() && g.getEmail() != "") {
+                        MailThread thread = new MailThread(g.getEmail(), "Fine torneo", "Torneo con codice "+ t.getId() +" concluso \nVincitore: " + t.getVincitore());
+                        thread.start();
+                    }
+                }
             }
         }
         t.salva();

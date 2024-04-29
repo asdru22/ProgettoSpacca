@@ -12,6 +12,7 @@ public class Torneo {
     private int round_salvato = 0;
     private boolean finito = false;
     private ArrayList<Giocatore> giocatori;
+    private ArrayList<Giocatore> listaGiocatoriIniziali;
     private ArrayList<Integer> partite = new ArrayList<>();
     private final int id;
     private final int giocatoriIniziali;
@@ -22,6 +23,7 @@ public class Torneo {
         Collections.shuffle(giocatori);
         this.id = id;
         this.giocatoriIniziali = giocatori.size();
+        this.listaGiocatoriIniziali = giocatori;
     }
 
     public static Torneo carica(int id) {
@@ -81,6 +83,12 @@ public class Torneo {
     public ArrayList<Giocatore> getGiocatori() {
         return giocatori;
     }
+    public ArrayList<Giocatore> getListaGiocatoriIniziali() {
+        return listaGiocatoriIniziali;
+    }
+    public void setListaGiocatoriIniziali(ArrayList<Giocatore> listaGiocatoriIniziali) {
+        this.listaGiocatoriIniziali = listaGiocatoriIniziali;
+    }
 
     public Integer getId() {
         return id;
@@ -105,7 +113,11 @@ public class Torneo {
         if (giocatori < max) {
             n = aggiungiBot(max - giocatori, g);
         }
+        ArrayList<Giocatore> temp2 = new ArrayList<>();
+        temp2 = g;
         Torneo t = new Torneo(g, id);
+        t.setListaGiocatoriIniziali(temp2);
+        t.salva();
         t.creaPartite();
         return n;
     }

@@ -148,7 +148,7 @@ public class CreaController implements Initializable {
             //creo un thread per ogni mail da inviare
             for(int i =0; i<giocatori.length; i++) {
                 if(!giocatori[i].getEmail().isEmpty() && giocatori[i].getEmail()!=""){
-                    MailThread thread = new MailThread(giocatori[i].getEmail(),"Iscrizione partita spacca", "iscritto alla partita: "+txt_code.getText());
+                    MailThread thread = new MailThread(giocatori[i].getEmail(),"Iscrizione partita spacca", "Giocatore: "+giocatori[i]+"\nCodice partita: "+txt_code.getText());
                     thread.start();
                 }
             }
