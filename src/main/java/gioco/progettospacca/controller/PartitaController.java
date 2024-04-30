@@ -51,6 +51,10 @@ public class PartitaController implements Initializable {
     @FXML
     Label lbl_pausa;
     @FXML
+    Label lbl_turnodi;
+    @FXML
+    Label lbl_turnoNome;
+    @FXML
     private AnchorPane anchorPane;
     @FXML
     private AnchorPane carta1;
@@ -1281,21 +1285,6 @@ public class PartitaController implements Initializable {
     }
 
     //collegato al bottone del anchor pane toccaA
-    public void procedi(MouseEvent mouseEvent) throws FileNotFoundException {
-        anchPane_toccaA.setVisible(false);
-        btn_gioca.setVisible(false);
-        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), anchPane_score);
-        translateTransition.setByX(220);
-        translateTransition.play();
-        try {
-            giocaTurno();
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public void procedi() throws FileNotFoundException {
         anchPane_toccaA.setVisible(false);
         btn_gioca.setVisible(false);
@@ -1303,6 +1292,8 @@ public class PartitaController implements Initializable {
         translateTransition.setByX(220);
         translateTransition.play();
         try {
+            lbl_turnodi.setVisible(true);
+            lbl_turnoNome.setText(toccaA.getNome());
             giocaTurno();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

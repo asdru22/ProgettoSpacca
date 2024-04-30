@@ -111,14 +111,14 @@
                </children>
             </Pane>
             <AnchorPane fx:id="anch_imprevisto" layoutX="270.0" layoutY="60.0" prefHeight="150.0" prefWidth="100.0" />
-            <Label fx:id="lbl_turnodi" layoutX="348.0" layoutY="580.0" text="Turno di :">
+            <Label fx:id="lbl_turnodi" layoutX="411.0" layoutY="580.0" text="Turno di :" visible="false">
                <font>
-                  <Font name="Candara" size="15.0" />
+                  <Font name="Candara" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="lbl_turnoNome" alignment="CENTER" layoutX="428.0" layoutY="580.0" prefHeight="18.0" prefWidth="150.0" textAlignment="CENTER">
+            <Label fx:id="lbl_turnoNome" alignment="TOP_LEFT" layoutX="488.0" layoutY="580.0" prefHeight="18.0" prefWidth="150.0" textAlignment="CENTER">
                <font>
-                  <Font name="Candara Bold Italic" size="14.0" />
+                  <Font name="Candara Bold Italic" size="16.0" />
                </font>
             </Label>
             </children>

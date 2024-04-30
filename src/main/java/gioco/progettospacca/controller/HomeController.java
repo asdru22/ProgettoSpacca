@@ -64,24 +64,6 @@ public class HomeController implements Initializable {
     private Button btn_chiudiPaneSuoni;
     @FXML
     private AnchorPane anchorPane;
-
-    public void ridaje(MouseEvent mouseEvent) throws IOException {
-        OPZ.premiBottone();
-        OPZ.playMusica("gioco.mp3");
-        Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
-
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_creaPartita.getScene().getWindow();
-
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
-        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
-
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
-
-    }
-
     public void EventoGiocaPartita() throws IOException {
 
         // Carica la nuova radice della scena
@@ -173,18 +155,17 @@ public class HomeController implements Initializable {
 
     public void showLeaderboard() throws IOException {
 
-        // Carica la nuova finestra
-        Parent root = FXMLLoader.load(getClass().getResource("LeaderBoardView.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("LeaderboardView.fxml"));
 
-        // Imposta la nuova finestra
-        stage.setTitle(OPZ.traduci("classifica"));
-        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
-        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
-        stage.setResizable(false);
-        stage.setScene(scene);
-        stage.show();
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_creaPartita.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+        currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
     public void showRegole() throws IOException {
@@ -193,20 +174,25 @@ public class HomeController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("RegoleView.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
+
         scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
         stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
-        // Imposta la nuova finestra
-        //stage.setTitle(OPZ.traduci("regole"));
+
+        stage.setTitle(OPZ.traduci("regole"));
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-        if (keyEvent.getCode() == KeyCode.ESCAPE || keyEvent.getCode() == KeyCode.M) {
+
+        btn_giocaPartita.setFocusTraversable(false);
+        /*
+        if (keyEvent.getCode() == KeyCode.M) {
             menuImpostazioni.show();
         }
-
+        */
         if (keyEvent.getCode() == KeyCode.ENTER && btn_giocaPartita.isFocused()) {
             EventoGiocaPartita();
             OPZ.premiBottone();
@@ -220,6 +206,21 @@ public class HomeController implements Initializable {
             Utili.gestisciMusica(tglbtn_musica);
             OPZ.premiBottone();
         }
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_creaTorneo.isFocused()) {
+            EventoCreaTorneo();
+            OPZ.premiBottone();
+        }
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_giocaTorneo.isFocused()) {
+            EventoGiocaTorneo();
+            OPZ.premiBottone();
+        }
+        if (keyEvent.getCode() == KeyCode.ESCAPE && anchorPane_suoni.isVisible()) {
+            anchorPane_suoni.setVisible(false);
+            btn_giocaPartita.requestFocus();
+            anchorPane.setDisable(false);
+            OPZ.premiBottone();
+        }
+
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
             OPZ.premiBottone();
             Utili.gestisciSuoni(tglbtn_suono);
@@ -278,14 +279,6 @@ public class HomeController implements Initializable {
             }
 
         }
-        pulisci();
-    }
-
-    private void pulisci() {
-        btn_giocaPartita.setFocusTraversable(false);
-        btn_creaPartita.setFocusTraversable(false);
-        btn_giocaTorneo.setFocusTraversable(false);
-        btn_creaTorneo.setFocusTraversable(false);
     }
 
     public void giocaPartita() throws IOException {

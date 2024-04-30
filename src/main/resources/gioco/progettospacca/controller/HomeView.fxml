@@ -82,7 +82,6 @@
                         <Font name="Candara" size="15.0" />
                     </font>
                 </Button>
-                <Button fx:id="btn_daje" layoutX="92.0" layoutY="192.0" mnemonicParsing="false" onMouseClicked="#ridaje" text="daje" />
             <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="232.0" layoutY="194.0">
                <image>
                   <Image url="@../versus.png" />

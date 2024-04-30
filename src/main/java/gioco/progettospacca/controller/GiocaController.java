@@ -127,8 +127,8 @@ public class GiocaController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) {
+        txt_gioc1.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.DOWN) {
-            txt_gioc1.setFocusTraversable(false);
             if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
@@ -206,6 +206,29 @@ public class GiocaController implements Initializable {
                 txt_cod5.requestFocus();
             } else if (txt_cod5.isFocused()) {
                 btn_entra.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.TAB) {
+            if (txt_gioc1.isFocused()) {
+                txt_cod1.requestFocus();
+            } else if (txt_gioc2.isFocused()) {
+                txt_cod2.requestFocus();
+            } else if (txt_gioc3.isFocused()) {
+                txt_cod3.requestFocus();
+            } else if (txt_gioc4.isFocused()) {
+                txt_cod4.requestFocus();
+            } else if (txt_gioc5.isFocused()) {
+                txt_cod5.requestFocus();
+            } else if (txt_cod1.isFocused()) {
+                txt_gioc1.requestFocus();
+            } else if (txt_cod2.isFocused()) {
+                txt_gioc2.requestFocus();
+            } else if (txt_cod3.isFocused()) {
+                txt_gioc3.requestFocus();
+            } else if (txt_cod4.isFocused()) {
+                txt_gioc4.requestFocus();
+            } else if (txt_cod5.isFocused()) {
+                txt_gioc5.requestFocus();
             }
         }
 

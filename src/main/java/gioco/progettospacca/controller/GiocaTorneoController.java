@@ -148,6 +148,9 @@ public class GiocaTorneoController implements Initializable {
                 throw new RuntimeException(e);
             }
         }
+        if (keyEvent.getCode() == KeyCode.ENTER && txt_codTorneo.isFocused()) {
+            btn_entraTorneo.requestFocus();
+        }
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
