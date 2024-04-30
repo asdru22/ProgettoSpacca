@@ -11,31 +11,22 @@ public class LeaderboardController {
     public Label lbl_classifica;
     @FXML
     private Label lbl_pos1;
-
     @FXML
     private Label lbl_pos2;
-
     @FXML
     private Label lbl_pos3;
-
     @FXML
     private Label lbl_pos4;
-
     @FXML
     private Label lbl_pos5;
-
     @FXML
     private Label lbl_pos6;
-
     @FXML
     private Label lbl_pos7;
-
     @FXML
     private Label lbl_pos8;
-
     @FXML
     private Label lbl_pos9;
-
     @FXML
     private Label lbl_pos10;
 
@@ -53,7 +44,5 @@ public class LeaderboardController {
         lbl_pos9.setText(lead[8]);
         lbl_pos10.setText(lead[9]);
         lbl_classifica.setText(OPZ.traduci("classifica"));
-
-
     }
 }

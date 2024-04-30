@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Torneo;
 import gioco.progettospacca.classi.Utili;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,11 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -98,7 +95,6 @@ public class PartiteSalvateController implements Initializable {
         try {
             int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaPartita(i));
-            System.out.println("eliminata partita con codice " + i);
             aggiornaLista(cmb_partite, true);
         } catch (NullPointerException e) {
             System.err.println("Valore vuoto");
@@ -109,7 +105,6 @@ public class PartiteSalvateController implements Initializable {
         try {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaTorneo(i));
-            System.out.println("eliminato torneo con codice " + i);
             aggiornaLista(cmb_tornei, false);
         } catch (NullPointerException e) {
             System.err.println("Valore vuoto");
@@ -133,6 +128,4 @@ public class PartiteSalvateController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
-
-
 }

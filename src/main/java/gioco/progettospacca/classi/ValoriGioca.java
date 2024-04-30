@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class ValoriGioca {
+    // coppia di valori usati quando si gioca una partita
     private final String nome;
     private final int codice;
 
@@ -21,12 +22,9 @@ public class ValoriGioca {
             // se non è bot
             if (Objects.equals(nome, "admin")) {
                 return true;
-            } else if (!partite.contains(codice)) {
-                System.out.println("Giocatore " + nome + " non ha questo id");
             }
             return partite.contains(codice);
         }
-        System.out.println("Giocatore " + nome + " non esiste");
         return false;
     }
 }

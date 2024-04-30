@@ -18,8 +18,8 @@ public class Main extends Application {
     public static int CODICE_GLOBALE_PARTITA;
     public static int CODICE_GLOBALE_TORNEO;
 
-    public static String USERNAME = "a";
-    public static String PASSWORD = "s";
+    public static String USERNAME = "admin";
+    public static String PASSWORD = "spacca";
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -45,7 +45,6 @@ public class Main extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        //Utili.cancellaTorneiInSospeso();
         launch(args);
     }
 }

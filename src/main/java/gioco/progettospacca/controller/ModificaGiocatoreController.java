@@ -97,8 +97,8 @@ public class ModificaGiocatoreController implements Initializable {
         }
         lbl_output.setText(out);
 
-        if(!g.getEmail().isEmpty() && g.getEmail()!=""){
-            MailThread thread = new MailThread(g.getEmail(),"Modifiche profilo giocatore spacca", "Nome giocatore modificato\nVecchio nome: "+g.getNome()+"\nNuovo nome: "+nuovo);
+        if (!g.getEmail().isEmpty() && g.getEmail() != "") {
+            MailThread thread = new MailThread(g.getEmail(), "Modifiche profilo giocatore spacca", "Nome giocatore modificato\nVecchio nome: " + g.getNome() + "\nNuovo nome: " + nuovo);
             thread.start();
         }
 

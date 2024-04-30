@@ -5,14 +5,11 @@ public class Carta {
     private int numero;
     private String image;
     private boolean cliccata = false;
+
     //costruttore per carte da gioco
     public Carta(Seme seme, int numero, String image) {
         this.seme = seme;
         this.numero = numero + 1;
-        this.image = image;
-    }
-    //costruttore per carte imprevisti\probabilità
-    public Carta(String Image){
         this.image = image;
     }
 
@@ -23,6 +20,7 @@ public class Carta {
     public void setCliccata(boolean cliccata) {
         this.cliccata = cliccata;
     }
+
     public String getImage() {
         return image;
     }

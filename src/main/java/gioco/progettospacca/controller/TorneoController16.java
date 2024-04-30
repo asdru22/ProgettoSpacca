@@ -23,7 +23,7 @@ import static gioco.progettospacca.controller.Main.*;
 public class TorneoController16 implements Initializable {
     @FXML
     Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2,
-    btn_ottavi1,btn_ottavi2,btn_ottavi3,btn_ottavi4,btn_ottavi5,btn_ottavi6,btn_ottavi7,btn_ottavi8, btn_finale, btn_home;
+            btn_ottavi1, btn_ottavi2, btn_ottavi3, btn_ottavi4, btn_ottavi5, btn_ottavi6, btn_ottavi7, btn_ottavi8, btn_finale, btn_home;
     @FXML
     Label lbl_titolo;
 
@@ -44,6 +44,7 @@ public class TorneoController16 implements Initializable {
         currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lbl_titolo.setText(OPZ.traduci("torneo_16"));
@@ -245,7 +246,6 @@ public class TorneoController16 implements Initializable {
         });
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
-        System.out.println("round: " + t.getRound());
 
         Utili.bottoneTorneo(btn_ottavi1, partite.get(0));
         Utili.bottoneTorneo(btn_ottavi2, partite.get(1));
@@ -299,7 +299,7 @@ public class TorneoController16 implements Initializable {
             btn_finale.setDisable(true);
             btn_finale.setText(OPZ.traduci("finale"));
 
-        } else if (t.getRound() == 3){
+        } else if (t.getRound() == 3) {
             Utili.bottoneTorneo(btn_quarti1, partite.get(8));
             Utili.bottoneTorneo(btn_quarti2, partite.get(9));
             Utili.bottoneTorneo(btn_quarti3, partite.get(10));
@@ -326,47 +326,56 @@ public class TorneoController16 implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
     }
+
     public void cliccaOttavi1(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(0);
         giocaPartita(b);
     }
+
     public void cliccaOttavi2(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(1);
         giocaPartita(b);
-    }public void cliccaOttavi3(MouseEvent mouseEvent) throws IOException {
+    }
+
+    public void cliccaOttavi3(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(2);
         giocaPartita(b);
     }
+
     public void cliccaOttavi4(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(3);
         giocaPartita(b);
     }
+
     public void cliccaOttavi5(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(4);
         giocaPartita(b);
     }
+
     public void cliccaOttavi6(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(5);
         giocaPartita(b);
     }
+
     public void cliccaOttavi7(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(6);
         giocaPartita(b);
     }
+
     public void cliccaOttavi8(MouseEvent mouseEvent) throws IOException {
         Button b = (Button) mouseEvent.getSource();
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);

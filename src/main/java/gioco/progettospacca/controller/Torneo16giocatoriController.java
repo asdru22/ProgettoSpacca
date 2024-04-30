@@ -36,84 +36,91 @@ public class Torneo16giocatoriController implements Initializable {
     @FXML
     Button btn_home;
     @FXML
-    TextField txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_gioc5,txt_gioc6,txt_gioc7,txt_gioc8,
-            txt_gioc9,txt_gioc10,txt_gioc11,txt_gioc12,txt_gioc13,txt_gioc14,txt_gioc15,txt_gioc16,txt_codice;
+    TextField txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_gioc5, txt_gioc6, txt_gioc7, txt_gioc8,
+            txt_gioc9, txt_gioc10, txt_gioc11, txt_gioc12, txt_gioc13, txt_gioc14, txt_gioc15, txt_gioc16, txt_codice;
     @FXML
-    CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4,chk_gioc5,chk_gioc6,chk_gioc7,chk_gioc8,
-            chk_gioc9,chk_gioc10,chk_gioc11,chk_gioc12,chk_gioc13,chk_gioc14,chk_gioc15,chk_gioc16;
+    CheckBox chk_gioc1, chk_gioc2, chk_gioc3, chk_gioc4, chk_gioc5, chk_gioc6, chk_gioc7, chk_gioc8,
+            chk_gioc9, chk_gioc10, chk_gioc11, chk_gioc12, chk_gioc13, chk_gioc14, chk_gioc15, chk_gioc16;
 
     private int checkBoxSelezionati = 0;
+
     public void checkBox1() {
-        checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc1, chk_gioc1, checkBoxSelezionati);
         txt_gioc2.requestFocus();
     }
+
     public void checkBox2() {
-        checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc2, chk_gioc2, checkBoxSelezionati);
         txt_gioc3.requestFocus();
     }
+
     public void checkBox3() {
-        checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc3, chk_gioc3, checkBoxSelezionati);
         txt_gioc4.requestFocus();
     }
+
     public void checkBox4() {
-        checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc4, chk_gioc4, checkBoxSelezionati);
         txt_gioc5.requestFocus();
     }
+
     public void checkBox5() {
-        checkBoxSelezionati = checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc5, chk_gioc5, checkBoxSelezionati);
         txt_gioc6.requestFocus();
     }
+
     public void checkBox6() {
-        checkBoxSelezionati = checkBox(txt_gioc6,chk_gioc6,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc6, chk_gioc6, checkBoxSelezionati);
         txt_gioc7.requestFocus();
     }
+
     public void checkBox7() {
-        checkBoxSelezionati = checkBox(txt_gioc7,chk_gioc7,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc7, chk_gioc7, checkBoxSelezionati);
         txt_gioc8.requestFocus();
     }
 
     public void checkBox8() {
-        checkBoxSelezionati = checkBox(txt_gioc8,chk_gioc8,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc8, chk_gioc8, checkBoxSelezionati);
         txt_gioc9.requestFocus();
     }
 
     public void checkBox9() {
-        checkBoxSelezionati = checkBox(txt_gioc9,chk_gioc9,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc9, chk_gioc9, checkBoxSelezionati);
         txt_gioc10.requestFocus();
     }
 
     public void checkBox10() {
-        checkBoxSelezionati = checkBox(txt_gioc10,chk_gioc10,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc10, chk_gioc10, checkBoxSelezionati);
         txt_gioc11.requestFocus();
     }
 
     public void checkBox11() {
-        checkBoxSelezionati = checkBox(txt_gioc11,chk_gioc11,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc11, chk_gioc11, checkBoxSelezionati);
         txt_gioc12.requestFocus();
     }
 
     public void checkBox12() {
-        checkBoxSelezionati = checkBox(txt_gioc12,chk_gioc12,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc12, chk_gioc12, checkBoxSelezionati);
         txt_gioc13.requestFocus();
     }
 
     public void checkBox13() {
-        checkBoxSelezionati = checkBox(txt_gioc13,chk_gioc13,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc13, chk_gioc13, checkBoxSelezionati);
         txt_gioc14.requestFocus();
     }
 
     public void checkBox14() {
-        checkBoxSelezionati = checkBox(txt_gioc14,chk_gioc14,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc14, chk_gioc14, checkBoxSelezionati);
         txt_gioc15.requestFocus();
     }
 
     public void checkBox15() {
-        checkBoxSelezionati = checkBox(txt_gioc15,chk_gioc15,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc15, chk_gioc15, checkBoxSelezionati);
         txt_gioc16.requestFocus();
     }
 
     public void checkBox16() {
-        checkBoxSelezionati = checkBox(txt_gioc16,chk_gioc16,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc16, chk_gioc16, checkBoxSelezionati);
         btn_crea.requestFocus();
     }
 
@@ -148,31 +155,33 @@ public class Torneo16giocatoriController implements Initializable {
         lbl_codice.setText(OPZ.traduci("codice_torneo"));
         btn_home.setText(OPZ.traduci("torna_alla_home"));
     }
+
     public int creaTorneo() {
         ArrayList<ValoriTorneo> tf = new ArrayList<>();
-        tf.add(new ValoriTorneo(txt_gioc1,chk_gioc1));
-        tf.add(new ValoriTorneo(txt_gioc2,chk_gioc2));
-        tf.add(new ValoriTorneo(txt_gioc3,chk_gioc3));
-        tf.add(new ValoriTorneo(txt_gioc4,chk_gioc4));
-        tf.add(new ValoriTorneo(txt_gioc5,chk_gioc5));
-        tf.add(new ValoriTorneo(txt_gioc6,chk_gioc6));
-        tf.add(new ValoriTorneo(txt_gioc7,chk_gioc7));
-        tf.add(new ValoriTorneo(txt_gioc8,chk_gioc8));
-        tf.add(new ValoriTorneo(txt_gioc9,chk_gioc9));
-        tf.add(new ValoriTorneo(txt_gioc10,chk_gioc10));
-        tf.add(new ValoriTorneo(txt_gioc11,chk_gioc11));
-        tf.add(new ValoriTorneo(txt_gioc12,chk_gioc12));
-        tf.add(new ValoriTorneo(txt_gioc13,chk_gioc13));
-        tf.add(new ValoriTorneo(txt_gioc14,chk_gioc14));
-        tf.add(new ValoriTorneo(txt_gioc15,chk_gioc15));
-        tf.add(new ValoriTorneo(txt_gioc16,chk_gioc16));
-        return Torneo.controlloLabel(tf,16,txt_codice);
+        tf.add(new ValoriTorneo(txt_gioc1, chk_gioc1));
+        tf.add(new ValoriTorneo(txt_gioc2, chk_gioc2));
+        tf.add(new ValoriTorneo(txt_gioc3, chk_gioc3));
+        tf.add(new ValoriTorneo(txt_gioc4, chk_gioc4));
+        tf.add(new ValoriTorneo(txt_gioc5, chk_gioc5));
+        tf.add(new ValoriTorneo(txt_gioc6, chk_gioc6));
+        tf.add(new ValoriTorneo(txt_gioc7, chk_gioc7));
+        tf.add(new ValoriTorneo(txt_gioc8, chk_gioc8));
+        tf.add(new ValoriTorneo(txt_gioc9, chk_gioc9));
+        tf.add(new ValoriTorneo(txt_gioc10, chk_gioc10));
+        tf.add(new ValoriTorneo(txt_gioc11, chk_gioc11));
+        tf.add(new ValoriTorneo(txt_gioc12, chk_gioc12));
+        tf.add(new ValoriTorneo(txt_gioc13, chk_gioc13));
+        tf.add(new ValoriTorneo(txt_gioc14, chk_gioc14));
+        tf.add(new ValoriTorneo(txt_gioc15, chk_gioc15));
+        tf.add(new ValoriTorneo(txt_gioc16, chk_gioc16));
+        return Torneo.controlloLabel(tf, 16, txt_codice);
     }
 
     public void cliccaCreaTorneo() {
         int n = creaTorneo();
         Utili.giocatoriMancanti(n, lbl_bot);
     }
+
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
@@ -193,7 +202,7 @@ public class Torneo16giocatoriController implements Initializable {
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.DOWN) {
-            if(txt_gioc1.isFocused()){
+            if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc3.requestFocus();
@@ -209,7 +218,7 @@ public class Torneo16giocatoriController implements Initializable {
                 txt_gioc8.requestFocus();
             } else if (txt_gioc8.isFocused()) {
                 txt_gioc9.requestFocus();
-            }else if (txt_gioc9.isFocused()) {
+            } else if (txt_gioc9.isFocused()) {
                 txt_gioc10.requestFocus();
             } else if (txt_gioc10.isFocused()) {
                 txt_gioc11.requestFocus();
@@ -230,12 +239,10 @@ public class Torneo16giocatoriController implements Initializable {
             } else if (txt_codice.isFocused()) {
                 btn_home.requestFocus();
             } else if (btn_home.isFocused()) {
-                System.out.println("sei gia in basso");
             }
         }
         if (keyEvent.getCode() == KeyCode.UP) {
-            if(txt_gioc1.isFocused()){
-                System.out.println("sei gia in alto");
+            if (txt_gioc1.isFocused()) {
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc1.requestFocus();
             } else if (txt_gioc3.isFocused()) {
@@ -250,7 +257,7 @@ public class Torneo16giocatoriController implements Initializable {
                 txt_gioc6.requestFocus();
             } else if (txt_gioc8.isFocused()) {
                 txt_gioc7.requestFocus();
-            }else if (txt_gioc9.isFocused()) {
+            } else if (txt_gioc9.isFocused()) {
                 txt_gioc8.requestFocus();
             } else if (txt_gioc10.isFocused()) {
                 txt_gioc9.requestFocus();
@@ -319,8 +326,8 @@ public class Torneo16giocatoriController implements Initializable {
 
             }
         }
-        if(keyEvent.getCode() == KeyCode.TAB ){
-            if(txt_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.TAB) {
+            if (txt_gioc1.isFocused()) {
                 chk_gioc1.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 chk_gioc2.requestFocus();
@@ -368,7 +375,7 @@ public class Torneo16giocatoriController implements Initializable {
                 txt_gioc7.requestFocus();
             } else if (chk_gioc8.isFocused()) {
                 txt_gioc8.requestFocus();
-            }else if (chk_gioc9.isFocused()) {
+            } else if (chk_gioc9.isFocused()) {
                 txt_gioc9.requestFocus();
             } else if (chk_gioc10.isFocused()) {
                 txt_gioc10.requestFocus();
@@ -386,7 +393,7 @@ public class Torneo16giocatoriController implements Initializable {
                 txt_gioc16.requestFocus();
             }
         }
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {
@@ -394,6 +401,7 @@ public class Torneo16giocatoriController implements Initializable {
             }
         }
     }
+
     public void keyReleased(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (chk_gioc1.isFocused()) {

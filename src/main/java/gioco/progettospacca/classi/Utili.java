@@ -17,6 +17,7 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
+        // metodo base per salvare un oggetto in fila json
         try (FileWriter writer = new FileWriter("salvataggi/" + tipo + "/" + nome + ".json")) {
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             writer.write(gson.toJson(o));
@@ -26,6 +27,7 @@ public class Utili {
     }
 
     public static String leggiFileJson(String tipo, String nome) {
+        // metodo base per caricare un file json in un oggetto
         try {
             BufferedReader reader = new BufferedReader(new FileReader("salvataggi/" + tipo + "/" + nome + ".json"));
             StringBuilder jsonBuilder = new StringBuilder();
@@ -42,6 +44,7 @@ public class Utili {
     }
 
     public static String[] getLeaderboard() {
+        // itera sui file salvati per trovare i giocatori
         File folder = new File("salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         ArrayList<Giocatore> temp = new ArrayList<>();
@@ -80,14 +83,9 @@ public class Utili {
 
 
     public static void elimina(String id, String cartella) {
-
+        // elimina file
         File fileDaEliminare = new File("salvataggi/" + cartella + "/" + id + ".json");
-
-        if (fileDaEliminare.delete()) {
-            System.out.println("File eliminato con successo: " + id + ".json");
-        } else {
-            System.out.println("Impossibile eliminare il file: " + id + ".json");
-        }
+        fileDaEliminare.delete();
     }
 
     public static void eliminaGiocatore(String nome) {
@@ -102,6 +100,7 @@ public class Utili {
     }
 
     public static boolean esisteGiocatore(String nome) {
+        // controlla se esiste un giocatore con un certo nome
         File folder = new File("salvataggi/giocatori");
         File[] file_giocatori = folder.listFiles();
         boolean trovato = false;
@@ -118,6 +117,7 @@ public class Utili {
     }
 
     public static boolean esistePartita(int id, boolean partita) {
+        // controlla se esiste una partita/torneo con un dato id
         // true per partite, false per torneo
         File folder = null;
         if (partita) folder = new File("salvataggi/partite");
@@ -140,13 +140,13 @@ public class Utili {
     }
 
     public static void controllaNome(String nome, int id, boolean bot, List<Giocatore> lista) {
+        // metodo che determina se il giocatore inserito è giocatore/bot
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
 
             if (esiste) {
                 g = Giocatore.carica(nome);
-                System.out.println("Giocatore " + nome + " esiste");
             } else {
                 g = new Giocatore(nome, bot);
             }
@@ -160,6 +160,7 @@ public class Utili {
     }
 
     public static Giocatore controllaNomeTorneo(String nome, boolean bot, List<Giocatore> lista) {
+        // controlla se un giocatore appartiene a un torneo
         if (!Objects.equals(nome, "")) {
             boolean esiste = esisteGiocatore(nome);
             Giocatore g;
@@ -182,6 +183,7 @@ public class Utili {
     }
 
     public static void gestisciMusica(ToggleButton tglb) {
+        // funzionalità bottone musica
         if (tglb.isSelected()) {
             OPZ.pausaMusica();
             tglb.setText(OPZ.traduci("musica_off"));
@@ -192,6 +194,7 @@ public class Utili {
     }
 
     public static void gestisciSuoni(ToggleButton tglb) {
+        // funzionalità bottone effetti sonori
         if (tglb.isSelected()) {
             OPZ.pausaSfx();
             tglb.setText(OPZ.traduci("suono_off"));
@@ -202,6 +205,7 @@ public class Utili {
     }
 
     public static String cambiaNomeGiocatore(String vecchio, String nuovo) {
+        // cambia nome di un giocatore e modifica tutti i file in cui è salvato
         if (esisteGiocatore(vecchio) && !esisteGiocatore(nuovo)) {
             Giocatore g = Giocatore.carica(vecchio);
             if (g.isBot()) {
@@ -314,8 +318,7 @@ public class Utili {
     }
 
     public static void bottoneTorneo(Button b, int codice) {
-        System.out.println("inizializzato bottone" + b.getId() + ",codiec: " + codice);
-
+        // testo bottoni del tabellone dei tornei
         Partita p = Partita.carica(codice);
         if (p.getVincitore() == null) {
             b.setDisable(false);
@@ -327,6 +330,7 @@ public class Utili {
     }
 
     public static int checkBox(TextField text, CheckBox check, int c) {
+        // imposta il nome dei bot se selezionato
         OPZ.premiBottone();
         if (check.isSelected() && !text.isDisable()) {
             text.setDisable(true);

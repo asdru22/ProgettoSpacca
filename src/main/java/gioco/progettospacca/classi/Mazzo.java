@@ -21,10 +21,10 @@ public class Mazzo {
     public static ArrayList<Carta> creaMazzoIniziale() {
         Seme[] semi = Seme.values();
         ArrayList<Carta> temp = new ArrayList<>();
-        temp.add(new Carta(semi[5],15, "/gioco/progettospacca/carte/imprevisti/1.png"));
-        temp.add(new Carta(semi[5],15, "/gioco/progettospacca/carte/imprevisti/1.png"));
-        temp.add(new Carta(semi[5],15, "/gioco/progettospacca/carte/imprevisti/2.png"));
-        temp.add(new Carta(semi[5],15, "/gioco/progettospacca/carte/imprevisti/2.png"));
+        temp.add(new Carta(semi[5], 15, "/gioco/progettospacca/carte/imprevisti/1.png"));
+        temp.add(new Carta(semi[5], 15, "/gioco/progettospacca/carte/imprevisti/1.png"));
+        temp.add(new Carta(semi[5], 15, "/gioco/progettospacca/carte/imprevisti/2.png"));
+        temp.add(new Carta(semi[5], 15, "/gioco/progettospacca/carte/imprevisti/2.png"));
         for (int i = 0; i < 10; i++) {
             temp.add(new Carta(semi[0], i, "/gioco/progettospacca/carte/fuoco/" + (i + 1) + ".png"));
             temp.add(new Carta(semi[1], i, "/gioco/progettospacca/carte/terra/" + (i + 1) + ".png"));

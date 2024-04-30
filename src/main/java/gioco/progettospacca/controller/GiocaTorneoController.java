@@ -35,6 +35,7 @@ public class GiocaTorneoController implements Initializable {
     TextField txt_codTorneo;
     @FXML
     Label lbl_titleCodTorneo;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_home.setOnMouseEntered(e -> {
@@ -94,9 +95,10 @@ public class GiocaTorneoController implements Initializable {
     public void EventoGiocaTorneo() throws IOException {
         int giocatori = Torneo.carica(CODICE_GLOBALE_TORNEO).getGiocatoriIniziali();
         Parent root = null;
-        if(giocatori==4) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView4.fxml")));
-        if(giocatori==8) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView8.fxml")));
-        if(giocatori==16) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView16.fxml")));
+        if (giocatori == 4) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView4.fxml")));
+        if (giocatori == 8) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView8.fxml")));
+        if (giocatori == 16)
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView16.fxml")));
 
         // Ottieni la finestra corrente
         Stage currentStage = (Stage) btn_entraTorneo.getScene().getWindow();
@@ -114,41 +116,39 @@ public class GiocaTorneoController implements Initializable {
 
     }
 
-    public void keyEvent(KeyEvent keyEvent){
+    public void keyEvent(KeyEvent keyEvent) {
         txt_codTorneo.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.UP) {
-            if(txt_codTorneo.isFocused()){
+            if (txt_codTorneo.isFocused()) {
                 btn_home.requestFocus();
             } else if (btn_home.isFocused()) {
-                System.out.println("sei già in alto");
             } else if (btn_entraTorneo.isFocused()) {
                 txt_codTorneo.requestFocus();
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
-            if(txt_codTorneo.isFocused()){
+            if (txt_codTorneo.isFocused()) {
                 btn_entraTorneo.requestFocus();
             } else if (btn_home.isFocused()) {
                 txt_codTorneo.requestFocus();
             } else if (btn_entraTorneo.isFocused()) {
-                System.out.println("sei già in basso");
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_home.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_home.isFocused()) {
             try {
                 BackToHome();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_entraTorneo.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_entraTorneo.isFocused()) {
             try {
                 EventoGiocaTorneo();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {

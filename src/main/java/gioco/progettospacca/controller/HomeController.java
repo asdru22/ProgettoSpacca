@@ -232,7 +232,6 @@ public class HomeController implements Initializable {
         }
         if (keyEvent.getCode() == KeyCode.UP) {
             if (btn_giocaPartita.isFocused()) {
-                System.out.println(" Sei già in alto.");
             } else if (btn_creaPartita.isFocused()) {
                 OPZ.premiFreccia();
                 btn_giocaPartita.requestFocus();
@@ -246,7 +245,6 @@ public class HomeController implements Initializable {
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
             if (btn_creaTorneo.isFocused()) {
-                System.out.println("sei gia in basso");
             } else if (btn_giocaPartita.isFocused()) {
                 OPZ.premiFreccia();
                 btn_creaPartita.requestFocus();
@@ -267,7 +265,6 @@ public class HomeController implements Initializable {
                     OPZ.premiFreccia();
                     btn_chiudiPaneSuoni.requestFocus();
                 } else {
-                    System.out.println("sei già in basso");
                 }
             }
             if (keyEvent.getCode() == KeyCode.UP) {
@@ -277,8 +274,6 @@ public class HomeController implements Initializable {
                 } else if (tglbtn_musica.isFocused()) {
                     OPZ.premiFreccia();
                     tglbtn_suono.requestFocus();
-                } else {
-                    System.out.println("sei già in alto");
                 }
             }
 
@@ -323,7 +318,7 @@ public class HomeController implements Initializable {
         OPZ.premiBottone();
     }
 
-    public void apriRegole()throws IOException {
+    public void apriRegole() throws IOException {
         showRegole();
         OPZ.premiBottone();
     }
@@ -332,10 +327,9 @@ public class HomeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
 
-
         btn_giocaPartita.setOnMouseEntered(e -> {
             if (btn_giocaPartita.getScene() != null) {
-            btn_giocaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+                btn_giocaPartita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
             }
         });
 
@@ -383,7 +377,6 @@ public class HomeController implements Initializable {
         });
 
 
-
         btn_classifica.setText(OPZ.traduci("classifica"));
         btn_regole.setText(OPZ.traduci("regole"));
         btn_cambiaLingua.setText(OPZ.traduci("cambia_lingua"));
@@ -406,7 +399,7 @@ public class HomeController implements Initializable {
         Utili.gestisciMusica(tglbtn_musica);
         PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
         pause.play();
-        pause.setOnFinished(event ->{
+        pause.setOnFinished(event -> {
 
         });
     }
@@ -437,6 +430,7 @@ public class HomeController implements Initializable {
         anchorPane.setDisable(false);
         OPZ.premiBottone();
     }
+
     public void apriLogin() throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginAdminViewPrivilegi.fxml"));
 

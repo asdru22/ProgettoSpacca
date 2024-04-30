@@ -1,19 +1,15 @@
 package gioco.progettospacca.controller;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,8 +21,6 @@ import static gioco.progettospacca.controller.Main.OPZ;
 public class CreaTorneoController implements Initializable {
     @FXML
     private Label lbl_npart;
-    @FXML
-    private TextField txt_perFocus;
     @FXML
     private Button btn_4players;
     @FXML
@@ -150,66 +144,62 @@ public class CreaTorneoController implements Initializable {
     public void keyEvent(KeyEvent keyEvent) {
 
         btn_4players.setFocusTraversable(false);
-        if (keyEvent.getCode() == KeyCode.UP &&  (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused())) {
+        if (keyEvent.getCode() == KeyCode.UP && (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused())) {
             btn_back.requestFocus();
         } else if (keyEvent.getCode() == KeyCode.UP && btn_back.isFocused()) {
-            System.out.println("sei già in alto");
         }
 
-        if(keyEvent.getCode() == KeyCode.DOWN){
-            if(btn_back.isFocused()){
+        if (keyEvent.getCode() == KeyCode.DOWN) {
+            if (btn_back.isFocused()) {
                 btn_4players.requestFocus();
-            }else if(btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused()){
-                System.out.println("sei già in basso");
+            } else if (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused()) {
             }
         }
-        if(keyEvent.getCode() == KeyCode.RIGHT){
-            if(btn_4players.isFocused()){
+        if (keyEvent.getCode() == KeyCode.RIGHT) {
+            if (btn_4players.isFocused()) {
                 btn_8players.requestFocus();
             } else if (btn_8players.isFocused()) {
                 btn_16players.requestFocus();
             } else if (btn_16players.isFocused()) {
-                System.out.println("sei già a destra");
             }
         }
-        if(keyEvent.getCode() == KeyCode.LEFT){
-            if(btn_16players.isFocused()){
+        if (keyEvent.getCode() == KeyCode.LEFT) {
+            if (btn_16players.isFocused()) {
                 btn_8players.requestFocus();
             } else if (btn_8players.isFocused()) {
                 btn_4players.requestFocus();
             } else if (btn_4players.isFocused()) {
-                System.out.println("sei già a sinistra");
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_back.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_back.isFocused()) {
             try {
                 BackToHome();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_4players.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_4players.isFocused()) {
             try {
                 EventoCreaTorneo4Giocatori();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_8players.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_8players.isFocused()) {
             try {
                 EventoCreaTorneo8Giocatori();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ENTER && btn_16players.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER && btn_16players.isFocused()) {
             try {
                 EventoCreaTorneo16Giocatori();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {

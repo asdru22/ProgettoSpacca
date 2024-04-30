@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Opzioni;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
@@ -108,7 +107,6 @@ public class PrivilegiAdminController implements Initializable {
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
         // Imposta il titolo della finestra
-        //currentStage.setTitle(OPZ.traduci("Modifica giocatore"));
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
@@ -128,7 +126,6 @@ public class PrivilegiAdminController implements Initializable {
         if (keyEvent.getCode() == KeyCode.UP) {
             OPZ.premiFreccia();
             if (btn_back.isFocused()) {
-                System.out.println("sei già in alto");
             } else if (btn_partiteSalvate.isFocused()) {
                 btn_back.requestFocus();
             } else if (btn_modificaGiocatore.isFocused()) {
@@ -138,7 +135,6 @@ public class PrivilegiAdminController implements Initializable {
         if (keyEvent.getCode() == KeyCode.DOWN) {
             OPZ.premiFreccia();
             if (btn_modificaGiocatore.isFocused()) {
-                System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
                 btn_partiteSalvate.requestFocus();
             } else if (btn_partiteSalvate.isFocused()) {

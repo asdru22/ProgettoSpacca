@@ -41,10 +41,11 @@ public class Partita {
         this(Utili.intCasuale(10000, 99999), giocatori, id_torneo);
     }
 
-    public void setSemeComandante(){
+    public void setSemeComandante() {
         this.semeComandante = seme_che_comanda.getSeme();
     }
-    public int getPartitaTorneoNumGiocatori(){
+
+    public int getPartitaTorneoNumGiocatori() {
         return this.partitaTorneoNumGiocatori;
     }
 
@@ -102,8 +103,9 @@ public class Partita {
         return "> Id Partita: " + id + ", Giocatori: " + Arrays.toString(giocatori) + ", Vincitore: " + vincitore.toString();
     }
 
-    public void setNumeroTurni(int n){
-        this.NUMERO_TURNI = n;}
+    public void setNumeroTurni(int n) {
+        this.NUMERO_TURNI = n;
+    }
 
     public int getIdTorneo() {
         return id_torneo;
@@ -129,20 +131,23 @@ public class Partita {
         this.giocatore_salvato = val;
     }
 
-    private String getClassificaFinalePartita(){
+    private String getClassificaFinalePartita() {
         String s = "";
-        Giocatore [] temp = giocatori.clone();
+        Giocatore[] temp = giocatori.clone();
         Arrays.sort(temp, Comparator.comparingInt(Giocatore::getPunti).reversed());
         for (int j = 0; j < temp.length; j++) {
-            s = s +(j+1)+") "+ temp[j].getNome() + ":  " + temp[j].getPunti() + "\n";
+            s = s + (j + 1) + ") " + temp[j].getNome() + ":  " + temp[j].getPunti() + "\n";
         }
         return s;
     }
+
     public void finePartita() {
+        // viene eseguito alla fine di una partita
         OPZ.vittoria();
         int max = 0;
         vincitore = giocatori[0];
         int temp;
+        // trova vincitore
         for (Giocatore g : giocatori) {
             temp = g.getPunti();
             if (temp > max) {
@@ -152,8 +157,8 @@ public class Partita {
         }
         String classifica = getClassificaFinalePartita();
         for (Giocatore g : giocatori) {
-            if(!g.getEmail().isEmpty() && g.getEmail()!=""){        //invio la mail di fine partita a tutti i giocatori della partita che hanno mregistrato la mail nel giocatore
-                if(id_torneo == 0) {
+            if (!g.getEmail().isEmpty() && g.getEmail() != "") {        //invio la mail di fine partita a tutti i giocatori della partita che hanno mregistrato la mail nel giocatore
+                if (id_torneo == 0) {
                     MailThread thread = new MailThread(g.getEmail(), "Fine partita", "Partita conclusa \nVincitore: " + vincitore + "\nClassifica finale:\n" + classifica);
                     thread.start();
                 }
@@ -165,15 +170,11 @@ public class Partita {
             g.salva();
         }
 
-        //System.out.println(vincitore.getNome() + " ha vinto!");
-        //System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
         vincitore.aumentaVittorie();
-        //System.out.println("partite vinte da "+ vincitore.getNome()+": "+vincitore.getPartiteVinte());
         vincitore.rimuoviPartita(this.id);
         vincitore.resetPunti();
         vincitore.resetMazzo();
         vincitore.salva();
-
 
         Utili.getLeaderboard();
 
@@ -186,21 +187,19 @@ public class Partita {
 
     private void finePartitaTorneo() {
         salva();
-        System.out.println("partita salvata");
         Torneo t = Torneo.carica(id_torneo);
         t.getGiocatori().add(vincitore);
-        if(t.tuttiVincitori()){
+        if (t.tuttiVincitori()) {
             // prossimo round
-            System.out.println("Prossimo Round");
             t.aumentaRound();
             t.creaPartite();
-            if(t.getGiocatori().size()==1) {
+            if (t.getGiocatori().size() == 1) {
                 t.setFinito();
                 t.setVincitore(vincitore);
                 for (String g : t.getListaGiocatoriIniziali()) {        //invia la mail di fine torneo a tutti coloro che hanno registrato una mail nel giocatore e che hanno partecipato al torneo
                     Giocatore gioc = Giocatore.carica(g);
                     if (!gioc.getEmail().isEmpty() && gioc.getEmail() != "") {
-                        MailThread thread = new MailThread(gioc.getEmail(), "Fine torneo", "Torneo con codice "+ t.getId() +" concluso \nVincitore: " + t.getVincitore());
+                        MailThread thread = new MailThread(gioc.getEmail(), "Fine torneo", "Torneo con codice " + t.getId() + " concluso \nVincitore: " + t.getVincitore());
                         thread.start();
                     }
                 }
@@ -208,7 +207,7 @@ public class Partita {
         }
         for (Giocatore g : giocatori) {         //invia la mail con le informazioni riguardanti la partita del torneo solo ai due della partita del torneo nel caso avessero registrato la mail nel giocatore
             if (!g.getEmail().isEmpty() && g.getEmail() != "") {
-                MailThread thread = new MailThread(g.getEmail(), "Fine partita torneo", "Partita del torneo con codice "+ t.getId() +" conclusa\n"+ giocatori[0] +" VS "+ giocatori[1] +"\nVincitore: " + vincitore);
+                MailThread thread = new MailThread(g.getEmail(), "Fine partita torneo", "Partita del torneo con codice " + t.getId() + " conclusa\n" + giocatori[0] + " VS " + giocatori[1] + "\nVincitore: " + vincitore);
                 thread.start();
             }
         }
@@ -219,6 +218,7 @@ public class Partita {
     public void elimina() {
         Utili.eliminaPartita(id);
     }
+
     //valutazione complessiva della mano
     public int valutaCarte(Carta[] mano) {
         int[] carteNum = new int[5];
@@ -234,48 +234,47 @@ public class Partita {
         //ora verifichiamo se ci sono scale
         switch (verificaScala(carteNum)) {
             case 3:
-                //System.out.println("scala da 3 carte");
+                // scala da 3 carte
                 punti = punti + 15;
                 break;
             case 4:
-                //System.out.println("scala da 4 carte");
+                // scala da 4 carte
                 punti = punti + 35;
                 break;
             case 5:
-                //System.out.println("scala da 5 carte");
+                // scala da 5 carte
                 punti = punti + 60;
                 break;
             default:
-                //System.out.println("nessuna scala");
         }
         switch (verificaColore(carteSeme)) {
             case 3:
-                //System.out.println("3 carte dello stesso colore");
+                //3 carte dello stesso colore
                 punti = ((punti + 10));
                 break;
             case 4:
-                //System.out.println("4 carte dello stesso colore");
+                // 4 carte dello stesso colore
                 punti = ((punti + 30));
                 break;
             case 5:
-                //System.out.println("5 carte dello stesso colore");
+                // 5 carte dello stesso colore
                 punti = ((punti + 80));
                 break;
             default:
-                //System.out.println("non hai fatto colore");
+                //non hai fatto colore
         }
-        //System.out.println("moltiplicatore scala che comanda: "+ModificaPuntiSemeCheComanda());
-        punti = (int) (punti*this.moltiplicatoreImprevisti*ModificaPuntiSemeCheComanda());
+        punti = (int) (punti * this.moltiplicatoreImprevisti * ModificaPuntiSemeCheComanda());
         moltiplicatoreImprevisti = 1;
 
         return punti;
     }
+
     //per valutare la sequenza colore in modo differente in base al tipo di seme che comanda, restituirà un moltiplicatore
     //(se il seme che comanda è fuoco e la mia sequenza colore è di tipo acqua allora il valore dei punti verrà raddoppiato, se la sequenza fosse di tipo erba allora verrà dimezzata)
-    private double ModificaPuntiSemeCheComanda(){
+    private double ModificaPuntiSemeCheComanda() {
         double moltiplicatore = 1;
-        if(this.semeCatenaColore == Seme.Acqua){
-            if(this.semeComandante == Seme.Acqua){
+        if (this.semeCatenaColore == Seme.Acqua) {
+            if (this.semeComandante == Seme.Acqua) {
                 moltiplicatore = 1;
             } else if (this.semeComandante == Seme.Terra) {
                 moltiplicatore = 2;
@@ -287,8 +286,8 @@ public class Partita {
                 moltiplicatore = 2;
             }
         }
-        if(this.semeCatenaColore == Seme.Fuoco){
-            if(this.semeComandante == Seme.Acqua){
+        if (this.semeCatenaColore == Seme.Fuoco) {
+            if (this.semeComandante == Seme.Acqua) {
                 moltiplicatore = 0.5;
             } else if (this.semeComandante == Seme.Terra) {
                 moltiplicatore = 0.5;
@@ -300,8 +299,8 @@ public class Partita {
                 moltiplicatore = 1;
             }
         }
-        if(this.semeCatenaColore == Seme.Erba){
-            if(this.semeComandante == Seme.Acqua){
+        if (this.semeCatenaColore == Seme.Erba) {
+            if (this.semeComandante == Seme.Acqua) {
                 moltiplicatore = 2;
             } else if (this.semeComandante == Seme.Terra) {
                 moltiplicatore = 2;
@@ -313,8 +312,8 @@ public class Partita {
                 moltiplicatore = 0.5;
             }
         }
-        if(this.semeCatenaColore == Seme.Elettro){
-            if(this.semeComandante == Seme.Acqua){
+        if (this.semeCatenaColore == Seme.Elettro) {
+            if (this.semeComandante == Seme.Acqua) {
                 moltiplicatore = 2;
             } else if (this.semeComandante == Seme.Terra) {
                 moltiplicatore = 0.5;
@@ -326,8 +325,8 @@ public class Partita {
                 moltiplicatore = 1;
             }
         }
-        if(this.semeCatenaColore == Seme.Terra){
-            if(this.semeComandante == Seme.Acqua){
+        if (this.semeCatenaColore == Seme.Terra) {
+            if (this.semeComandante == Seme.Acqua) {
                 moltiplicatore = 0.5;
             } else if (this.semeComandante == Seme.Terra) {
                 moltiplicatore = 1;
@@ -341,6 +340,7 @@ public class Partita {
         }
         return moltiplicatore;
     }
+
     //verifica se possiedo un sequenza di colori d 3 min a 5 max
     public int verificaColore(Seme[] carteSeme) {
         Map<Seme, Integer> mappa = new HashMap<>();
@@ -353,16 +353,16 @@ public class Partita {
             int valore = mappa.get(chiave);
             if (valore > numColorePiuVolteRipetuto) {
                 numColorePiuVolteRipetuto = valore;
-                if (valore>2){
+                if (valore > 2) {
                     this.semeCatenaColore = chiave;
-                }
-                else {
+                } else {
                     this.semeCatenaColore = null;
                 }
             }
         }
         return numColorePiuVolteRipetuto;
     }
+
     //verifica se ho coppia, tris, poker, manita, doppia coppia o full in mano
     public int numUguali(int[] carteNum) {
         int punteggio = 0;
@@ -371,7 +371,6 @@ public class Partita {
         for (int numero : carteNum) {
             conteggioNumeri.put(numero, conteggioNumeri.getOrDefault(numero, 0) + 1);
         }
-        //System.out.println(conteggioNumeri);
 
         // Trova e rimuovi tutte le voci con valore 1 che devono essere ignorate per la valutazione in quanto si comincia a valutare dalla coppia in su
         Iterator<Map.Entry<Integer, Integer>> iterator = conteggioNumeri.entrySet().iterator();
@@ -381,9 +380,6 @@ public class Partita {
                 iterator.remove();
             }
         }
-        //debug
-        //System.out.println(conteggioNumeri);
-        //System.out.println("Size "+conteggioNumeri.size());
 
         //inserisco i valori in una collezione per sapere se ho doppia coppie o tris e coppia
         Collection<Integer> valori = conteggioNumeri.values();
@@ -413,6 +409,7 @@ public class Partita {
         }
         return punteggio;
     }
+
     //per verificare se hai una scala in mano
     public int verificaScala(int[] carteNum) {
         int cont = 1;
@@ -449,21 +446,22 @@ public class Partita {
     public void setCont(int i) {
         this.cont = i;
     }
+
     //vado ad impostare gli effetti degli imprevisti in base a quale viene pescato
-    public void setImprevisti(){
-        for(Carta carta : toccaA.getMano()){
-            if(carta.getImage() == "/gioco/progettospacca/carte/imprevisti/1.png"){
+    public void setImprevisti() {
+        for (Carta carta : toccaA.getMano()) {
+            if (carta.getImage() == "/gioco/progettospacca/carte/imprevisti/1.png") {
                 this.moltiplicatoreImprevisti = 2;
                 break;
             } else if (carta.getImage() == "/gioco/progettospacca/carte/imprevisti/2.png") {
                 sommaRubata = 0;
-                for(int i = 0; i<giocatori.length; i++){
-                    if(giocatori[i] != toccaA){
-                        if(giocatori[i].getPunti()>=15) {
+                for (int i = 0; i < giocatori.length; i++) {
+                    if (giocatori[i] != toccaA) {
+                        if (giocatori[i].getPunti() >= 15) {
                             giocatori[i].setPunti(-15);
-                            sommaRubata = sommaRubata+15;
-                        }else{
-                            sommaRubata = sommaRubata+giocatori[i].getPunti();
+                            sommaRubata = sommaRubata + 15;
+                        } else {
+                            sommaRubata = sommaRubata + giocatori[i].getPunti();
                             giocatori[i].setPunti(-giocatori[i].getPunti());
                         }
                     }
@@ -473,11 +471,13 @@ public class Partita {
             }
         }
     }
+
     public int getNumeroTurni() {
         return NUMERO_TURNI;
     }
+
     //serve per l'imprevisto che ruba i punti
-    public int getSommaRubata(){
+    public int getSommaRubata() {
         return sommaRubata;
     }
 }

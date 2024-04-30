@@ -76,18 +76,14 @@ public class GiocaController implements Initializable {
     }
 
 
-    public void entraInPartita(ActionEvent actionEvent) throws IOException {
+    public void entraInPartita() throws IOException {
         OPZ.premiBottone();
-        System.out.println(txt_cod1.getText());
         if (!Objects.equals(txt_cod1.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod1);
-            if (Utili.esistePartita(codice,true)) {
+            if (Utili.esistePartita(codice, true)) {
                 // vai al controllo giocatori / codice
                 partitaEsiste(codice);
-            } else {
-                System.out.println("Partita con id " + codice + " non esiste");
             }
-
         }
     }
 
@@ -95,7 +91,6 @@ public class GiocaController implements Initializable {
         Partita p = Partita.carica(codice);
         int n = p.getGiocatori().length;
 
-        System.out.println(n);
         ArrayList<ValoriGioca> temp = new ArrayList<>();
         if (!Objects.equals(txt_gioc1.getText(), "")) temp.add(new ValoriGioca(txt_gioc1, txt_cod1));
         if (!Objects.equals(txt_gioc2.getText(), "")) temp.add(new ValoriGioca(txt_gioc2, txt_cod1));
@@ -113,7 +108,6 @@ public class GiocaController implements Initializable {
 
         if (inizia_partita && (n >= 2)) {
             CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod1);
-            System.out.println("PARTITA INIZIATA");
             OPZ.premiBottone();
             OPZ.playMusica("gioco.mp3");
             Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
@@ -127,12 +121,13 @@ public class GiocaController implements Initializable {
             // Imposta la nuova radice della scena
             currentScene.setRoot(root);
         } else {
-            System.out.println("Valori invalidi per iniziare partita");
+            System.err.println("Valori invalidi per iniziare partita");
         }
 
     }
+
     public void keyEvent(KeyEvent keyEvent) {
-        if(keyEvent.getCode() == KeyCode.DOWN) {
+        if (keyEvent.getCode() == KeyCode.DOWN) {
             txt_gioc1.setFocusTraversable(false);
             if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
@@ -142,13 +137,12 @@ public class GiocaController implements Initializable {
                 txt_gioc4.requestFocus();
             } else if (txt_gioc4.isFocused()) {
                 txt_gioc5.requestFocus();
-            }else if(txt_gioc5.isFocused()){
+            } else if (txt_gioc5.isFocused()) {
                 btn_entra.requestFocus();
-            }else if (btn_entra.isFocused()) {
-                System.out.println("sei già in basso");
+            } else if (btn_entra.isFocused()) {
             }
 
-            if(txt_cod1.isFocused()){
+            if (txt_cod1.isFocused()) {
                 txt_cod2.requestFocus();
             } else if (txt_cod2.isFocused()) {
                 txt_cod3.requestFocus();
@@ -159,15 +153,14 @@ public class GiocaController implements Initializable {
             } else if (txt_cod5.isFocused()) {
                 btn_entra.requestFocus();
             } else if (btn_entra.isFocused()) {
-                System.out.println("sei già in basso");
             }
 
         }
-        if(keyEvent.getCode() == KeyCode.UP) {
+        if (keyEvent.getCode() == KeyCode.UP) {
             txt_gioc1.setFocusTraversable(false);
-            if(btn_entra.isFocused()){
+            if (btn_entra.isFocused()) {
                 txt_gioc5.requestFocus();
-            }else if (txt_gioc5.isFocused()) {
+            } else if (txt_gioc5.isFocused()) {
                 txt_gioc4.requestFocus();
             } else if (txt_gioc4.isFocused()) {
                 txt_gioc3.requestFocus();
@@ -176,10 +169,9 @@ public class GiocaController implements Initializable {
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc1.requestFocus();
             } else if (txt_gioc1.isFocused()) {
-                System.out.println("sei già in alto");
             }
 
-            if(btn_entra.isFocused()){
+            if (btn_entra.isFocused()) {
                 txt_cod5.requestFocus();
             } else if (txt_cod5.isFocused()) {
                 txt_cod4.requestFocus();
@@ -190,12 +182,11 @@ public class GiocaController implements Initializable {
             } else if (txt_cod2.isFocused()) {
                 txt_cod1.requestFocus();
             } else if (txt_cod1.isFocused()) {
-                System.out.println("sei già in alto");
             }
         }
 
-        if(keyEvent.getCode() == KeyCode.ENTER){
-            if(txt_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (txt_gioc1.isFocused()) {
                 txt_cod1.requestFocus();
             } else if (txt_cod1.isFocused()) {
                 txt_gioc2.requestFocus();
@@ -218,7 +209,7 @@ public class GiocaController implements Initializable {
             }
         }
 
-        if(keyEvent.getCode() == KeyCode.ESCAPE){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {
@@ -240,7 +231,7 @@ public class GiocaController implements Initializable {
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_entra.setOnMouseExited(e -> {
             if (btn_entra.getScene() != null) {
-            btn_entra.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+                btn_entra.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });
         btn_back.setOnMouseEntered(e -> {

@@ -11,7 +11,6 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-
 public class Opzioni {
     private Locale lingua = Locale.ENGLISH;
     private boolean sfxPausa = false;
@@ -24,6 +23,7 @@ public class Opzioni {
     }
 
     public void salva() {
+        // classe -> json
         try (FileWriter writer = new FileWriter("salvataggi/impostazioni.json")) {
             // crea classe gson che permette l'indentazione del dizionario
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -35,6 +35,7 @@ public class Opzioni {
     }
 
     public static Opzioni carica() throws IOException {
+        // json -> classe
         try {
             Gson gson = new Gson();
             // creo lettore
@@ -46,12 +47,10 @@ public class Opzioni {
                 jsonBuilder.append(line);
             }
             reader.close();
-            System.out.println(">>> Opzioni Caricate!");
             // restituisce la stringa json convertita in classe
             return gson.fromJson(jsonBuilder.toString(), Opzioni.class);
         } catch (IOException e) {
             System.err.println("[!] Esecuzione jar per la prima volta");
-
             return Opzioni.inizializza();
         }
     }
@@ -103,6 +102,7 @@ public class Opzioni {
     }
 
     public void playSfx(String nome) {
+        // riprendi effetti sonori
         String pathRisorse = Objects.requireNonNull(Main.class.getResource("/gioco/progettospacca/suoni/" + nome)).toString();
         sfx = new MediaPlayer(new Media(pathRisorse));
         sfx.setCycleCount(1);
@@ -144,10 +144,6 @@ public class Opzioni {
 
     public void premiFreccia() {
         playSfx("freccia.wav");
-    }
-
-    public void cliccaCarta() {
-        playSfx("carta.wav");
     }
 
     public void vittoria() {

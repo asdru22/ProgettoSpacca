@@ -1,6 +1,5 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.MailThread;
 import gioco.progettospacca.classi.Torneo;
 import gioco.progettospacca.classi.Utili;
 import gioco.progettospacca.classi.ValoriTorneo;
@@ -16,10 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -38,30 +35,30 @@ public class Torneo4giocatoriController implements Initializable {
     @FXML
     Button btn_home;
     @FXML
-    TextField txt_gioc1,txt_gioc2,txt_gioc3,txt_gioc4,txt_codice;
+    TextField txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_codice;
     @FXML
-    CheckBox chk_gioc1,chk_gioc2,chk_gioc3,chk_gioc4;
+    CheckBox chk_gioc1, chk_gioc2, chk_gioc3, chk_gioc4;
 
     private int checkBoxSelezionati = 0;
 
 
     public void checkBox1() {
-        checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc1, chk_gioc1, checkBoxSelezionati);
         txt_gioc2.requestFocus();
     }
 
     public void checkBox2() {
-        checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc2, chk_gioc2, checkBoxSelezionati);
         txt_gioc3.requestFocus();
     }
 
     public void checkBox3() {
-        checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc3, chk_gioc3, checkBoxSelezionati);
         txt_gioc4.requestFocus();
     }
 
     public void checkBox4() {
-        checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc4, chk_gioc4, checkBoxSelezionati);
         btn_crea.requestFocus();
     }
 
@@ -99,11 +96,11 @@ public class Torneo4giocatoriController implements Initializable {
 
     public int creaTorneo() {
         ArrayList<ValoriTorneo> tf = new ArrayList<>();
-        tf.add(new ValoriTorneo(txt_gioc1,chk_gioc1));
-        tf.add(new ValoriTorneo(txt_gioc2,chk_gioc2));
-        tf.add(new ValoriTorneo(txt_gioc3,chk_gioc3));
-        tf.add(new ValoriTorneo(txt_gioc4,chk_gioc4));
-        return Torneo.controlloLabel(tf,4,txt_codice);
+        tf.add(new ValoriTorneo(txt_gioc1, chk_gioc1));
+        tf.add(new ValoriTorneo(txt_gioc2, chk_gioc2));
+        tf.add(new ValoriTorneo(txt_gioc3, chk_gioc3));
+        tf.add(new ValoriTorneo(txt_gioc4, chk_gioc4));
+        return Torneo.controlloLabel(tf, 4, txt_codice);
     }
 
     public void cliccaCreaTorneo() {
@@ -132,7 +129,7 @@ public class Torneo4giocatoriController implements Initializable {
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.DOWN) {
-            if(txt_gioc1.isFocused()){
+            if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc3.requestFocus();
@@ -145,12 +142,10 @@ public class Torneo4giocatoriController implements Initializable {
             } else if (txt_codice.isFocused()) {
                 btn_home.requestFocus();
             } else if (btn_home.isFocused()) {
-                System.out.println("sei gia in basso");
             }
         }
         if (keyEvent.getCode() == KeyCode.UP) {
-            if(txt_gioc1.isFocused()){
-                System.out.println("sei gia in alto");
+            if (txt_gioc1.isFocused()) {
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc1.requestFocus();
             } else if (txt_gioc3.isFocused()) {
@@ -186,8 +181,8 @@ public class Torneo4giocatoriController implements Initializable {
 
             }
         }
-        if(keyEvent.getCode() == KeyCode.TAB ){
-            if(txt_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.TAB) {
+            if (txt_gioc1.isFocused()) {
                 chk_gioc1.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 chk_gioc2.requestFocus();
@@ -205,7 +200,7 @@ public class Torneo4giocatoriController implements Initializable {
                 txt_gioc4.requestFocus();
             }
         }
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {
@@ -216,8 +211,8 @@ public class Torneo4giocatoriController implements Initializable {
 
 
     public void keyReleased(KeyEvent keyEvent) {
-        if(keyEvent.getCode() == KeyCode.ENTER ){
-            if(chk_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (chk_gioc1.isFocused()) {
                 checkBox1();
             } else if (chk_gioc2.isFocused()) {
                 checkBox2();

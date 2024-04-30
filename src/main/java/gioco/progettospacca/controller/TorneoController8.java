@@ -120,7 +120,6 @@ public class TorneoController8 implements Initializable {
 
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         ArrayList<Integer> partite = new ArrayList<>(t.getPartite());
-        System.out.println("round: " + t.getRound());
 
         Utili.bottoneTorneo(btn_quarti1, partite.get(0));
         Utili.bottoneTorneo(btn_quarti2, partite.get(1));

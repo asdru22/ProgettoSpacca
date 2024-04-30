@@ -75,6 +75,7 @@ public class Giocatore {
             this.mano = manoList.toArray(new Carta[0]);
         }
     }
+
     //metodo per settare le carte nulle, mi serve per mantenere la posizione della carta scartata e aggiungerci nella posizione corretta la nuova carta pescata
     public void settaCarteNulle(int i) {
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
@@ -83,21 +84,13 @@ public class Giocatore {
     }
 
     public void scarta(int pos) {
-        //System.out.println("Posizione prima della rimozione: " + pos);
-
         List<Carta> manoList = new ArrayList<>(Arrays.asList(this.mano));
-
-        //System.out.println("Mano prima della rimozione: " + manoList);
 
         // Rimuovi l'elemento dalla posizione specificata
         manoList.remove(pos);
 
-        //System.out.println("Mano dopo la rimozione: " + manoList);
-
         // Aggiorna l'array mano con la nuova lista
         this.mano = manoList.toArray(new Carta[0]);
-
-        //System.out.println("Nuova mano dopo l'aggiornamento: " + Arrays.toString(this.mano));
     }
 
 
@@ -143,11 +136,13 @@ public class Giocatore {
     public void setPunti(int punti) {
         this.punti = this.punti + punti;
     }
-    public void setEmail(String email){
+
+    public void setEmail(String email) {
         this.email = email;
         salva();
     }
-    public String getEmail(){
+
+    public String getEmail() {
         return this.email;
     }
 
@@ -156,13 +151,14 @@ public class Giocatore {
     }
 
     public void aumentaVittorie() {
-        partite_vinte+=1;
-    }
-    public String getCodici(){
-        return OPZ.traduci("partite")+":\n" + getPartite();
+        partite_vinte += 1;
     }
 
-    public boolean partiteInSospeso(){
+    public String getCodici() {
+        return OPZ.traduci("partite") + ":\n" + getPartite();
+    }
+
+    public boolean partiteInSospeso() {
         return !partite.isEmpty();
     }
 

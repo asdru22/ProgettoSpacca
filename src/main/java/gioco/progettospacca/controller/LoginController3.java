@@ -1,12 +1,9 @@
 package gioco.progettospacca.controller;
 
-import gioco.progettospacca.classi.Utili;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -63,7 +60,6 @@ public class LoginController3 implements Initializable {
         String psw = String.valueOf((txt_psw.getText()));
         //aggiungere usrrname e password
         if (user.equals(USERNAME) && psw.equals(PASSWORD)) {
-            //if ("admin".equals(user) && "spacca".equals(psw)) {
             Parent root = FXMLLoader.load(getClass().getResource("PrivilegiAdminView.fxml"));
 
             // Ottieni la finestra corrente
@@ -77,10 +73,6 @@ public class LoginController3 implements Initializable {
 
             // Imposta il titolo della finestra
             currentStage.setTitle(OPZ.traduci("privilegi_amministratore"));
-        } else {
-            System.out.println(user);
-            System.out.println(psw);
-            System.out.println("Email o password errata");
         }
     }
 
@@ -113,7 +105,6 @@ public class LoginController3 implements Initializable {
         if (keyEvent.getCode() == KeyCode.UP) {
             OPZ.premiFreccia();
             if (btn_back.isFocused()) {
-                System.out.println("sei già in alto");
             } else if (txt_user.isFocused()) {
                 OPZ.premiFreccia();
                 btn_back.requestFocus();
@@ -128,7 +119,6 @@ public class LoginController3 implements Initializable {
         if (keyEvent.getCode() == KeyCode.DOWN) {
             OPZ.premiFreccia();
             if (btn_login.isFocused()) {
-                System.out.println("sei già in basso");
             } else if (btn_back.isFocused()) {
                 OPZ.premiFreccia();
                 txt_user.requestFocus();

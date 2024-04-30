@@ -8,6 +8,7 @@ public class ValoriTorneo {
     private final CheckBox checkBox;
 
     public ValoriTorneo(TextField testo, CheckBox checkBox){
+        // valori usati quando si inseriscono i giocatori di un torneo
         this.testo = testo;
         this.checkBox = checkBox;
     }

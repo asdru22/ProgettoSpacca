@@ -4,12 +4,13 @@ import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
-/*
+
+ /*
 Ho deciso di utilizzare un thread separato per l'invio delle mail proprio per non far bloccare
 l'applicazione in attesa del completamento dell'operazione. Questo grazie alle lezioni di sistemi operativi del secondo anno(anno corrente)
 per ultilzzare la libreria ho aggiunto le dipendeze maven nel file pom.xml
  */
-public class MailThread extends Thread{
+public class MailThread extends Thread {
     private String host = "smtp.gmail.com";
     private String port = "587";
     private String username = "spacca000@gmail.com";
@@ -20,7 +21,7 @@ public class MailThread extends Thread{
     private String corpo;
     private Session sessione;
 
-    public MailThread(String destinatario, String oggetto, String corpo){
+    public MailThread(String destinatario, String oggetto, String corpo) {
         this.destinatario = destinatario;
         this.oggetto = oggetto;
         this.corpo = corpo;
@@ -38,7 +39,7 @@ public class MailThread extends Thread{
         });
     }
 
-    public void run(){
+    public void run() {
         try {
             // Creazione del messaggio
             Message mess = new MimeMessage(sessione);
@@ -50,7 +51,7 @@ public class MailThread extends Thread{
             // Invio del messaggio
             Transport.send(mess);
 
-            System.out.println("Messaggio inviato con successo!");
+            System.err.println("Messaggio inviato con successo!");
 
         } catch (MessagingException e) {
             e.printStackTrace();

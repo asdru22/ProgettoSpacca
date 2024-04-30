@@ -19,6 +19,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -90,7 +91,8 @@ public class CreaController implements Initializable {
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
-    public static void fadeBottone(Label lbl){
+
+    public static void fadeBottone(Label lbl) {
         lbl.setVisible(true);
         FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
         fadeTransition.setFromValue(1.0); // Opacità iniziale
@@ -112,14 +114,13 @@ public class CreaController implements Initializable {
 
             List<Giocatore> g = new ArrayList<>();
 
-             Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(),g);
-             Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(),g);
-             Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(),g);
-             Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(),g);
-             Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(),g);
+            Utili.controllaNome(txt_gioc1.getText(), id, chk_gioc1.isSelected(), g);
+            Utili.controllaNome(txt_gioc2.getText(), id, chk_gioc2.isSelected(), g);
+            Utili.controllaNome(txt_gioc3.getText(), id, chk_gioc3.isSelected(), g);
+            Utili.controllaNome(txt_gioc4.getText(), id, chk_gioc4.isSelected(), g);
+            Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(), g);
 
-            System.out.println("giocatori:"+g.size());
-            if(g.size()<2) {
+            if (g.size() < 2) {
                 fadeBottone(lbl_errore);
                 lbl_errore.setText(OPZ.traduci("errore_crea_partita"));
                 return;
@@ -130,7 +131,7 @@ public class CreaController implements Initializable {
             Giocatore[] giocatori = g.toArray(new Giocatore[g.size()]);
 
             //per invio mail relativi alla creazione della partita
-            if(!txt_email1.getText().isEmpty()){
+            if (!txt_email1.getText().isEmpty()) {
                 giocatori[0].setEmail(txt_email1.getText());
             }
             if (!txt_email2.getText().isEmpty()) {
@@ -146,9 +147,9 @@ public class CreaController implements Initializable {
                 giocatori[4].setEmail(txt_email5.getText());
             }
             //creo un thread per ogni mail da inviare
-            for(int i =0; i<giocatori.length; i++) {
-                if(!giocatori[i].getEmail().isEmpty() && giocatori[i].getEmail()!=""){
-                    MailThread thread = new MailThread(giocatori[i].getEmail(),"Iscrizione partita spacca", "Giocatore: "+giocatori[i]+"\nCodice partita: "+txt_code.getText());
+            for (int i = 0; i < giocatori.length; i++) {
+                if (!giocatori[i].getEmail().isEmpty() && giocatori[i].getEmail() != "") {
+                    MailThread thread = new MailThread(giocatori[i].getEmail(), "Iscrizione partita spacca", "Giocatore: " + giocatori[i] + "\nCodice partita: " + txt_code.getText());
                     thread.start();
                 }
             }
@@ -156,14 +157,14 @@ public class CreaController implements Initializable {
             Partita p = new Partita(id, giocatori, 0);
 
         } catch (Exception e) {
-            System.out.println(e);
+            System.err.println(e);
         }
         lbl_errore.setText(OPZ.traduci("partita_creata"));
         fadeBottone(lbl_errore);
     }
 
     public void checkBox1() {
-        checkBoxSelezionati = checkBox(txt_gioc1,chk_gioc1,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc1, chk_gioc1, checkBoxSelezionati);
         txt_email1.setDisable(!txt_email1.isDisable());
         txt_email1.setText("");
         txt_gioc2.requestFocus();
@@ -171,28 +172,28 @@ public class CreaController implements Initializable {
 
 
     public void checkBox2() {
-        checkBoxSelezionati = checkBox(txt_gioc2,chk_gioc2,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc2, chk_gioc2, checkBoxSelezionati);
         txt_email2.setDisable(!txt_email2.isDisable());
         txt_email2.setText("");
         txt_gioc3.requestFocus();
     }
 
     public void checkBox3() {
-        checkBoxSelezionati = checkBox(txt_gioc3,chk_gioc3,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc3, chk_gioc3, checkBoxSelezionati);
         txt_email3.setDisable(!txt_email3.isDisable());
         txt_email3.setText("");
         txt_gioc4.requestFocus();
     }
 
     public void checkBox4() {
-        checkBoxSelezionati = checkBox(txt_gioc4,chk_gioc4,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc4, chk_gioc4, checkBoxSelezionati);
         txt_email4.setDisable(!txt_email4.isDisable());
         txt_email4.setText("");
         txt_gioc5.requestFocus();
     }
 
     public void checkBox5() {
-        checkBoxSelezionati = checkBox(txt_gioc5,chk_gioc5,checkBoxSelezionati);
+        checkBoxSelezionati = checkBox(txt_gioc5, chk_gioc5, checkBoxSelezionati);
         txt_email5.setDisable(!txt_email5.isDisable());
         txt_email5.setText("");
         btn_crea.requestFocus();
@@ -223,7 +224,7 @@ public class CreaController implements Initializable {
                 }
             }
         }
-        if(keyEvent.getCode() == KeyCode.ESCAPE ){
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
             } catch (IOException e) {
@@ -245,11 +246,10 @@ public class CreaController implements Initializable {
             } else if (txt_gioc4.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc5.requestFocus();
-            } else if(txt_gioc5.isFocused()){
+            } else if (txt_gioc5.isFocused()) {
                 OPZ.premiFreccia();
                 btn_crea.requestFocus();
             } else if (btn_backHome.isFocused()) {
-                System.out.println("sei già in basso");
             } else if (txt_code.isFocused()) {
                 OPZ.premiFreccia();
                 btn_backHome.requestFocus();
@@ -261,7 +261,6 @@ public class CreaController implements Initializable {
 
         if (keyEvent.getCode() == KeyCode.UP) {
             if (txt_gioc1.isFocused()) {
-                System.out.println("sei già nella prima casella");
             } else if (txt_gioc5.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc4.requestFocus();
@@ -274,7 +273,7 @@ public class CreaController implements Initializable {
             } else if (txt_gioc2.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc1.requestFocus();
-            }else if (btn_crea.isFocused()) {
+            } else if (btn_crea.isFocused()) {
                 OPZ.premiFreccia();
                 txt_gioc5.requestFocus();
             } else if (txt_code.isFocused()) {
@@ -285,8 +284,8 @@ public class CreaController implements Initializable {
                 txt_code.requestFocus();
             }
         }
-        if(keyEvent.getCode() == KeyCode.TAB ){
-            if(txt_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.TAB) {
+            if (txt_gioc1.isFocused()) {
                 chk_gioc1.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 chk_gioc2.requestFocus();
@@ -310,9 +309,10 @@ public class CreaController implements Initializable {
         }
 
     }
+
     public void keyReleased(KeyEvent keyEvent) {
-        if(keyEvent.getCode() == KeyCode.ENTER ){
-            if(chk_gioc1.isFocused()){
+        if (keyEvent.getCode() == KeyCode.ENTER) {
+            if (chk_gioc1.isFocused()) {
                 checkBox1();
             } else if (chk_gioc2.isFocused()) {
                 checkBox2();

@@ -18,8 +18,9 @@ public class Torneo {
     private boolean salvabile = true;
 
     public Torneo(ArrayList<Giocatore> giocatori, int id) {
+        // copia giocatori iniziali
         listaGiocatoriIniziali = new ArrayList<>();
-        for(Giocatore g : giocatori){
+        for (Giocatore g : giocatori) {
             listaGiocatoriIniziali.add(g.getNome());
         }
         this.giocatori = giocatori;
@@ -47,16 +48,15 @@ public class Torneo {
         for (int n : partite) {
             Partita.carica(n).elimina();
         }
-        Utili.eliminaTorneo(id+"");
+        Utili.eliminaTorneo(id + "");
     }
 
     public void creaPartite() {
         if (giocatori.size() > 1) {
             Giocatore[] coppia = new Giocatore[2];
-            int numPartite =  giocatori.size() / 2;
+            int numPartite = giocatori.size() / 2;
+            // crea una partita per coppia
             for (int i = 0; i < numPartite; i++) {
-                //System.out.println(i+": "+listaGiocatoriIniziali);
-
                 coppia[0] = giocatori.get(0);
                 giocatori.remove(0);
                 coppia[1] = giocatori.get(0);
@@ -64,14 +64,12 @@ public class Torneo {
                 partite.add(new Partita(coppia, id).getId());
             }
         }
-        //System.out.println("2: "+listaGiocatoriIniziali);
         salva();
     }
 
     public void fineTorneo() {
         salvabile = false;
         elimina();
-        //vincitore.setPartiteVinte(vincitore.getPartiteVinte()+numero_round);
     }
 
     public ArrayList<String> getNomiGiocatori() {
@@ -85,6 +83,7 @@ public class Torneo {
     public ArrayList<Giocatore> getGiocatori() {
         return giocatori;
     }
+
     public ArrayList<String> getListaGiocatoriIniziali() {
         return listaGiocatoriIniziali;
     }
@@ -94,6 +93,7 @@ public class Torneo {
     }
 
     public static int controlloLabel(ArrayList<ValoriTorneo> vt, int max, TextField txt) {
+        // itera su tutte le label per impostare giocatori/bot nel torneo
         Giocatore temp;
         int giocatori = 0;
         ArrayList<Giocatore> g = new ArrayList<>();
@@ -102,7 +102,7 @@ public class Torneo {
         txt.setText(String.valueOf(id));
 
         for (ValoriTorneo v : vt) {
-            temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected(),g);
+            temp = Utili.controllaNomeTorneo(v.getText(), v.isSelected(), g);
             if (temp != null) {
                 g.add(temp);
                 giocatori += 1;
@@ -112,16 +112,13 @@ public class Torneo {
         if (giocatori < max) {
             n = aggiungiBot(max - giocatori, g);
         }
-        System.out.println(g);
         Torneo t = new Torneo(g, id);
         t.salva();
         t.creaPartite();
-        System.out.println("ciao");
-        for(String s : t.getListaGiocatoriIniziali()) {
-            System.out.println("sono entrato");
+        for (String s : t.getListaGiocatoriIniziali()) {
             Giocatore gioc = Giocatore.carica(s);
-            if(!gioc.getEmail().isEmpty() && gioc.getEmail()!=""){
-                MailThread thread = new MailThread(gioc.getEmail(),"Iscrizione torneo spacca", "Giocatore: "+gioc.getNome()+"\nCodice torneo: "+ id);
+            if (!gioc.getEmail().isEmpty() && gioc.getEmail() != "") {
+                MailThread thread = new MailThread(gioc.getEmail(), "Iscrizione torneo spacca", "Giocatore: " + gioc.getNome() + "\nCodice torneo: " + id);
                 thread.start();
             }
         }
@@ -139,7 +136,6 @@ public class Torneo {
             giocatori.add(b);
             b.salva();
         }
-        System.out.println("Aggiunti " + giocatori_mancanti + " bot per raggiungere il numero di giocatori richiesti");
         return giocatori_mancanti;
     }
 
@@ -152,10 +148,10 @@ public class Torneo {
     }
 
     public boolean tuttiVincitori() {
+        // controlla se tutte le partite di un round hanno un vincitore
         Partita p;
         for (int n : partite) {
             p = Partita.carica(n);
-            //System.out.println(p.getId() + "> " + p.getVincitore());
             if (p.getVincitore() == null) return false;
         }
         return true;
@@ -172,10 +168,12 @@ public class Torneo {
     public void setFinito() {
         finito = true;
     }
-    public void setVincitore(Giocatore g){
+
+    public void setVincitore(Giocatore g) {
         this.vincitore = g;
     }
-    public Giocatore getVincitore(){
+
+    public Giocatore getVincitore() {
         return vincitore;
     }
 }
