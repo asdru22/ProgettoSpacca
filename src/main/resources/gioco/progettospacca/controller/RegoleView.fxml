@@ -67,27 +67,27 @@
                                     <Image url="@../elettro.png" />
                                  </image>
                               </ImageView>
-                              <Label text="Fuoco" GridPane.rowIndex="1">
+                              <Label fx:id = "lbl_fuoco" text="Fuoco" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara Bold" size="19.0" />
                                  </font>
                               </Label>
-                              <Label text="Acqua" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                              <Label fx:id = "lbl_acqua" text="Acqua" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara Bold" size="19.0" />
                                  </font>
                               </Label>
-                              <Label text="Terra" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <Label fx:id = "lbl_terra"  text="Terra" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara Bold" size="19.0" />
                                  </font>
                               </Label>
-                              <Label text="Erba" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                              <Label fx:id = "lbl_erba" text="Erba" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara Bold" size="19.0" />
                                  </font>
                               </Label>
-                              <Label text="Elettro" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                              <Label fx:id = "lbl_elettro" text="Elettro" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara Bold" size="19.0" />
                                  </font>
@@ -114,12 +114,12 @@
                               <Font name="Candara" size="16.0" />
                            </font>
                         </Label>
-                        <Label layoutX="396.0" layoutY="710.0" text="PARTITA">
+                        <Label fx:id="lbl_partita" layoutX="396.0" layoutY="710.0" text="PARTITA">
                            <font>
                               <Font name="Candara Bold" size="30.0" />
                            </font>
                         </Label>
-                        <Label layoutX="62.0" layoutY="771.0" text="Nella schermata principale della partita possiamo vedere pochi, semplici ed intuitivi elementi">
+                        <Label fx:id="lbl_regole2" layoutX="62.0" layoutY="771.0" text="Nella schermata principale della partita possiamo vedere pochi, semplici ed intuitivi elementi">
                            <font>
                               <Font name="Candara" size="20.0" />
                            </font>
@@ -129,7 +129,7 @@
                               <Image url="@../ImprevistoRegole.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="107.0" layoutY="1363.0" prefHeight="76.0" prefWidth="310.0" text="Nel caso si peschi una carta imprevisto, comparirò una schermata del genere in cui verrà descritto l'effetto dell'imprevisto in questione" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole3" alignment="CENTER" layoutX="107.0" layoutY="1363.0" prefHeight="76.0" prefWidth="310.0" text="Nel caso si peschi una carta imprevisto, comparirò una schermata del genere in cui verrà descritto l'effetto dell'imprevisto in questione" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="Candara" size="14.0" />
                            </font>
@@ -139,22 +139,22 @@
                               <Image url="@../PunteggioRoundRegole.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" layoutX="517.0" layoutY="1348.0" prefHeight="105.0" prefWidth="310.0" text="Una volta effettuate le proprie scelte,  comparirà un piccolo riquadro in alto a destra, che mostrerà il punteggio raggiunto nel turno in corso. Occorrerà cliccare poi sul bottone &quot;Prossimo round&quot; per proseguire col prossimo giocatore.&quot;" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole4" alignment="CENTER" layoutX="517.0" layoutY="1348.0" prefHeight="105.0" prefWidth="310.0" text="Una volta effettuate le proprie scelte,  comparirà un piccolo riquadro in alto a destra, che mostrerà il punteggio raggiunto nel turno in corso. Occorrerà cliccare poi sul bottone &quot;Prossimo round&quot; per proseguire col prossimo giocatore.&quot;" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="Candara" size="14.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="107.0" layoutY="1798.0" prefHeight="76.0" prefWidth="174.0" text="Vi sono due tipi di imprevisti:" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole5" alignment="CENTER" layoutX="107.0" layoutY="1798.0" prefHeight="76.0" prefWidth="174.0" text="Vi sono due tipi di imprevisti:" textAlignment="CENTER" wrapText="true">
                            <font>
                               <Font name="Candara" size="18.0" />
                            </font>
                         </Label>
-                        <Label alignment="TOP_LEFT" layoutX="123.0" layoutY="1895.0" prefHeight="61.0" prefWidth="122.0" text="-Moltiplicatore X2, raddoppia i punti del proprio turno in corso" wrapText="true">
+                        <Label fx:id="lbl_regole6" alignment="TOP_LEFT" layoutX="123.0" layoutY="1895.0" prefHeight="61.0" prefWidth="122.0" text="-Moltiplicatore X2, raddoppia i punti del proprio turno in corso" wrapText="true">
                            <font>
                               <Font name="Candara" size="12.0" />
                            </font>
                         </Label>
-                        <Label alignment="TOP_LEFT" layoutX="123.0" layoutY="1959.0" prefHeight="66.0" prefWidth="142.0" text="-Ladro di punti, ruba a tutti fino a 15 punti, se disponibili" wrapText="true">
+                        <Label fx:id="lbl_regole7" alignment="TOP_LEFT" layoutX="123.0" layoutY="1959.0" prefHeight="66.0" prefWidth="142.0" text="-Ladro di punti, ruba a tutti fino a 15 punti, se disponibili" wrapText="true">
                            <font>
                               <Font name="Candara" size="12.0" />
                            </font>

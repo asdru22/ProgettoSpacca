@@ -189,6 +189,7 @@ public class PartitaController implements Initializable {
         lbl_vincitoreFisso1.setText(OPZ.traduci("vincitore"));
         lbl_titoloImprevisto.setText(OPZ.traduci("pescato_imprevisto"));
         btn_tabellone.setText(OPZ.traduci("torna_al_tabellone"));
+        lbl_turnodi.setText(OPZ.traduci("turno_di"));
 
     }
 
