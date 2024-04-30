@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -64,6 +65,10 @@ public class HomeController implements Initializable {
     private Button btn_chiudiPaneSuoni;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private ImageView imageFocus;
+    @FXML
+    private ImageView imageSuonoFocus;
     public void EventoGiocaPartita() throws IOException {
 
         // Carica la nuova radice della scena
@@ -186,8 +191,19 @@ public class HomeController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
-
         btn_giocaPartita.setFocusTraversable(false);
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            btn_giocaPartita.requestFocus();
+            return;
+        }
+        if(imageSuonoFocus.isFocusTraversable() && anchorPane_suoni.isVisible()){
+            System.out.println("ciao");
+            imageSuonoFocus.setFocusTraversable(false);
+            tglbtn_suono.requestFocus();
+            return;
+        }
+
         /*
         if (keyEvent.getCode() == KeyCode.M) {
             menuImpostazioni.show();
@@ -215,10 +231,7 @@ public class HomeController implements Initializable {
             OPZ.premiBottone();
         }
         if (keyEvent.getCode() == KeyCode.ESCAPE && anchorPane_suoni.isVisible()) {
-            anchorPane_suoni.setVisible(false);
-            btn_giocaPartita.requestFocus();
-            anchorPane.setDisable(false);
-            OPZ.premiBottone();
+            chiudiPaneSuoni();
         }
 
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
@@ -227,9 +240,7 @@ public class HomeController implements Initializable {
 
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_chiudiPaneSuoni.isFocused()) {
-            anchorPane_suoni.setVisible(false);
-            btn_giocaPartita.requestFocus();
-            anchorPane.setDisable(false);
+            chiudiPaneSuoni();
         }
         if (keyEvent.getCode() == KeyCode.UP) {
             if (btn_giocaPartita.isFocused()) {
@@ -403,8 +414,8 @@ public class HomeController implements Initializable {
 
     public void apriSuoni() {
         anchorPane_suoni.setVisible(true);
-        tglbtn_suono.requestFocus();
         anchorPane.setDisable(true);
+        imageFocus.setFocusTraversable(false);
     }
 
     public void setSuono() {
@@ -422,6 +433,8 @@ public class HomeController implements Initializable {
         btn_giocaPartita.requestFocus();
         anchorPane.setDisable(false);
         OPZ.premiBottone();
+        imageFocus.setFocusTraversable(true);
+        imageSuonoFocus.setFocusTraversable(true);
     }
 
     public void apriLogin() throws IOException {

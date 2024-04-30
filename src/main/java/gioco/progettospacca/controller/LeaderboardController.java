@@ -2,7 +2,17 @@ package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 import static gioco.progettospacca.controller.Main.OPZ;
 
@@ -29,6 +39,8 @@ public class LeaderboardController {
     private Label lbl_pos9;
     @FXML
     private Label lbl_pos10;
+    @FXML
+    private Button btn_back;
 
     @FXML
     public void initialize() {
@@ -44,5 +56,33 @@ public class LeaderboardController {
         lbl_pos9.setText(lead[8]);
         lbl_pos10.setText(lead[9]);
         lbl_classifica.setText(OPZ.traduci("classifica"));
+    }
+
+    public void backToHome() {
+        OPZ.premiBottone();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_back.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+
+    public void keyEvent(KeyEvent keyEvent) {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            backToHome();
+        }
     }
 }

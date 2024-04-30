@@ -57,7 +57,7 @@
                         <Cursor fx:constant="DEFAULT" />
                     </cursor>
                 </MenuBar>
-                <ImageView fitHeight="105.0" fitWidth="105.0" layoutX="571.0" layoutY="335.0">
+                <ImageView fx:id="imageFocus" fitHeight="105.0" fitWidth="105.0" focusTraversable="true" layoutX="571.0" layoutY="335.0" onKeyPressed="#keyEvent">
                     <image>
                         <Image url="@../tournament.png" />
                     </image>
@@ -111,7 +111,7 @@
                   <Font name="Candara" size="19.0" />
                </font>
             </ToggleButton>
-            <ImageView fitHeight="78.0" fitWidth="175.0" layoutX="31.0" layoutY="39.0">
+            <ImageView fx:id="imageSuonoFocus" fitHeight="78.0" fitWidth="175.0" focusTraversable="true" layoutX="31.0" layoutY="39.0" onKeyPressed="#keyEvent">
                <image>
                   <Image url="@../audioOnde.png" />
                </image>
