@@ -69,6 +69,7 @@
                   <Image url="@../Logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="lbl_errore" layoutX="234.0" layoutY="543.0" prefHeight="18.0" prefWidth="200.0" visible="false" />
          </children>
       </AnchorPane>
    </children>

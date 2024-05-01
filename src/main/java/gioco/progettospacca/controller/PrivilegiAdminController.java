@@ -2,6 +2,7 @@ package gioco.progettospacca.controller;
 
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,10 +12,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +38,10 @@ public class PrivilegiAdminController implements Initializable {
     private Button btn_cambiaTurni;
     @FXML
     private TextField txt_nturni;
-
+    @FXML
+    private ImageView imageFocus;
+    @FXML
+    private Label lbl_errore;
 
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
@@ -52,6 +58,18 @@ public class PrivilegiAdminController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+    public static void fadeBottone(Label lbl) {
+        lbl.setVisible(true);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
+        fadeTransition.setFromValue(1.0); // Opacità iniziale
+        fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            lbl.setVisible(false);
+            lbl.setText("");
+        });
+
     }
 
     public void backToHome(MouseEvent mouseEvent) throws IOException {
@@ -108,11 +126,28 @@ public class PrivilegiAdminController implements Initializable {
 
         // Imposta il titolo della finestra
     }
+    public void cambiaNumeroTurni() {
+        int n = Utili.leggiInt(txt_nturni);
+        if(n>=1){
+            OPZ.setTurniPartita(n);
+            for(int id : Utili.elencaPartite(true,true)){
+                Partita p = Partita.carica(id);
+                p.setNumeroTurni(n);
+            }
+        }
+    }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             BackToHome();
         }
+        btn_partiteSalvate.setFocusTraversable(false);
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            btn_partiteSalvate.requestFocus();
+            return;
+        }
+
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (btn_partiteSalvate.isFocused()) {
                 EventoPartiteSalvate();
@@ -120,6 +155,10 @@ public class PrivilegiAdminController implements Initializable {
                 BackToHome();
             } else if (btn_modificaGiocatore.isFocused()) {
                 EventoModificaGiocatore();
+            } else if (btn_cambiaTurni.isFocused()) {
+                cambiaNumeroTurni();
+            } else if (txt_nturni.isFocused()) {
+                btn_cambiaTurni.requestFocus();
             }
         }
 
@@ -130,24 +169,25 @@ public class PrivilegiAdminController implements Initializable {
                 btn_back.requestFocus();
             } else if (btn_modificaGiocatore.isFocused()) {
                 btn_partiteSalvate.requestFocus();
+            } else if (txt_nturni.isFocused()) {
+                btn_modificaGiocatore.requestFocus();
+            } else if (btn_cambiaTurni.isFocused()) {
+                txt_nturni.requestFocus();
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
             OPZ.premiFreccia();
-            if (btn_modificaGiocatore.isFocused()) {
+            if (btn_cambiaTurni.isFocused()) {
             } else if (btn_back.isFocused()) {
                 btn_partiteSalvate.requestFocus();
             } else if (btn_partiteSalvate.isFocused()) {
                 btn_modificaGiocatore.requestFocus();
+            } else if (btn_modificaGiocatore.isFocused()) {
+                txt_nturni.requestFocus();
+            } else if (txt_nturni.isFocused()) {
+                btn_cambiaTurni.requestFocus();
             }
         }
-        pulisci();
-    }
-
-    private void pulisci() {
-        btn_partiteSalvate.setFocusTraversable(false);
-        btn_modificaGiocatore.setFocusTraversable(false);
-        btn_back.setFocusTraversable(false);
     }
 
     @Override
@@ -209,16 +249,5 @@ public class PrivilegiAdminController implements Initializable {
         lbl_titlePrivilegi.setText(OPZ.traduci("privilegi_amministratore"));
         btn_cambiaTurni.setText(OPZ.traduci("cambia_n_turni"));
         txt_nturni.setText(OPZ.getTurniPartita()+"");
-    }
-
-    public void cambiaNumeroTurni(MouseEvent mouseEvent) {
-        int n = Utili.leggiInt(txt_nturni);
-        if(n>=1){
-            OPZ.setTurniPartita(n);
-            for(int id : Utili.elencaPartite(true,true)){
-                Partita p = Partita.carica(id);
-                p.setNumeroTurni(n);
-            }
-        }
     }
 }

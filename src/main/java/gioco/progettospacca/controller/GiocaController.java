@@ -3,6 +3,7 @@ package gioco.progettospacca.controller;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import gioco.progettospacca.classi.ValoriGioca;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -57,6 +59,8 @@ public class GiocaController implements Initializable {
     private Button btn_entra;
     @FXML
     private Button btn_back;
+    @FXML
+    private Label lbl_errore;
 
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
@@ -73,6 +77,18 @@ public class GiocaController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+    public static void fadeBottone(Label lbl) {
+        lbl.setVisible(true);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
+        fadeTransition.setFromValue(1.0); // Opacità iniziale
+        fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            lbl.setVisible(false);
+            lbl.setText("");
+        });
+
     }
 
 
