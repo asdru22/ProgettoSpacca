@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -91,7 +93,7 @@ public class PartiteSalvateController implements Initializable {
         }
     }
 
-    public void EventoEliminaPartita(MouseEvent event) {
+    public void EventoEliminaPartita() {
         try {
             int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaPartita(i));
@@ -101,7 +103,7 @@ public class PartiteSalvateController implements Initializable {
         }
     }
 
-    public void EventoEliminaTorneo(MouseEvent event) {
+    public void EventoEliminaTorneo() {
         try {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaTorneo(i));
@@ -127,5 +129,43 @@ public class PartiteSalvateController implements Initializable {
 
         // Imposta il titolo della finestra
         currentStage.setTitle(OPZ.traduci("spacca"));
+    }
+    public void keyEvent(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            BackToHome();
+        }
+        cmb_partite.setFocusTraversable(false);
+
+        if(keyEvent.getCode()== KeyCode.RIGHT){
+            if(cmb_partite.isFocused()){
+                btn_eliminaPartita.requestFocus();
+            } else if (btn_eliminaPartita.isFocused()) {
+                cmb_tornei.requestFocus();
+            } else if (cmb_tornei.isFocused()) {
+                btn_eliminaTorneo.requestFocus();
+            } else if (btn_back.isFocused()) {
+                cmb_partite.requestFocus();
+            }
+        }
+        if(keyEvent.getCode()== KeyCode.LEFT){
+            if(cmb_partite.isFocused()){
+                btn_back.requestFocus();
+            } else if (btn_eliminaPartita.isFocused()) {
+                cmb_partite.requestFocus();
+            } else if (cmb_tornei.isFocused()) {
+                btn_eliminaPartita.requestFocus();
+            } else if (btn_eliminaTorneo.isFocused()) {
+                cmb_tornei.requestFocus();
+            }
+        }
+        if(keyEvent.getCode()== KeyCode.ENTER){
+            if(btn_back.isFocused()){
+                BackToHome();
+            } else if (btn_eliminaPartita.isFocused()) {
+                EventoEliminaPartita();
+            } else if (btn_eliminaTorneo.isFocused()) {
+                EventoEliminaTorneo();
+            }
+        }
     }
 }

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartiteSalvateController">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartiteSalvateController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -35,7 +35,7 @@
                 <RowConstraints maxHeight="462.8" minHeight="10.0" prefHeight="121.6" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btn_eliminaPartita" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaPartita" prefHeight="34.0" prefWidth="162.0" text="Elimina partita" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <Button fx:id="btn_eliminaPartita" focusTraversable="false" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoEliminaPartita" prefHeight="34.0" prefWidth="162.0" text="Elimina partita" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara Bold" size="15.0" />
                      </font>
@@ -50,13 +50,13 @@
                         <Font name="Candara Bold Italic" size="37.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btn_eliminaTorneo" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onMouseClicked="#EventoEliminaTorneo" prefHeight="34.0" prefWidth="162.0" text="Elimina torneo" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <Button fx:id="btn_eliminaTorneo" focusTraversable="false" maxHeight="34.0" maxWidth="162.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#EventoEliminaTorneo" prefHeight="34.0" prefWidth="162.0" text="Elimina torneo" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara Bold" size="15.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="cmb_partite" prefHeight="26.0" prefWidth="120.0" GridPane.rowIndex="2" />
-                  <ComboBox fx:id="cmb_tornei" prefWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cmb_partite" onKeyPressed="#keyEvent" prefHeight="26.0" prefWidth="120.0" GridPane.rowIndex="2" />
+                  <ComboBox fx:id="cmb_tornei" focusTraversable="false" onKeyPressed="#keyEvent" prefWidth="120.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                   <Label text="Seleziona la partita che vuoi eliminare" GridPane.columnSpan="2" GridPane.rowIndex="1">
                      <font>
                         <Font name="Candara" size="16.0" />
@@ -69,7 +69,7 @@
                   </Label>
                </children>
             </GridPane>
-            <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
             <Label fx:id="lbl_output" alignment="CENTER" layoutX="288.0" layoutY="471.0" prefHeight="36.0" prefWidth="337.0">
                <font>
                   <Font size="25.0" />

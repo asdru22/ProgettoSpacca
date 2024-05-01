@@ -198,7 +198,6 @@ public class HomeController implements Initializable {
             return;
         }
         if(imageSuonoFocus.isFocusTraversable() && anchorPane_suoni.isVisible()){
-            System.out.println("ciao");
             imageSuonoFocus.setFocusTraversable(false);
             tglbtn_suono.requestFocus();
             return;
