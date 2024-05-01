@@ -128,12 +128,16 @@ public class PrivilegiAdminController implements Initializable {
     }
     public void cambiaNumeroTurni() {
         int n = Utili.leggiInt(txt_nturni);
+        fadeBottone(lbl_errore);
         if(n>=1){
             OPZ.setTurniPartita(n);
             for(int id : Utili.elencaPartite(true,true)){
                 Partita p = Partita.carica(id);
                 p.setNumeroTurni(n);
             }
+            lbl_errore.setText(OPZ.traduci("valore_aggiornato"));
+        } else{
+            lbl_errore.setText(OPZ.traduci("valore_invalido"));
         }
     }
 

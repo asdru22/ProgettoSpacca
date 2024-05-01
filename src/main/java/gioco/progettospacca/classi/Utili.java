@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static gioco.progettospacca.controller.Main.OPZ;
+import static gioco.progettospacca.controller.PrivilegiAdminController.fadeBottone;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
@@ -179,7 +180,11 @@ public class Utili {
     }
 
     public static int leggiInt(TextField tx) {
-        return Integer.parseInt(tx.getText());
+        try{
+            return Integer.parseInt(tx.getText());
+        } catch (Exception e){
+            return -1;
+        }
     }
 
     public static void gestisciMusica(ToggleButton tglb) {
@@ -358,5 +363,9 @@ public class Utili {
         if(n>=1){
             lblBot.setText(OPZ.traduci("bot_aggiunti")+": "+n);
         }
+    }
+    public static void erroreLogin(Label lbl){
+        fadeBottone(lbl);
+        lbl.setText(OPZ.traduci("credenziali_sbagliate"));
     }
 }

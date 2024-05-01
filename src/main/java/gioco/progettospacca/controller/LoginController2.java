@@ -1,5 +1,6 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -37,6 +38,8 @@ public class LoginController2 implements Initializable {
     private Button btn_back;
     @FXML
     private Label lbl_titolo;
+    @FXML
+    private Label lbl_errore;
 
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
@@ -73,7 +76,7 @@ public class LoginController2 implements Initializable {
             currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             // Imposta il titolo della finestra
             currentStage.setTitle(OPZ.traduci("login"));
-        }
+        } else Utili.erroreLogin(lbl_errore);
     }
 
     public void backToHome(MouseEvent mouseEvent) throws IOException {
