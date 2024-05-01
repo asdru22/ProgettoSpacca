@@ -57,6 +57,7 @@
                   <Image url="@../Logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="lbl_errore" alignment="CENTER" layoutX="450.0" layoutY="198.0" prefHeight="17.0" prefWidth="170.0" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </children>

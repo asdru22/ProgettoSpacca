@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.LoginController">
+<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.LoginController">
    <children>
       <!-- Aggiunta dell'AnchorPane all'interno del Pane -->
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
@@ -46,7 +46,7 @@
                <font>
                   <Font size="15.0" />
                </font></Button>
-            <Label fx:id="lbl_error" layoutX="10.0" layoutY="190.0" />
+            <Label fx:id="lbl_error" alignment="CENTER" layoutX="10.0" layoutY="190.0" />
             <ImageView fitHeight="63.0" fitWidth="54.0" layoutX="223.0" layoutY="92.0">
                <image>
                   <Image url="@../admin.png" />
@@ -57,6 +57,7 @@
                   <Image url="@../Logo.png" />
                </image>
             </ImageView>
+            <Label fx:id="lbl_errore" alignment="CENTER" layoutX="450.0" layoutY="198.0" prefHeight="17.0" prefWidth="170.0" textAlignment="CENTER" />
          </children>
       </AnchorPane>
    </children>
