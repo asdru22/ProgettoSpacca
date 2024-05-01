@@ -380,6 +380,44 @@ public class HomeController implements Initializable {
             }
         });
 
+        tglbtn_musica.setOnMouseEntered(e -> {
+            if (tglbtn_musica.getScene() != null) {
+                tglbtn_musica.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        tglbtn_musica.setOnMouseExited(e -> {
+            if (tglbtn_musica.getScene() != null) {
+                tglbtn_musica.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        tglbtn_suono.setOnMouseEntered(e -> {
+            if (tglbtn_suono.getScene() != null) {
+                tglbtn_suono.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        tglbtn_suono.setOnMouseExited(e -> {
+            if (tglbtn_suono.getScene() != null) {
+                tglbtn_suono.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_chiudiPaneSuoni.setOnMouseEntered(e -> {
+            if (btn_chiudiPaneSuoni.getScene() != null) {
+                btn_chiudiPaneSuoni.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_chiudiPaneSuoni.setOnMouseExited(e -> {
+            if (btn_chiudiPaneSuoni.getScene() != null) {
+                btn_chiudiPaneSuoni.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
 
         btn_classifica.setText(OPZ.traduci("classifica"));
         btn_regole.setText(OPZ.traduci("regole"));

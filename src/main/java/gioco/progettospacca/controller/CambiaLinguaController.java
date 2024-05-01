@@ -3,6 +3,7 @@ package gioco.progettospacca.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -171,5 +172,57 @@ public class CambiaLinguaController implements Initializable {
             img_spunta3.setVisible(true);
         }
         lbl_lingua.setText(OPZ.traduci("lingua"));
+
+        btn_ing.setOnMouseEntered(e -> {
+            if (btn_ing.getScene() != null) {
+                btn_ing.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ing.setOnMouseExited(e -> {
+            if (btn_ing.getScene() != null) {
+                btn_ing.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_ita.setOnMouseEntered(e -> {
+            if (btn_ita.getScene() != null) {
+                btn_ita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ita.setOnMouseExited(e -> {
+            if (btn_ita.getScene() != null) {
+                btn_ita.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_ger.setOnMouseEntered(e -> {
+            if (btn_ger.getScene() != null) {
+                btn_ger.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_ger.setOnMouseExited(e -> {
+            if (btn_ger.getScene() != null) {
+                btn_ger.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_backToHome.setOnMouseEntered(e -> {
+            if (btn_backToHome.getScene() != null) {
+                btn_backToHome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_backToHome.setOnMouseExited(e -> {
+            if (btn_backToHome.getScene() != null) {
+                btn_backToHome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
     }
 }

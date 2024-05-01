@@ -3,6 +3,7 @@ package gioco.progettospacca.controller;
 import gioco.progettospacca.classi.Utili;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -55,7 +56,20 @@ public class LeaderboardController {
         lbl_pos8.setText(lead[7]);
         lbl_pos9.setText(lead[8]);
         lbl_pos10.setText(lead[9]);
+
         lbl_classifica.setText(OPZ.traduci("classifica"));
+        btn_back.setOnMouseEntered(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_back.setOnMouseExited(e -> {
+            if (btn_back.getScene() != null) {
+                btn_back.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
     }
 
     public void backToHome() {
