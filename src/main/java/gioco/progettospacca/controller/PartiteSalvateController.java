@@ -93,24 +93,24 @@ public class PartiteSalvateController implements Initializable {
     }
 
     public void EventoEliminaPartita() {
+        Utili.fadeText(lbl_output);
         try {
             int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaPartita(i));
-            Utili.fadeText(lbl_output);
             aggiornaLista(cmb_partite, true);
         } catch (NullPointerException e) {
-            System.err.println("Valore vuoto");
+            lbl_output.setText(OPZ.traduci("no_partite"));
         }
     }
 
     public void EventoEliminaTorneo() {
+        Utili.fadeText(lbl_output);
         try {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaTorneo(i));
-            Utili.fadeText(lbl_output);
             aggiornaLista(cmb_tornei, false);
         } catch (NullPointerException e) {
-            System.err.println("Valore vuoto");
+            lbl_output.setText(OPZ.traduci("no_tornei"));
         }
     }
 
