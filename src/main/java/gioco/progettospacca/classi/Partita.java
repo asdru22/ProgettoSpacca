@@ -250,15 +250,15 @@ public class Partita {
         switch (verificaColore(carteSeme)) {
             case 3:
                 //3 carte dello stesso colore
-                punti = ((punti + 10));
+                punti = ((punti + 5));
                 break;
             case 4:
                 // 4 carte dello stesso colore
-                punti = ((punti + 30));
+                punti = ((punti + 25));
                 break;
             case 5:
                 // 5 carte dello stesso colore
-                punti = ((punti + 80));
+                punti = ((punti + 50));
                 break;
             default:
                 //non hai fatto colore
@@ -394,14 +394,14 @@ public class Partita {
                 } else if (array[0] == 3) {     //tris
                     punteggio = punteggio + 25;
                 } else if (array[0] == 4) {     //poker
-                    punteggio = punteggio + 50;
+                    punteggio = punteggio + 70;
                 } else if (array[0] == 5) {     //manita
-                    punteggio = punteggio + 80;
+                    punteggio = punteggio + 130;
                 }
                 break;
             case 2:
                 if ((array[0] == 2 && array[1] == 3) || (array[0] == 3 && array[1] == 2)) {     //full
-                    punteggio = punteggio + 30;
+                    punteggio = punteggio + 45;
                 } else if (array[0] == 2 && array[1] == 2) {    //doppia coppia
                     punteggio = punteggio + 15;
                 }
