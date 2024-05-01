@@ -2,7 +2,9 @@ package gioco.progettospacca.classi;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javafx.animation.FadeTransition;
 import javafx.scene.control.*;
+import javafx.util.Duration;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -14,7 +16,6 @@ import java.util.List;
 import java.util.Objects;
 
 import static gioco.progettospacca.controller.Main.OPZ;
-import static gioco.progettospacca.controller.PrivilegiAdminController.fadeBottone;
 
 public class Utili {
     public static void salva(String tipo, String nome, Object o) {
@@ -365,7 +366,19 @@ public class Utili {
         }
     }
     public static void erroreLogin(Label lbl){
-        fadeBottone(lbl);
+        Utili.fadeText(lbl);
         lbl.setText(OPZ.traduci("credenziali_sbagliate"));
+    }
+
+    public static void fadeText(Label lbl) {
+        lbl.setVisible(true);
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
+        fadeTransition.setFromValue(1.0); // Opacità iniziale
+        fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
+        fadeTransition.play();
+        fadeTransition.setOnFinished(event -> {
+            lbl.setVisible(false);
+            lbl.setText("");
+        });
     }
 }

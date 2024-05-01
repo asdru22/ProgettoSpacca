@@ -4,7 +4,6 @@ import gioco.progettospacca.classi.Giocatore;
 import gioco.progettospacca.classi.MailThread;
 import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
-import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,7 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,24 +90,10 @@ public class CreaController implements Initializable {
         currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
-    public static void fadeBottone(Label lbl) {
-        lbl.setVisible(true);
-        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), lbl);
-        fadeTransition.setFromValue(1.0); // Opacità iniziale
-        fadeTransition.setToValue(0.0);   // Opacità finale (scomparirà)
-        fadeTransition.play();
-        fadeTransition.setOnFinished(event -> {
-            lbl.setVisible(false);
-            lbl.setText("");
-        });
-
-    }
 
     public void EventoCreaCodicePartita() {
         OPZ.premiBottone();
         try {
-            Giocatore temp;
-
             int id = Utili.intCasuale(10000, 99999);
 
             List<Giocatore> g = new ArrayList<>();
@@ -121,7 +105,7 @@ public class CreaController implements Initializable {
             Utili.controllaNome(txt_gioc5.getText(), id, chk_gioc5.isSelected(), g);
 
             if (g.size() < 2) {
-                fadeBottone(lbl_errore);
+                Utili.fadeText(lbl_errore);
                 lbl_errore.setText(OPZ.traduci("errore_crea_partita"));
                 return;
             }
@@ -147,20 +131,20 @@ public class CreaController implements Initializable {
                 giocatori[4].setEmail(txt_email5.getText());
             }
             //creo un thread per ogni mail da inviare
-            for (int i = 0; i < giocatori.length; i++) {
-                if (!giocatori[i].getEmail().isEmpty() && giocatori[i].getEmail() != "") {
-                    MailThread thread = new MailThread(giocatori[i].getEmail(), "Iscrizione partita spacca", "Giocatore: " + giocatori[i] + "\nCodice partita: " + txt_code.getText());
+            for (Giocatore giocatore : giocatori) {
+                if (!giocatore.getEmail().isEmpty() && giocatore.getEmail() != "") {
+                    MailThread thread = new MailThread(giocatore.getEmail(), "Iscrizione partita spacca", "Giocatore: " + giocatore + "\nCodice partita: " + txt_code.getText());
                     thread.start();
                 }
             }
 
-            Partita p = new Partita(id, giocatori, 0);
+            new Partita(id, giocatori, 0);
 
         } catch (Exception e) {
             System.err.println(e);
         }
         lbl_errore.setText(OPZ.traduci("partita_creata"));
-        fadeBottone(lbl_errore);
+        Utili.fadeText(lbl_errore);
     }
 
     public void checkBox1() {

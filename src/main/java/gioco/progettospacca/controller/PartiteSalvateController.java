@@ -14,7 +14,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -97,6 +96,7 @@ public class PartiteSalvateController implements Initializable {
         try {
             int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaPartita(i));
+            Utili.fadeText(lbl_output);
             aggiornaLista(cmb_partite, true);
         } catch (NullPointerException e) {
             System.err.println("Valore vuoto");
@@ -107,6 +107,7 @@ public class PartiteSalvateController implements Initializable {
         try {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaTorneo(i));
+            Utili.fadeText(lbl_output);
             aggiornaLista(cmb_tornei, false);
         } catch (NullPointerException e) {
             System.err.println("Valore vuoto");
