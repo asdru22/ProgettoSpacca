@@ -215,5 +215,9 @@
     -fx-background-color: #0a7dc4 ;
 }
 
+.combo-box:focused {
+    -fx-border-color: #29abe3; /* Cambia il colore del contorno quando la ComboBox ha il focus */
+}
+
 
 
