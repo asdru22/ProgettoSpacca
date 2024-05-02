@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -29,6 +30,8 @@ public class CreaTorneoController implements Initializable {
     private Button btn_16players;
     @FXML
     private Button btn_back;
+    @FXML
+    private ImageView imageFocus;
 
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
@@ -142,8 +145,14 @@ public class CreaTorneoController implements Initializable {
     }
 
     public void keyEvent(KeyEvent keyEvent) {
-
         btn_4players.setFocusTraversable(false);
+
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            btn_4players.requestFocus();
+            return;
+        }
+
         if (keyEvent.getCode() == KeyCode.UP && (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused())) {
             btn_back.requestFocus();
         } else if (keyEvent.getCode() == KeyCode.UP && btn_back.isFocused()) {

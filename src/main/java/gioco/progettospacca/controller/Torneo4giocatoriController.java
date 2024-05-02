@@ -15,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,7 +34,7 @@ public class Torneo4giocatoriController implements Initializable {
     @FXML
     Label lbl_codice, lbl_bot;
     @FXML
-    Button btn_home;
+    Button btn_home, btn_back;
     @FXML
     TextField txt_gioc1, txt_gioc2, txt_gioc3, txt_gioc4, txt_codice;
     @FXML
@@ -125,6 +126,28 @@ public class Torneo4giocatoriController implements Initializable {
         currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
+    public void back() {
+        OPZ.premiBottone();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("creaTorneo.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Ottieni la finestra corrente
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
+
+        // Ottieni la scena corrente
+        Scene currentScene = currentStage.getScene();
+
+        // Imposta la nuova radice della scena
+        currentScene.setRoot(root);
+
+        // Imposta il titolo della finestra
+        currentStage.setTitle(OPZ.traduci("spacca"));
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+    }
 
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
@@ -142,10 +165,13 @@ public class Torneo4giocatoriController implements Initializable {
             } else if (txt_codice.isFocused()) {
                 btn_home.requestFocus();
             } else if (btn_home.isFocused()) {
+            } else if (btn_back.isFocused()) {
+                txt_gioc1.requestFocus();
             }
         }
         if (keyEvent.getCode() == KeyCode.UP) {
             if (txt_gioc1.isFocused()) {
+                btn_back.requestFocus();
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc1.requestFocus();
             } else if (txt_gioc3.isFocused()) {
@@ -179,6 +205,8 @@ public class Torneo4giocatoriController implements Initializable {
                     throw new RuntimeException(e);
                 }
 
+            } else if (btn_back.isFocused()) {
+                back();
             }
         }
         if (keyEvent.getCode() == KeyCode.TAB) {
@@ -201,11 +229,7 @@ public class Torneo4giocatoriController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
-            try {
-                BackToHome();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            back();
         }
     }
 
@@ -223,4 +247,5 @@ public class Torneo4giocatoriController implements Initializable {
             }
         }
     }
+
 }
