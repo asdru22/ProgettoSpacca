@@ -130,6 +130,10 @@
     -fx-text-fill: white;
 }
 
+.menu-item:focused .label {
+    -fx-font-size: 14.0pt;
+}
+
 .context-menu {
     -fx-background-color: #0a7dc4;
 }

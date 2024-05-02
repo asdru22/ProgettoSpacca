@@ -70,9 +70,9 @@
                </children>
             </GridPane>
             <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
-            <Label fx:id="lbl_output" alignment="CENTER" layoutX="288.0" layoutY="471.0" prefHeight="36.0" prefWidth="337.0">
+            <Label fx:id="lbl_output" alignment="CENTER" layoutX="260.0" layoutY="497.0" prefHeight="36.0" prefWidth="394.0">
                <font>
-                  <Font size="25.0" />
+                  <Font name="Candara Bold" size="28.0" />
                </font>
             </Label>
          </children>
