@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -30,6 +31,8 @@ public class PartiteSalvateController implements Initializable {
     Label lbl_titoloPartite, lbl_titoloTornei, lbl_output;
     @FXML
     ComboBox cmb_partite, cmb_tornei;
+    @FXML
+    ImageView imageFocus;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -115,7 +118,7 @@ public class PartiteSalvateController implements Initializable {
     }
 
 
-    public void BackToHome() throws IOException {
+    public void back() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("PrivilegiAdminView.fxml"));
 
@@ -133,9 +136,15 @@ public class PartiteSalvateController implements Initializable {
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
-            BackToHome();
+            back();
         }
         cmb_partite.setFocusTraversable(false);
+
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            cmb_partite.requestFocus();
+            return;
+        }
 
         if(keyEvent.getCode()== KeyCode.RIGHT){
             if(cmb_partite.isFocused()){
@@ -161,11 +170,15 @@ public class PartiteSalvateController implements Initializable {
         }
         if(keyEvent.getCode()== KeyCode.ENTER){
             if(btn_back.isFocused()){
-                BackToHome();
+                back();
             } else if (btn_eliminaPartita.isFocused()) {
                 EventoEliminaPartita();
             } else if (btn_eliminaTorneo.isFocused()) {
                 EventoEliminaTorneo();
+            } else if (cmb_partite.isFocused()) {
+                cmb_partite.show();
+            } else if (cmb_tornei.isFocused()) {
+                cmb_tornei.show();
             }
         }
     }

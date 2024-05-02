@@ -104,14 +104,20 @@
     -fx-border-width: 2.0;
 
 }
+
 .menu-bar .label {
     -fx-font-size: 14.0 pt;
     -fx-font-family: "Candara";
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    /**-fx-padding: 10.0px;
-    */
 
+}
+.menu {
+    -fx-background-color: #0a7dc4;
+}
+
+.menu:hover {
+    -fx-background-color: #085d9b;
 }
 
 /* CSS menu-items */
@@ -120,18 +126,19 @@
     -fx-text-fill: white;
     -fx-background: #0a7dc4 ;
 }
-.menu-item .label{
+.menu-item {
     -fx-font-size: 14.0 pt;
     -fx-text-fill: white;
 }
-.menu-item .label:hover{
-    -fx-font-size: 14.0 pt;
-    -fx-background: #0a7dc4 ;
-    -fx-text-fill: white;
+.menu-item:hover {
+    -fx-background-color: #085d9b;
 }
 
 .menu-item:focused .label {
     -fx-font-size: 14.0pt;
+}
+.menu-item:focused{
+    -fx-background-color: #085d9b;
 }
 
 .context-menu {
@@ -204,10 +211,11 @@
 .combo-box .list-cell {
     -fx-background-color: #0a7dc4 ;
     -fx-text-fill: white;
+    -fx-padding: 5px;
 }
 
 .combo-box .list-cell:hover {
-    -fx-background-color: #0a7dc4 ;
+    -fx-background-color: #085d9b;
     -fx-text-fill: white;
 }
 
@@ -216,7 +224,33 @@
 }
 
 .combo-box:focused {
-    -fx-border-color: #29abe3; /* Cambia il colore del contorno quando la ComboBox ha il focus */
+    -fx-border-color: #085d9b;
+    -fx-border-width: 3px;
+    -fx-font-size: 14.0pt;
+}
+.combo-box:hover {
+    -fx-border-color: #085d9b;
+    -fx-border-width: 3px;
+    -fx-font-size: 14.0pt;
+}
+.combo-box .list-cell:focused{
+    -fx-font-size: 14.0pt;
+    -fx-background-color: #085d9b;
+}
+
+/* per la scrollbar della combo-box */
+.combo-box .scroll-bar {
+    -fx-background-color: #0a7dc4;
+}
+
+/* maniglia della scrollbar */
+.combo-box .thumb {
+    -fx-background-color: #085d9b;
+}
+
+/* pulsanti di incremento e decremento della scrollbar */
+.combo-box .increment-button, .combo-box .decrement-button {
+    -fx-background-color: #085c9a;
 }
 
 

@@ -18,7 +18,7 @@
    <children>
       <AnchorPane prefHeight="622.0" prefWidth="907.0">
          <children>
-            <ImageView fitHeight="631.0" fitWidth="915.0">
+            <ImageView fx:id="imageFocus" fitHeight="631.0" fitWidth="915.0" focusTraversable="true" onKeyPressed="#keyEvent">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
@@ -42,12 +42,12 @@
                   <RowConstraints maxHeight="144.00000610351566" minHeight="30.0" prefHeight="58.199951171875" valignment="BOTTOM" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <TextField fx:id="txt_nuovoNome" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                  <TextField fx:id="txt_nuovoNome" focusTraversable="false" onKeyPressed="#keyEvent" GridPane.columnIndex="4" GridPane.rowIndex="1">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
                   </TextField>
-                  <Button fx:id="btn_elimina" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#eliminaGiocatore" prefHeight="35.0" prefWidth="142.0" text="Elimina" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button fx:id="btn_elimina" focusTraversable="false" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#eliminaGiocatore" prefHeight="35.0" prefWidth="142.0" text="Elimina" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
@@ -80,23 +80,23 @@
                         <Font name="Candara" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_email" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                  <TextField fx:id="txt_email" focusTraversable="false" onKeyPressed="#keyEvent" GridPane.columnIndex="4" GridPane.rowIndex="2">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
                   </TextField>
-                  <ComboBox fx:id="cmb_giocatori" prefHeight="26.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Button fx:id="btn_modifica" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#modificaNome" prefHeight="35.0" prefWidth="142.0" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                  <ComboBox fx:id="cmb_giocatori" onKeyPressed="#keyEvent" prefHeight="26.0" prefWidth="161.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="btn_modifica" focusTraversable="false" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#modificaNome" prefHeight="35.0" prefWidth="142.0" text="Conferma" GridPane.columnIndex="4" GridPane.rowIndex="3">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
                   </Button>
-                  <Button fx:id="btn_nuovoGiocatore" maxWidth="150.0" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onMouseClicked="#creaGiocatore" prefHeight="35.0" prefWidth="166.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <Button fx:id="btn_nuovoGiocatore" focusTraversable="false" maxWidth="150.0" minHeight="35.0" minWidth="140.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#creaGiocatore" prefHeight="35.0" prefWidth="166.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
                   </Button>
-                  <TextField fx:id="txt_nuovoGiocatore" maxWidth="150.0" prefHeight="27.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+                  <TextField fx:id="txt_nuovoGiocatore" focusTraversable="false" maxWidth="150.0" onKeyPressed="#keyEvent" prefHeight="27.0" prefWidth="120.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                      <font>
                         <Font name="Candara" size="14.0" />
                      </font>
@@ -108,7 +108,7 @@
                   </ImageView>
                </children>
             </GridPane>
-            <Button fx:id="btn_back" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#BackToHome" prefHeight="40.0" prefWidth="37.0" text="❮" />
+            <Button fx:id="btn_back" focusTraversable="false" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#back" prefHeight="40.0" prefWidth="37.0" text="❮" />
          </children>
       </AnchorPane>
    </children>

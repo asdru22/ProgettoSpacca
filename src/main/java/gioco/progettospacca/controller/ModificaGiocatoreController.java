@@ -13,6 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import gioco.progettospacca.classi.Utili;
@@ -42,14 +45,16 @@ public class ModificaGiocatoreController implements Initializable {
     private Label lbl_nuNome;
     @FXML
     private Label lbl_output;
+    @FXML
+    private ImageView imageFocus;
 
-    public void modificaNome(MouseEvent mouseEvent) {
+    public void modificaNome() {
         OPZ.premiBottone();
         Utili.fadeText(lbl_output);
         EventoCambioNome();
     }
 
-    public void creaGiocatore(MouseEvent mouseEvent) {
+    public void creaGiocatore() {
         OPZ.premiBottone();
         Utili.fadeText(lbl_output);
         String s = txt_nuovoGiocatore.getText();
@@ -107,7 +112,7 @@ public class ModificaGiocatoreController implements Initializable {
 
     }
 
-    public void BackToHome() throws IOException {
+    public void back() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("PrivilegiAdminView.fxml"));
 
@@ -139,7 +144,7 @@ public class ModificaGiocatoreController implements Initializable {
 
     }
 
-    public void eliminaGiocatore(MouseEvent mouseEvent) {
+    public void eliminaGiocatore() {
         OPZ.premiBottone();
         String nome = String.valueOf((cmb_giocatori.getSelectionModel().getSelectedItem()));
         Utili.fadeText(lbl_output);
@@ -155,6 +160,75 @@ public class ModificaGiocatoreController implements Initializable {
                     lbl_output.setText(OPZ.traduci("giocatore_eliminato"));
                     aggiornaLista(cmb_giocatori);
                 }
+            }
+        }
+    }
+    public void keyEvent(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode() == KeyCode.ESCAPE) {
+            back();
+        }
+        cmb_giocatori.setFocusTraversable(false);
+
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            cmb_giocatori.requestFocus();
+            return;
+        }
+        if (keyEvent.getCode() == KeyCode.RIGHT) {
+            if(cmb_giocatori.isFocused()){
+                txt_nuovoNome.requestFocus();
+            } else if (btn_elimina.isFocused()) {
+                btn_modifica.requestFocus();
+            } else if (btn_nuovoGiocatore.isFocused()) {
+                txt_nuovoGiocatore.requestFocus();
+            } else if (btn_back.isFocused()) {
+                cmb_giocatori.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.LEFT){
+            if(txt_nuovoNome.isFocused()){
+                cmb_giocatori.requestFocus();
+            } else if (btn_modifica.isFocused()) {
+                btn_elimina.requestFocus();
+            } else if (txt_nuovoGiocatore.isFocused()) {
+                btn_nuovoGiocatore.requestFocus();
+            } else if (cmb_giocatori.isFocused()) {
+                btn_back.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.DOWN){
+            if(txt_nuovoNome.isFocused()){
+                txt_email.requestFocus();
+            } else if (txt_email.isFocused()) {
+                btn_modifica.requestFocus();
+            } else if (btn_modifica.isFocused()) {
+                txt_nuovoGiocatore.requestFocus();
+            } else if (btn_elimina.isFocused()) {
+                btn_nuovoGiocatore.requestFocus();
+            }
+        }
+        if (keyEvent.getCode() == KeyCode.UP){
+            if(btn_nuovoGiocatore.isFocused()){
+                btn_elimina.requestFocus();
+            } else if (txt_nuovoGiocatore.isFocused()) {
+                btn_modifica.requestFocus();
+            } else if (btn_modifica.isFocused()||btn_elimina.isFocused()) {
+                txt_email.requestFocus();
+            } else if (txt_email.isFocused()) {
+                txt_nuovoNome.requestFocus();
+            }
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER){
+            if(btn_modifica.isFocused()){
+                modificaNome();
+            } else if (btn_elimina.isFocused()) {
+                eliminaGiocatore();
+            } else if (btn_nuovoGiocatore.isFocused()) {
+                creaGiocatore();
+            } else if (cmb_giocatori.isFocused()) {
+                cmb_giocatori.show();
+            } else if(btn_back.isFocused()){
+                back();
             }
         }
     }

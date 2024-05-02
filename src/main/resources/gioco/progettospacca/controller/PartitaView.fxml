@@ -275,7 +275,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane_finePartitaTorneo" layoutX="2.0" layoutY="-3.0" prefHeight="637.0" prefWidth="915.0" visible="false">
+      <Pane fx:id="pane_finePartitaTorneo" prefHeight="631.0" prefWidth="915.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="637.0" stroke="#085b8e" strokeType="INSIDE" width="915.0" />
             <ImageView fitHeight="576.0" fitWidth="915.0" layoutY="24.0">
