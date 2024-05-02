@@ -45,11 +45,13 @@ public class ModificaGiocatoreController implements Initializable {
 
     public void modificaNome(MouseEvent mouseEvent) {
         OPZ.premiBottone();
+        Utili.fadeText(lbl_output);
         EventoCambioNome();
     }
 
     public void creaGiocatore(MouseEvent mouseEvent) {
         OPZ.premiBottone();
+        Utili.fadeText(lbl_output);
         String s = txt_nuovoGiocatore.getText();
         if (!Objects.equals(s, "")) {
             if (!Utili.esisteGiocatore(s)) {
@@ -140,7 +142,7 @@ public class ModificaGiocatoreController implements Initializable {
     public void eliminaGiocatore(MouseEvent mouseEvent) {
         OPZ.premiBottone();
         String nome = String.valueOf((cmb_giocatori.getSelectionModel().getSelectedItem()));
-
+        Utili.fadeText(lbl_output);
         if (!Objects.equals(nome, "")) {
             Giocatore g = Giocatore.carica(nome);
             if (g.partiteInSospeso()) {

@@ -62,7 +62,7 @@ Quando viene creato un nuovo torneo, si crea un numero di partite uguale alla me
 #### Salvataggi
 Le classi Partita, Giocatore e Torneo hanno una funzione `salva` e `carica`. Il metodo carica è statico è quindi può essere chiamato in qualsiasi momento per creare una nuova istanza di quella classe. Il metodo salva converte la classe in un file `.json`. Entrambi i metodi richiedono la creazione di un nuovo oggetto di tipo `Gson`.
 #### Gestione bot
-#### Layout
+#### Layout  
 #### Modifica dati dei giocatori
 Funzioni nella classe di utilità quali `elencaGiocatori`, `esisteGiocatore` e `eliminaGiocatore` hanno facilitato la gestione dei giocatori. Sono usati controlli per evitare che queste modifiche possano essere fatte a Bot o all'admin.
 ### Funzionalità facoltative
