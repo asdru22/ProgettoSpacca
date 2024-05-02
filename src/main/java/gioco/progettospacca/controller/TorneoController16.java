@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -432,4 +434,52 @@ public class TorneoController16 implements Initializable {
         giocaPartita(b);
     }
 
+    public void keyEvent(KeyEvent keyEvent) {
+        if(keyEvent.getCode()== KeyCode.ENTER){
+            if(btn_ottavi1.isFocused()){
+
+            } else if (btn_ottavi2.isFocused()) {
+
+            } else if (btn_ottavi3.isFocused()) {
+
+            } else if (btn_ottavi4.isFocused()) {
+
+            } else if (btn_ottavi5.isFocused()) {
+
+            } else if (btn_ottavi6.isFocused()) {
+
+            } else if (btn_ottavi7.isFocused()) {
+
+            } else if (btn_ottavi8.isFocused()) {
+
+            } else if (btn_quarti1.isFocused()) {
+
+            } else if (btn_quarti2.isFocused()) {
+
+            } else if (btn_quarti3.isFocused()) {
+
+            } else if (btn_quarti4.isFocused()) {
+
+            } else if (btn_semi1.isFocused()) {
+
+            } else if (btn_semi2.isFocused()) {
+
+            } else if (btn_finale.isFocused()) {
+
+            } else if (btn_home.isFocused()) {
+                try {
+                    BackToHome();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
+        if(keyEvent.getCode()==KeyCode.ESCAPE){
+            try {
+                BackToHome();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
 }

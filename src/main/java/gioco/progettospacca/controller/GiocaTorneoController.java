@@ -84,7 +84,7 @@ public class GiocaTorneoController implements Initializable {
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
-    public void giocaTorneo(MouseEvent mouseEvent) throws IOException {
+    public void giocaTorneo() throws IOException {
         OPZ.premiBottone();
         CODICE_GLOBALE_TORNEO = Utili.leggiInt(txt_codTorneo);
 
@@ -143,7 +143,7 @@ public class GiocaTorneoController implements Initializable {
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_entraTorneo.isFocused()) {
             try {
-                EventoGiocaTorneo();
+                giocaTorneo();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

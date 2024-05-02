@@ -192,6 +192,12 @@ public class HomeController implements Initializable {
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         btn_giocaPartita.setFocusTraversable(false);
+
+        if (keyEvent.getCode() == KeyCode.M) {
+            menuImpostazioni.show();
+            return;
+        }
+
         if(imageFocus.isFocusTraversable()){
             imageFocus.setFocusTraversable(false);
             btn_giocaPartita.requestFocus();
@@ -203,11 +209,6 @@ public class HomeController implements Initializable {
             return;
         }
 
-        /*
-        if (keyEvent.getCode() == KeyCode.M) {
-            menuImpostazioni.show();
-        }
-        */
         if (keyEvent.getCode() == KeyCode.ENTER && btn_giocaPartita.isFocused()) {
             EventoGiocaPartita();
             OPZ.premiBottone();
@@ -289,6 +290,7 @@ public class HomeController implements Initializable {
             }
 
         }
+
     }
 
     public void giocaPartita() throws IOException {

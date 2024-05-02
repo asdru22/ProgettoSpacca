@@ -183,11 +183,23 @@ public class PartiteSalvateController implements Initializable {
                 cmb_partite.show();
             } else if (cmb_tornei.isFocused()) {
                 cmb_tornei.show();
+            } else if (btn_mostraGiocatori.isFocused()) {
+                EventoMostraGiocatori();
+            }
+        }
+        if(keyEvent.getCode()== KeyCode.UP){
+            if(btn_mostraGiocatori.isFocused()){
+                btn_eliminaPartita.requestFocus();
+            }
+        }
+        if(keyEvent.getCode()== KeyCode.DOWN){
+            if(btn_eliminaPartita.isFocused()){
+                btn_mostraGiocatori.requestFocus();
             }
         }
     }
 
-    public void EventoMostraGiocatori(MouseEvent mouseEvent) {
+    public void EventoMostraGiocatori() {
         Utili.fadeText(lbl_output);
         try {
             String out = "";
