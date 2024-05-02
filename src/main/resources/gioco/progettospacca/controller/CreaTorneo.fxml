@@ -15,12 +15,12 @@
    <children>
       <AnchorPane>
          <children>
-            <ImageView fitHeight="631.0" fitWidth="915.0">
+            <ImageView fx:id="imageFocus" fitHeight="631.0" fitWidth="915.0" focusTraversable="true" onKeyPressed="#keyEvent">
                <image>
                   <Image url="@../Sfondo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lbl_npart" alignment="CENTER" layoutX="238.0" layoutY="96.0" prefHeight="40.0" prefWidth="430.0" text="Scegli il numero di partecipanti">
+            <Label fx:id="lbl_npart" alignment="CENTER" layoutX="238.0" layoutY="96.0" onKeyPressed="#keyEvent" prefHeight="40.0" prefWidth="430.0" text="Scegli il numero di partecipanti">
                <font>
                   <Font name="Candara Bold" size="25.0" />
                </font>
