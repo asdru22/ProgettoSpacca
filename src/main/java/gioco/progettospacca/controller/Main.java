@@ -13,6 +13,8 @@ import javafx.scene.Cursor;
 import java.io.IOException;
 import java.util.Objects;
 
+import static gioco.progettospacca.classi.Utili.cancellaTorneiInSospeso;
+
 public class Main extends Application {
     public static Opzioni OPZ;
     public static int CODICE_GLOBALE_PARTITA;
@@ -45,6 +47,7 @@ public class Main extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        cancellaTorneiInSospeso();
         launch(args);
     }
 }

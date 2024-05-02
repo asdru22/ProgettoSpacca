@@ -1,5 +1,7 @@
 package gioco.progettospacca.controller;
 
+import gioco.progettospacca.classi.Giocatore;
+import gioco.progettospacca.classi.Partita;
 import gioco.progettospacca.classi.Utili;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -26,9 +29,9 @@ import static gioco.progettospacca.controller.Main.OPZ;
 
 public class PartiteSalvateController implements Initializable {
     @FXML
-    Button btn_eliminaPartita, btn_eliminaTorneo, btn_back;
+    Button btn_eliminaPartita, btn_eliminaTorneo, btn_back, btn_mostraGiocatori;
     @FXML
-    Label lbl_titoloPartite, lbl_titoloTornei, lbl_output;
+    Label lbl_titoloPartite, lbl_titoloTornei, lbl_output, lbl_listaGgiocatori;
     @FXML
     ComboBox cmb_partite, cmb_tornei;
     @FXML
@@ -38,6 +41,7 @@ public class PartiteSalvateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_eliminaPartita.setText(OPZ.traduci("elimina_partita"));
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
+        btn_eliminaTorneo.setText(OPZ.traduci("mostra_giocatori"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
         aggiornaLista(cmb_partite, true);
@@ -180,6 +184,21 @@ public class PartiteSalvateController implements Initializable {
             } else if (cmb_tornei.isFocused()) {
                 cmb_tornei.show();
             }
+        }
+    }
+
+    public void EventoMostraGiocatori(MouseEvent mouseEvent) {
+        Utili.fadeText(lbl_output);
+        try {
+            String out = "";
+            int codice = (int) cmb_partite.getSelectionModel().getSelectedItem();
+            Partita p = Partita.carica(codice);
+            for(Giocatore g : p.getGiocatori()){
+                out+="- "+g.getNome()+"\n";
+            }
+            lbl_listaGgiocatori.setText(out);
+        } catch (NullPointerException e) {
+            lbl_output.setText(OPZ.traduci("no_tornei"));
         }
     }
 }

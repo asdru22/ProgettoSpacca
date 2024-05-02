@@ -381,4 +381,12 @@ public class Utili {
             lbl.setText("");
         });
     }
+
+    public static void cancellaTorneiInSospeso(){
+        ArrayList<Integer> lista = elencaTornei();
+        for(int i : lista){
+            Torneo t = Torneo.carica(i);
+            if(t.isFinito()) t.elimina();
+        }
+    }
 }

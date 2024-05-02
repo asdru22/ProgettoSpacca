@@ -64,11 +64,10 @@ public class ModificaGiocatoreController implements Initializable {
                 g.salva();
                 lbl_output.setText(OPZ.traduci("giocatore_creato"));
                 aggiornaLista(cmb_giocatori);
-
             } else {
                 lbl_output.setText(OPZ.traduci("giocatore_esistente"));
             }
-        }
+        } else lbl_output.setText(OPZ.traduci("inserisci_nome"));
     }
 
     public void aggiornaLista(ComboBox cb) {

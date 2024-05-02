@@ -10,9 +10,12 @@ import java.util.ResourceBundle;
 import static gioco.progettospacca.controller.Main.OPZ;
 
 public class RegoleController implements Initializable {
+    @FXML Label lbl_coppia, lbl_doppiaCoppia,  lbl_full, lbl_tris, lbl_poker,
+  lbl_manita,lbl_scala3, lbl_scala4, lbl_scala5, lbl_colore3, lbl_colore4, lbl_colore5;
     @FXML
     Label lbl_regolamento, lbl_regole, lbl_fuoco,lbl_elettro,lbl_terra,lbl_acqua,lbl_erba,
-    lbl_partita, lbl_regole2,lbl_regole3,lbl_regole4, lbl_regole5,lbl_regole6, lbl_regole7;
+    lbl_partita, lbl_regole2,lbl_regole3,lbl_regole4, lbl_regole5,lbl_regole6, lbl_regole7,
+            lbl_titoloPunteggi, lbl_regole8;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -30,6 +33,8 @@ public class RegoleController implements Initializable {
         lbl_regole5.setText(OPZ.traduci("regole5"));
         lbl_regole6.setText(OPZ.traduci("regole6"));
         lbl_regole7.setText(OPZ.traduci("regole7"));
+        lbl_titoloPunteggi.setText(OPZ.traduci("punteggi"));
+        lbl_regole8.setText(OPZ.traduci("regole8"));
 
     }
 }

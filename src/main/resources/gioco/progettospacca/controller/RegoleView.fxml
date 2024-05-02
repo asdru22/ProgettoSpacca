@@ -203,7 +203,7 @@
                                     <Font name="Candara Bold" size="27.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbl_introPunteggio" alignment="CENTER" prefHeight="46.0" prefWidth="700.0" text="Al termine di ogni turno, la propria mano vi farà guadagnare un punteggio specifico, è bene tenerli a mente per attuare la strategia migliore." textAlignment="CENTER" wrapText="true" GridPane.columnSpan="4" GridPane.rowIndex="1">
+                              <Label fx:id="lbl_regole8" alignment="CENTER" prefHeight="46.0" prefWidth="700.0" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="4" GridPane.rowIndex="1">
                                  <font>
                                     <Font name="Candara" size="12.0" />
                                  </font>
