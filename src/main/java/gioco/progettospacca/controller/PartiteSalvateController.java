@@ -41,7 +41,7 @@ public class PartiteSalvateController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_eliminaPartita.setText(OPZ.traduci("elimina_partita"));
         btn_eliminaTorneo.setText(OPZ.traduci("elimina_torneo"));
-        btn_eliminaTorneo.setText(OPZ.traduci("mostra_giocatori"));
+        btn_mostraGiocatori.setText(OPZ.traduci("mostra_giocatori"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
         aggiornaLista(cmb_partite, true);
