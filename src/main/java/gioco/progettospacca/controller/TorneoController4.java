@@ -42,8 +42,6 @@ public class TorneoController4 implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 

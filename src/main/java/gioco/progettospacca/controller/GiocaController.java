@@ -63,8 +63,6 @@ public class GiocaController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void entraInPartita() throws IOException {

@@ -87,7 +87,6 @@ public class HomeController implements Initializable {
 
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("gioca_partita"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
@@ -104,7 +103,6 @@ public class HomeController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("login"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
@@ -120,8 +118,6 @@ public class HomeController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("login"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
@@ -137,8 +133,6 @@ public class HomeController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("gioca_torneo"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
@@ -487,8 +481,5 @@ public class HomeController implements Initializable {
 
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
-
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("login"));
     }
 }

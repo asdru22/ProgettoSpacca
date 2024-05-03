@@ -87,7 +87,6 @@ public class CreaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
 

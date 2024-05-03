@@ -79,8 +79,6 @@ public class GiocaTorneoController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
 
-        // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
@@ -110,7 +108,6 @@ public class GiocaTorneoController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("gioca_torneo"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
 

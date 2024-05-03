@@ -55,7 +55,6 @@ public class LoginController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void LoginAdmin() throws IOException {
@@ -75,7 +74,6 @@ public class LoginController implements Initializable {
             currentScene.setRoot(root);
 
             // Imposta il titolo della finestra
-            currentStage.setTitle(OPZ.traduci("login"));
             currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
         } else Utili.erroreLogin(lbl_errore);
     }

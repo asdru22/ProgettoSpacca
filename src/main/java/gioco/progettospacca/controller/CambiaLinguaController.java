@@ -83,7 +83,6 @@ public class CambiaLinguaController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void keyEvent(KeyEvent keyEvent) throws IOException {

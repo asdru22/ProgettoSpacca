@@ -178,6 +178,7 @@ public class Torneo16giocatoriController implements Initializable {
     }
 
     public void cliccaCreaTorneo() {
+        OPZ.premiBottone();
         int n = creaTorneo();
         Utili.giocatoriMancanti(n, lbl_bot);
     }

@@ -55,7 +55,6 @@ public class PrivilegiAdminController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void backToHome(MouseEvent mouseEvent) throws IOException {
@@ -83,9 +82,6 @@ public class PrivilegiAdminController implements Initializable {
 
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
-
-        // Imposta il titolo della finestra
-        //currentStage.setTitle(OPZ.traduci("Partite salvate"));
     }
 
     public void modificaGiocatore(MouseEvent mouseEvent) throws IOException {
@@ -113,6 +109,7 @@ public class PrivilegiAdminController implements Initializable {
         // Imposta il titolo della finestra
     }
     public void cambiaNumeroTurni() {
+        OPZ.premiBottone();
         int n = Utili.leggiInt(txt_nturni);
         Utili.fadeText(lbl_errore);
         if(n>=1){

@@ -50,7 +50,6 @@ public class ModificaGiocatoreController implements Initializable {
 
     public void modificaNome() {
         OPZ.premiBottone();
-        Utili.fadeText(lbl_output);
         EventoCambioNome();
     }
 
@@ -101,6 +100,7 @@ public class ModificaGiocatoreController implements Initializable {
                 out = Utili.cambiaEmail(nuovo, email);
             }
         }
+        Utili.fadeText(lbl_output);
         lbl_output.setText(out);
 
         if (!g.getEmail().isEmpty() && g.getEmail() != "") {
@@ -125,7 +125,6 @@ public class ModificaGiocatoreController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     @Override

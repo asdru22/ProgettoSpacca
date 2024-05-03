@@ -47,11 +47,12 @@ public class CreaTorneoController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
     }
 
     public void EventoCreaTorneo4Giocatori() throws IOException {
+        OPZ.premiBottone();
+
         Parent root = FXMLLoader.load(getClass().getResource("Torneo4giocatoriView.fxml"));
 
         // Ottieni la finestra corrente
@@ -64,11 +65,11 @@ public class CreaTorneoController implements Initializable {
         currentScene.setRoot(root);
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
-        // Imposta il titolo della finestra
-        //currentStage.setTitle(OPZ.traduci("Crea torneo (4 giocatori)"));
     }
 
     public void EventoCreaTorneo8Giocatori() throws IOException {
+        OPZ.premiBottone();
+
         Parent root = FXMLLoader.load(getClass().getResource("Torneo8giocatoriView.fxml"));
 
         // Ottieni la finestra corrente
@@ -82,10 +83,10 @@ public class CreaTorneoController implements Initializable {
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
         // Imposta il titolo della finestra
-        //currentStage.setTitle(OPZ.traduci("Crea torneo (8 giocatori)"));
     }
 
     public void EventoCreaTorneo16Giocatori() throws IOException {
+
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("Torneo16giocatoriView.fxml"));
 
@@ -99,8 +100,7 @@ public class CreaTorneoController implements Initializable {
         currentScene.setRoot(root);
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
 
-        // Imposta il titolo della finestra
-        //currentStage.setTitle(OPZ.traduci("Crea torneo (16 giocatori)"));
+
     }
 
     @Override

@@ -105,6 +105,7 @@ public class Torneo4giocatoriController implements Initializable {
     }
 
     public void cliccaCreaTorneo() {
+        OPZ.premiBottone();
         int n = creaTorneo();
         Utili.giocatoriMancanti(n, lbl_bot);
     }
@@ -123,7 +124,6 @@ public class Torneo4giocatoriController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
     public void back() {
@@ -145,7 +145,6 @@ public class Torneo4giocatoriController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 

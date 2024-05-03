@@ -1352,6 +1352,7 @@ public class PartitaController implements Initializable {
     }
 
     public void salvaEdEsci() throws IOException {
+        OPZ.premiBottone();
         BackToHome();
     }
 

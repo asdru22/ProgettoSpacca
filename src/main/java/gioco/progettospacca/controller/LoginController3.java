@@ -55,7 +55,6 @@ public class LoginController3 implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
 
     public void LoginAdmin() throws IOException {
@@ -75,7 +74,6 @@ public class LoginController3 implements Initializable {
             currentScene.setRoot(root);
 
             // Imposta il titolo della finestra
-            currentStage.setTitle(OPZ.traduci("privilegi_amministratore"));
         } else Utili.erroreLogin(lbl_errore);
     }
 

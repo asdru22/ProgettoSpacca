@@ -100,6 +100,7 @@ public class PartiteSalvateController implements Initializable {
     }
 
     public void EventoEliminaPartita() {
+        OPZ.premiBottone();
         Utili.fadeText(lbl_output);
         try {
             int i = (int) cmb_partite.getSelectionModel().getSelectedItem();
@@ -111,6 +112,7 @@ public class PartiteSalvateController implements Initializable {
     }
 
     public void EventoEliminaTorneo() {
+        OPZ.premiBottone();
         Utili.fadeText(lbl_output);
         try {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
@@ -136,7 +138,6 @@ public class PartiteSalvateController implements Initializable {
         currentScene.setRoot(root);
 
         // Imposta il titolo della finestra
-        currentStage.setTitle(OPZ.traduci("spacca"));
     }
     public void keyEvent(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
@@ -200,6 +201,7 @@ public class PartiteSalvateController implements Initializable {
     }
 
     public void EventoMostraGiocatori() {
+        OPZ.premiBottone();
         Utili.fadeText(lbl_output);
         try {
             String out = "";
