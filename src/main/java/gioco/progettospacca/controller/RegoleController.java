@@ -15,7 +15,7 @@ public class RegoleController implements Initializable {
     @FXML
     Label lbl_regolamento, lbl_regole, lbl_fuoco,lbl_elettro,lbl_terra,lbl_acqua,lbl_erba,
     lbl_partita, lbl_regole2,lbl_regole3,lbl_regole4, lbl_regole5,lbl_regole6, lbl_regole7,
-            lbl_titoloPunteggi, lbl_regole8;
+            lbl_titoloPunteggi, lbl_regole8, lbl_tabellaSemi, lbl_regole9;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -35,6 +35,8 @@ public class RegoleController implements Initializable {
         lbl_regole7.setText(OPZ.traduci("regole7"));
         lbl_titoloPunteggi.setText(OPZ.traduci("punteggi"));
         lbl_regole8.setText(OPZ.traduci("regole8"));
+        lbl_tabellaSemi.setText(OPZ.traduci("tabella_semi"));
+        lbl_regole9.setText(OPZ.traduci("regole9"));
 
     }
 }
