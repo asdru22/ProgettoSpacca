@@ -40,14 +40,6 @@ public class GiocaController implements Initializable {
     @FXML
     private TextField txt_cod1;
     @FXML
-    private TextField txt_cod2;
-    @FXML
-    private TextField txt_cod3;
-    @FXML
-    private TextField txt_cod4;
-    @FXML
-    private TextField txt_cod5;
-    @FXML
     private Label lbl_nomi;
     @FXML
     private Label lbl_codice;
@@ -127,6 +119,7 @@ public class GiocaController implements Initializable {
 
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
+        /*
         if (keyEvent.getCode() == KeyCode.DOWN) {
             if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
@@ -231,6 +224,8 @@ public class GiocaController implements Initializable {
             }
         }
 
+
+         */
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();
