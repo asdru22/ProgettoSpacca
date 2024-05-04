@@ -31,7 +31,9 @@ public class Torneo {
 
     public static Torneo carica(int id) {
         Gson gson = new Gson();
-        return gson.fromJson(Utili.leggiFileJson("tornei", Integer.toString(id)), Torneo.class);
+        String t = Utili.leggiFileJson("tornei", Integer.toString(id));
+        if(t!="errore") return gson.fromJson(t,Torneo.class);
+        else return null;
     }
 
     public void salva() {

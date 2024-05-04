@@ -20,6 +20,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -44,8 +45,13 @@ public class PartiteSalvateController implements Initializable {
         btn_mostraGiocatori.setText(OPZ.traduci("mostra_giocatori"));
         lbl_titoloPartite.setText(OPZ.traduci("partite"));
         lbl_titoloTornei.setText(OPZ.traduci("tornei"));
-        aggiornaLista(cmb_partite, true);
-        aggiornaLista(cmb_tornei, false);
+        try {
+            aggiornaLista(cmb_partite, true);
+            aggiornaLista(cmb_tornei, false);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
 
         btn_back.setOnMouseEntered(e -> {
             if (btn_back.getScene() != null) {
@@ -88,7 +94,7 @@ public class PartiteSalvateController implements Initializable {
 
     }
 
-    public void aggiornaLista(ComboBox cb, boolean partita) {
+    public void aggiornaLista(ComboBox cb, boolean partita) throws FileNotFoundException {
         ArrayList<Integer> lista;
         if (partita) lista = Utili.elencaPartiteNormali();
         else lista = Utili.elencaTornei();
@@ -108,6 +114,8 @@ public class PartiteSalvateController implements Initializable {
             aggiornaLista(cmb_partite, true);
         } catch (NullPointerException e) {
             lbl_output.setText(OPZ.traduci("no_partite"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -118,7 +126,7 @@ public class PartiteSalvateController implements Initializable {
             int i = (int) cmb_tornei.getSelectionModel().getSelectedItem();
             lbl_output.setText(Utili.adminEliminaTorneo(i));
             aggiornaLista(cmb_tornei, false);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | FileNotFoundException e) {
             lbl_output.setText(OPZ.traduci("no_tornei"));
         }
     }

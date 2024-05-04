@@ -89,6 +89,8 @@ public class ModificaGiocatoreController implements Initializable {
         String nuovo = String.valueOf((txt_nuovoNome.getText()));
         String email = String.valueOf((txt_email.getText()));
 
+        if (Objects.equals(nuovo, "")) out = OPZ.traduci("inserisci_nome");
+
         if (!Objects.equals(nuovo, "")) {
             out = Utili.cambiaNomeGiocatore(vecchio, nuovo);
             aggiornaLista(cmb_giocatori);

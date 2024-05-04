@@ -110,7 +110,8 @@ public class GiocaController implements Initializable {
             // Imposta la nuova radice della scena
             currentScene.setRoot(root);
         } else {
-            System.err.println("Valori invalidi per iniziare partita");
+            Utili.fadeText(lbl_errore);
+            lbl_errore.setText(OPZ.traduci("valori_invalidi"));
         }
 
     }

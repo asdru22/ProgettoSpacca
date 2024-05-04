@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static gioco.progettospacca.controller.Main.OPZ;
@@ -44,7 +45,7 @@ public class LeaderboardController {
     private Button btn_back;
 
     @FXML
-    public void initialize() {
+    public void initialize() throws FileNotFoundException {
         String[] lead = Utili.getLeaderboard();
         lbl_pos1.setText(lead[0]);
         lbl_pos2.setText(lead[1]);

@@ -34,7 +34,7 @@ public class GiocaTorneoController implements Initializable {
     @FXML
     TextField txt_codTorneo;
     @FXML
-    Label lbl_titleCodTorneo;
+    Label lbl_titleCodTorneo, lbl_errore;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,25 +91,36 @@ public class GiocaTorneoController implements Initializable {
     }
 
     public void EventoGiocaTorneo() throws IOException {
-        int giocatori = Torneo.carica(CODICE_GLOBALE_TORNEO).getGiocatoriIniziali();
-        Parent root = null;
-        if (giocatori == 4) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView4.fxml")));
-        if (giocatori == 8) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView8.fxml")));
-        if (giocatori == 16)
-            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView16.fxml")));
+        Torneo t = null;
 
-        // Ottieni la finestra corrente
-        Stage currentStage = (Stage) btn_entraTorneo.getScene().getWindow();
+        t = Torneo.carica(CODICE_GLOBALE_TORNEO);
+        if(t!=null){
 
-        // Ottieni la scena corrente
-        Scene currentScene = currentStage.getScene();
+            int giocatori = t.getGiocatoriIniziali();
+            Parent root = null;
+            if (giocatori == 4) {
 
-        // Imposta la nuova radice della scena
-        currentScene.setRoot(root);
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView4.fxml")));
+            }
+            if (giocatori == 8) root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView8.fxml")));
+            if (giocatori == 16)
+                root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("TorneoView16.fxml")));
 
-        // Imposta il titolo della finestra
-        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            // Ottieni la finestra corrente
+            Stage currentStage = (Stage) btn_entraTorneo.getScene().getWindow();
 
+            // Ottieni la scena corrente
+            Scene currentScene = currentStage.getScene();
+
+            // Imposta la nuova radice della scena
+            currentScene.setRoot(root);
+
+            // Imposta il titolo della finestra
+            currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+        } else{
+            lbl_errore.setText(OPZ.traduci("torneo_non_trovato"));
+            Utili.fadeText(lbl_errore);
+        }
 
     }
 
