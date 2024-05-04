@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="622.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.RegoleController">
+<Pane prefHeight="630.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.RegoleController">
    <children>
       <AnchorPane prefHeight="3200.0" prefWidth="800.0">
          <children>
@@ -70,27 +70,27 @@
                               </ImageView>
                               <Label fx:id="lbl_fuoco" text="Fuoco" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="19.0" />
+                                    <Font name="Candara Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_acqua" text="Acqua" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="19.0" />
+                                    <Font name="Candara Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_terra" text="Terra" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="19.0" />
+                                    <Font name="Candara Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_erba" text="Erba" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="19.0" />
+                                    <Font name="Candara Bold" size="21.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_elettro" text="Elettro" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="19.0" />
+                                    <Font name="Candara Bold" size="21.0" />
                                  </font>
                               </Label>
                            </children>
@@ -110,46 +110,46 @@
                               <Font name="Candara Bold Italic" size="30.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_regole" alignment="CENTER" layoutX="118.0" layoutY="316.0" prefHeight="94.0" prefWidth="553.0" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole" alignment="CENTER" layoutX="118.0" layoutY="308.0" prefHeight="110.0" prefWidth="554.0" textAlignment="CENTER" wrapText="true">
                            <font>
-                              <Font name="Candara" size="16.0" />
+                              <Font name="Candara" size="19.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_partita" layoutX="343.0" layoutY="693.0" text="PARTITA">
+                        <Label fx:id="lbl_partita" layoutX="321.0" layoutY="664.0" text="PARTITA">
                            <font>
-                              <Font name="Candara Bold" size="30.0" />
+                              <Font name="Candara Bold" size="41.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_regole2" layoutX="50.0" layoutY="749.0" text="Nella schermata principale della partita possiamo vedere pochi, semplici ed intuitivi elementi">
+                        <Label fx:id="lbl_regole2" alignment="CENTER" layoutX="37.0" layoutY="724.0" prefHeight="59.0" prefWidth="722.0" text="Nella schermata principale della partita possiamo vedere pochi, semplici ed intuitivi elementi" textAlignment="CENTER" wrapText="true">
                            <font>
-                              <Font name="Candara" size="18.0" />
+                              <Font name="Candara" size="19.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="236.0" fitWidth="320.0" layoutX="62.0" layoutY="1412.0">
+                        <ImageView fitHeight="236.0" fitWidth="320.0" layoutX="55.0" layoutY="1431.0">
                            <image>
                               <Image url="@../ImprevistoRegole.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lbl_regole3" alignment="CENTER" layoutX="67.0" layoutY="1297.0" prefHeight="76.0" prefWidth="310.0" text="Nel caso si peschi una carta imprevisto, comparirò una schermata del genere in cui verrà descritto l'effetto dell'imprevisto in questione" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole3" alignment="CENTER" layoutX="60.0" layoutY="1293.0" prefHeight="118.0" prefWidth="310.0" text="Nel caso si peschi una carta imprevisto, comparirò una schermata del genere in cui verrà descritto l'effetto dell'imprevisto in questione" textAlignment="CENTER" wrapText="true">
                            <font>
-                              <Font name="Candara" size="14.0" />
+                              <Font name="Candara" size="16.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="221.0" fitWidth="328.0" layoutX="413.0" layoutY="1420.0">
+                        <ImageView fitHeight="221.0" fitWidth="328.0" layoutX="421.0" layoutY="1438.0">
                            <image>
                               <Image url="@../PunteggioRoundRegole.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="lbl_regole4" alignment="CENTER" layoutX="422.0" layoutY="1282.0" prefHeight="105.0" prefWidth="310.0" text="Una volta effettuate le proprie scelte,  comparirà un piccolo riquadro in alto a destra, che mostrerà il punteggio raggiunto nel turno in corso. Occorrerà cliccare poi sul bottone &quot;Prossimo round&quot; per proseguire col prossimo giocatore.&quot;" textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole4" alignment="CENTER" layoutX="430.0" layoutY="1281.0" prefHeight="142.0" prefWidth="310.0" text="Una volta effettuate le proprie scelte,  comparirà un piccolo riquadro in alto a destra, che mostrerà il punteggio raggiunto nel turno in corso. Occorrerà cliccare poi sul bottone &quot;Prossimo round&quot; per proseguire col prossimo giocatore.&quot;" textAlignment="CENTER" wrapText="true">
                            <font>
-                              <Font name="Candara" size="14.0" />
+                              <Font name="Candara" size="16.0" />
                            </font>
                         </Label>
                         <GridPane layoutX="174.0" layoutY="1677.0" prefHeight="250.0" prefWidth="452.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="276.7999633789062" minWidth="10.0" prefWidth="247.20001220703125" />
-                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="144.5999755859375" minWidth="3.79998779296875" prefWidth="40.79996337890623" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.79996337890626" minWidth="10.0" prefWidth="164.00003662109373" />
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="144.5999755859375" minWidth="3.79998779296875" prefWidth="50.40003662109376" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="232.79996337890626" minWidth="10.0" prefWidth="155.19996337890626" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -157,27 +157,27 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Label fx:id="lbl_regole5" alignment="CENTER" prefHeight="76.0" prefWidth="194.0" text="Vi sono due tipi di imprevisti:" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+                              <Label fx:id="lbl_regole5" alignment="CENTER" prefHeight="76.0" prefWidth="322.0" text="Vi sono due tipi di imprevisti:" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="3" GridPane.halignment="CENTER">
                                  <font>
-                                    <Font name="Candara" size="18.0" />
+                                    <Font name="Candara" size="23.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbl_regole6" alignment="CENTER" prefHeight="55.0" prefWidth="150.0" text="-Moltiplicatore X2, raddoppia i punti del proprio turno in corso" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
+                              <Label fx:id="lbl_regole6" alignment="CENTER" prefHeight="55.0" prefWidth="208.0" text="-Moltiplicatore X2, raddoppia i punti del proprio turno in corso" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="lbl_regole7" alignment="CENTER" prefHeight="40.0" prefWidth="150.0" text="-Ladro di punti, ruba a tutti fino a 15 punti, se disponibili" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
+                              <Label fx:id="lbl_regole7" alignment="CENTER" prefHeight="40.0" prefWidth="213.0" text="-Ladro di punti, ruba a tutti fino a 15 punti, se disponibili" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="14.0" />
                                  </font>
                               </Label>
-                              <ImageView fitHeight="60.0" fitWidth="40.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+                              <ImageView fitHeight="75.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                                  <image>
                                     <Image url="@../carte/imprevisti/1.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="60.0" fitWidth="40.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+                              <ImageView fitHeight="75.0" fitWidth="50.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                                  <image>
                                     <Image url="@../carte/imprevisti/2.png" />
                                  </image>
@@ -188,6 +188,7 @@
                           <columnConstraints>
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" />
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" />
                           </columnConstraints>
@@ -202,84 +203,84 @@
                            <children>
                               <Label fx:id="lbl_titoloPunteggi" alignment="CENTER" prefHeight="28.0" prefWidth="207.0" text="PUNTEGGIO" textAlignment="CENTER" GridPane.columnSpan="4" GridPane.halignment="CENTER">
                                  <font>
-                                    <Font name="Candara Bold" size="27.0" />
+                                    <Font name="Candara Bold" size="37.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_regole8" alignment="CENTER" prefHeight="46.0" prefWidth="700.0" textAlignment="CENTER" wrapText="true" GridPane.columnSpan="4" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="14.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_coppia" text="Coppia - 5" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_doppiaCoppia" text="Doppia coppia - 15" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_full" text="Full - 45" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_tris" text="Tris - 25" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_poker" text="Poker - 70" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_manita" text="Manita - 130" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_scala3" text="Scala 3 - 15" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_scala4" text="Scala 4 - 35" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_scala5" text="Scala 5 -60" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_colore3" text="Colore 3 - 5" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_colore4" text="Colore 4 - 25" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                               <Label fx:id="lbl_colore5" text="Colore 5 -50" GridPane.columnIndex="3" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara" size="12.0" />
+                                    <Font name="Candara" size="15.0" />
                                  </font>
                               </Label>
                            </children>
                         </GridPane>
-                        <Label fx:id="lbl_tabellaSemi" alignment="CENTER" layoutX="319.0" layoutY="2352.0" prefHeight="26.0" prefWidth="161.0" text="TABELLA SEMI" textAlignment="CENTER">
+                        <Label fx:id="lbl_tabellaSemi" alignment="CENTER" layoutX="277.0" layoutY="2344.0" prefHeight="38.0" prefWidth="254.0" text="TABELLA SEMI" textAlignment="CENTER">
                            <font>
-                              <Font name="Candara Bold" size="20.0" />
+                              <Font name="Candara Bold" size="31.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_regole9" alignment="CENTER" layoutX="116.0" layoutY="2383.0" prefHeight="132.0" prefWidth="557.0" text="Nel caso in cui nella propria mano vi è un colore (vedi tabella precedente), il punteggio della mano verrà moltiplicato o diviso secondo dei coefficienti, che dipensono dal seme che comanda nel turno in corso, e dal seme del &quot;Colore&quot; in questione." textAlignment="CENTER" wrapText="true">
+                        <Label fx:id="lbl_regole9" alignment="CENTER" layoutX="120.0" layoutY="2382.0" prefHeight="132.0" prefWidth="557.0" text="Nel caso in cui nella propria mano vi è un colore (vedi tabella precedente), il punteggio della mano verrà moltiplicato o diviso secondo dei coefficienti, che dipensono dal seme che comanda nel turno in corso, e dal seme del &quot;Colore&quot; in questione." textAlignment="CENTER" wrapText="true">
                            <font>
-                              <Font name="Candara" size="12.0" />
+                              <Font name="Candara" size="16.0" />
                            </font>
                         </Label>
                         <GridPane layoutX="60.0" layoutY="2559.0" prefHeight="560.0" prefWidth="688.0">
@@ -362,127 +363,127 @@
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="4" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="3" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="4" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="5" GridPane.rowIndex="2">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="2" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="5" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="3" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="4" GridPane.rowIndex="3">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="2" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="4" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="3" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="5" GridPane.rowIndex="4">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 2" GridPane.columnIndex="3" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1/2" GridPane.columnIndex="4" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                               <Label text="X 1" GridPane.columnIndex="5" GridPane.rowIndex="5">
                                  <font>
-                                    <Font name="Candara Bold" size="13.0" />
+                                    <Font name="Candara Bold" size="17.0" />
                                  </font>
                               </Label>
                            </children>
