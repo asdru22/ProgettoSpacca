@@ -72,7 +72,8 @@ public class PartitaController implements Initializable {
     private Label lbl_classificaFinale;
     @FXML
     private Label lbl_vincitore;
-
+    @FXML
+    private ImageView imageFocus;
     @FXML
     private Label lbl_punteggio;
     @FXML
@@ -1622,8 +1623,15 @@ public class PartitaController implements Initializable {
     }
 
     public void keyEventTastiniPausa(KeyEvent keyEvent) throws IOException {
-        if (tglbtn_suono.isFocused() || btn_esci.isFocused() || btn_regole.isFocused() || tglbtn_musica.isFocused()) {
+            btn_regole.setFocusTraversable(false);
+        if(imageFocus.isFocusTraversable()){
+            imageFocus.setFocusTraversable(false);
+            btn_regole.requestFocus();
+            return;
+        }
+
             if (keyEvent.getCode() == KeyCode.DOWN) {
+                OPZ.premiFreccia();
                 if (btn_regole.isFocused()) {
                     tglbtn_suono.requestFocus();
                 } else if (tglbtn_suono.isFocused()) {
@@ -1633,6 +1641,7 @@ public class PartitaController implements Initializable {
                 }
             }
             if (keyEvent.getCode() == KeyCode.UP) {
+                OPZ.premiFreccia();
                 if (btn_esci.isFocused()) {
                     tglbtn_musica.requestFocus();
                 } else if (tglbtn_musica.isFocused()) {
@@ -1641,17 +1650,22 @@ public class PartitaController implements Initializable {
                     btn_regole.requestFocus();
                 }
             }
-            pulisci();
 
-        }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_esci.isFocused()) {
+            OPZ.premiBottone();
             salvaEdEsci();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_musica.isFocused()) {
+            OPZ.premiBottone();
             Utili.gestisciMusica(tglbtn_musica);
         }
         if (keyEvent.getCode() == KeyCode.ENTER && tglbtn_suono.isFocused()) {
+            OPZ.premiBottone();
             Utili.gestisciSuoni(tglbtn_suono);
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && btn_regole.isFocused()){
+            OPZ.premiBottone();
+            showRegole();
         }
 
     }
@@ -1784,14 +1798,21 @@ public class PartitaController implements Initializable {
             }
         }
     }
+    public void showRegole() throws IOException {
 
+        // Carica la nuova finestra
+        Parent root = FXMLLoader.load(getClass().getResource("RegoleView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
 
-    //sistemare ogni volta i focus dei bottoni
-    public void pulisci() {
-        btn_esci.setFocusTraversable(false);
-        tglbtn_suono.setFocusTraversable(false);
-        btn_regole.setFocusTraversable(false);
-        tglbtn_musica.setFocusTraversable(false);
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+        stage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
+
+        stage.setTitle(OPZ.traduci("regole"));
+        stage.setScene(scene);
+        stage.show();
+        stage.setResizable(false);
     }
 
     public void salvaEdEsci(MouseEvent mouseEvent) throws IOException {

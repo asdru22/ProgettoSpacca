@@ -58,6 +58,7 @@ public class LoginController implements Initializable {
     }
 
     public void LoginAdmin() throws IOException {
+        OPZ.premiBottone();
         String user = String.valueOf((txt_user.getText()));
         String psw = String.valueOf((txt_psw.getText()));
         //aggiungere usrrname e password
@@ -83,7 +84,6 @@ public class LoginController implements Initializable {
     }
 
     public void loginAdmin(MouseEvent mouseEvent) throws IOException {
-        OPZ.premiBottone();
         LoginAdmin();
     }
 

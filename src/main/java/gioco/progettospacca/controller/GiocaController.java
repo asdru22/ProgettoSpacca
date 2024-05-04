@@ -38,7 +38,7 @@ public class GiocaController implements Initializable {
     @FXML
     private TextField txt_gioc5;
     @FXML
-    private TextField txt_cod1;
+    private TextField txt_cod;
     @FXML
     private Label lbl_nomi;
     @FXML
@@ -67,8 +67,8 @@ public class GiocaController implements Initializable {
 
     public void entraInPartita() throws IOException {
         OPZ.premiBottone();
-        if (!Objects.equals(txt_cod1.getText(), "")) {
-            int codice = Utili.leggiInt(txt_cod1);
+        if (!Objects.equals(txt_cod.getText(), "")) {
+            int codice = Utili.leggiInt(txt_cod);
             if (Utili.esistePartita(codice, true)) {
                 // vai al controllo giocatori / codice
                 partitaEsiste(codice);
@@ -81,11 +81,11 @@ public class GiocaController implements Initializable {
         int n = p.getGiocatori().length;
 
         ArrayList<ValoriGioca> temp = new ArrayList<>();
-        if (!Objects.equals(txt_gioc1.getText(), "")) temp.add(new ValoriGioca(txt_gioc1, txt_cod1));
-        if (!Objects.equals(txt_gioc2.getText(), "")) temp.add(new ValoriGioca(txt_gioc2, txt_cod1));
-        if (!Objects.equals(txt_gioc3.getText(), "")) temp.add(new ValoriGioca(txt_gioc3, txt_cod1));
-        if (!Objects.equals(txt_gioc4.getText(), "")) temp.add(new ValoriGioca(txt_gioc4, txt_cod1));
-        if (!Objects.equals(txt_gioc5.getText(), "")) temp.add(new ValoriGioca(txt_gioc5, txt_cod1));
+        if (!Objects.equals(txt_gioc1.getText(), "")) temp.add(new ValoriGioca(txt_gioc1, txt_cod));
+        if (!Objects.equals(txt_gioc2.getText(), "")) temp.add(new ValoriGioca(txt_gioc2, txt_cod));
+        if (!Objects.equals(txt_gioc3.getText(), "")) temp.add(new ValoriGioca(txt_gioc3, txt_cod));
+        if (!Objects.equals(txt_gioc4.getText(), "")) temp.add(new ValoriGioca(txt_gioc4, txt_cod));
+        if (!Objects.equals(txt_gioc5.getText(), "")) temp.add(new ValoriGioca(txt_gioc5, txt_cod));
 
         boolean inizia_partita = (n == temp.size());
         if (inizia_partita) {
@@ -96,7 +96,7 @@ public class GiocaController implements Initializable {
         }
 
         if (inizia_partita && (n >= 2)) {
-            CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod1);
+            CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod);
             OPZ.premiBottone();
             OPZ.playMusica("gioco.mp3");
             Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
@@ -118,8 +118,8 @@ public class GiocaController implements Initializable {
 
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
-        /*
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
@@ -129,27 +129,19 @@ public class GiocaController implements Initializable {
             } else if (txt_gioc4.isFocused()) {
                 txt_gioc5.requestFocus();
             } else if (txt_gioc5.isFocused()) {
+                txt_cod.requestFocus();
+            } else if (txt_cod.isFocused()) {
                 btn_entra.requestFocus();
-            } else if (btn_entra.isFocused()) {
-            }
-
-            if (txt_cod1.isFocused()) {
-                txt_cod2.requestFocus();
-            } else if (txt_cod2.isFocused()) {
-                txt_cod3.requestFocus();
-            } else if (txt_cod3.isFocused()) {
-                txt_cod4.requestFocus();
-            } else if (txt_cod4.isFocused()) {
-                txt_cod5.requestFocus();
-            } else if (txt_cod5.isFocused()) {
-                btn_entra.requestFocus();
-            } else if (btn_entra.isFocused()) {
+            } else if (btn_back.isFocused()) {
+                txt_gioc1.requestFocus();
             }
 
         }
         if (keyEvent.getCode() == KeyCode.UP) {
-            txt_gioc1.setFocusTraversable(false);
+            OPZ.premiFreccia();
             if (btn_entra.isFocused()) {
+                txt_cod.requestFocus();
+            } else if (txt_cod.isFocused()) {
                 txt_gioc5.requestFocus();
             } else if (txt_gioc5.isFocused()) {
                 txt_gioc4.requestFocus();
@@ -160,71 +152,32 @@ public class GiocaController implements Initializable {
             } else if (txt_gioc2.isFocused()) {
                 txt_gioc1.requestFocus();
             } else if (txt_gioc1.isFocused()) {
-            }
-
-            if (btn_entra.isFocused()) {
-                txt_cod5.requestFocus();
-            } else if (txt_cod5.isFocused()) {
-                txt_cod4.requestFocus();
-            } else if (txt_cod4.isFocused()) {
-                txt_cod3.requestFocus();
-            } else if (txt_cod3.isFocused()) {
-                txt_cod2.requestFocus();
-            } else if (txt_cod2.isFocused()) {
-                txt_cod1.requestFocus();
-            } else if (txt_cod1.isFocused()) {
+                btn_back.requestFocus();
             }
         }
 
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (txt_gioc1.isFocused()) {
-                txt_cod1.requestFocus();
-            } else if (txt_cod1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
-                txt_cod2.requestFocus();
-            } else if (txt_cod2.isFocused()) {
                 txt_gioc3.requestFocus();
             } else if (txt_gioc3.isFocused()) {
-                txt_cod3.requestFocus();
-            } else if (txt_cod3.isFocused()) {
                 txt_gioc4.requestFocus();
             } else if (txt_gioc4.isFocused()) {
-                txt_cod4.requestFocus();
-            } else if (txt_cod4.isFocused()) {
                 txt_gioc5.requestFocus();
             } else if (txt_gioc5.isFocused()) {
-                txt_cod5.requestFocus();
-            } else if (txt_cod5.isFocused()) {
+                txt_cod.requestFocus();
+            } else if (txt_cod.isFocused()) {
                 btn_entra.requestFocus();
-            }
-        }
-        if (keyEvent.getCode() == KeyCode.TAB) {
-            if (txt_gioc1.isFocused()) {
-                txt_cod1.requestFocus();
-            } else if (txt_gioc2.isFocused()) {
-                txt_cod2.requestFocus();
-            } else if (txt_gioc3.isFocused()) {
-                txt_cod3.requestFocus();
-            } else if (txt_gioc4.isFocused()) {
-                txt_cod4.requestFocus();
-            } else if (txt_gioc5.isFocused()) {
-                txt_cod5.requestFocus();
-            } else if (txt_cod1.isFocused()) {
-                txt_gioc1.requestFocus();
-            } else if (txt_cod2.isFocused()) {
-                txt_gioc2.requestFocus();
-            } else if (txt_cod3.isFocused()) {
-                txt_gioc3.requestFocus();
-            } else if (txt_cod4.isFocused()) {
-                txt_gioc4.requestFocus();
-            } else if (txt_cod5.isFocused()) {
-                txt_gioc5.requestFocus();
+            } else if (btn_entra.isFocused()) {
+                try {
+                    entraInPartita();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
 
-
-         */
         if (keyEvent.getCode() == KeyCode.ESCAPE) {
             try {
                 BackToHome();

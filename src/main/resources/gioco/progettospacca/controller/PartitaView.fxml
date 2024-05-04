@@ -203,7 +203,7 @@
                   <Image url="@../darkScore.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_regole" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" prefHeight="52.0" prefWidth="167.0" text="Regole">
+            <Button fx:id="btn_regole" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showRegole" prefHeight="52.0" prefWidth="167.0" text="Regole">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>
@@ -214,17 +214,17 @@
                </font>
             </Button>
             <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
-            <ToggleButton fx:id="tglbtn_suono" layoutX="109.0" layoutY="209.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
+            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="109.0" layoutY="209.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtn_musica" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
+            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
             </ToggleButton>
-            <ImageView fitHeight="106.0" fitWidth="384.0">
+            <ImageView fx:id="imageFocus" fitHeight="106.0" fitWidth="384.0" focusTraversable="true" onKeyPressed="#keyEventTastiniPausa">
                <image>
                   <Image url="@../pausaTitle.png" />
                </image>

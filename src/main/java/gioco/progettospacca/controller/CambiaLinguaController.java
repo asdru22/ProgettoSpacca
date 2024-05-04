@@ -92,14 +92,23 @@ public class CambiaLinguaController implements Initializable {
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ita.isFocused())) {
             OPZ.setLingua(Locale.ITALIAN);
             btn_ita.requestFocus();
+            img_spunta1.setVisible(true);
+            img_spunta2.setVisible(false);
+            img_spunta3.setVisible(false);
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ing.isFocused())) {
             OPZ.setLingua(Locale.ENGLISH);
             btn_ing.requestFocus();
+            img_spunta2.setVisible(true);
+            img_spunta3.setVisible(false);
+            img_spunta1.setVisible(false);
         }
         if ((keyEvent.getCode() == KeyCode.ENTER && btn_ger.isFocused())) {
             OPZ.setLingua(Locale.GERMAN);
             btn_ger.requestFocus();
+            img_spunta3.setVisible(true);
+            img_spunta2.setVisible(false);
+            img_spunta1.setVisible(false);
         }
 
         if (keyEvent.getCode() == KeyCode.UP) {
