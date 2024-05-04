@@ -188,6 +188,7 @@ public class HomeController implements Initializable {
         btn_giocaPartita.setFocusTraversable(false);
 
         if (keyEvent.getCode() == KeyCode.M) {
+            OPZ.premiFreccia();
             menuImpostazioni.show();
             return;
         }
