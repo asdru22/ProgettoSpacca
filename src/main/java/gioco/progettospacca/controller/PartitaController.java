@@ -469,6 +469,7 @@ public class PartitaController implements Initializable {
     }
 
     public void stai() throws IOException {
+        OPZ.premiBottone();
         mano = p.getToccaA().getMano();
         int punti = p.valutaCarte(mano);
         lbl_punteggio.setVisible(true);
@@ -1216,6 +1217,7 @@ public class PartitaController implements Initializable {
     }
 
     public void BackToHome() throws IOException {
+        OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
 
         // Ottieni la finestra corrente
@@ -1288,6 +1290,7 @@ public class PartitaController implements Initializable {
 
     //collegato al bottone del anchor pane toccaA
     public void procedi() throws FileNotFoundException {
+        OPZ.premiBottone();
         anchPane_toccaA.setVisible(false);
         btn_gioca.setVisible(false);
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(0.5), anchPane_score);
@@ -1314,6 +1317,7 @@ public class PartitaController implements Initializable {
     }
 
     private void newScene() throws IOException {
+        OPZ.premiBottone();
         if (cont >= p.getNumeroTurni() * p.getGiocatori().length - 1) {
             String s = "";
             for (int i = 0; i < p.getGiocatori().length; i++) {
@@ -1358,6 +1362,7 @@ public class PartitaController implements Initializable {
     }
 
     public void tornaAlTabellone() throws IOException {
+        OPZ.premiBottone();
         Parent root = null;
         t = Torneo.carica(p.getIdTorneo());
         p.setPartitaTorneoNumGiocatori(t.getGiocatoriIniziali());
@@ -1733,9 +1738,11 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.UP && btn_conferma.isVisible()) {
+            OPZ.premiBottone();
             btn_conferma.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.RIGHT || keyEvent.getCode() == KeyCode.LEFT) && btn_conferma.isFocused() && btn_conferma.isVisible()) {
+            OPZ.premiFreccia();
             carta1.requestFocus();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_prossimaMano.isVisible()) {
@@ -1757,6 +1764,7 @@ public class PartitaController implements Initializable {
 
     public void keyScelta(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.RIGHT && btn_scarta.isVisible()) {
+            OPZ.premiFreccia();
             btn_scarta.requestFocus();
             if (btn_scarta.isFocused()) {
                 btn_stai.requestFocus();
@@ -1764,12 +1772,14 @@ public class PartitaController implements Initializable {
 
         }
         if (keyEvent.getCode() == KeyCode.LEFT && btn_scarta.isVisible()) {
+            OPZ.premiFreccia();
             btn_scarta.requestFocus();
             if (btn_stai.isFocused()) {
                 btn_scarta.requestFocus();
             }
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_scarta.isVisible() && btn_scarta.isFocused()) {
+            //suono scartata
             scarta();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_stai.isVisible() && btn_stai.isFocused()) {

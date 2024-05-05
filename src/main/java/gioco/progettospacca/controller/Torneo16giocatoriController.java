@@ -225,6 +225,7 @@ public class Torneo16giocatoriController implements Initializable {
     public void keyEvent(KeyEvent keyEvent) {
         txt_gioc1.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (txt_gioc1.isFocused()) {
                 txt_gioc2.requestFocus();
             } else if (txt_gioc2.isFocused()) {
@@ -267,6 +268,7 @@ public class Torneo16giocatoriController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.UP) {
+            OPZ.premiFreccia();
             if (txt_gioc1.isFocused()) {
                 btn_back.requestFocus();
             } else if (txt_gioc2.isFocused()) {
@@ -308,6 +310,7 @@ public class Torneo16giocatoriController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.RIGHT) {
+            OPZ.premiFreccia();
             if(btn_crea.isFocused()){
                 txt_codice.requestFocus();
             } else if (txt_codice.isFocused()) {
@@ -315,6 +318,7 @@ public class Torneo16giocatoriController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.LEFT){
+            OPZ.premiFreccia();
             if(btn_home.isFocused()){
                 txt_codice.requestFocus();
             } else if (txt_codice.isFocused()) {
@@ -369,6 +373,7 @@ public class Torneo16giocatoriController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.TAB) {
+            OPZ.premiFreccia();
             if (txt_gioc1.isFocused()) {
                 chk_gioc1.requestFocus();
             } else if (txt_gioc2.isFocused()) {

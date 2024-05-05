@@ -175,6 +175,7 @@ public class ModificaGiocatoreController implements Initializable {
             return;
         }
         if (keyEvent.getCode() == KeyCode.RIGHT) {
+            OPZ.premiFreccia();
             if(cmb_giocatori.isFocused()){
                 txt_nuovoNome.requestFocus();
             } else if (btn_elimina.isFocused()) {
@@ -186,6 +187,7 @@ public class ModificaGiocatoreController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.LEFT){
+            OPZ.premiFreccia();
             if(txt_nuovoNome.isFocused()){
                 cmb_giocatori.requestFocus();
             } else if (btn_modifica.isFocused()) {
@@ -197,6 +199,7 @@ public class ModificaGiocatoreController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN){
+            OPZ.premiFreccia();
             if(txt_nuovoNome.isFocused()){
                 txt_email.requestFocus();
             } else if (txt_email.isFocused()) {
@@ -208,6 +211,7 @@ public class ModificaGiocatoreController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.UP){
+            OPZ.premiFreccia();
             if(btn_nuovoGiocatore.isFocused()){
                 btn_elimina.requestFocus();
             } else if (txt_nuovoGiocatore.isFocused()) {

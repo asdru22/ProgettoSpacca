@@ -66,7 +66,6 @@ public class GiocaController implements Initializable {
     }
 
     public void entraInPartita() throws IOException {
-        OPZ.premiBottone();
         if (!Objects.equals(txt_cod.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod);
             if (Utili.esistePartita(codice, true)) {
@@ -97,7 +96,6 @@ public class GiocaController implements Initializable {
 
         if (inizia_partita && (n >= 2)) {
             CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod);
-            OPZ.premiBottone();
             OPZ.playMusica("gioco.mp3");
             Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
@@ -171,6 +169,7 @@ public class GiocaController implements Initializable {
                 btn_entra.requestFocus();
             } else if (btn_entra.isFocused()) {
                 try {
+                    OPZ.premiBottone();
                     entraInPartita();
                 } catch (IOException e) {
                     throw new RuntimeException(e);

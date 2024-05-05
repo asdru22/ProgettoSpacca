@@ -57,7 +57,7 @@
                         <Font name="Candara" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_cod1" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_cod" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label fx:id="lbl_errore" prefHeight="18.0" prefWidth="200.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                </children>
             </GridPane>

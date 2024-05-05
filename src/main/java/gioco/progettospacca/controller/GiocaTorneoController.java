@@ -127,6 +127,7 @@ public class GiocaTorneoController implements Initializable {
     public void keyEvent(KeyEvent keyEvent) {
         txt_codTorneo.setFocusTraversable(false);
         if (keyEvent.getCode() == KeyCode.UP) {
+            OPZ.premiFreccia();
             if (txt_codTorneo.isFocused()) {
                 btn_home.requestFocus();
             } else if (btn_home.isFocused()) {
@@ -135,6 +136,7 @@ public class GiocaTorneoController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (txt_codTorneo.isFocused()) {
                 btn_entraTorneo.requestFocus();
             } else if (btn_home.isFocused()) {

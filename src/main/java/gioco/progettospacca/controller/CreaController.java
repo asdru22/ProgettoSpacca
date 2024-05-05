@@ -268,6 +268,7 @@ public class CreaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.TAB) {
+            OPZ.premiFreccia();
             if (txt_gioc1.isFocused()) {
                 chk_gioc1.requestFocus();
             } else if (txt_gioc2.isFocused()) {

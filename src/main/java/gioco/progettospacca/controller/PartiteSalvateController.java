@@ -160,6 +160,7 @@ public class PartiteSalvateController implements Initializable {
         }
 
         if(keyEvent.getCode()== KeyCode.RIGHT){
+            OPZ.premiFreccia();
             if(cmb_partite.isFocused()){
                 btn_eliminaPartita.requestFocus();
             } else if (btn_eliminaPartita.isFocused()) {
@@ -171,6 +172,7 @@ public class PartiteSalvateController implements Initializable {
             }
         }
         if(keyEvent.getCode()== KeyCode.LEFT){
+            OPZ.premiFreccia();
             if(cmb_partite.isFocused()){
                 btn_back.requestFocus();
             } else if (btn_eliminaPartita.isFocused()) {
@@ -197,11 +199,13 @@ public class PartiteSalvateController implements Initializable {
             }
         }
         if(keyEvent.getCode()== KeyCode.UP){
+            OPZ.premiFreccia();
             if(btn_mostraGiocatori.isFocused()){
                 btn_eliminaPartita.requestFocus();
             }
         }
         if(keyEvent.getCode()== KeyCode.DOWN){
+            OPZ.premiFreccia();
             if(btn_eliminaPartita.isFocused()){
                 btn_mostraGiocatori.requestFocus();
             }

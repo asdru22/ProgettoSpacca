@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="631.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController4">
+<Pane onKeyPressed="#keyEvent" prefHeight="631.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.TorneoController4">
    <children>
-      <AnchorPane>
+      <AnchorPane fx:id="anchPane" onKeyPressed="#keyEvent">
          <children>
             <ImageView fitHeight="631.0" fitWidth="915.0">
                <image>

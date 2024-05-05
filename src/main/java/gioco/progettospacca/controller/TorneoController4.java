@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,7 +29,8 @@ public class TorneoController4 implements Initializable {
     Button btn_semi1, btn_semi2, btn_finale, btn_home;
     @FXML
     Label lbl_semi1, lbl_semi2, lbl_finale, lbl_titolo;
-
+    @FXML
+    AnchorPane anchPane;
     public void BackToHome() throws IOException {
         OPZ.premiBottone();
         Parent root = FXMLLoader.load(getClass().getResource("HomeView.fxml"));
@@ -162,6 +164,9 @@ public class TorneoController4 implements Initializable {
         giocaPartita(b);
     }
     public void keyEvent(KeyEvent keyEvent) {
+        if(keyEvent.getCode()== KeyCode.UP || keyEvent.getCode()== KeyCode.DOWN || keyEvent.getCode()== KeyCode.LEFT || keyEvent.getCode()== KeyCode.RIGHT){
+            OPZ.premiFreccia();
+        }
         if(keyEvent.getCode()== KeyCode.ENTER){
             if (btn_semi1.isFocused()) {
 

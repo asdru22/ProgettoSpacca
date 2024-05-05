@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,6 +29,8 @@ public class TorneoController8 implements Initializable {
     Button btn_quarti1, btn_quarti2, btn_quarti3, btn_quarti4, btn_semi1, btn_semi2, btn_finale, btn_home;
     @FXML
     Label lbl_titolo;
+    @FXML
+    AnchorPane anchPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -231,6 +234,9 @@ public class TorneoController8 implements Initializable {
         currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
     public void keyEvent(KeyEvent keyEvent) {
+        if(keyEvent.getCode()== KeyCode.UP || keyEvent.getCode()== KeyCode.DOWN || keyEvent.getCode()== KeyCode.LEFT || keyEvent.getCode()== KeyCode.RIGHT){
+            OPZ.premiFreccia();
+        }
         if(keyEvent.getCode()== KeyCode.ENTER){
             if (btn_quarti1.isFocused()) {
 

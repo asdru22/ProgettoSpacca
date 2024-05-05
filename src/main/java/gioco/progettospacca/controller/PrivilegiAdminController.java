@@ -138,10 +138,12 @@ public class PrivilegiAdminController implements Initializable {
         if (keyEvent.getCode() == KeyCode.ENTER) {
             if (btn_partiteSalvate.isFocused()) {
                 EventoPartiteSalvate();
+                OPZ.premiBottone();
             } else if (btn_back.isFocused()) {
                 BackToHome();
             } else if (btn_modificaGiocatore.isFocused()) {
                 EventoModificaGiocatore();
+                OPZ.premiBottone();
             } else if (btn_cambiaTurni.isFocused()) {
                 cambiaNumeroTurni();
             } else if (txt_nturni.isFocused()) {

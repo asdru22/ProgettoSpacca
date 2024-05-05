@@ -154,17 +154,19 @@ public class CreaTorneoController implements Initializable {
         }
 
         if (keyEvent.getCode() == KeyCode.UP && (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused())) {
+            OPZ.premiFreccia();
             btn_back.requestFocus();
-        } else if (keyEvent.getCode() == KeyCode.UP && btn_back.isFocused()) {
         }
 
         if (keyEvent.getCode() == KeyCode.DOWN) {
+            OPZ.premiFreccia();
             if (btn_back.isFocused()) {
                 btn_4players.requestFocus();
             } else if (btn_4players.isFocused() || btn_8players.isFocused() || btn_16players.isFocused()) {
             }
         }
         if (keyEvent.getCode() == KeyCode.RIGHT) {
+            OPZ.premiFreccia();
             if (btn_4players.isFocused()) {
                 btn_8players.requestFocus();
             } else if (btn_8players.isFocused()) {
@@ -173,6 +175,7 @@ public class CreaTorneoController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.LEFT) {
+            OPZ.premiFreccia();
             if (btn_16players.isFocused()) {
                 btn_8players.requestFocus();
             } else if (btn_8players.isFocused()) {
