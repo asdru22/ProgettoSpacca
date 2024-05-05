@@ -66,6 +66,7 @@ public class GiocaController implements Initializable {
     }
 
     public void entraInPartita() throws IOException {
+        OPZ.premiBottone();
         if (!Objects.equals(txt_cod.getText(), "")) {
             int codice = Utili.leggiInt(txt_cod);
             if (Utili.esistePartita(codice, true)) {
@@ -74,8 +75,11 @@ public class GiocaController implements Initializable {
             } else {
                 Utili.fadeText(lbl_errore);
                 lbl_errore.setText(OPZ.traduci("partita_non_trovata"));
-                OPZ.premiBottone();
             }
+        }
+        if(txt_cod.getText()==null || txt_cod.getText().isEmpty()){
+            Utili.fadeText(lbl_errore);
+            lbl_errore.setText(OPZ.traduci("inserisci_codice"));
         }
     }
 

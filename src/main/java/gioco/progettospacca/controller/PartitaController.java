@@ -513,6 +513,7 @@ public class PartitaController implements Initializable {
 
     //tasto conferma carte da scartare
     public void cambiaCarteSelezionate() {
+        OPZ.premiBottone();
         Iterator<Carta> iterator = mazzo.getMazzoArrayList().iterator();        //faccio questo per evitare che quando si pescano le carte al posto di quelle scartate si possano pescare degli imprevisti (scelto a livello di regole, gli imprevisti si possono pescare solo ad inizio partita per non renderli troppo comuni da trovare in quanto danno un aiuto non da poco )
         while (iterator.hasNext()) {
             Carta carta = iterator.next();
@@ -899,6 +900,7 @@ public class PartitaController implements Initializable {
 
     //animazione dello spostamento della carta imprevisto nella apposita casella
     public void animazioneImprevisto(int i) {
+        OPZ.suonoScarta();
         double startFromX = anch_imprevisto.getLayoutX();
         double startFromY = anch_imprevisto.getLayoutY();
 
@@ -934,6 +936,7 @@ public class PartitaController implements Initializable {
 
     //animazione per una singola pescata
     public void pescataSingola(int i) {
+        OPZ.suonoScarta();
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = 0;
         if (i == 0) {
@@ -987,6 +990,7 @@ public class PartitaController implements Initializable {
 
     //animazione delle carte pescate dopo la scartata
     public void nuoveCartePescateAnimazione() throws FileNotFoundException {
+        OPZ.suonoScarta();
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
@@ -1105,6 +1109,7 @@ public class PartitaController implements Initializable {
 
     //animazione quando le carte scartate tornano nel mazzo
     public void scartataAnimazione() {
+        OPZ.suonoScarta();
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
@@ -1169,6 +1174,7 @@ public class PartitaController implements Initializable {
 
     //la pescata all'inizio del turno della mano
     public void pescataAnimazione() {
+        OPZ.suonoScarta();
         // Imposta la posizione iniziale della cartaMazzo
         double startFromX = anch_mazzo.getLayoutX();
         double startFromY = anch_mazzo.getLayoutY();
@@ -1679,6 +1685,7 @@ public class PartitaController implements Initializable {
 
     public void keyPartita(KeyEvent keyEvent) throws FileNotFoundException {
         if (keyEvent.getCode() == KeyCode.RIGHT && btn_conferma.isVisible()) {
+            OPZ.premiFreccia();
             carta1.setFocusTraversable(false);
             carta1.getStyleClass().add("carta");
             carta2.getStyleClass().add("carta");
@@ -1701,6 +1708,7 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.LEFT && btn_conferma.isVisible()) {
+            OPZ.premiFreccia();
             carta1.setFocusTraversable(false);
             carta1.getStyleClass().add("carta");
             carta2.getStyleClass().add("carta");
@@ -1738,7 +1746,7 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.UP && btn_conferma.isVisible()) {
-            OPZ.premiBottone();
+            OPZ.premiFreccia();
             btn_conferma.requestFocus();
         }
         if ((keyEvent.getCode() == KeyCode.DOWN || keyEvent.getCode() == KeyCode.RIGHT || keyEvent.getCode() == KeyCode.LEFT) && btn_conferma.isFocused() && btn_conferma.isVisible()) {
@@ -1779,7 +1787,6 @@ public class PartitaController implements Initializable {
             }
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_scarta.isVisible() && btn_scarta.isFocused()) {
-            //suono scartata
             scarta();
         }
         if (keyEvent.getCode() == KeyCode.ENTER && btn_stai.isVisible() && btn_stai.isFocused()) {
