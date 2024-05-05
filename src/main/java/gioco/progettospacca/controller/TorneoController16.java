@@ -316,13 +316,13 @@ public class TorneoController16 implements Initializable {
         }
     }
 
-    public void giocaPartita(Button b) throws IOException {
+    public void giocaPartita() throws IOException {
         OPZ.premiBottone();
         OPZ.playMusica("gioco.mp3");
         Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
         // Ottieni la finestra corrente
-        Stage currentStage = (Stage) b.getScene().getWindow();
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
 
         // Ottieni la scena corrente
         Scene currentScene = currentStage.getScene();
@@ -331,146 +331,131 @@ public class TorneoController16 implements Initializable {
         currentScene.setRoot(root);
     }
 
-    public void cliccaOttavi1(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi1() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(0);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi2(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi2() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(1);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi3(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi3() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(2);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi4(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi4() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(3);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi5(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi5() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(4);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi6(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi6() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(5);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi7(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi7() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(6);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaOttavi8(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaOttavi8() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(7);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaQuarti1(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaQuarti1() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(8);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaQuarti2(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaQuarti2() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(9);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaQuarti3(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaQuarti3() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(10);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaQuarti4(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaQuarti4() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(11);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaSemi1(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaSemi1() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(12);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaSemi2(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaSemi2() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(13);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaFinale(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaFinale() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(14);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void keyEvent(KeyEvent keyEvent) {
+    public void keyEvent(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode()== KeyCode.UP || keyEvent.getCode()== KeyCode.DOWN || keyEvent.getCode()== KeyCode.LEFT || keyEvent.getCode()== KeyCode.RIGHT){
             OPZ.premiFreccia();
         }
         if(keyEvent.getCode()== KeyCode.ENTER){
             if(btn_ottavi1.isFocused()){
-
+                cliccaOttavi1();
             } else if (btn_ottavi2.isFocused()) {
-
+                cliccaOttavi2();
             } else if (btn_ottavi3.isFocused()) {
-
+                cliccaOttavi3();
             } else if (btn_ottavi4.isFocused()) {
-
+                cliccaOttavi4();
             } else if (btn_ottavi5.isFocused()) {
-
+                cliccaOttavi5();
             } else if (btn_ottavi6.isFocused()) {
-
+                cliccaOttavi6();
             } else if (btn_ottavi7.isFocused()) {
-
+                cliccaOttavi7();
             } else if (btn_ottavi8.isFocused()) {
-
+                cliccaOttavi8();
             } else if (btn_quarti1.isFocused()) {
-
+                cliccaQuarti1();
             } else if (btn_quarti2.isFocused()) {
-
+                cliccaQuarti2();
             } else if (btn_quarti3.isFocused()) {
-
+                cliccaQuarti3();
             } else if (btn_quarti4.isFocused()) {
-
+                cliccaQuarti4();
             } else if (btn_semi1.isFocused()) {
-
+                cliccaSemi1();
             } else if (btn_semi2.isFocused()) {
-
+                cliccaSemi2();
             } else if (btn_finale.isFocused()) {
-
+                cliccaFinale();
             } else if (btn_home.isFocused()) {
                 try {
                     BackToHome();
@@ -479,6 +464,7 @@ public class TorneoController16 implements Initializable {
                 }
             }
         }
+        //non vanno i commit
         if(keyEvent.getCode()==KeyCode.ESCAPE){
             try {
                 BackToHome();
