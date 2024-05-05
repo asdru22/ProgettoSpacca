@@ -131,13 +131,13 @@ public class TorneoController4 implements Initializable {
 
     }
 
-    public void giocaPartita(Button b) throws IOException {
+    public void giocaPartita() throws IOException {
         OPZ.premiBottone();
         OPZ.playMusica("gioco.mp3");
         Parent root = FXMLLoader.load(getClass().getResource("PartitaView.fxml"));
 
         // Ottieni la finestra corrente
-        Stage currentStage = (Stage) b.getScene().getWindow();
+        Stage currentStage = (Stage) btn_home.getScene().getWindow();
 
         // Ottieni la scena corrente
         Scene currentScene = currentStage.getScene();
@@ -146,37 +146,34 @@ public class TorneoController4 implements Initializable {
         currentScene.setRoot(root);
     }
 
-    public void cliccaSemi1(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaSemi1() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(0);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaSemi2(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaSemi2() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(1);
-        giocaPartita(b);
+        giocaPartita();
     }
 
-    public void cliccaFinale(MouseEvent mouseEvent) throws IOException {
-        Button b = (Button) mouseEvent.getSource();
+    public void cliccaFinale() throws IOException {
         Torneo t = Torneo.carica(CODICE_GLOBALE_TORNEO);
         CODICE_GLOBALE_PARTITA = t.getPartite().get(2);
-        giocaPartita(b);
+        giocaPartita();
     }
-    public void keyEvent(KeyEvent keyEvent) {
+    public void keyEvent(KeyEvent keyEvent) throws IOException {
         if(keyEvent.getCode()== KeyCode.UP || keyEvent.getCode()== KeyCode.DOWN || keyEvent.getCode()== KeyCode.LEFT || keyEvent.getCode()== KeyCode.RIGHT){
             OPZ.premiFreccia();
         }
         if(keyEvent.getCode()== KeyCode.ENTER){
             if (btn_semi1.isFocused()) {
-
+                cliccaSemi1();
             } else if (btn_semi2.isFocused()) {
-
+                cliccaSemi2();
             } else if (btn_finale.isFocused()) {
-
+                cliccaFinale();
             } else if (btn_home.isFocused()) {
                 try {
                     BackToHome();
