@@ -165,6 +165,7 @@ public class HomeController implements Initializable {
         // Imposta la nuova radice della scena
         currentScene.setRoot(root);
         currentScene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+        currentScene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
     }
 
     public void showRegole() throws IOException {
