@@ -146,8 +146,8 @@ public class Opzioni {
         playSfx("freccia.wav");
     }
 
-    public void scarta() {
-        playSfx("carta.mp3");
+    public void suonoScarta() {
+        playSfx("carta.wav");
     }
 
     public void vittoria() {
