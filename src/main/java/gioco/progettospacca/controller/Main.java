@@ -26,6 +26,13 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
+        try {
+            OPZ = Opzioni.carica();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        cancellaTorneiInSospeso();
+
         stage.setTitle(OPZ.traduci("spacca"));
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("HomeView.fxml")));
@@ -39,15 +46,10 @@ public class Main extends Application {
 
         OPZ.playMusica("lobby.wav");
 
+
     }
 
     public static void main(String[] args) {
-        try {
-            OPZ = Opzioni.carica();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        cancellaTorneiInSospeso();
         launch(args);
     }
 }
