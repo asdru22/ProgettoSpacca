@@ -224,7 +224,7 @@ public class PartiteSalvateController implements Initializable {
             }
             lbl_listaGgiocatori.setText(out);
         } catch (NullPointerException e) {
-            lbl_output.setText(OPZ.traduci("no_tornei"));
+            lbl_output.setText(OPZ.traduci("no_partite"));
         }
     }
 }
