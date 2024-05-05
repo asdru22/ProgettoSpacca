@@ -25,7 +25,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-
         try {
             OPZ = Opzioni.carica();
         } catch (IOException e) {

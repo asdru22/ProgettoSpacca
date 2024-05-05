@@ -434,6 +434,7 @@ public class PartitaController implements Initializable {
     }
 
     public void scarta(MouseEvent event) {
+        OPZ.premiBottone();
         pulisciSchermata();
         aggiungiEventiCarte();
         lbl_scegliCarteDaScartare.setVisible(true);
@@ -441,6 +442,7 @@ public class PartitaController implements Initializable {
     }
 
     public void scarta() {
+        OPZ.premiBottone();
         pulisciSchermata();
         aggiungiEventiCarte();
         lbl_scegliCarteDaScartare.setVisible(true);
@@ -448,6 +450,7 @@ public class PartitaController implements Initializable {
     }
 
     public void stai(MouseEvent event) throws IOException {
+        OPZ.premiBottone();
         mano = p.getToccaA().getMano();
         int punti = p.valutaCarte(mano);
         lbl_punteggio.setVisible(true);
