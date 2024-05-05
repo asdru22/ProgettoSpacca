@@ -71,6 +71,10 @@ public class GiocaController implements Initializable {
             if (Utili.esistePartita(codice, true)) {
                 // vai al controllo giocatori / codice
                 partitaEsiste(codice);
+            } else {
+                Utili.fadeText(lbl_errore);
+                lbl_errore.setText(OPZ.traduci("partita_non_trovata"));
+                OPZ.premiBottone();
             }
         }
     }
@@ -87,13 +91,14 @@ public class GiocaController implements Initializable {
         if (!Objects.equals(txt_gioc5.getText(), "")) temp.add(new ValoriGioca(txt_gioc5, txt_cod));
 
         boolean inizia_partita = (n == temp.size());
+        // inizia la partita se n = giocatori previsiti
         if (inizia_partita) {
             for (ValoriGioca v : temp) {
                 inizia_partita = v.controlloGiocatore();
                 if (!inizia_partita) break;
             }
         }
-
+        System.out.println("inizia parti"+inizia_partita);
         if (inizia_partita && (n >= 2)) {
             CODICE_GLOBALE_PARTITA = Utili.leggiInt(txt_cod);
             OPZ.playMusica("gioco.mp3");

@@ -19,10 +19,10 @@ public class ValoriGioca {
         if (Utili.esisteGiocatore(nome)) { // se esiste questo giocatore
             Giocatore g = Giocatore.carica(nome); // carica il suo file
             ArrayList<Integer> partite = g.getPartite(); // prendi le partite
-            // se non è bot
+            // se è admin può giocare a tutte
             if (Objects.equals(nome, "admin")) {
                 return true;
-            }
+            } // altrimenti guarda se c'è
             return partite.contains(codice);
         }
         return false;

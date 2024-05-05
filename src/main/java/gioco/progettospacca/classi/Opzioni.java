@@ -57,7 +57,7 @@ public class Opzioni {
 
     private static Opzioni inizializza() {
         // crea cartelle salvataggi per la prima esecuzione in assoluto
-        File d_salvataggi = new File("salvataggi") ;
+        File d_salvataggi = new File("salvataggi");
         d_salvataggi.mkdir();
 
         File d_giocatori = new File("salvataggi/giocatori");
@@ -146,6 +146,10 @@ public class Opzioni {
         playSfx("freccia.wav");
     }
 
+    public void scarta() {
+        playSfx("carta.mp3");
+    }
+
     public void vittoria() {
         playSfx("vittoria.wav");
     }
@@ -161,7 +165,8 @@ public class Opzioni {
     public int getTurniPartita() {
         return turniPartita;
     }
-    public void setTurniPartita(int n){
+
+    public void setTurniPartita(int n) {
         turniPartita = n;
         salva();
     }
