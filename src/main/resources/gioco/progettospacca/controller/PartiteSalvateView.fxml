@@ -81,9 +81,9 @@
                </children>
             </GridPane>
             <Button fx:id="btn_back" focusTraversable="false" layoutX="11.0" layoutY="12.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#back" prefHeight="40.0" prefWidth="37.0" text="❮" />
-            <Label fx:id="lbl_listaGgiocatori" alignment="CENTER" layoutX="257.0" layoutY="439.0" prefHeight="112.0" prefWidth="162.0" textAlignment="CENTER">
+            <Label fx:id="lbl_listaGgiocatori" alignment="TOP_LEFT" layoutX="257.0" layoutY="424.0" prefHeight="112.0" prefWidth="162.0">
                <font>
-                  <Font name="Candara Italic" size="14.0" />
+                  <Font name="Candara Italic" size="18.0" />
                </font></Label>
          </children>
       </AnchorPane>
