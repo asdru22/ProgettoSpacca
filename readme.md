@@ -55,6 +55,7 @@ Dal menù impostazioni si può
 ## Sviluppo del progetto
 ### Funzionalità obbligatorie
 #### Partita
+Il codice della partita è gestita a turni, ad ogni nuovo turno viene ricaricata la scena con i dati aggiornati della partita e del giocatore interessato, proprio per questo è possibile interrompere sempre la partita e riprenderla dal punto in cui ci si era fermati. Abbiamo utilizzato le animazioni di javafx per visualizzare il movimento delle carte e la griglia della scena è fissa. Vengono utilizzate molto anche le pause, proprio per attendere che le animazioni vengano completate e per far giocare il bot come se fosse un umano rendendo comprensibili le sue azioni. Esiste inoltre una funzione pausa richiamabile tramite il pulsante "ESCAPE" in cui si potranno visualizzare le regole, istruzioni, settare l'audio e la musica oppure uscire dalla partita.
 ![](https://cdn.discordapp.com/attachments/1120361955866185867/1234612945749545030/image.png?ex=66315e68&is=66300ce8&hm=3b63218138cd9478b9471a8ea5f8b05b09135b4a09bf949d400ae6d00408364b&)
 ![](https://cdn.discordapp.com/attachments/1120361955866185867/1234613024300466186/image.png?ex=66315e7a&is=66300cfa&hm=fa1565f1edeec6874d8448e3cbe28bea72f18d1513a9ccd92d8723423b3c0795&)
 #### Torneo
@@ -62,12 +63,22 @@ Quando viene creato un nuovo torneo, si crea un numero di partite uguale alla me
 #### Salvataggi
 Le classi Partita, Giocatore e Torneo hanno una funzione `salva` e `carica`. Il metodo carica è statico è quindi può essere chiamato in qualsiasi momento per creare una nuova istanza di quella classe. Il metodo salva converte la classe in un file `.json`. Entrambi i metodi richiedono la creazione di un nuovo oggetto di tipo `Gson`.
 #### Gestione bot
+Il bot è un oggetto della classe Giocatore che utilizza gli stessi metodi ma con una particolarità, che ha l'attributo "bot" settato a true, in questo modo saremo in grado di capire come dirigere il turno del bot nella partita attraverso un semplice if. Per la gestione del bot viene distinto il blocco di codice che segue il robot rispetto ad un utente reale. La prima scelta del bot è quella di scartare oppure stare, viene deciso in modo randomico attraverso un metodo che restituisce un numero casuale tra 1 e 2; la seconda scelta avviene soltanto se il bot ha deciso di scartare e il funzionamento è il medesimo della scelta tra stare e scartare (numero casuale tra 1 e 3 carte da scartare). Il bot inoltre riesce anche a terminare il turno in modo indipendente, quindi una partita tra soli bot non ha bisogno di input di persone reali per continuare.
 #### Layout  
 Il layout è stato gestito tramite Pane ed Anchor Pane come contenitori generali e Grid pane per la suddivisione ordinata degli elementi al fine di creare un'interfaccia semplice, pulita ed intuitiva.
 #### Modifica dati dei giocatori
 Funzioni nella classe di utilità quali `elencaGiocatori`, `esisteGiocatore` e `eliminaGiocatore` hanno facilitato la gestione dei giocatori. Sono usati controlli per evitare che queste modifiche possano essere fatte a Bot o all'admin.
+#### Carte Imprevisto
+Abbiamo inserito 2 carte imprevisto e per implementarle abbiamo aggiunto un seme "neutro" all'interno della definizione carta così per poterle aggiungere al mazzo. Le carte imprevisto, per scelta, si possono trovare soltanto alla prima mano del turno quindi non si possono pescare dopo aver scartato. Una volta pescato un imprevisto ci verrà mostrato l'effetto e verrà spostato nell'apposito spazio delle carte imprevisto nel campo, al suo posto verrà pescata in automatico una nuova carta (senza interferire con la possibiltà di scartare comunque 3 carte successivamente).
 ### Funzionalità facoltative
 #### Invio Mail
+Per l'invio delle mail abbiamo utilizzato i thread in quanto per completare l'invio ci vuole un pò e quindi per evitare di bloccare l'applicazione per svariati secondi abbiamo deciso di optare per questa soluzione. La libreria utilizzata è javax.mail, per implementarla abbiamo utilizzato le dipendenze maven. L'indirizzo dalla quale partiranno le mail è stato creato da noi e rappresenta l'indirizzo ufficiale di spacca. Per accedere ai servizi di Gmail, abbiamo dovuto richiedere una password apposta, tramite l'account Google, per poterla utilizzare per l'accesso all'account da applicazioni secondarie nelle applicazioni. Meccanismo invio mail:
+quando modifico il nome di un giocatore se quel giocatore aveva la mail registrata allora gli arriverà la mail con il nome nuovo.
+Partita: arriva la mail a tutti i giocatori con mail registrata al momento della creazione della partita.
+finita la partita arriva la mail (a chi l'ha registrata) contenente le informazione e il vincitore della partita.
+Torneo: arriva la mail a tutti i partecipanti(a chi l'ha registrata) al momento della creazione del torneo.
+finita ogni partita del torneo arriva una mail contenente le informazioni e il vincitore della partita (attenzione, qua volutamente ho inserito che la mail arriva solo ai PARTECIPANTI DELLA PARTITA del torneo che hanno registrato la mail e quindi non a tutti i partecipanti del torneo con mail registrata)
+finito il torneo invece arriva una mail a TUTTI i partecipanti del torneo anche quelli eliminati contenente il vincitore del torneo
 #### Suoni e Audio
 All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni` che contiene un `MediaPlayer` per la musica e uno per gli effetti sonori. Dal menù impostazioni si possono pausare/riprendere questi due oggetti per disattivare e riattivare le traccie audio degli effetti sonori e della musica separatamente.
 #### Cambio Lingua
@@ -75,6 +86,7 @@ Sempre nella classe statica `Opzioni` è memorizzata la lingua. `Opzioni` ha un 
 #### CSS
 Personalizzazione di pressoché ogni elemento dell'applicazione, dai bottoni, alle textfield, alle combobox, al menu. in style.css vi è di fatto tutta la personalizzazione compresa di dinamismo al passare del mouse di determinati elementi. 
 #### Applicazione interamente utilizzabile da tastiera
+E' stato creato un metodo KeyEvent per gestire ogni scena in relazione agli eventi da tastiera in modo tale da poter utilizzare l'intera applicazione anche senza mouse. Per fare ciò abbiamo utilizzato una sequenza di if ed else if utilizzando il focus del nodo, es: se il nodo ha il focus e clicco invia allora attiva il metodo del nodo. Le frecce per spostarsi da un nodo ad un altro, il pulsante ENTER (invio) per utilizzare un certo bottone oppure per spostarsi al nodo successivo nel caso di una textField, il pulsante esc per tornare indietro da una detrminata scena oppure tornare alla home, il pulsante tab per spostarsi sulle checkBox, il pulsante M per aprire la barra del menu e così via...
 #### Tabellone Torneo
 Ogni torneo ha una variabile che memorizza il round corrente e quello massimo (`=log_2(num_giocatori_iniziali)`). Per esempio nel torneo da 4 giocatori, quando il numero round è uguale a 2 significa che si sta già giocando la finale, e quindi i bottoni per giocare le due semifinali non sono più cliccabili (dato che le due partite sono finite).
 #### Interruzione e ripristino partite di un torneo
