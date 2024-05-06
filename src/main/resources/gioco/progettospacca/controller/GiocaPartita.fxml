@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<Pane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
+<Pane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.GiocaController">
    <children>
       <AnchorPane prefHeight="631.0" prefWidth="915.0">
          <children>
@@ -47,25 +47,25 @@
                   <TextField fx:id="txt_gioc3" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="3" />
                   <TextField fx:id="txt_gioc4" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="4" />
                   <TextField fx:id="txt_gioc5" focusTraversable="false" maxWidth="200.0" onKeyPressed="#keyEvent" GridPane.rowIndex="5" />
-                  <Button fx:id="btn_entra" focusTraversable="false" mnemonicParsing="false" onAction="#entraInPartita" onKeyPressed="#keyEvent" prefHeight="51.0" prefWidth="150.0" text="Entra" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                  <Button fx:id="btn_entra" focusTraversable="false" mnemonicParsing="false" onAction="#entraInPartita" onKeyPressed="#keyEvent" prefHeight="51.0" prefWidth="150.0" text="Entra" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2">
                      <font>
                         <Font name="Candara" size="25.0" />
                      </font>
                   </Button>
-                  <Label fx:id="lbl_codice" alignment="CENTER" prefHeight="30.0" prefWidth="324.0" text="Inserisci codice partita:" GridPane.columnIndex="1">
+                  <Label fx:id="lbl_codice" alignment="CENTER" prefHeight="30.0" prefWidth="324.0" text="Inserisci codice partita:" GridPane.columnIndex="1" GridPane.rowSpan="3">
                      <font>
-                        <Font name="Candara" size="22.0" />
+                        <Font name="Candara" size="20.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txt_cod" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="txt_cod" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3" />
                   <Label fx:id="lbl_errore" alignment="CENTER" prefHeight="18.0" prefWidth="200.0" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <ImageView fitHeight="108.0" fitWidth="108.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                     <image>
+                        <Image url="@../Logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </GridPane>
-            <ImageView fitHeight="130.0" fitWidth="130.0" layoutX="692.0" layoutY="251.0">
-               <image>
-                  <Image url="@../Logo.png" />
-               </image>
-            </ImageView>
          </children>
       </AnchorPane>
    </children>
