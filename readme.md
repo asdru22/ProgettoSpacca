@@ -91,12 +91,9 @@ Dal menù impostazioni si può
 
 ![](https://cdn.discordapp.com/attachments/1120361955866185867/1234613024300466186/image.png?ex=66315e7a&is=66300cfa&hm=fa1565f1edeec6874d8448e3cbe28bea72f18d1513a9ccd92d8723423b3c0795&)
 La partita è gestita a turni, a ogni nuovo turno viene ricaricata la scena con i dati aggiornati della partita e del
-giocatore interessato, proprio per questo è possibile interrompere sempre la partita e riprenderla dal punto in cui ci
-si era fermati. Abbiamo utilizzato le animazioni di javafx per visualizzare il movimento delle carte e la griglia della
-scena è fissa. Vengono utilizzate molto anche le pause, proprio per attendere che le animazioni vengano completate e per
-far giocare il bot come se fosse un umano rendendo comprensibili le sue azioni. Esiste inoltre una funzione pausa
-richiamabile tramite il pulsante "ESCAPE" in cui si potranno visualizzare le regole, istruzioni, settare l'audio e la
-musica oppure uscire dalla partita.
+giocatore interessato. Grazie a questo è possibile interrompere sempre la partita e riprenderla nel punto in cui ci si era fermati. Abbiamo utilizzato le animazioni di javafx per visualizzare il movimento delle carte e pause per attendere che le animazioni vengano completate. Questo permette anche di rendere le azioni dei bot visibili e comprensibili. Esiste inoltre una funzione pausa
+richiamabile tramite il pulsante `esc` in cui si può visualizzare le regole, impostare l'audio e la
+musica e uscire dalla partita.
 
 #### Torneo
 
@@ -113,15 +110,12 @@ in un file `.json`. Entrambi i metodi richiedono la creazione di un nuovo oggett
 
 #### Gestione bot
 
-Il bot è un oggetto della classe Giocatore che utilizza gli stessi metodi ma con una particolarità, che ha l'attributo "
-bot" settato a true, in questo modo saremo in grado di capire come dirigere il turno del bot nella partita attraverso un
-semplice if.  
+Il bot è un oggetto della classe Giocatore che utilizza gli stessi metodi ma con una particolarità, che ha la variabile booleana `bot` impostata a true, in questo modo saremo in grado di capire come dirigere il turno del bot nella partita attraverso un semplice if.   
 Per la gestione del bot viene distinto il blocco di codice che segue il bot rispetto a un utente reale. La prima scelta
 del bot è quella di scartare oppure stare, viene deciso in modo randomico attraverso un metodo che restituisce un numero
 casuale tra 1 e 2. La seconda scelta avviene soltanto se il bot ha deciso di scartare e il funzionamento è il medesimo
 della scelta tra stare e scartare (numero casuale tra 1 e 3 carte da scartare).  
-Il bot inoltre riesce anche a terminare il turno in modo indipendente, quindi una partita tra soli bot non ha bisogno di
-input di persone reali per continuare.
+Il bot inoltre riesce anche a terminare il turno in modo indipendente, quindi una partita tra soli bot non ha bisogno di input di persone reali per continuare.
 
 #### Layout
 
@@ -137,37 +131,23 @@ gestione dei giocatori. Sono usati controlli per evitare che queste modifiche po
 #### Carte Imprevisto
 
 ![](https://cdn.discordapp.com/attachments/1120361955866185867/1234612945749545030/image.png?ex=66315e68&is=66300ce8&hm=3b63218138cd9478b9471a8ea5f8b05b09135b4a09bf949d400ae6d00408364b&)
-Abbiamo inserito 2 carte imprevisto e per implementarle abbiamo aggiunto un seme "neutro" all'interno della definizione
-carta così per poterle aggiungere al mazzo. Le carte imprevisto, per scelta, si possono trovare soltanto alla prima mano
-del turno quindi non si possono pescare dopo aver scartato. Una volta pescato un imprevisto ci verrà mostrato l'effetto
-e verrà spostato nell'apposito spazio delle carte imprevisto nel campo, al suo posto verrà pescata in automatico una
-nuova carta (senza interferire con la possibiltà di scartare comunque 3 carte successivamente).
+Sono presenti due carte imprevisto implementate con un seme "neutro" all'interno della definizione carta così per poterle aggiungere al mazzo. Le carte imprevisto, per scelta, si possono trovare soltanto alla prima mano del turno e non possono essere pescate dopo aver scartato. Una volta pescato un imprevisto viene mostrato l'effetto e la carta è spostata nello spazio imprevisti sul campo. Al suo posto verrà pescata in automatico una nuova carta (senza interferire con la possibiltà di scartare comunque 3 carte successivamente).
 
 ### Funzionalità facoltative
 
 #### Invio Mail
 
-Per l'invio delle mail abbiamo utilizzato i thread in quanto l'invio non è immediato e quindi per evitare di bloccare
-l'applicazione per svariati secondi abbiamo deciso di optare per questa soluzione. La libreria utilizzata è `javax.mail`
-,installata con le dipendenze maven (come `GSON` e `JavaFX`). Le mail vengono inviate da un account Google creato da noi.
-Per accedere ai servizi di Gmail abbiamo richiesto dall'account una password apposita per avere accesso all'account da
-applicazioni secondarie.
-Meccanismo invio mail:
-quando modifico il nome di un giocatore se quel giocatore aveva la mail registrata allora gli arriverà la mail con il
-nome nuovo.  
+Per l'invio delle mail abbiamo utilizzato i thread in quanto l'invio non è immediato, quindi per evitare di bloccare l'applicazione per svariati secondi abbiamo deciso di optare per questa soluzione. La libreria utilizzata è `javax.mail`, installata con le dipendenze maven (come `GSON` e `JavaFX`). Le mail vengono inviate da un account Google creato da noi.
+Per accedere ai servizi di Gmail abbiamo richiesto dall'account una password apposita per avere accesso all'account da applicazioni secondarie.
+Meccanismo invio mail: quando viene modificato il nome di un giocatore con mail registrata, gli arriverà una mail che comunica il cambio di nome.
 Partita: arriva la mail a tutti i giocatori con mail registrata al momento della creazione della partita.
 Finita la partita arriva la mail (a chi l'ha registrata) contenente le informazione e il vincitore della partita.  
-Torneo: arriva la mail a tutti i partecipanti(a chi l'ha registrata) al momento della creazione del torneo.
-Finita ogni partita del torneo arriva una mail contenente le informazioni e il vincitore della partita (attenzione, qua
-volutamente ho inserito che la mail arriva solo ai **partecipanti della partita** del torneo che hanno registrato la
-mail e quindi non a tutti i partecipanti del torneo con mail registrata).  
-Finito il torneo invece arriva una mail a tutti i partecipanti del torneo anche quelli eliminati contenente il vincitore
-del torneo
+Torneo: arriva la mail a tutti i partecipanti(a chi l'ha registrata) al momento della creazione del torneo.  
+Finito il torneo arriva una mail a tutti i partecipanti, anche quelli eliminati, che mostra il vincitore del torneo.
 
 #### Suoni e Audio
 
-All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni` che contiene un `MediaPlayer` per la
-musica e uno per gli effetti sonori. Dal menù impostazioni si possono pausare/riprendere questi due oggetti per
+All'avvio dell'applicazione viene creata una variabile statica di tipo `Opzioni` che contiene un `MediaPlayer` per la musica e uno per gli effetti sonori. Dal menù impostazioni si possono pausare/riprendere questi due oggetti per
 disattivare e riattivare le traccie audio degli effetti sonori e della musica separatamente.
 
 #### Cambio Lingua
@@ -177,18 +157,11 @@ la traduzione corrispondente nella lingua selezionata usando una `ResourceBundle
 
 #### CSS
 
-Personalizzazione di pressoché ogni elemento dell'applicazione, dai `Button`, alle `Textfield`, alle `ComboBox`, al
-menu. In style.css vi è di fatto tutta la personalizzazione compresa di dinamismo al passare del mouse di determinati
-elementi.
+Personalizzazione di pressoché ogni elemento dell'applicazione, dai `Button`, alle `Textfield`, alle `ComboBox`, al menu. In style.css vi è di fatto tutta la personalizzazione compresa di dinamismo al passare del mouse di determinati elementi.
 
 #### Applicazione interamente utilizzabile da tastiera
 
-È stato creato un metodo KeyEvent per gestire ogni scena in relazione agli eventi da tastiera in modo tale da poter
-utilizzare l'intera applicazione anche senza mouse. Per fare ciò abbiamo utilizzato una sequenza di if ed else if
-utilizzando il focus del nodo, es: se il nodo ha il focus e clicco invia allora attiva il metodo del nodo. Le frecce per
-spostarsi da un nodo a un altro, il pulsante ENTER (invio) per utilizzare un certo bottone oppure per spostarsi al nodo
-successivo nel caso di una `TextField`, il pulsante esc per tornare indietro da una detrminata scena oppure tornare alla
-home, il pulsante tab per spostarsi sulle `CheckBox`, il pulsante M per aprire la barra del menu e così via...
+È stato creato un metodo `KeyEvent` per spostare il focus tra i `Button` e `Label` dell'applicazione, affinaché possa essere utilizzata senza mouse. Per fare ciò abbiamo utilizzato una sequenza di `if` ed `else if` utilizzando il focus del nodo. Per esempio, se un bottone ha il focus e premo `invio`, è come se il bottone fosse stato cliccato. Si può spostare il focus tra varie label e bottoni con le frecce e il tasto `tab`.
 
 #### Tabellone Torneo
 
@@ -198,29 +171,14 @@ quindi i bottoni per giocare le due semifinali non sono più cliccabili (dato ch
 
 #### Interruzione e ripristino partite di un torneo
 
-Nella classe torneo sono salvati i codici di tutte le partite giocate. Questo permette di caricare e salvare una partita
-come se fosse giocata singolarmente. Il tabellone inoltre permette facilmente di riaccedere a una partita iniziata ma
-non finita.
+Nella classe torneo sono salvati i codici di tutte le partite giocate. Questo permette di caricare e salvare una partita come se fosse giocata singolarmente. Il tabellone inoltre permette facilmente di riaccedere a una partita iniziata ma non finita.
 
 #### Cursore
 
-Il cursore standard è stato sostituito da un'immagine personalizzata in linea con il design dell'applicazione, immagine
-che cambia al passaggio sopra elementi cliccabili tramite `setOnMouseEntered` e `setOnMouseExited`.
+Il cursore standard è stato sostituito da un'immagine personalizzata in linea con il design dell'applicazione, immagine che cambia al passaggio sopra elementi cliccabili tramite `setOnMouseEntered` e `setOnMouseExited`.
 
 ## Suddivisione del lavoro
 
-- Nanni: Tutte le classi nella
-  cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi) a
-  eccezione di `MailThread.java`, `Partita.java` e `Giocatore.java`. Vari collegamenti con le partite, opzioni,
-  salvataggi e metodi della classe `Utili.java` all'interno
-  dei [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller),
-  in particolare quelli usati per i tornei e i privilegi admin.
-- Manieri: Grafica e design (FXML), collegamenti tra le scene e
-  classi [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller)
-  associate, creazione di tutte le immagini. Cursore personalizzato.
-- Silvestri: [PartitaController.java](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller/PartitaController.java):
-Implementazione e funzionalità della partita (animazioni, bot, eventi e algoritmo principale di gioco). Gestione di
-tutti gli eventi dell'intera applicazione (eventi javafx: mouseEvent, clickEvent, keyEvent ecc...), metodi funzionali
-alla partita nelle classi `Partita.java` e `Giocatore.java` nella
-cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi).
-Meccanismo di invio mail.
+- Nanni: Tutte le classi nella cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi) a eccezione di `MailThread.java`, `Partita.java` e `Giocatore.java`. Vari collegamenti con le partite, opzioni, salvataggi e metodi della classe `Utili.java` all'interno dei [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller), in particolare quelli usati per i tornei e i privilegi admin.
+- Manieri: Grafica e design (FXML), collegamenti tra le scene e classi [controller](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller) associate, creazione di tutte le immagini. Cursore personalizzato.
+- Silvestri: [PartitaController.java](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/controller/PartitaController.java): Implementazione e funzionalità della partita (algoritmo principale di gioco, animazioni, bot). Gestione di tutti gli eventi di I/O (eventi javafx: mouseEvent, clickEvent, keyEvent ecc...). Metodi funzionali alla partita nelle classi `Partita.java` e `Giocatore.java` nella cartella [classi](https://github.com/asdru22/ProgettoSpacca/tree/main/src/main/java/gioco/progettospacca/classi). Sistema di invio mail.
