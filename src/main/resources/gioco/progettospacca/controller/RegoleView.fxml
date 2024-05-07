@@ -488,12 +488,12 @@
                               </Label>
                            </children>
                         </GridPane>
-                        <Label fx:id="lbl_obiettivoGioco" layoutX="275.0" layoutY="3200.0" text="OBIETTIVO DEL GIOCO">
+                        <Label fx:id="lbl_titoloObiettivo" layoutX="275.0" layoutY="3200.0" text="OBIETTIVO DEL GIOCO">
                            <font>
                               <Font name="Candara Bold" size="27.0" />
                            </font>
                         </Label>
-                        <Label fx:id="lbl_regole10" layoutX="74.0" layoutY="3282.0" text="Il giocatore che avrà al termine dei round prestabiliti, il maggior numero di punti, vincerà la partita.">
+                        <Label fx:id="lbl_regole10" alignment="CENTER" layoutX="87.0" layoutY="3287.0" prefHeight="20.0" prefWidth="626.0" textAlignment="CENTER">
                            <font>
                               <Font name="Candara" size="16.0" />
                            </font>

@@ -41,7 +41,7 @@ public class RegoleController implements Initializable {
         lbl_semeComanda.setText(OPZ.traduci("seme_comanda"));
         lbl_coloreMano.setText(OPZ.traduci("colore_mano"));
         lbl_titoloObiettivo.setText(OPZ.traduci("obiettivo"));
-        lbl_titoloObiettivo.setText(OPZ.traduci("regole10"));
+        lbl_regole10.setText(OPZ.traduci("regole10"));
 
     }
 }
