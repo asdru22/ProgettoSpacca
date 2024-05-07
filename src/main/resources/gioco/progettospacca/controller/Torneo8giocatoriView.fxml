@@ -160,6 +160,7 @@
                         <CheckBox fx:id="chk_gioc7" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox7" GridPane.columnIndex="2" GridPane.rowIndex="7" />
                         <CheckBox fx:id="chk_gioc8" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox8" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                   <Label fx:id="lbl_bot" alignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+                        <Button fx:id="btn_back" focusTraversable="false" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#back" prefHeight="38.0" prefWidth="39.0" text="❮" />
                     </children>
                 </GridPane>
             </children>

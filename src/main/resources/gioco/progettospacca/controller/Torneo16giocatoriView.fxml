@@ -275,7 +275,7 @@
                     </font>
                 </Button>
                 <Label fx:id="lbl_bot" alignment="CENTER" layoutX="451.0" layoutY="535.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-
+                <Button fx:id="btn_back" focusTraversable="false" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#back" prefHeight="38.0" prefWidth="39.0" text="❮" />
             </children>
         </AnchorPane>
     </children>
