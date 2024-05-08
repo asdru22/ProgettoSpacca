@@ -35,6 +35,7 @@
                         <RowConstraints maxHeight="160.4000152587891" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
                         <TextField fx:id="txt_gioc4" focusTraversable="false" maxWidth="170.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="4">
@@ -111,9 +112,13 @@
                         <CheckBox fx:id="chk_gioc2" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <CheckBox fx:id="chk_gioc3" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <CheckBox fx:id="chk_gioc4" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                      <Label fx:id="lbl_bot" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" text="dasdasdasd" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                          <font>
+                              <Font name="Candara" size="16.0" />
+                          </font>
+                      </Label>
                     </children>
                 </GridPane>
-            <Label fx:id="lbl_bot" alignment="CENTER" layoutX="444.0" layoutY="515.0" />
                 <Button fx:id="btn_back" focusTraversable="false" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onKeyPressed="#keyEvent" onMouseClicked="#back" prefHeight="38.0" prefWidth="39.0" text="❮" />
             </children>
         </AnchorPane>

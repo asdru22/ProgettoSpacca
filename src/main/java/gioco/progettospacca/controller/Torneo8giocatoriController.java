@@ -112,6 +112,7 @@ public class Torneo8giocatoriController implements Initializable {
     }
 
     public int creaTorneo() {
+        Utili.fadeText(lbl_bot);
         ArrayList<ValoriTorneo> tf = new ArrayList<>();
         tf.add(new ValoriTorneo(txt_gioc1, chk_gioc1));
         tf.add(new ValoriTorneo(txt_gioc2, chk_gioc2));
