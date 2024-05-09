@@ -195,7 +195,7 @@
                 </Label>
          </children>
       </AnchorPane>
-      <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0">
+      <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bde2f2" height="62.0" layoutX="41.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="304.0" />
             <ImageView fitHeight="423.0" fitWidth="406.0" layoutX="-5.0" layoutY="75.0">
