@@ -58,7 +58,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="txt_cod" focusTraversable="false" maxWidth="100.0" onKeyPressed="#keyEvent" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.rowSpan="3" />
-                  <Label fx:id="lbl_errore" alignment="CENTER" prefHeight="18.0" prefWidth="200.0" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="lbl_errore" alignment="CENTER" prefHeight="18.0" prefWidth="200.0" textAlignment="CENTER" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                   <ImageView fitHeight="108.0" fitWidth="108.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <image>
                         <Image url="@../Logo.png" />
