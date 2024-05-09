@@ -1459,15 +1459,43 @@ public class PartitaController implements Initializable {
             }
         });
 
+
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_gioca.setOnMouseExited(e -> {
             if (btn_gioca.getScene() != null) {
                 btn_gioca.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
             }
         });
-        btn_prossimaMano.setOnMouseEntered(e -> {
-            if (btn_prossimaMano.getScene() != null) {
-                btn_prossimaMano.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+
+        btn_tabellone.setOnMouseEntered(e -> {
+            if (btn_tabellone.getScene() != null) {
+                btn_tabellone.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_tabellone.setOnMouseExited(e -> {
+            if (btn_tabellone.getScene() != null) {
+                btn_tabellone.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_tabellone.setOnMouseEntered(e -> {
+            if (btn_tabellone.getScene() != null) {
+                btn_tabellone.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
+
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_backhome.setOnMouseExited(e -> {
+            if (btn_backhome.getScene() != null) {
+                btn_backhome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
+
+        btn_backhome.setOnMouseEntered(e -> {
+            if (btn_backhome.getScene() != null) {
+                btn_backhome.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
             }
         });
 
