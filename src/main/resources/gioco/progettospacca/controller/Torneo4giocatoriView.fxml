@@ -112,7 +112,7 @@
                         <CheckBox fx:id="chk_gioc2" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox2" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                         <CheckBox fx:id="chk_gioc3" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox3" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                         <CheckBox fx:id="chk_gioc4" focusTraversable="false" mnemonicParsing="false" onKeyPressed="#keyEvent" onKeyReleased="#keyReleased" onMouseClicked="#checkBox4" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                      <Label fx:id="lbl_bot" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" text="dasdasdasd" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                      <Label fx:id="lbl_bot" alignment="CENTER" prefHeight="20.0" prefWidth="133.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
                           <font>
                               <Font name="Candara" size="16.0" />
                           </font>

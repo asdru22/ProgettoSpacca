@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="631.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
+<Pane prefHeight="631.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gioco.progettospacca.controller.PartitaController">
     <children>
       <ImageView fitHeight="631.0" fitWidth="915.0">
          <image>
@@ -195,7 +195,7 @@
                 </Label>
          </children>
       </AnchorPane>
-      <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0" visible="false">
+      <Pane fx:id="pane_pausa" layoutX="265.0" layoutY="69.0" prefHeight="470.0" prefWidth="384.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bde2f2" height="62.0" layoutX="41.0" layoutY="21.0" stroke="BLACK" strokeType="INSIDE" width="304.0" />
             <ImageView fitHeight="423.0" fitWidth="406.0" layoutX="-5.0" layoutY="75.0">
@@ -203,23 +203,23 @@
                   <Image url="@../darkScore.png" />
                </image>
             </ImageView>
-            <Button fx:id="btn_regole" layoutX="109.0" layoutY="131.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showRegole" prefHeight="52.0" prefWidth="167.0" text="Regole">
+            <Button fx:id="btn_regole" layoutX="110.0" layoutY="113.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showRegole" prefHeight="52.0" prefWidth="167.0" text="Regole">
                <font>
                   <Font name="Candara" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="btn_esci" focusTraversable="false" layoutX="76.0" layoutY="367.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#salvaEdEsci" prefHeight="52.0" prefWidth="232.0" text="Salva ed esci">
+            <Button fx:id="btn_esci" focusTraversable="false" layoutX="76.0" layoutY="387.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#salvaEdEsci" prefHeight="52.0" prefWidth="232.0" text="Salva ed esci">
                <font>
                   <Font name="Candara" size="17.0" />
                </font>
             </Button>
             <AnchorPane prefHeight="470.0" prefWidth="384.0" visible="false" />
-            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="109.0" layoutY="209.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
+            <ToggleButton fx:id="tglbtn_suono" focusTraversable="false" layoutX="108.0" layoutY="253.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setSuono" prefHeight="52.0" prefWidth="167.0" text=" suono ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="110.0" layoutY="287.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
+            <ToggleButton fx:id="tglbtn_musica" focusTraversable="false" layoutX="109.0" layoutY="322.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#setMusica" prefHeight="52.0" prefWidth="167.0" text="musica ON">
                <font>
                   <Font name="Candara" size="15.0" />
                </font>
@@ -234,10 +234,13 @@
                   <Font name="Candara Bold" size="43.0" />
                </font>
             </Label>
-            <Button fx:id="btn_classifica" focusTraversable="false" layoutX="172.0" layoutY="183.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showLeaderboard" text="classifica" />
+            <Button fx:id="btn_classifica" focusTraversable="false" layoutX="108.0" layoutY="183.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showLeaderboard" prefHeight="52.0" prefWidth="167.0" text="classifica">
+               <font>
+                  <Font name="Candara" size="18.0" />
+               </font></Button>
          </children>
       </Pane>
-      <Pane fx:id="pane_finePartita" prefHeight="624.0" prefWidth="907.0" visible="false">
+      <Pane fx:id="pane_finePartita" focusTraversable="true" prefHeight="624.0" prefWidth="907.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0a7bc2" height="631.0" stroke="#085b8e" strokeType="INSIDE" width="915.0" />
             <ImageView fitHeight="576.0" fitWidth="915.0" layoutY="24.0">

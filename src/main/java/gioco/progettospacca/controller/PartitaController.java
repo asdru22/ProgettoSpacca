@@ -193,6 +193,7 @@ public class PartitaController implements Initializable {
         lbl_titoloImprevisto.setText(OPZ.traduci("pescato_imprevisto"));
         btn_tabellone.setText(OPZ.traduci("torna_al_tabellone"));
         lbl_turnodi.setText(OPZ.traduci("turno_di"));
+        btn_classifica.setText(OPZ.traduci("classifica"));
 
     }
 
@@ -1470,7 +1471,18 @@ public class PartitaController implements Initializable {
                 btn_gioca.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
             }
         });
+        btn_classifica.setOnMouseEntered(e -> {
+            if (btn_classifica.getScene() != null) {
+                btn_classifica.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreMano.png").toExternalForm()));
+            }
+        });
 
+        // Reimposta il cursore predefinito quando il mouse esce dal bottone
+        btn_classifica.setOnMouseExited(e -> {
+            if (btn_classifica.getScene() != null) {
+                btn_classifica.getScene().setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+            }
+        });
 
         // Reimposta il cursore predefinito quando il mouse esce dal bottone
         btn_gioca.setOnMouseExited(e -> {
@@ -1909,7 +1921,9 @@ public class PartitaController implements Initializable {
 
             Stage newStage = new Stage();
             newStage.setScene(scene);
+            newStage.getIcons().add(new Image(Objects.requireNonNull(Main.class.getResourceAsStream("/gioco/progettospacca/Logo.png"))));
 
+            newStage.setTitle(OPZ.traduci("classifica"));
             newStage.show();
 
         } catch (IOException e) {
