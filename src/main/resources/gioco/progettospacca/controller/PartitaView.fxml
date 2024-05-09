@@ -234,6 +234,7 @@
                   <Font name="Candara Bold" size="43.0" />
                </font>
             </Label>
+            <Button fx:id="btn_classifica" focusTraversable="false" layoutX="172.0" layoutY="183.0" mnemonicParsing="false" onKeyPressed="#keyEventTastiniPausa" onMouseClicked="#showLeaderboard" text="classifica" />
          </children>
       </Pane>
       <Pane fx:id="pane_finePartita" prefHeight="624.0" prefWidth="907.0" visible="false">

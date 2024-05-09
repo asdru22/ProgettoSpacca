@@ -123,6 +123,8 @@ public class PartitaController implements Initializable {
     @FXML
     private Button btn_gioca;
     @FXML
+    private Button btn_classifica;
+    @FXML
     private Button btn_prossimaMano;
     @FXML
     private Button btn_scarta;
@@ -325,7 +327,11 @@ public class PartitaController implements Initializable {
                                         s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
                                     }
                                     lbl_classifica.setText(s);
-                                    newScene();
+                                    if(btn_scarta.getScene()==null){        //controllo per quando clicco salva ed esci durante il turno del bot, non gli faccio fare il newScene (avendo le pause, completa il codice lo stesso anche se sono su una nuova scena)
+
+                                    }else {
+                                        newScene();
+                                    }
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -422,7 +428,12 @@ public class PartitaController implements Initializable {
                                         s = s + p.getGiocatori()[j].getNome() + ":  " + p.getGiocatori()[j].getPunti() + "\n";
                                     }
                                     lbl_classifica.setText(s);
-                                    newScene();
+                                    if(btn_scarta.getScene()==null){        //controllo per quando clicco salva ed esci durante il turno del bot, non gli faccio fare il newScene (avendo le pause, completa il codice lo stesso anche se sono su una nuova scena)
+
+                                    }else {
+                                        newScene();
+                                    }
+
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }
@@ -1362,6 +1373,7 @@ public class PartitaController implements Initializable {
 
     //bottone torna all home una volta finita la partita, bottone del pane_finePartita
     public void finePartita(MouseEvent event) throws IOException {
+
         salvaEdEsci();
     }
 
@@ -1676,11 +1688,13 @@ public class PartitaController implements Initializable {
             if (keyEvent.getCode() == KeyCode.DOWN) {
                 OPZ.premiFreccia();
                 if (btn_regole.isFocused()) {
-                    tglbtn_suono.requestFocus();
+                    btn_classifica.requestFocus();
                 } else if (tglbtn_suono.isFocused()) {
                     tglbtn_musica.requestFocus();
                 } else if (tglbtn_musica.isFocused()) {
                     btn_esci.requestFocus();
+                } else if (btn_classifica.isFocused()) {
+                    tglbtn_suono.requestFocus();
                 }
             }
             if (keyEvent.getCode() == KeyCode.UP) {
@@ -1690,6 +1704,8 @@ public class PartitaController implements Initializable {
                 } else if (tglbtn_musica.isFocused()) {
                     tglbtn_suono.requestFocus();
                 } else if (tglbtn_suono.isFocused()) {
+                    btn_classifica.requestFocus();
+                } else if (btn_classifica.isFocused()) {
                     btn_regole.requestFocus();
                 }
             }
@@ -1709,6 +1725,10 @@ public class PartitaController implements Initializable {
         if(keyEvent.getCode() == KeyCode.ENTER && btn_regole.isFocused()){
             OPZ.premiBottone();
             showRegole();
+        }
+        if(keyEvent.getCode() == KeyCode.ENTER && btn_classifica.isFocused()){
+            OPZ.premiBottone();
+            showLeaderboard();
         }
 
     }
@@ -1874,6 +1894,27 @@ public class PartitaController implements Initializable {
 
     public void setMusica(MouseEvent mouseEvent) {
         Utili.gestisciMusica(tglbtn_musica);
+    }
+
+    public void showLeaderboard() throws IOException {
+
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("LeaderboardViewPartita.fxml"));
+
+            Scene scene = new Scene(root);
+
+            scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
+
+            scene.setCursor(Cursor.cursor(getClass().getResource("/gioco/progettospacca/cursoreBase.png").toExternalForm()));
+
+            Stage newStage = new Stage();
+            newStage.setScene(scene);
+
+            newStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
